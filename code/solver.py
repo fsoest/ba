@@ -3,7 +3,9 @@ import qutip as qt
 from scipy.integrate import solve_ivp
 from scipy.interpolate import CubicSpline
 import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 
+N = 30
 
 def bloch_to_vec(theta, phi):
     """
@@ -67,12 +69,17 @@ H_i = qt.tensor(qt.sigmap(), qt.sigmam()) + qt.tensor(qt.sigmam(), qt.sigmap())
 # DST Hamiltonian
 H_dst = qt.tensor(H_i, qt.qeye(2)) + qt.tensor(qt.qeye(2), H_i)
 
-theta = np.linspace(0, 2 * np.pi, 100)
-phi = np.pi * np.sin(np.linspace(0, 2 * np.pi, 100))
+theta = np.linspace(0, 2 * np.pi, N)
+phi = np.pi * np.sin(np.linspace(0, 2 * np.pi, N))
 
-t_arr = np.linspace(0, 10, 100)
+t_arr = np.linspace(0, 10, N)
 
-args = (t_arr, phi, phi, theta, theta, H_dst)
+# %%
+trans_t = np.random.uniform(0, 2 * np.pi, N)
+trans_p = np.random.uniform(0, 2 * np.pi, N)
+
+
+args = (t_arr, theta, phi, trans_t, trans_p, H_dst)
 
 t_span = (0, 10)
 
@@ -81,6 +88,7 @@ t_span = (0, 10)
 E = solve_ivp(rhs, t_span, np.array([0, 1/np.sqrt(2) + 0j, 1/np.sqrt(2) + 0j]), args=args)
 
 # %%
+
 states = []
 b = qt.Bloch()
 
@@ -89,4 +97,26 @@ for i in range(len(E.y[1:].T)):
 b.show()
 
 # %%
-plt.plot(E.t, E.y[0])
+plt.plot(E.t, E.y[0].real)
+# %%
+def func_to_min(x, t_arr, drive_t, drive_p, H_dst, rhs, t_span):
+    trans_t = x[:N]
+    trans_p = x[N:]
+    t_arr, drive_t, drive_p, H_dst, rhs, t_span = min_args
+    solver_args = (t_arr, phi, phi, trans_t, trans_p, H_dst)
+    return solve_ivp(rhs, t_span, np.array([0, 1/np.sqrt(2) + 0j, 1/np.sqrt(2) + 0j]), args=solver_args).y[0][-1].real
+
+drive_t = theta
+drive_p = phi
+min_args = (t_arr, drive_t, drive_p, H_dst, rhs, t_span)
+x_0 = np.zeros(2 * N)
+x_0[:N] = theta
+x_0[N:] = phi
+minimize(func_to_min, x_0, args=min_args)
+
+# Was fordern? Anfang = End?
+# Optimierung
+ # RL - Annealing
+ # Gradient ascent
+ # Diskrete phi, theta
+ #
