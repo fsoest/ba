@@ -11,8 +11,8 @@ H_i = qt.tensor(qt.sigmap(), qt.sigmam()) + qt.tensor(qt.sigmam(), qt.sigmap())
 H_dst = qt.tensor(H_i, qt.qeye(2)) + qt.tensor(qt.qeye(2), H_i)
 
 # %%
-N = 30
-t_end = 50
+N = 50
+t_end = 500
 t_drive = np.linspace(0, 2 * np.pi, N)
 p_drive = np.pi * np.sin(np.linspace(0, 8 * np.pi, N))
 
@@ -31,7 +31,7 @@ phi_t = CubicSpline(t_arr, p_transducer)
 
 args = (theta_d, phi_d, theta_t, phi_t, H_dst)
 
-t_span = (0, 15)
+t_span = (0, t_end)
 
 # rhs(0.5, np.array([0, 1+0j, 0+0j]), *args)
 
@@ -49,7 +49,6 @@ b.show()
 # %%
 plt.plot(E.t, E.y[0].real)
 # %%
-
 # Was fordern? Anfang = End?
 # Optimierung
  # RL - Annealing
