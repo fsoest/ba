@@ -1,3 +1,9 @@
 Bachelorarbeit Felix Soest
 
-ML in quantum work
+Dependencies
+-stable-baselines
+-qutip
+-numpy
+-tensorflow v1.15
+
+ML and quantum work
