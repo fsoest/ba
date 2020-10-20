@@ -21,12 +21,14 @@ def vec_derivative(theta, phi, dtheta, dphi):
 
 def rho(psi):
     """
+    Returns pure-state density matrix from psi
     """
     return psi * psi.dag()
 
 
 def rhs(t, y, theta_d, phi_d, theta_t, phi_t, H_dst):
     """
+
     t: time
     y: array, [E, |psi_s>]
     """
@@ -53,3 +55,46 @@ def rhs(t, y, theta_d, phi_d, theta_t, phi_t, H_dst):
     res = np.full(3, p, dtype=np.complex)
     res[1:] = dpsi_s_dt
     return res
+
+
+def t_spline(t_mdp):
+    """
+    Creates compatible Spline array from t_mdp array
+    """
+    dt = t_mdp[1] - t_mdp[0]
+    t_spline = np.zeros(len(t_mdp) + 1)
+    t_spline[:-1] = t_mdp
+    t_spline[-1] = t_spline[-2] + dt
+    return t_spline
+
+
+def normalise_to_angle(x, m):
+    """
+    Implements normalisation [-1, 1] --> [0, m * pi]
+    """
+    return (x + 1) * m * np.pi / 2
+
+
+def normalise_from_angle(x, m):
+    """
+    Inverse to normalise_to_angle, [0, m * pi] --> [-1, 1]
+    """
+    return 2 * x / (m * np.pi) - 1
+
+
+def ket_to_real(ket):
+    """
+    Splits real and imag parts of state vector
+    """
+    a = ket[0].real
+    b = ket[0].imag
+    c = ket[1].real
+    d = ket[1].imag
+    return a, b, c, d
+
+
+def real_to_ket(a, b, c, d):
+    """
+    Creates numpy array state vector from real values
+    """
+    return np.array([a + 1j * b, c + 1j * d])

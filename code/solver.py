@@ -48,6 +48,7 @@ b.show()
 
 # %%
 plt.plot(E.t, E.y[0].real)
+E.y.T[-1][1:]
 # %%
 # Was fordern? Anfang = End?
 # Optimierung
