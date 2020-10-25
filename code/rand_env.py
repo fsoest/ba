@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 
 
 PSI_S_0 = np.array([1 + 0j, 0 + 0j])
-ALPHA = 0.1
+ALPHA = 1e-4
 
 class DST_env(gym.Env):
     metadata = {'render.modes': ['human']}
 
 
-    def __init__(self, t_mdp, t_drive, p_drive, H_dst):
+    def __init__(self, t_mdp, H_dst):
         """
         t_mdp: array, times at which MDP is run
         """
@@ -27,10 +27,6 @@ class DST_env(gym.Env):
         self.reward_range = (-np.inf, np.inf)
 
         self.t_spline = t_spline(self.t_mdp, ALPHA)
-
-        # Drive qubit functions
-        self.t_drive = CubicSpline(self.t_spline, t_drive)
-        self.p_drive = CubicSpline(self.t_spline, p_drive)
 
 
         # Action space: Theta, Phi of transducer qubit, [-1, 1]!
@@ -55,8 +51,6 @@ class DST_env(gym.Env):
         # Create transducer qubit function with action values, ([-1, 1] -> [0, pi / 2pi])
         self.t_trans_array[self.t + 1] = normalise_to_angle(action[0], 1)
         self.p_trans_array[self.t + 1] = normalise_to_angle(action[1], 2)
-
-
         self.t_trans = CubicSpline(self.t_spline, self.t_trans_array)
         self.p_trans = CubicSpline(self.t_spline, self.p_trans_array)
 
@@ -86,6 +80,13 @@ class DST_env(gym.Env):
     def reset(self):
         """
         """
+
+        # Initiate random drive functions
+        t_drive = np.random.uniform(low = 0, high=np.pi, size=(len(self.t_spline),))
+        p_drive = np.random.uniform(low = 0, high=2*np.pi, size=(len(self.t_spline),))
+        self.t_drive = CubicSpline(self.t_spline, t_drive)
+        self.p_drive = CubicSpline(self.t_spline, p_drive)
+
         self.psi_s = PSI_S_0
         self.t = 0
 

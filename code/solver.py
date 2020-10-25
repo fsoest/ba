@@ -24,6 +24,7 @@ p_transducer = np.pi * np.cos(np.linspace(0, 2 * np.pi, N)) #np.random.uniform(0
 
 # Spline functions
 theta_d = CubicSpline(t_arr, t_drive)
+theta_d.derivative()(0)
 phi_d = CubicSpline(t_arr, p_drive)
 theta_t = CubicSpline(t_arr, t_transducer)
 phi_t = CubicSpline(t_arr, p_transducer)

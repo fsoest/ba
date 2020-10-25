@@ -2,10 +2,9 @@ import numpy as np
 from cont_env import DST_env
 from helpers import t_spline
 import qutip as qt
-from stable_baselines import SAC
-from stable_baselines.sac.policies import MlpPolicy
+from stable_baselines import DDPG
+from stable_baselines.ddpg.policies import MlpPolicy
 from stable_baselines.common.vec_env import VecCheckNan, DummyVecEnv
-from stable_baselines.common.env_checker import check_env
 
 t_start = 0
 t_end = 10
@@ -27,12 +26,6 @@ H_dst = qt.tensor(H_i, qt.qeye(2)) + qt.tensor(qt.qeye(2), H_i)
 env = DST_env(t_mdp, t_drive, p_drive, H_dst)
 
 # %%
-model = SAC(MlpPolicy, env, verbose=1)
-model.learn(total_timesteps=50000)
+model = DDPG(MlpPolicy, env, verbose=1)
+model.learn(total_timesteps=20000)
 model.save("cont_env_v2")
-
-# %%
-env.reset()
-check_env(env)
-
-# %%

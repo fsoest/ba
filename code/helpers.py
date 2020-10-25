@@ -12,11 +12,10 @@ def bloch_to_vec(theta, phi):
 def vec_derivative(theta, phi, dtheta, dphi):
     """
     """
-    dpsi_dt = -1 * np.sin(theta / 2) * dtheta * qt.fock(2, 0) \
-        + np.exp(1j * phi) * (np.cos(theta / 2) * dtheta + \
+    dpsi_dt = -1 * np.sin(theta / 2) * dtheta / 2 * qt.fock(2, 0) \
+        + np.exp(1j * phi) * (np.cos(theta / 2) * dtheta / 2 + \
         1j * dphi * np.sin(theta / 2)) * qt.fock(2, 1)
     return dpsi_dt
-
 
 
 def rho(psi):
@@ -57,14 +56,13 @@ def rhs(t, y, theta_d, phi_d, theta_t, phi_t, H_dst):
     return res
 
 
-def t_spline(t_mdp):
+def t_spline(t_mdp, alpha):
     """
     Creates compatible Spline array from t_mdp array
     """
     dt = t_mdp[1] - t_mdp[0]
-    t_spline = np.zeros(len(t_mdp) + 1)
-    t_spline[:-1] = t_mdp
-    t_spline[-1] = t_spline[-2] + dt
+    t_spline = t_mdp
+    t_spline[1:] += alpha * dt
     return t_spline
 
 
