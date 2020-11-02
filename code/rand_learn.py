@@ -19,7 +19,6 @@ H_dst = qt.tensor(H_i, qt.qeye(2)) + qt.tensor(qt.qeye(2), H_i)
 env = DST_env(t_mdp, H_dst)
 
 # %%
-policy_kwargs = dict(net_arch=[32, 32, 32, 32])
-model = SAC(MlpPolicy, env, verbose=1, learning_rate=6e-4, policy_kwargs=policy_kwargs)
-model.learn(total_timesteps=50000, log_interval=20)
-model.save("XXXX")
+model = SAC.load('random_3', env=env)
+# %%
+env.evaluate(model)

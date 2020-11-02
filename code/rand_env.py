@@ -82,12 +82,15 @@ class DST_env(gym.Env):
         """
 
         # Initiate random drive functions
-        t_drive = np.random.uniform(low = 0, high=np.pi, size=(len(self.t_spline),))
-        p_drive = np.random.uniform(low = 0, high=2*np.pi, size=(len(self.t_spline),))
+        t_drive = np.random.uniform(low =0, high=np.pi, size=(len(self.t_spline),))
+        p_drive = np.random.uniform(low =0, high=2*np.pi, size=(len(self.t_spline),))
         self.t_drive = CubicSpline(self.t_spline, t_drive)
         self.p_drive = CubicSpline(self.t_spline, p_drive)
 
-        self.psi_s = PSI_S_0
+        # Create random initial position of system qubit
+        random_init = np.random.uniform(low =-1, high=1, size=(4,))
+        self.psi_s = np.array([random_init[0] + 1j * random_init[1], random_init[2] + 1j * random_init[3]])
+        self.psi_s /= np.linalg.norm(self.psi_s)
         self.t = 0
 
         # Set state to Theta, Phi of Drive bit to t_mdp = 0
@@ -117,6 +120,10 @@ class DST_env(gym.Env):
             self.theta.append(action[0])
             self.phi.append(action[1])
         plt.plot(range(len(self.total_rewards)), np.cumsum(self.total_rewards), label='Rewards')
-        plt.plot(range(len(self.theta)), normalise_to_angle(np.array(self.theta), 1), label='Theta')
-        plt.plot(range(len(self.phi)), normalise_to_angle(np.array(self.phi), 2), label='Phi')
+        plt.plot(range(len(self.theta)), self.theta, label='Theta trans')
+        plt.plot(range(len(self.phi)), self.phi, label='Phi trans')
+        t = np.linspace(0, 10, 100)
+        plt.plot(t, self.t_drive(t), label='Theta drive')
+        plt.plot(t, self.p_drive(t), label='Phi drive')
         plt.legend()
+        return self.theta, self.phi

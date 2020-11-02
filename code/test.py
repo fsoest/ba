@@ -29,3 +29,6 @@ env.reset()
 # %%
 env.step(np.array([0.5, -0.5]))
 env.p_trans_array
+
+
+a = np.array([1+ 5j, 3 + 4j])
