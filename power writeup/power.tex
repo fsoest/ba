@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{ bbold }
+\usepackage{physics}
+\usepackage{ wasysym }
+\usepackage{amsmath}
+\begin{document}
+	\begin{align*}
+		H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+} \\
+		H_{DST} = H_{I} \otimes \mathbb{1} + \mathbb{1} \otimes H_{I} \\
+		\ket{\psi_T} = cos(\theta / 2) \ket{0} + e^{i\phi} sin(\theta / 2) \ket{1}\\
+		\ket{\dot{\psi}_T} = -sin(\theta / 2) \dot{\theta} / 2 \ket{0}
+		+ e^{i\phi} (cos(\theta / 2) \ \dot{\theta}/2 + i \dot{\phi} \ sin(\theta/2)) \ket{1} \\
+		\frac{1}{2}\frac{dW}{dt} = -\Im \bra{\dot{\psi}_T} \ket{\psi_T^{\text{\lightning}}}
+		= \Im \bra{\dot{\psi}_T} i H_T \ket{\psi_T} = 
+		\Im \bra{\psi_D} \bra{\psi_S} \bra{\dot{\psi}_T} i H_{DST}\ket{\psi_D}\ket{\psi_S}\ket{\psi_T} \\
+		= \Im \bra{\psi_D} \bra{\psi_S} \bra{\dot{\psi}_T} i H_{DS} \otimes \mathbb{1} \ket{\psi_D}\ket{\psi_S}\ket{\psi_T}
+		+ \Im \bra{\psi_D} \bra{\psi_S} \bra{\dot{\psi}_T} i \mathbb{1} \otimes H_{ST} \ket{\psi_D}\ket{\psi_S}\ket{\psi_T} \\
+		= \Im i \expval{H_{DS}} \bra{\dot{\psi}_T} \ket{\psi_T} + \Im \bra{\psi_S} \bra{\dot{\psi}_T} i H_{ST} \ket{\psi_S}\ket{\psi_T} \\ = 0 \ + \Im \bra{\psi_S} \bra{\dot{\psi}_T} i \sigma_{+} \otimes \sigma_{-} \ket{\psi_S}\ket{\psi_T} + \Im \bra{\psi_S} \bra{\dot{\psi}_T} i \sigma_{-} \otimes \sigma_{+} \ket{\psi_S}\ket{\psi_T} \\
+		= - \Im i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} sin^2(\theta/2) \dot{\theta}/2
+		+ \Im i \bra{\psi_S} \sigma_{-} \ket{\psi_S} e^{-i\phi} (cos^2(\theta / 2) \dot{\theta}/2 - i \dot{\phi} \ sin(\theta/2)) \\
+		= - \Im i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} sin^2(\theta/2) \dot{\theta}/2
+		+ \Im [-i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} (cos^2(\theta / 2) \dot{\theta}/2 + i \dot{\phi} \ sin(\theta/2))]^* \\
+		= - \Im i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} sin^2(\theta/2) \dot{\theta}/2
+		+ \Im i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} (cos^2(\theta / 2) \dot{\theta}/2 + i \dot{\phi} \ sin(\theta/2)) \\
+		= \Im i \bra{\psi_S} \sigma_{+} \ket{\psi_S} e^{i\phi} (cos(\theta) \dot{\theta}/2 + i \dot{\phi} \ sin(\theta/2))
+	\end{align*}
+	
+	\begin{align*}
+		H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) = \frac{1}{2} \left[sin(\theta_D(t)) e^{i\phi_D(t)} + sin(\theta_T(t)) e^{i\phi_T(t)}\right] \sigma_{+} + h.c. \\
+		= \alpha \sigma_{+} + h.c. \\
+		\rho_S(t+1) = U \rho_S(t) U^\dagger, U = e^{-iH_S(t) \Delta t} \\
+		dW(t) = \textrm{Tr} \ \rho(t) dH \\
+		dH = H_S(\theta_D(t), \phi_D(t), \theta_T(t+1), \phi_T(t+1)) - H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) \\
+		= \frac{1}{2}(sin(\theta_T(t+1))e^{i\phi_T(t+1)} - sin(\theta_T(t))e^{i\phi_T(t)}) \sigma_{+} + h.c. =: (\tau' - \tau) \sigma_{+} + h.c. \\
+		\textrm{For N=2 only one jump, analytical solution is possible:} \\
+		U = e^{-iH_S \Delta t} = 
+		exp \begin{pmatrix}
+		0 & -i\alpha^* \Delta t \\
+		-i \alpha \Delta t & 0 \\
+		\end{pmatrix} = 
+		\frac{1}{2} \begin{pmatrix}
+		\frac{\alpha^*}{\abs{\alpha}} & -\frac{\alpha^*}{\abs{\alpha}} \\
+		1 & 1 \\
+		\end{pmatrix}
+		\begin{pmatrix}
+		e^{-i\abs{\alpha} \Delta t} & 0 \\
+		0 & e^{i\abs{\alpha} \Delta t} \\
+		\end{pmatrix}
+		\begin{pmatrix}
+		\frac{\abs{\alpha}}{\alpha^*} & 1 \\
+		-\frac{\abs{\alpha}}{\alpha^*} & 1 \\
+		\end{pmatrix} \\
+		= \begin{pmatrix}
+		cos(\abs{\alpha}\Delta t) & -i\frac{\alpha^*}{\abs{\alpha}} sin(\abs{\alpha}\Delta t) \\
+		-i\frac{\abs{\alpha}}{\alpha^*} sin(\abs{\alpha}\Delta t) & cos(\abs{\alpha} \Delta t) \\
+		\end{pmatrix} \\
+		\mathrm{With} \ \rho_0 = \ket{0}\bra{0}, \mathrm{the \ time \ evolved \ state} \ \rho = U \rho_0 U^\dagger \mathrm{is} \\
+		\rho = \begin{pmatrix}
+		cos^2(\abs{\alpha} \Delta t) & i\frac{\abs{\alpha}}{2\alpha} sin(2\abs{\alpha} \Delta t) \\
+		-i\frac{\abs{\alpha}}{2\alpha^*} sin(2\abs{\alpha} \Delta t) & sin^2(\abs{\alpha} \Delta t)
+		\end{pmatrix} \\
+		W = \mathrm{Tr} \begin{pmatrix}
+		0 & \tau'^* - \tau^* \\
+		\tau' - \tau & 0 \\
+		\end{pmatrix}
+		\begin{pmatrix}
+		cos^2(\abs{\alpha} \Delta t) & i\frac{\abs{\alpha}}{2\alpha} sin(2\abs{\alpha} \Delta t) \\
+		-i\frac{\abs{\alpha}}{2\alpha^*} sin(2\abs{\alpha} \Delta t) & sin^2(\abs{\alpha} \Delta t)
+		\end{pmatrix} \\
+		= -sin(2\abs{\alpha}\Delta t) \Im{(\tau' - \tau)\frac{\abs{\alpha}}{\alpha}}
+	\end{align*}
+
+\end{document}

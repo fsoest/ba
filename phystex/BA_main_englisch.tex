@@ -1,0 +1,112 @@
+\input{preamble}
+\begin{document}
+
+\frontmatter
+
+
+% Titelpageseite
+\begin{titlepage}
+ \begin{tabularx}{\linewidth}{X}
+  \includegraphics[width=6cm]{TU_Logo_SW} \\\hline\hline
+
+  \vspace{4.5em}
+
+  \begin{singlespace}\begin{center}\bfseries\Huge
+  
+  Title of Bachelor thesis
+  
+  \end{center}\end{singlespace}
+
+  \vspace{5.5em}
+
+  \begin{singlespace}\begin{center}\large
+   Bachelor-Arbeit \\ zur Erlangung des Hochschulgrades \\ 
+   Bachelor of Science \\ 
+   im Bachelor-Studiengang Physik
+  \end{center}\end{singlespace}\medskip
+
+  \begin{center}vorgelegt von\end{center}
+  \begin{center}
+   {\large Felix Soest} \\ geboren am 16.09.1998 in Düsseldorf
+  \end{center}\medskip
+
+  \begin{singlespace}\begin{center}\large
+   Institut für Theoretische Physik \\
+   Fakultät Physik \\
+   Bereich Mathematik und Naturwissenschaften \\
+   Technische Universität Dresden \\ 2021
+  \end{center}\end{singlespace}
+ \end{tabularx}
+\end{titlepage}
+
+
+% Gutachterseite
+\thispagestyle{empty}\vspace*{48em}
+
+Eingereicht am xx.~Monat~20xx\vspace{1.5em}
+\par{\large\begin{tabular}{ll}
+ 1. Gutachter: & Prof.~Dr.~Walter Strunz \\
+ 2. Gutachter: & Prof.~Dr.~YY \\
+\end{tabular}}
+
+
+% Abstractseite
+\newpage
+\begin{center}\large\bfseries Summary\end{center}
+
+
+Abstract \\ 
+English: \\
+Aufmerksamkeit
+große Fragen?
+unsere Frage
+unsere Antwort
+
+\vspace{20em}
+Abstract \\ 
+Deutsch \\
+ 
+ 
+% Inhaltsverzeichnis
+
+%\cleardoublepage
+\tableofcontents
+
+
+
+% Hauptteil
+
+\chapter{Introduction}
+
+
+\chapter{Background}
+
+
+\section{Supervised Machine Learning}
+
+\section{Setting}
+\input{content/setting}
+
+\cite{bernardo2020unravelling}
+
+\chapter{Experimental Results}
+
+\chapter{Summary and Outlook}
+
+
+\bibliography{biblio}
+
+% Erklärung
+\clearpage
+\thispagestyle{empty}
+\minisec{Erklärung}\vspace*{1.5em}
+
+Hiermit erkläre ich, dass ich diese Arbeit im Rahmen der Betreuung am Institut
+für Theoretische Physik ohne unzulässige Hilfe Dritter verfasst und alle Quellen als solche gekennzeichnet habe.
+
+\vspace*{45em}
+
+Felix Soest \par
+Dresden, Monat 2019
+
+\end{document}

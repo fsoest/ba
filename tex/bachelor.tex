@@ -1,0 +1,67 @@
+\documentclass[hyperref, bachelorofscience]{cgvpub}
+% other document types next to bachelorofscience:
+% masterofscience
+% diplominf
+% diplomist
+% beleg
+
+%more options (to be appended in the square brackets):
+% german....... german version 
+% female........ to be used for female endings in german
+% bibnum....... numerical reference style
+% final............ intended for the final submission
+% lof.............. genereate list of figures
+% lot.............. generate list of tables
+% noproblem.. do not show task
+% notoc......... do not generate table of contents
+% twoside...... two sided layout
+
+
+\author{Felix Soest}
+\title{The title of the thesis}
+\birthday{1. Januar 1234}
+\placeofbirth{Dresden}
+\matno{123456}
+\betreuer{Dr. B. Spline}
+\bibfiles{literature-example}
+\problem{Write down your task...}
+\copyrighterklaerung{If the author used ressources from third parties (texts, images, code) he or she should state the consents of the copyright owners here or cite the given general conditions (e.g. CC/(L)GPL/BSD copyright notices)}
+\acknowledgments{I'd like to thank...}
+\abstracten{abstract text english}
+\abstractde{ abstract text german}
+\begin{document}
+\chapter{A chapter}
+\section{A section of the chapter}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics{test.png}
+	\caption{This is a caption}
+	\label{fig:label-of-fig}
+\end{figure}
+
+
+\subsection{A subsection: Some Math}
+
+\[
+\sum_{i=1}^{100}x_i
+\]
+more text here
+\subsubsection{Referencing literature}
+This is how you can cite some literature from "`literature-example.bib"': \cite{kochbuch}.
+\paragraph{a code listing}
+
+
+\begin{figure}[htbp]
+\begin{lstlisting}[frame=trbl]
+//comment
+for(int i = 0; i < 100;i++)
+{
+test(i);
+}
+\end{lstlisting}
+\end{figure}
+
+text
+
+\cite*{}
+\end{document}

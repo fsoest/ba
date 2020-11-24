@@ -1,0 +1,8 @@
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\nonumberline Introduction}{vii}% 
+\contentsline {chapter}{\nonumberline Background}{ix}% 
+\contentsline {section}{\numberline {0.1}Supervised Machine Learning}{ix}% 
+\contentsline {section}{\numberline {0.2}Setting}{ix}% 
+\contentsline {chapter}{\nonumberline Experimental Results}{xi}% 
+\contentsline {chapter}{\nonumberline Summary and Outlook}{xiii}% 
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{xv}% 

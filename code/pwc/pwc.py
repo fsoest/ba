@@ -1,6 +1,4 @@
 import numpy as np
-import qutip as qt
-#from helpers import rho, bloch_to_vec, vec_derivative
 from scipy.optimize import approx_fprime
 from scipy.linalg import expm
 import matplotlib.pyplot as plt
@@ -11,7 +9,6 @@ def int_operator(theta, phi):
     """
     """
     return np.sin(theta) * np.exp(1j * phi) * np.matrix([[0, 1], [0, 0]], dtype=np.complex128)
-    # return np.sin(theta) * np.exp(1j * phi) * qt.sigmap() / 2
 
 
 def H_s(theta_d, phi_d, theta_t, phi_t):
