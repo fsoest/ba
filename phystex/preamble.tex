@@ -2,11 +2,11 @@
  paper=A4,pagesize=automedia,fontsize=12pt,
  BCOR=15mm,DIV=22,
  twoside,headinclude,footinclude=false,
- ngerman,fleqn,             % fleqn = linksbündige Ausrichtung von Formeln
+ fleqn,                     % fleqn = linksbündige Ausrichtung von Formeln
  bibtotocnumbered,          % Literaturverz. im Inhaltsverz. eintragen
  liststotoc,                % Abbildungsverz. im Inhaltsverz. eintragen
  listsleft,                 % Abbildungsverz. an der längsten Nummer ausrichten
- pointlessnumbers,          % kein Punkt nach Überschriftsnummerierung
+ %pointlessnumbers,          % kein Punkt nach Überschriftsnummerierung
  cleardoublepage=empty      % Vakatseiten ohne Paginierung
 ]{scrbook}
 \setlength\parindent{0em}
@@ -14,7 +14,7 @@
 % Kodierung, Schrift und Sprache auswählen
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
+\usepackage{babel}
 % damit man Text aus dem PDF korrekt rauskopieren kann
 \usepackage{cmap}
 % Layout: Kopf-/Fußzeilen, anderthalbfacher Zeilenabstand
@@ -45,3 +45,7 @@
 % Dieses Paket liefert den Blindtext, der als Platzhalter in den Beispieldateien steht.
 % Das kannst Du also entfernen, wenn Du den Blindtext nicht mehr brauchst.
 \usepackage{lipsum}
+%\usepackage{ bbold }
+\usepackage{physics}
+\usepackage{svg}
+\usepackage{yfonts}

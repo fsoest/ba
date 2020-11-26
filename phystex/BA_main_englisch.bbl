@@ -1,8 +1,43 @@
 \begin{thebibliography}{1}
 
+\bibitem{beyer2020}
+Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
+\newblock Work as an external quantum observable and an operational quantum
+  work fluctuation theorem.
+
 \bibitem{bernardo2020unravelling}
 Bertúlio de~Lima~Bernardo.
 \newblock Unravelling the role of coherence in the first law of quantum
   thermodynamics, 2020.
+
+\bibitem{LeNail2019}
+Alexander LeNail.
+\newblock Nn-svg: Publication-ready neural network architecture schematics.
+\newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
+
+\bibitem{Maas2013RectifierNI}
+Andrew~L. Maas.
+\newblock Rectifier nonlinearities improve neural network acoustic models.
+\newblock 2013.
+
+\bibitem{Mitchell97}
+Tom~M. Mitchell.
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill, New York, 1997.
+
+\bibitem{nielsenneural}
+Michael~A. Nielsen.
+\newblock {\em Neural Networks and Deep Learning}.
+\newblock Determination Press, 2015.
+
+\bibitem{rumelhart1986learning}
+David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323(6088):533--536, October 1986.
+
+\bibitem{TN_libero_mab2)53517}
+Andreas Zell.
+\newblock {\em Simulation neuronaler Netze}.
+\newblock Oldenbourg, München, 2., unveränd. nachdr. edition, 1997.
 
 \end{thebibliography}

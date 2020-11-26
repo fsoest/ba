@@ -1,46 +1,50 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: BA_main_englisch.aux
-The style file: unsrt.bst
+The style file: plain.bst
 Database file #1: biblio.bib
-You've used 1 entry,
-            1791 wiz_defined-function locations,
-            449 strings with 3665 characters,
-and the built_in function-call counts, 138 in all, are:
-= -- 8
-> -- 4
+Warning--empty journal in beyer2020
+Warning--empty year in beyer2020
+Warning--empty booktitle in Maas2013RectifierNI
+You've used 8 entries,
+            2118 wiz_defined-function locations,
+            545 strings with 5014 characters,
+and the built_in function-call counts, 1986 in all, are:
+= -- 180
+> -- 78
 < -- 0
-+ -- 2
-- -- 1
-* -- 3
-:= -- 26
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 1
++ -- 32
+- -- 24
+* -- 114
+:= -- 349
+add.period$ -- 22
+call.type$ -- 8
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 5
-empty$ -- 19
-format.name$ -- 1
-if$ -- 29
+cite$ -- 11
+duplicate$ -- 88
+empty$ -- 182
+format.name$ -- 24
+if$ -- 409
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 7
-num.names$ -- 1
-pop$ -- 7
+int.to.str$ -- 8
+missing$ -- 10
+newline$ -- 41
+num.names$ -- 16
+pop$ -- 55
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 28
 quote$ -- 0
-skip$ -- 4
+skip$ -- 53
 stack$ -- 0
-substring$ -- 0
-swap$ -- 1
+substring$ -- 74
+swap$ -- 7
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 1
-width$ -- 2
-write$ -- 10
+type$ -- 26
+warning$ -- 3
+while$ -- 19
+width$ -- 9
+write$ -- 81
+(There were 3 warnings)

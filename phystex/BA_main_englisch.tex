@@ -46,7 +46,7 @@
 Eingereicht am xx.~Monat~20xx\vspace{1.5em}
 \par{\large\begin{tabular}{ll}
  1. Gutachter: & Prof.~Dr.~Walter Strunz \\
- 2. Gutachter: & Prof.~Dr.~YY \\
+ 2. Gutachter: & Associate Professor Oscar Dahlsten, Ph.D. \\
 \end{tabular}}
 
 
@@ -68,32 +68,34 @@ Deutsch \\
  
  
 % Inhaltsverzeichnis
-
 %\cleardoublepage
 \tableofcontents
 
 
 
 % Hauptteil
+\mainmatter
 
 \chapter{Introduction}
-
+\lipsum
+\section{Intro}
+\input{content/intro}
 
 \chapter{Background}
 
 
 \section{Supervised Machine Learning}
+\input{content/sml}
 
 \section{Setting}
 \input{content/setting}
 
-\cite{bernardo2020unravelling}
 
 \chapter{Experimental Results}
 
 \chapter{Summary and Outlook}
 
-
+\bibliographystyle{plain}
 \bibliography{biblio}
 
 % Erklärung
@@ -107,6 +109,6 @@ für Theoretische Physik ohne unzulässige Hilfe Dritter verfasst und alle Quell
 \vspace*{45em}
 
 Felix Soest \par
-Dresden, Monat 2019
+Dresden, Monat 2021
 
 \end{document}

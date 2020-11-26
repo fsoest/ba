@@ -1,0 +1,28 @@
+Machine learning is a subfield of artificial intelligence, `concerned with the question of how to construct computer programs that automatically improve with experience.' \cite{Mitchell97}
+Supervised machine learning is one of the three machine learning disciplines, besides unsupervised and reinforcement learning.
+The goal is to find a mapping between an input and an output, in our case an excitation and its respective optimal harvesting policy.
+Multiple algorithms to find such a mapping exist, however for high dimensional problems artificial neural networks (ANN) are usually used.
+
+The setup is as follows: let $\textfrak{N}$ be a feedforward ANN with $L$ layers, $\textfrak{N}: \mathbb{R}^{n_1} \to \mathbb{R}^{n_L}$, where $n_1$ and $n_L$ denote the dimensionality of the input and output respectively.
+The network architecture is given by the amount of neurons $n_l$ in each hidden layer $l \in [2, L - 1]$.
+The neurons in layer $l$ are represented by their activations $\vec{a}_l \in \mathbb{R}^{n_l}$. Additionally each layer includes trainable parameters $W_l \in \mathbb{R}^{n_{l+1} \times n_{l}}$ and $\vec{b}_l \in \mathbb{R}^{n_l}$ called weights and biases.
+The activations can then be calculated using the following formulae \cite{TN_libero_mab2)53517}:
+\begin{align*}
+	\vec{a}_2 = W_1 \vec{a}_1 + \vec{b}_1, \\
+	\vec{a}_l = \xi(W_{l-1} \vec{a}_{l-1} + \vec{b}_{l-1}), \ l \in [2, L - 1],
+\end{align*}
+where $\xi(x)$ is an activation function applied element wise. Historically, functions such as $tanh$ and sigmoid have been used. However, it has been shown \cite{Maas2013RectifierNI} that the rectified linear unit $\mathrm{ReLU}(x) = \mathrm{max}(0, x)$ often provides better results and is used here.
+
+To train an ANN a cost function is defined, often the mean squared error 
+\begin{align*}
+	\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
+\end{align*}
+where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ is the output of the neural network.
+The backpropagation algorithm is used to calculate the gradient of the cost function with respect to the trainable parameters and improve the performance of the ANN \cite{rumelhart1986learning, nielsenneural}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/nn}
+	\caption{Example ANN with four layers, including input, output and two hidden layers \cite{LeNail2019}}.
+	\label{nn}
+\end{figure}

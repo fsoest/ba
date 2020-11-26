@@ -69,5 +69,13 @@
 		\end{pmatrix} \\
 		= -sin(2\abs{\alpha}\Delta t) \Im{(\tau' - \tau)\frac{\abs{\alpha}}{\alpha}}
 	\end{align*}
+	
+	\begin{align*}
+		H_S^i = \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i} \\
+		\rho^{i+1} = U^i \rho^i U^{i\dagger} \\
+		U^i = e^{-iH_S^i \Delta t} \\
+		W = - \Sigma_i \mathrm{Tr} \rho^i dH^i \\
+		dH^i = \bra{\psi_D^i}\bra{\psi_T^{i+1}} H_{DST} \ket{\psi_D^i} \ket{\psi_T^{i+1}} - \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i}
+	\end{align*}
 
 \end{document}
