@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = [2, 4, 5, 10]
+N = np.flip(np.array([2, 4, 5, 10]))
 data = np.zeros((len(N), 20, 500))
 avg = np.zeros((len(N), 20))
 std = np.zeros((len(N), 20))
@@ -13,18 +13,12 @@ for i, n in enumerate(N):
 N_times = len(avg[0])
 times = np.linspace(1e-7, 10, N_times)
 for i, n in enumerate(N):
-    plt.errorbar(times, avg[i], yerr=std[i], label=n)
+    plt.errorbar(times, -1*avg[i]/(n-1), yerr=std[i]/np.sqrt(500), label=n)
+
+x = np.linspace(0, np.pi/2, 100)
+plt.plot(x, 0.4 * np.sin(x), color='k', linestyle=':')
 
 plt.legend(title='N')
 plt.xlabel('$\Delta t$')
-plt.ylabel('$-W$')
-
-# %%
-
-movavg = np.zeros((20, 500))
-for i in range(20):
-    for j in range(500):
-        movavg[i, j] = np.mean(data[2, i, :j])
-
-for i in range(20):
-    plt.plot(range(500), movavg[i]-movavg[i,-1])
+plt.ylabel('$\\overline{W}/N$')
+plt.savefig('/home/fsoest/ba/phystex/img/dt_dep_theor.png', dpi=300)

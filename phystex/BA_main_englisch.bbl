@@ -1,19 +1,23 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{beyer2020}
 Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 \newblock Work as an external quantum observable and an operational quantum
   work fluctuation theorem.
 
-\bibitem{bernardo2020unravelling}
-Bertúlio de~Lima~Bernardo.
-\newblock Unravelling the role of coherence in the first law of quantum
-  thermodynamics, 2020.
+\bibitem{krizhevsky}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock {\em Neural Information Processing Systems}, 25, 01 2012.
 
 \bibitem{LeNail2019}
 Alexander LeNail.
 \newblock Nn-svg: Publication-ready neural network architecture schematics.
 \newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
+
+\bibitem{lu2020dying}
+Lu~Lu, Yeonjong Shin, Yanhui Su, and George~Em Karniadakis.
+\newblock Dying relu and initialization: Theory and numerical examples, 2020.
 
 \bibitem{Maas2013RectifierNI}
 Andrew~L. Maas.
@@ -34,6 +38,19 @@ Michael~A. Nielsen.
 David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
 \newblock Learning representations by back-propagating errors.
 \newblock {\em Nature}, 323(6088):533--536, October 1986.
+
+\bibitem{2020SciPy-NMeth}
+Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
+  David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan
+  Bright, St{\'e}fan~J. {van der Walt}, Matthew Brett, Joshua Wilson, K.~Jarrod
+  Millman, Nikolay Mayorov, Andrew R.~J. Nelson, Eric Jones, Robert Kern, Eric
+  Larson, C~J Carey, {\.I}lhan Polat, Yu~Feng, Eric~W. Moore, Jake
+  {VanderPlas}, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen,
+  E.~A. Quintero, Charles~R. Harris, Anne~M. Archibald, Ant{\^o}nio~H. Ribeiro,
+  Fabian Pedregosa, Paul {van Mulbregt}, and {SciPy 1.0 Contributors}.
+\newblock {{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in
+  Python}.
+\newblock {\em Nature Methods}, 17:261--272, 2020.
 
 \bibitem{TN_libero_mab2)53517}
 Andreas Zell.

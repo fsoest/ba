@@ -16,10 +16,7 @@ X_cart[:, 1] = np.sin(X_eq[:, 0]) * np.sin(X_eq[:, 3])
 X_cart[:, 2] = np.cos(X_eq[:, 0])
 
 
-X_cart.shape
 # %%
 b.add_points(X_cart.T)
+b.clear()
 b.show()
-b3d = qt.Bloch3d()
-b3d.add_points(X_cart.T)
-b3d.show()

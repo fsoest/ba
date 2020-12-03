@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_GB
 \input{preamble}
 \begin{document}
 
@@ -45,8 +46,8 @@
 
 Eingereicht am xx.~Monat~20xx\vspace{1.5em}
 \par{\large\begin{tabular}{ll}
- 1. Gutachter: & Prof.~Dr.~Walter Strunz \\
- 2. Gutachter: & Associate Professor Oscar Dahlsten, Ph.D. \\
+ 1. Gutachter: & Prof.~Dr.~Walter~Strunz \\
+ 2. Gutachter: & Prof.~Dr.~Oscar~Dahlsten \\
 \end{tabular}}
 
 
@@ -82,21 +83,35 @@ Deutsch \\
 \input{content/intro}
 
 \chapter{Background}
-
-
-\section{Supervised Machine Learning}
+\section{Supervised Machine Learning} \label{sml}
 \input{content/sml}
+
+\section{Collision model dynamics}
 
 \section{Setting}
 \input{content/setting}
 
 
 \chapter{Experimental Results}
+\input{content/exp_res}
+\section{Dependence of $\Delta t$ on Work Output}
+\input{content/dep_of_dt}
+\section{$N=2$: Learning Single Jump Optimal Control Sequences}
+\input{content/n_2_ml}
 
 \chapter{Summary and Outlook}
 
+
+\appendix
+\chapter{Derivations}
+\section{Single jump work output}
+\input{content/app_jump_work}
+
+
 \bibliographystyle{plain}
 \bibliography{biblio}
+
+
 
 % Erklärung
 \clearpage

@@ -6,45 +6,45 @@ Database file #1: biblio.bib
 Warning--empty journal in beyer2020
 Warning--empty year in beyer2020
 Warning--empty booktitle in Maas2013RectifierNI
-You've used 8 entries,
+You've used 10 entries,
             2118 wiz_defined-function locations,
-            545 strings with 5014 characters,
-and the built_in function-call counts, 1986 in all, are:
-= -- 180
-> -- 78
+            559 strings with 6054 characters,
+and the built_in function-call counts, 3714 in all, are:
+= -- 314
+> -- 290
 < -- 0
-+ -- 32
-- -- 24
-* -- 114
-:= -- 349
-add.period$ -- 22
-call.type$ -- 8
-change.case$ -- 34
++ -- 116
+- -- 106
+* -- 303
+:= -- 674
+add.period$ -- 28
+call.type$ -- 10
+change.case$ -- 81
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 88
-empty$ -- 182
-format.name$ -- 24
-if$ -- 409
+cite$ -- 13
+duplicate$ -- 109
+empty$ -- 225
+format.name$ -- 106
+if$ -- 712
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 10
-newline$ -- 41
-num.names$ -- 16
-pop$ -- 55
+int.to.str$ -- 10
+missing$ -- 12
+newline$ -- 51
+num.names$ -- 20
+pop$ -- 98
 preamble$ -- 1
-purify$ -- 28
+purify$ -- 73
 quote$ -- 0
-skip$ -- 53
+skip$ -- 67
 stack$ -- 0
-substring$ -- 74
-swap$ -- 7
+substring$ -- 109
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 26
+type$ -- 34
 warning$ -- 3
-while$ -- 19
-width$ -- 9
-write$ -- 81
+while$ -- 25
+width$ -- 12
+write$ -- 103
 (There were 3 warnings)

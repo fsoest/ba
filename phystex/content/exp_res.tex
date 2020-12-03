@@ -1,0 +1,28 @@
+%In the following section we present our findings.
+The training data is created using a minimisation algorithm \cite{2020SciPy-NMeth}, which finds the optimal Transducer protocol $\{|\psi_T^i \rangle\}$ given a Drive sequence $\{|\psi_D^i \rangle\}$.
+The networks are trained to learn the mapping $\{|\psi_D^i \rangle\} \to \{|\psi_T^i \rangle\}$.
+Both the input (Drive) and output (Transducer) are transformed by the embedding
+\begin{align*}
+	\left\{
+	\begin{pmatrix}
+	\theta^i & \phi^i \\
+	\end{pmatrix}
+	\right\}
+	\to
+	\left\{
+	\begin{pmatrix}
+	sin(\theta^i) & cos(\theta^i) & sin(\phi^i) & cos(\phi^i) \\
+	\end{pmatrix}
+	\right\}.
+\end{align*}
+The reasons for this operation are twofold: it normalises the data to the interval $[-1, 1]$. Additionally it adds information regarding the periodicity of the qubit angle representation.
+
+
+To compare the accuracy of different models a performance indicator is required. 
+Naturally one might use the MSE as introduced in section \ref{sml}.
+Instead we define the \textit{efficiency} of a model $\textfrak{N}$ on a dataset $\{(\vec{x}_i, \vec{y}_i)\}$ as
+\begin{align}
+	\eta = \frac{1}{N} \sum_{i=1}^N \frac{W(\vec{x}_i,\textfrak{N}(\vec{x}_i))}{W(\vec{x}_i,\vec{y}_i)},
+\end{align}
+i.e. the arithmetic mean of the ratios of work output predicted by the model to optimal work output.
+The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D}\}_i, \{\ket{\psi_T}\}_i)$ returns the work given a Drive and Transducer protocol.

@@ -2,7 +2,6 @@ import sys
 from scipy.optimize import minimize
 import numpy as np
 from data_preprocessing import equivalent_vectors
-from progress_bar import printProgressBar
 from qutip import rand_ket_haar as rkh
 from pwc_helpers import state_to_angles, wrapper
 
