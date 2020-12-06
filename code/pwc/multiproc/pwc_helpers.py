@@ -29,7 +29,7 @@ def energy(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N):
         # Time evolution of state density matrix
         rho = U @ rho @ np.matrix(U).H
         # Change in Hamiltonian due to Transducer, Drive constant
-        delta_trans = np.sin(theta_t[i + 1]) * np.exp(1j * phi_t[i + 1]) - np.sin(theta_t[i]) * np.exp(1j * phi_t[i])
+        # delta_trans = np.sin(theta_t[i + 1]) * np.exp(1j * phi_t[i + 1]) - np.sin(theta_t[i]) * np.exp(1j * phi_t[i])
         dH = int_operator(theta_t[i+1], phi_t[i+1]) - int_operator(theta_t[i], phi_t[i])
         E[i] = np.trace(rho @ dH)
 
@@ -98,8 +98,12 @@ def model_evaluation_embedded(model, X_test, y_test, dt, rho_0, N):
         y_trans_test[i, N:] = np.arctan2(actual_reshape[i, :, 1], actual_reshape[i, :, 3])
         y_trans_pred[i, :N] = np.arctan2(pred_reshape[i, :, 0], pred_reshape[i, :, 2])
         y_trans_pred[i, N:] = np.arctan2(pred_reshape[i, :, 1], pred_reshape[i, :, 3])
-        E_pred[i] = wrapper(y_trans_pred[i], theta_d, phi_d, dt, rho_0, N)
-        E_actual[i] = wrapper(y_trans_test[i], theta_d, phi_d, dt, rho_0, N)
+        if rho_0.shape == (2, 2):
+            E_pred[i] = wrapper(y_trans_pred[i], theta_d, phi_d, dt, rho_0, N)
+            E_actual[i] = wrapper(y_trans_test[i], theta_d, phi_d, dt, rho_0, N)
+        else:
+            E_pred[i] = wrapper(y_trans_pred[i], theta_d, phi_d, dt, rho_0[i], N)
+            E_actual[i] = wrapper(y_trans_test[i], theta_d, phi_d, dt, rho_0[i], N)
     return E_pred, E_actual
 
 
@@ -133,5 +137,20 @@ def state_to_angles(kets):
     Input: kets [N, 2]
     """
     theta = 2 * np.arctan2(np.abs(kets[:, 1]),np.abs(kets[:, 0]))
-    phi = np.angle(kets[:, 1]) - np.angle(kets[:, 0])
+    phi = (np.angle(kets[:, 1]) - np.angle(kets[:, 0])) % (2 * np.pi)
     return theta[:, 0], phi[:, 0]
+
+
+def get_eigen_rho(theta, phi):
+    """
+    """
+    alp = np.zeros(len(theta), dtype=np.complex128)
+    alp = np.sin(theta) * np.exp(1j * phi) / 2
+    zero_state = np.zeros((len(theta), 2), dtype=np.complex128)
+    zero_state[np.abs(alp) != 0, 0] = np.conj(alp[np.abs(alp) != 0])/np.abs(alp[np.abs(alp) != 0])/np.sqrt(2)
+    zero_state[np.abs(alp) != 0, 1] = 1/np.sqrt(2)
+    zero_state[np.abs(alp) == 0, 0] = 1
+    rho_0 = np.zeros((len(theta), 2, 2), dtype=np.complex128)
+    rho_0 = np.conj(zero_state)[:, :, np.newaxis] * zero_state[:, np.newaxis, :]
+
+    return rho_0

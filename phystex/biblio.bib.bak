@@ -128,7 +128,7 @@
   primaryclass  = {stat.ML},
 }
 
-@Article{article,
+@Article{krizhevsky,
   author  = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey},
   title   = {ImageNet Classification with Deep Convolutional Neural Networks},
   journal = {Neural Information Processing Systems},

@@ -3,6 +3,7 @@ import numpy as np
 
 def angle_embedding(X, N, reshape=False):
     """
+    Creates embedding from (theta, phi) data
     If reshape: False: X data, Shape is input shape: (N, 4)
     If reshape True: y data, output shape (4 * N,)
     """
@@ -20,6 +21,9 @@ def angle_embedding(X, N, reshape=False):
 
 def rev_angle_embedding(X, N, reshape=False):
     """
+    Creates (theta, phi) data from embedded model data
+    If reshape == False, input data is X data (N, 4)
+    If reshape == True, input data is y data (4 * N)
     """
     output = np.zeros((X.shape[0], 2 * N))
     if reshape == False:
@@ -31,7 +35,7 @@ def rev_angle_embedding(X, N, reshape=False):
         for i, x in enumerate(X):
             shape = np.reshape(x, (N, 4))
             output[i, :N] = np.arctan2(shape[:, 0], shape[:, 2])
-            output[i, N:] = np.arctan2(shape[:, 1], shape[:, 3])
+            output[i, N:] = np.arctan2(shape[:, 1], shape[:, 3]) %(2*np.pi)
         return output
 
 

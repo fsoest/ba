@@ -13,12 +13,12 @@ for i, n in enumerate(N):
 N_times = len(avg[0])
 times = np.linspace(1e-7, 10, N_times)
 for i, n in enumerate(N):
-    plt.errorbar(times, -1*avg[i]/(n-1), yerr=std[i]/np.sqrt(500), label=n)
+    plt.errorbar(times, -1*avg[i]/n, yerr=std[i]/np.sqrt(500), label=n)
 
-x = np.linspace(0, np.pi/2, 100)
-plt.plot(x, 0.4 * np.sin(x), color='k', linestyle=':')
+# x = np.linspace(0, np.pi/2, 100)
+# plt.plot(x, 0.4 * np.sin(x), color='k', linestyle=':')
 
 plt.legend(title='N')
-plt.xlabel('$\Delta t$')
+plt.xlabel('$\Delta T$')
 plt.ylabel('$\\overline{W}/N$')
 plt.savefig('/home/fsoest/ba/phystex/img/dt_dep_theor.png', dpi=300)

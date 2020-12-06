@@ -54,3 +54,6 @@ plt.legend()
 
 model.summary()
 len(E_pred[E_pred < 0]) / len(E_pred)
+
+# %%
+plt.boxplot(y)

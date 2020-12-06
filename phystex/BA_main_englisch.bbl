@@ -10,6 +10,11 @@ Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.
 \newblock {\em Neural Information Processing Systems}, 25, 01 2012.
 
+\bibitem{LeCun2012}
+Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
+\newblock {\em Efficient BackProp}, pages 9--48.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
+
 \bibitem{LeNail2019}
 Alexander LeNail.
 \newblock Nn-svg: Publication-ready neural network architecture schematics.

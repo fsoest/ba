@@ -5,46 +5,47 @@ The style file: plain.bst
 Database file #1: biblio.bib
 Warning--empty journal in beyer2020
 Warning--empty year in beyer2020
+Warning--can't use both author and editor fields in LeCun2012
 Warning--empty booktitle in Maas2013RectifierNI
-You've used 10 entries,
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            559 strings with 6054 characters,
-and the built_in function-call counts, 3714 in all, are:
-= -- 314
-> -- 290
-< -- 0
-+ -- 116
-- -- 106
-* -- 303
-:= -- 674
-add.period$ -- 28
-call.type$ -- 10
-change.case$ -- 81
+            568 strings with 6354 characters,
+and the built_in function-call counts, 4157 in all, are:
+= -- 356
+> -- 313
+< -- 1
++ -- 125
+- -- 114
+* -- 336
+:= -- 743
+add.period$ -- 31
+call.type$ -- 11
+change.case$ -- 87
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 109
-empty$ -- 225
-format.name$ -- 106
-if$ -- 712
+cite$ -- 15
+duplicate$ -- 127
+empty$ -- 258
+format.name$ -- 114
+if$ -- 808
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 12
-newline$ -- 51
-num.names$ -- 20
-pop$ -- 98
+int.to.str$ -- 11
+missing$ -- 14
+newline$ -- 56
+num.names$ -- 22
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 79
 quote$ -- 0
-skip$ -- 67
+skip$ -- 79
 stack$ -- 0
-substring$ -- 109
-swap$ -- 9
-text.length$ -- 0
+substring$ -- 133
+swap$ -- 16
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 34
-warning$ -- 3
-while$ -- 25
-width$ -- 12
-write$ -- 103
-(There were 3 warnings)
+type$ -- 36
+warning$ -- 4
+while$ -- 30
+width$ -- 13
+write$ -- 115
+(There were 4 warnings)
