@@ -20,6 +20,11 @@ Alexander LeNail.
 \newblock Nn-svg: Publication-ready neural network architecture schematics.
 \newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
 
+\bibitem{Lorenzo_2017}
+Salvatore Lorenzo, Francesco Ciccarello, and G.~Massimo Palma.
+\newblock Composite quantum collision models.
+\newblock {\em Physical Review A}, 96(3), Sep 2017.
+
 \bibitem{lu2020dying}
 Lu~Lu, Yeonjong Shin, Yanhui Su, and George~Em Karniadakis.
 \newblock Dying relu and initialization: Theory and numerical examples, 2020.

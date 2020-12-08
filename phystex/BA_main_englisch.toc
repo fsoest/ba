@@ -6,9 +6,10 @@
 \contentsline {section}{\numberline {2.2}Collision model dynamics}{5}% 
 \contentsline {section}{\numberline {2.3}Setting}{5}% 
 \contentsline {chapter}{\numberline {3}Experimental Results}{9}% 
-\contentsline {section}{\numberline {3.1}Dependence of $\Delta t$ on Work Output}{9}% 
+\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm {T}$ on Work Output}{9}% 
 \contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}% 
 \contentsline {chapter}{\numberline {4}Summary and Outlook}{13}% 
 \contentsline {chapter}{\numberline {A}Derivations}{15}% 
 \contentsline {section}{\numberline {A.1}Single jump work output}{15}% 
-\contentsline {chapter}{\numberline {B}Bibliography}{17}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{17}% 
+\contentsline {chapter}{\numberline {C}Bibliography}{19}% 

@@ -7,45 +7,45 @@ Warning--empty journal in beyer2020
 Warning--empty year in beyer2020
 Warning--can't use both author and editor fields in LeCun2012
 Warning--empty booktitle in Maas2013RectifierNI
-You've used 11 entries,
+You've used 12 entries,
             2118 wiz_defined-function locations,
-            568 strings with 6354 characters,
-and the built_in function-call counts, 4157 in all, are:
-= -- 356
-> -- 313
+            577 strings with 6535 characters,
+and the built_in function-call counts, 4439 in all, are:
+= -- 382
+> -- 331
 < -- 1
-+ -- 125
-- -- 114
-* -- 336
-:= -- 743
-add.period$ -- 31
-call.type$ -- 11
-change.case$ -- 87
++ -- 132
+- -- 120
+* -- 359
+:= -- 795
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 93
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 127
-empty$ -- 258
-format.name$ -- 114
-if$ -- 808
+cite$ -- 16
+duplicate$ -- 137
+empty$ -- 276
+format.name$ -- 120
+if$ -- 863
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 14
-newline$ -- 56
-num.names$ -- 22
-pop$ -- 108
+int.to.str$ -- 12
+missing$ -- 15
+newline$ -- 61
+num.names$ -- 24
+pop$ -- 112
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 84
 quote$ -- 0
-skip$ -- 79
+skip$ -- 87
 stack$ -- 0
-substring$ -- 133
-swap$ -- 16
+substring$ -- 138
+swap$ -- 17
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
+type$ -- 40
 warning$ -- 4
-while$ -- 30
-width$ -- 13
-write$ -- 115
+while$ -- 32
+width$ -- 14
+write$ -- 126
 (There were 4 warnings)

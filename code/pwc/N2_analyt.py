@@ -15,3 +15,15 @@ def E(trans, t_d, p_d, dt):
     d = np.sin(t_t) * np.sin(p_t) + np.sin(t_d) * np.sin(p_d)
     e = np.sin(t_prime) * np.cos(p_prime) - np.sin(t_t) * np.cos(p_t)
     return -scale * (b * c - d * e)
+
+
+def inter(theta, phi):
+    return np.sin(theta) * np.exp(1j * phi) / 2
+
+
+def E_eigen(trans, drive, dt, rho_0):
+    t_t, t_prime, p_t, p_prime = trans
+    t_d, x, p_d, y = drive
+    alpha = inter(t_d, p_d) + inter(t_t, p_t)
+    dtau = inter(t_prime, p_prime) - inter(t_t, p_t)
+    return 2 * (np.cos(np.abs(alpha) * dt)**2 * np.real(dtau * rho_0[0, 1]) + np.sin(np.abs(alpha) * dt)**2 * np.real(dtau * rho_0[1, 0] * np.conj(alpha) / alpha))

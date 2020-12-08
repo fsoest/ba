@@ -138,4 +138,33 @@
   doi     = {10.1145/3065386},
 }
 
+@InBook{LeCun2012,
+  pages     = {9--48},
+  title     = {Efficient BackProp},
+  publisher = {Springer Berlin Heidelberg},
+  year      = {2012},
+  author    = {LeCun, Yann A. and Bottou, L{\'e}on and Orr, Genevieve B. and M{\"u}ller, Klaus-Robert},
+  editor    = {Montavon, Gr{\'e}goire and Orr, Genevi{\`e}ve B. and M{\"u}ller, Klaus-Robert},
+  address   = {Berlin, Heidelberg},
+  isbn      = {978-3-642-35289-8},
+  abstract  = {The convergence of back-propagation learning is analyzed so as to explain common phenomenon observed by practitioners. Many undesirable behaviors of backprop can be avoided with tricks that are rarely exposed in serious technical publications. This paper gives some of those tricks, and offers explanations of why they work.},
+  booktitle = {Neural Networks: Tricks of the Trade: Second Edition},
+  doi       = {10.1007/978-3-642-35289-8_3},
+  url       = {https://doi.org/10.1007/978-3-642-35289-8_3},
+}
+
+@Article{Lorenzo_2017,
+  author    = {Lorenzo, Salvatore and Ciccarello, Francesco and Palma, G. Massimo},
+  title     = {Composite quantum collision models},
+  journal   = {Physical Review A},
+  year      = {2017},
+  volume    = {96},
+  number    = {3},
+  month     = {Sep},
+  issn      = {2469-9934},
+  doi       = {10.1103/physreva.96.032107},
+  publisher = {American Physical Society (APS)},
+  url       = {http://dx.doi.org/10.1103/PhysRevA.96.032107},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

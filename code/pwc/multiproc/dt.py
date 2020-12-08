@@ -29,11 +29,17 @@ if __name__ == '__main__':
 
 
     T = np.linspace(dt_start, dt_stop, dt_num)
-    results = []
-    for t in T:
+    E = np.zeros((dt_num, N_data))
+    for i, t in enumerate(T):
         f = partial(create_data, N_dim, t, rho, N_sobol)
         with Pool(processes=N_workers) as pool:
             result = pool.map(f, seeds + run)
-            results.append((t, result))
+            E[i] = np.array(result)[:, 2]
 
-    np.save('train_data/N_{0}_dt_{1}_{2}_sobol_{3}_run_{4}_r_{5}'.format(N_dim, int(dt_start), int(dt_stop), N_sobol, run, rho), np.array(result))
+
+    try:
+        np.save('train_data/vardt_N_{0}_rho_{1}/dt_{2}_{3}_E_sobol_{4}_run_{5}'.format(N_dim, rho, int(dt_start), int(dt_stop), N_sobol, run), E)
+        np.save('train_data/vardt_N_{0}_rho_{1}/dt_{2}_{3}_times'.format(N_dim, rho, int(dt_start), int(dt_stop)), T)
+    except:
+        np.save('train_data/vardt_N_{0}_rho_{1}_dt_{2}_{3}_E_sobol_{4}_run_{5}'.format(N_dim, rho, int(dt_start), int(dt_stop), N_sobol, run), E)
+        np.save('train_data/vardt_N_{0}_rho_{1}_dt_{2}_{3}_times'.format(N_dim, rho, int(dt_start), int(dt_stop)), T)

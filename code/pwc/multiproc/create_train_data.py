@@ -20,7 +20,7 @@ def make_rho_0(rho, theta_d_0, phi_d_0):
         rho_0 = zero_state.H @ zero_state
         return rho_0
     elif rho == 'eigen':
-        # get_eigen_rho returns array of rho_0, thetefore [0]
+        # get_eigen_rho returns array of rho_0, therefore [0]
         rho_0 = get_eigen_rho(np.array([theta_d_0]), np.array([phi_d_0]))[0]
         return rho_0
 

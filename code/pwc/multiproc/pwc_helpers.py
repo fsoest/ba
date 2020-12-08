@@ -149,8 +149,8 @@ def get_eigen_rho(theta, phi):
     zero_state = np.zeros((len(theta), 2), dtype=np.complex128)
     zero_state[np.abs(alp) != 0, 0] = np.conj(alp[np.abs(alp) != 0])/np.abs(alp[np.abs(alp) != 0])/np.sqrt(2)
     zero_state[np.abs(alp) != 0, 1] = 1/np.sqrt(2)
-    zero_state[np.abs(alp) == 0, 0] = 1
+    zero_state[np.abs(alp) == 0, 0] = 1/np.sqrt(2)
     rho_0 = np.zeros((len(theta), 2, 2), dtype=np.complex128)
-    rho_0 = np.conj(zero_state)[:, :, np.newaxis] * zero_state[:, np.newaxis, :]
+    rho_0 = zero_state[:, :, np.newaxis] * np.conj(zero_state[:, np.newaxis, :])
 
     return rho_0

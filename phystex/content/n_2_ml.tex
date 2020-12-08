@@ -1,1 +1,17 @@
-For the simplest case of $N = 2$, we generate a data set of size $N_{data} = 50000$ with $\rho_0 = \ket{0}\bra{0}$, which we then separate into train and test data.
+For the simplest case of $N = 2$, we generate data sets of size $N_{\mathrm{data}} = 20000$ for $\rho_0 = \ket{0} \bra{0}, \ket{+} \bra{+}$ and random pure states.
+We train each data set on a fully-connected feedforward ANN with 2 hidden layers, with 50 neurons each.
+The efficiency of the models is presented in table \ref{n2efftable}.
+
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ c | c }
+		$\rho_0$ & $\eta \ [\%]$ \\
+		\hline
+		$\ket{0} \bra{0}$ & 75.7 \\
+		$\ket{+} \bra{+}$ & 0 \\
+		Random & 0.7 \\
+	\end{tabular}
+	\caption{Efficiencies $\eta$ for models trained on drive protocols with $N = 2$ and differing initial states $\rho_0$.}
+	\label{n2efftable}
+\end{table}

@@ -113,17 +113,19 @@ rhos = np.load('multiproc/train_data/N_2/dt_5/eigen/rho_run_0.npy')
 
 plt.plot(range(len(E)), E)
 
-E[14]
 
-X[14]
-y[14]
-y[14] - X[14]
+data = np.load('multiproc/train_data/N_2/dt_5_eigen_sobol_10_run_0.npy', allow_pickle=True)
+data[0, 3]
+data[0, 2]
 
-X[5]
-y[5]
-y[5] - X[5]
-X[14, :2]
-wrapper(np.array([0.99765475, 1.57079598, 2.8637359 , 0.08994891]), X[14, :2], X[14, 2:], 5, rhos[14], 2)
+plt.scatter(range(len(data)), data[:, 2])
+plt.boxplot(data[:, 2])
+
+    data[1]
+wrapper(data[1, 1], data[1, 0][:2], data[1, 0][2:], 5, data[1, 3], 2)
+
+
+
 wrapper(np.array([X[14, 0], np.pi - X[14, 0], X[14, 2], X[14, 2]+np.pi]), X[14, :2], X[14, 2:], 5, rhos[14], 2)
 
 X[14, 0]
@@ -147,10 +149,12 @@ surf = ax.plot_surface(x, Y, z, cmap=cm.coolwarm)
 fig.colorbar(surf)
 np.unravel_index(z.argmin(), z.shape)
 #%%
-trans_now = y[14]
-thet_d = X[14, :2]
-phi_d = X[14, 2:]
-wrapper(trans_now, thet_d, phi_d, 5, zero_rho, 2)
+wrapper(data[0, 1], data[0, 0][:2], data[0, 0][2:], 5, data[0, 3], 2)
+
+trans_now = data[0, 1]
+thet_d = data[0, 0][:2]
+phi_d = data[0, 0][2:]
+wrapper(trans_now, thet_d, phi_d, 5, data[0, 3], 2)
 
 zero_rho = np.matrix([1, 0], dtype=np.complex128).H @ np.matrix([1, 0], dtype=np.complex128)
 zero_rho
@@ -170,14 +174,14 @@ def power(alpha, dtau, dt, rho):
 
 dtau = factor(trans_now[1], trans_now[3]) - factor(trans_now[0], trans_now[2])
 
-power(alpha, dtau, 5, zero_rho)
+power(alpha, dtau, 5, data[0, 3])
 
 # %%
 def pplot(t):
-    return power(alpha, dtau, t, rhos[13])
+    return power(alpha, dtau, t, rhos[14])
 t = np.linspace(0, 50, 100)
 plt.plot(t, [pplot(c) for c in t])
-# plt.legend()
+
 # %%
 d = y - X
 d
