@@ -5,7 +5,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Intro}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Intro}{1}\protected@file@percent }
 \citation{Mitchell97}
 \citation{lu2020dying}
 \citation{TN_libero_mab2)53517}
@@ -28,9 +28,9 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Collision model dynamics}{5}\protected@file@percent }
 \newlabel{col_model}{{2.2}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Setting}{5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis shows qubit state in arbitrary units. The qubit states are switched instantaneously and then kept constant for $\Delta t$ while $\rho _S$ evolves unitarily.\relax }}{7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis shows qubit state in arbitrary units. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm  {T}$ while $\rho _S$ evolves unitarily.\relax }}{7}\protected@file@percent }
 \newlabel{pwc}{{2.2}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta t$.\relax }}{7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta \mathrm  {T}$.\relax }}{7}\protected@file@percent }
 \newlabel{collmodel}{{2.3}{7}}
 \citation{2020SciPy-NMeth}
 \citation{LeCun2012}
@@ -39,10 +39,15 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm  {T}$ on Work Output}{9}\protected@file@percent }
 \newlabel{single_work}{{3.2}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces We plot the average work $\overline  {W}$ over 500 runs for random excitations divided by amount of PWC steps $N$, for all of which we use $\rho _0 = \ket {0}\bra {0}$. The error bars correspond to the standard deviation $\sigma _{\overline  {W}}$.\relax }}{11}\protected@file@percent }
+\newlabel{dt_0}{{3.1a}{11}}
+\newlabel{sub@dt_0}{{a}{11}}
+\newlabel{dt_eigen}{{3.1b}{11}}
+\newlabel{sub@dt_eigen}{{b}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) We plot the average work $\overline  {W}$ over 500 runs of random excitations divided by amount of PWC steps $N$, with $\rho _0 = \ket {0}\bra {0}$, for multiple $N$. The error bars correspond to the standard deviation $\sigma _{\overline  {W}}$. (b) We plot $\overline  {W}/N$ for multiple $N$ where the system state is initialised in an eigenstate of the Drive Hamiltonian $H_{DS}$.\relax }}{11}\protected@file@percent }
 \newlabel{dt_dep}{{3.1}{11}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ for models trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{11}\protected@file@percent }
+\newlabel{n_2_ml}{{3.2}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ on the test data for models with a single hidden layer with 10 neurons trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{11}\protected@file@percent }
 \newlabel{n2efftable}{{3.1}{11}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Summary and Outlook}{13}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -52,11 +57,17 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {A.1}Single jump work output}{15}\protected@file@percent }
 \newlabel{deriv_jump}{{A.1}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Optimal ? policy for $N=2$}{16}\protected@file@percent }
+\newlabel{n2_opt_pol}{{A.2}{16}}
+\newlabel{opt_cond}{{A.1}{16}}
 \bibstyle{plain}
 \bibdata{biblio}
 \@writefile{toc}{\contentsline {chapter}{\numberline {B}Training protocols}{17}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{eds}{{B.1}{17}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{17}\protected@file@percent }
+\newlabel{hyperparams}{{B.1}{17}}
 \bibcite{beyer2020}{1}
 \bibcite{krizhevsky}{2}
 \bibcite{LeCun2012}{3}

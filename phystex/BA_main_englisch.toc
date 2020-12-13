@@ -1,6 +1,6 @@
 \babel@toc {nil}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}% 
-\contentsline {section}{\numberline {1.1}Intro}{2}% 
+\contentsline {section}{\numberline {1.1}Intro}{1}% 
 \contentsline {chapter}{\numberline {2}Background}{3}% 
 \contentsline {section}{\numberline {2.1}Supervised Machine Learning}{3}% 
 \contentsline {section}{\numberline {2.2}Collision model dynamics}{5}% 
@@ -11,5 +11,6 @@
 \contentsline {chapter}{\numberline {4}Summary and Outlook}{13}% 
 \contentsline {chapter}{\numberline {A}Derivations}{15}% 
 \contentsline {section}{\numberline {A.1}Single jump work output}{15}% 
+\contentsline {section}{\numberline {A.2}Optimal ? policy for $N=2$}{16}% 
 \contentsline {chapter}{\numberline {B}Training protocols}{17}% 
 \contentsline {chapter}{\numberline {C}Bibliography}{19}% 

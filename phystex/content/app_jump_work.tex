@@ -1,59 +1,19 @@
 \label{deriv_jump}
-%\begin{align*}
-%	H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) = \frac{1}{2} \left[sin(\theta_D(t)) e^{i\phi_D(t)} + \sin(\theta_T(t)) e^{i\phi_T(t)}\right] \sigma_{+} + h.c. \\
-%	= \alpha \sigma_{+} + h.c. \\
-%	\rho_S(t+1) = U \rho_S(t) U^\dagger, U = e^{-iH_S(t) \Delta \mathrm{T}} \\
-%	dW(t) = -\textrm{Tr} \ \rho(t) dH \\
-%	dH = H_S(\theta_D(t), \phi_D(t), \theta_T(t+1), \phi_T(t+1)) - H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) \\
-%	= \frac{1}{2}(sin(\theta_T(t+1))e^{i\phi_T(t+1)} - \sin(\theta_T(t))e^{i\phi_T(t)}) \sigma_{+} + h.c. =: (\tau' - \tau) \sigma_{+} + h.c. \\
-%	\textrm{For N=2 only one jump, analytical solution is possible:} \\
-%	U = e^{-iH_S \Delta \mathrm{T}} = 
-%	exp \begin{pmatrix}
-%	0 & -i\alpha^* \Delta \mathrm{T} \\
-%	-i \alpha \Delta \mathrm{T} & 0 \\
-%	\end{pmatrix} = 
-%	\frac{1}{2} \begin{pmatrix}
-%	\frac{\alpha^*}{\abs{\alpha}} & -\frac{\alpha^*}{\abs{\alpha}} \\
-%	1 & 1 \\
-%	\end{pmatrix}
-%	\begin{pmatrix}
-%	e^{-i\abs{\alpha} \Delta \mathrm{T}} & 0 \\
-%	0 & e^{i\abs{\alpha} \Delta \mathrm{T}} \\
-%	\end{pmatrix}
-%	\begin{pmatrix}
-%	\frac{\abs{\alpha}}{\alpha^*} & 1 \\
-%	-\frac{\abs{\alpha}}{\alpha^*} & 1 \\
-%	\end{pmatrix} \\
-%	= \begin{pmatrix}
-%	cos(\abs{\alpha}\Delta \mathrm{T}) & -i\frac{\alpha^*}{\abs{\alpha}} \sin(\abs{\alpha}\Delta \mathrm{T}) \\
-%	-i\frac{\abs{\alpha}}{\alpha^*} \sin(\abs{\alpha}\Delta \mathrm{T}) & \cos(\abs{\alpha} \Delta \mathrm{T}) \\
-%	\end{pmatrix} \\
-%	\mathrm{With} \ \rho_0 = \ket{0}\bra{0}, \mathrm{the \ time \ evolved \ state} \ \rho = U \rho_0 U^\dagger \mathrm{is} \\
-%	\rho = \begin{pmatrix}
-%	cos^2(\abs{\alpha} \Delta \mathrm{T}) & i\frac{\abs{\alpha}}{2\alpha} \sin(2\abs{\alpha} \Delta \mathrm{T}) \\
-%	-i\frac{\abs{\alpha}}{2\alpha^*} \sin(2\abs{\alpha} \Delta \mathrm{T}) & \sin^2(\abs{\alpha} \Delta \mathrm{T})
-%	\end{pmatrix} \\
-%	W = -\mathrm{Tr} \begin{pmatrix}
-%	0 & \tau'^* - \tau^* \\
-%	\tau' - \tau & 0 \\
-%	\end{pmatrix}
-%	\begin{pmatrix}
-%	cos^2(\abs{\alpha} \Delta \mathrm{T}) & i\frac{\abs{\alpha}}{2\alpha} \sin(2\abs{\alpha} \Delta \mathrm{T}) \\
-%	-i\frac{\abs{\alpha}}{2\alpha^*} \sin(2\abs{\alpha} \Delta \mathrm{T}) & \sin^2(\abs{\alpha} \Delta \mathrm{T})
-%	\end{pmatrix} \\
-%	= \frac{1}{\abs{\alpha}} \sin(2\abs{\alpha}\Delta \mathrm{T}) \Im{(\tau' - \tau) \alpha^*}
-%\end{align*}
-
 \begin{align*}
-	H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) = \frac{1}{2} \left[\sin(\theta_D(t)) e^{i\phi_D(t)} + \sin(\theta_T(t)) e^{i\phi_T(t)}\right] \sigma_{+} + h.c. \\
-	= \alpha \sigma_{+} + h.c. \\
-	dH = H_S(\theta_D(t), \phi_D(t), \theta_T(t+1), \phi_T(t+1)) - H_S(\theta_D(t), \phi_D(t), \theta_T(t), \phi_T(t)) \\
-	= \frac{1}{2}(\sin(\theta_T(t+1))e^{i\phi_T(t+1)} - \sin(\theta_T(t))e^{i\phi_T(t)}) \sigma_{+} + h.c. =: (\tau' - \tau) \sigma_{+} + h.c. \\
-	U = e^{-iH_S \Delta \mathrm{T}} = 
-	exp \begin{pmatrix}
+	H_S(\theta_D^t, \phi_D^t, \theta_T^t, \phi_T^t) & = \frac{1}{2} \left[\sin(\theta_D^t) e^{i\phi_D^t} + \sin(\theta_T^t) e^{i\phi_T^t}\right] \sigma_{+} + h.c. \\
+	& = \alpha \sigma_{+} + h.c. \\
+\end{align*}
+\begin{align*}
+	dH & = H_S(\theta_D^t, \phi_D^t, \theta_T^{t+1}, \phi_T^{t+1}) - H_S(\theta_D^t, \phi_D^t, \theta_T^t, \phi_T^t) \\
+	& = \frac{1}{2}(\sin(\theta_T^{t+1})e^{i\phi_T^{t+1}} - \sin(\theta_T^t)e^{i\phi_T^t}) \sigma_{+} + h.c. =: (\tau' - \tau) \sigma_{+} + h.c. \\
+\end{align*}
+\begin{align*}
+	U & = e^{-iH_S \Delta \mathrm{T}} = 
+	\exp \begin{pmatrix}
 	0 & -i\alpha^* \Delta \mathrm{T} \\
 	-i \alpha \Delta \mathrm{T} & 0 \\
-	\end{pmatrix} = 
+	\end{pmatrix}\\
+	& = 
 	\frac{1}{2} \begin{pmatrix}
 	\frac{\alpha^*}{\abs{\alpha}} & -\frac{\alpha^*}{\abs{\alpha}} \\
 	1 & 1 \\
@@ -66,23 +26,28 @@
 	\frac{\abs{\alpha}}{\alpha^*} & 1 \\
 	-\frac{\abs{\alpha}}{\alpha^*} & 1 \\
 	\end{pmatrix} \\
-	= \begin{pmatrix}
+	& = \begin{pmatrix}
 	\cos(\abs{\alpha}\Delta \mathrm{T}) & -i\frac{\alpha^*}{\abs{\alpha}} \sin(\abs{\alpha}\Delta \mathrm{T}) \\
 	-i\frac{\abs{\alpha}}{\alpha^*} \sin(\abs{\alpha}\Delta \mathrm{T}) & \cos(\abs{\alpha} \Delta \mathrm{T}) \\
 	\end{pmatrix} \\
-	\mathrm{With} \ \ket{\psi_0} = a \ket{0} + b \ket{1}, \abs{a}^2 + \abs{b}^2 = 1, \ \mathrm{we \ have} \\
-	\rho_0 = \begin{pmatrix}
+\end{align*}
+	With $\ket{\psi_0} = a \ket{0} + b \ket{1}$,  $\abs{a}^2 + \abs{b}^2 = 1$, we  have
+\begin{align*}
+	\rho_0 & = \begin{pmatrix}
 	\abs{a}^2 & a b ^* \\
 	a^* b & \abs{b}^2 \\
-	\end{pmatrix}, \ \rho = U \rho_0 U^\dagger = \\
-	\tiny
+	\end{pmatrix}, \ \rho = U \rho_0 U^\dagger = 
 	\begin{pmatrix}
-	\abs{a}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) - \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha} & 
-	\frac{\alpha^*}{2 \abs{\alpha}} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{a}^2 - \abs{b}^2) + \frac{\alpha^*}{\alpha} a^* b \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a b^* \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) \\
-	\frac{\abs{\alpha}}{2 \alpha^*} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{b}^2 - \abs{a}^2) + \frac{\alpha}{\alpha^*} a b^* \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a^* b \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) & 
-	\abs{a}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha}
-	\end{pmatrix} \\
-	\mathrm{dW} = - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau' - \tau) \alpha^*} \\
-	- 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau) a b^*} 
-	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau)a^* b \frac{\alpha^*}{\alpha}} ] \\
+	\rho_{00} & \rho_{01} \\
+	\rho_{10} & \rho_{11} \\
+	\end{pmatrix},  \\
+	\rho_{00} & = \abs{a}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) - \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha}, \\
+	\rho_{01} & = \frac{\alpha^*}{2 \abs{\alpha}} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{a}^2 - \abs{b}^2) + \frac{\alpha^*}{\alpha} a^* b \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a b^* \ \cos^2(\abs{\alpha} \Delta \mathrm{T}), \\
+	\rho_{10} & = 	\frac{\abs{\alpha}}{2 \alpha^*} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{b}^2 - \abs{a}^2) + \frac{\alpha}{\alpha^*} a b^* \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a^* b \ \cos^2(\abs{\alpha} \Delta \mathrm{T}), \\
+	\rho_{11} & = \abs{a}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha}.
+\end{align*}
+\begin{align*}
+	\mathrm{dW} = & - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau' - \tau) \alpha^*} \\
+	& - 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau) a b^*} 
+	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau)a^* b \frac{\alpha^*}{\alpha}} ]
 \end{align*}

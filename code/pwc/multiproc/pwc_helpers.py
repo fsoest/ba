@@ -36,22 +36,25 @@ def energy(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N):
     return np.cumsum(E.real)[-1]
 
 
-def rho_path(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N):
+def rho_path(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N, res_steps):
     E = np.zeros(N, dtype=np.complex128)
-    rhos = np.zeros((N, 2, 2), dtype=np.complex128)
+    rhos = np.zeros(((N - 1) * res_steps + 1 , 2, 2), dtype=np.complex128)
+    rho_step = np.zeros((N, 2, 2), dtype = np.complex128)
     rho = rho_0
     rhos[0] = rho_0
+    rho_step[0] = rho_0
     for i in range(N - 1):
-        U = expm(-1j * dt * H_s(theta_d[i], phi_d[i], theta_t[i], phi_t[i]))
-        # Time evolution of state density matrix
-        rho = U @ rho @ np.matrix(U).H
-        rhos[i+1] = rho
-        # Change in Hamiltonian due to Transducer, Drive constant
-        delta_trans = np.sin(theta_t[i + 1]) * np.exp(1j * phi_t[i + 1]) - np.sin(theta_t[i]) * np.exp(1j * phi_t[i])
+        for k in range(res_steps):
+            U = expm(-1j * dt * H_s(theta_d[i], phi_d[i], theta_t[i], phi_t[i]) / res_steps)
+            # Time evolution of state density matrix
+            rho = U @ rho @ np.matrix(U).H
+            rhos[res_steps * i + k + 1] = rho
+            # Change in Hamiltonian due to Transducer, Drive constant
         dH = int_operator(theta_t[i+1], phi_t[i+1]) - int_operator(theta_t[i], phi_t[i])
         E[i] = np.trace(rho @ dH)
+        rho_step[i + 1] = rho
 
-    return rhos
+    return rhos, rho_step, E
 
 
 def wrapper(transducer, theta_d, phi_d, dt, rho_0, N):
@@ -154,3 +157,12 @@ def get_eigen_rho(theta, phi):
     rho_0 = zero_state[:, :, np.newaxis] * np.conj(zero_state[:, np.newaxis, :])
 
     return rho_0
+
+
+def rho_to_embedding(rho):
+    u = np.real(rho[1, 0] + rho[0, 1])
+    v = np.real(1j * (rho[0, 1] - rho[1, 0]))
+    w = np.real(rho[0, 0] - rho[1, 1])
+    theta = np.arccos(w)
+    phi = np.arctan2(np.real(v), u)
+    return np.array([np.sin(theta), np.cos(theta), np.sin(phi), np.cos(phi)])

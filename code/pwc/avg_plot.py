@@ -7,27 +7,51 @@ rho = 0
 dt_start = 0
 dt_stop = 5
 
-N = np.array([2])
+N = np.array([2, 4, 5, 10])
 
 data = np.zeros((len(N), 20, 500))
 avg = np.zeros((len(N), 20))
 std = np.zeros((len(N), 20))
 
 for i, N_dim in enumerate(N):
-    data[i, :, :] = np.load('multiproc/train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_E_sobol_{4}_run_{5}.npy'.format(N_dim, rho, int(dt_start), int(dt_stop), N_sobol, run))
+    data[i, :, :] = np.load('multi_train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_E_sobol_{4}_run_{5}.npy'.format(N_dim, rho, int(dt_start), int(dt_stop), N_sobol, run))
     avg[i] = np.mean(data[i], axis=1)
     std[i] = np.std(data[i], ddof=1, axis=1)
 
-T = np.load('multiproc/train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_times.npy'.format(N_dim, rho, int(dt_start), int(dt_stop)))
+T = np.load('multi_train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_times.npy'.format(N_dim, rho, int(dt_start), int(dt_stop)))
 
 for i, n in enumerate(N):
     plt.errorbar(T, -1*avg[i]/n, yerr=std[i]/np.sqrt(500), label=n)
-
-absa = 0.5
-x = np.linspace(0, np.pi/2, 100)
-plt.plot(x, 0.42 * np.sin(2 * absa * x), color='k', linestyle=':')
+    # plt.errorbar(T, -1*avg_eigen[i]/n, yerr=std_eigen[i]/np.sqrt(500), label='eigen')
 
 plt.legend(title='N')
 plt.xlabel('$\Delta T$')
 plt.ylabel('$\\overline{W}/N$')
-# plt.savefig('/home/fsoest/ba/phystex/img/dt_dep_theor.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/dt_0.png', dpi=300)
+# %%
+run = 0
+N_sobol = 10
+rho = 'eigen'
+dt_start = 0
+dt_stop = 5
+
+N = np.array([2, 4, 5, 10])
+
+data_eigen = np.zeros((len(N), 20, 500))
+avg_eigen = np.zeros((len(N), 20))
+std_eigen = np.zeros((len(N), 20))
+
+for i, N_dim in enumerate(N):
+    data_eigen[i, :, :] = np.load('multi_train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_E_sobol_{4}_run_{5}.npy'.format(N_dim, rho, int(dt_start), int(dt_stop), N_sobol, run))
+    avg_eigen[i] = np.mean(data_eigen[i], axis=1)
+    std_eigen[i] = np.std(data_eigen[i], ddof=1, axis=1)
+
+T = np.load('multi_train_data/dt/vardt_N_{0}_rho_{1}/dt_{2}_{3}_times.npy'.format(N_dim, rho, int(dt_start), int(dt_stop)))
+
+for i, n in enumerate(N):
+    plt.errorbar(T, -1*avg_eigen[i]/n, yerr=std_eigen[i]/np.sqrt(500), label=n)
+
+plt.legend(title='N')
+plt.xlabel('$\Delta T$')
+plt.ylabel('$\\overline{W}/N$')
+# plt.savefig('/home/fsoest/ba/phystex/img/dt_eigen.png', dpi=300)

@@ -1,0 +1,17 @@
+In all models we split the data into training and test data, with a test size of 18 \%.
+The models are trained using the Adam optimiser implementation from TensorFlow, with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
+\begin{equation} \label{eds}
+	\mathrm{LR} \ (i) = \mathrm{initial \ LR} * \mathrm{decay \ rate} ^{i / \mathrm{decay \ steps}},
+\end{equation}
+where $i$ denotes the optimiser step. The parameters for equation \ref{eds} as well as the patience for the early stopping routine are listed in table \ref{hyperparams}.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c | c | c | c | c | c}
+		Section & Architecture & Patience & Initial LR & Decay Rate & Decay Steps\\
+		\hline
+		\ref{n_2_ml} & [10] & 100 & $10^{-2}$ & 0.96 & 6000  \\
+	\end{tabular}
+	\caption{Hyperparameters used in training for the models in this work.}
+	\label{hyperparams}
+\end{table}

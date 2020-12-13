@@ -26,4 +26,5 @@ def E_eigen(trans, drive, dt, rho_0):
     t_d, x, p_d, y = drive
     alpha = inter(t_d, p_d) + inter(t_t, p_t)
     dtau = inter(t_prime, p_prime) - inter(t_t, p_t)
-    return 2 * (np.cos(np.abs(alpha) * dt)**2 * np.real(dtau * rho_0[0, 1]) + np.sin(np.abs(alpha) * dt)**2 * np.real(dtau * rho_0[1, 0] * np.conj(alpha) / alpha))
+    return np.real(dtau * rho_0[0, 1]), np.real(dtau * rho_0[1, 0] * np.conj(alpha) / alpha)
+    return 2 * (np.cos(np.abs(alpha) * dt)**2 *  + np.sin(np.abs(alpha) * dt)**2 * np.real(dtau * rho_0[1, 0] * np.conj(alpha) / alpha))
