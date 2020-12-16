@@ -18,7 +18,6 @@ seed = 42
 d1 = np.load('multi_train_data/N_3/dt_5_eigen_sobol_10_run_0.npy', allow_pickle=True)
 d2 = np.load('multi_train_data/N_3/dt_5_eigen_sobol_10_run_1.npy', allow_pickle=True)
 d3 = np.load('multi_train_data/N_3/dt_5_eigen_sobol_10_run_2.npy', allow_pickle=True)
-
 data = np.concatenate((d1, d2, d3))
 
 # Train test split
@@ -32,18 +31,19 @@ X_test = angle_embedding(data_test[:, 0], N)[:, :N - 1]
 
 # Model initialisation
 tf.random.set_seed(seed)
-callback = EarlyStopping(monitor='val_loss', patience=100, restore_best_weights=True)
+callback = EarlyStopping(monitor='val_loss', patience=20, restore_best_weights=True)
 model = tf.keras.Sequential()
 model.add(tf.keras.Input(shape=(N - 1, 4)))
 model.add(tf.keras.layers.Flatten())
-model.add(tf.keras.layers.Dense(500, activation=tf.nn.relu))
-model.add(tf.keras.layers.Dense(500, activation=tf.nn.relu))
+model.add(tf.keras.layers.Dense(2000, activation=tf.nn.relu))
+model.add(tf.keras.layers.LayerNormalization())
+model.add(tf.keras.layers.Dense(2000, activation=tf.nn.relu))
 # model.add(tf.keras.layers.Dense(50, activation=tf.nn.relu))
 
 model.add(tf.keras.layers.Dense(4 * N))
 
 # learning_rate = CustomSchedule(4, 500)
-learning_rate = ExponentialDecay(1e-2, 10000, 0.96)
+learning_rate = ExponentialDecay(1e-3, 3000, 0.96)
 optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.98, epsilon=1e-9)
 model.compile(optimizer=optimizer, loss='mse')
 

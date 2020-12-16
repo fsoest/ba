@@ -59,3 +59,14 @@ def cartesian_normalise(X, N):
     X = np.reshape(X, (3, N))
     X /= np.linalg.norm(X, axis=0)
     return np.reshape(X, (3 * N,))
+
+
+def import_datasets(root_dir, N, dt, rho, sobol, runs):
+    """
+    Imports datasets consisting of multiple files
+    """
+    data = np.load('{0}/N_{1}/dt_{2}_{3}_sobol_{4}_run_{5}.npy'.format(root_dir, N, dt, rho, sobol, runs[0]), allow_pickle=True)
+    for run in runs[1:]:
+        d = np.load('{0}/N_{1}/dt_{2}_{3}_sobol_{4}_run_{5}.npy'.format(root_dir, N, dt, rho, sobol, run), allow_pickle=True)
+        data = np.concatenate((data, d))
+    return data

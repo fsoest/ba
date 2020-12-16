@@ -166,3 +166,12 @@ def rho_to_embedding(rho):
     theta = np.arccos(w)
     phi = np.arctan2(np.real(v), u)
     return np.array([np.sin(theta), np.cos(theta), np.sin(phi), np.cos(phi)])
+
+
+def rho_to_angles(rho):
+    u = np.real(rho[1, 0] + rho[0, 1])
+    v = np.real(1j * (rho[0, 1] - rho[1, 0]))
+    w = np.real(rho[0, 0] - rho[1, 1])
+    theta = np.arccos(w)
+    phi = np.arctan2(np.real(v), u)
+    return theta, phi    

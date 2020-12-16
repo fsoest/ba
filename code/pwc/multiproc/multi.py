@@ -33,4 +33,5 @@ if __name__ == '__main__':
         try:
             np.save('train_data/N_{0}/dt_{1}_{2}_sobol_{3}_run_{4}'.format(N_dim, int(dt), rho, N_sobol, run), result)
         except:
+            # np.save('/scratch/ws/1/s2205896-qwork/N_{0}_dt_{1}_{2}_sobol_{3}_run_{4}'.format(N_dim, int(dt), rho, N_sobol, run), result)
             np.save('train_data/N_{0}_dt_{1}_{2}_sobol_{3}_run_{4}'.format(N_dim, int(dt), rho, N_sobol, run), result)
