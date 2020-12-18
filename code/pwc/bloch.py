@@ -46,6 +46,6 @@ for i, phi in enumerate(phis):
     for j, theta in enumerate(thetas):
         E[i, j] = -1 * wrapper(d[1], np.array([theta, 0]), np.array([phi, 0]), dt, d[3], N)
 E_plot = E#np.exp(E) / np.sum(E)
-plt.contourf(thetas, phis, E_plot, 100, cmap='Coolwarm')
+plt.contourf(thetas, phis, E_plot, 100, cmap='coolwarm')
 plt.colorbar()
 plt.scatter(d[0][0], d[0][2], c='r')

@@ -7,12 +7,11 @@ import sobol_seq
 
 
 dt = 5
-N_dim = 5
-N_runs = 1
+N_dim = 9
+N_runs = 10
 N_sobol = 10
 
 # %%
-%%timeit
 res = np.zeros((N_runs, N_sobol))
 for i in range(N_runs):
     kets = np.zeros((N_dim, 2, 1), dtype=np.cdouble)
@@ -33,3 +32,8 @@ for i in range(N_runs):
 # %%
 for i in range(N_runs):
     plt.scatter(range(len(res[i])), res[i])
+
+np.min(res[:, :15], axis=1).mean()
+
+res.shape
+np.argmin(res, axis=1)

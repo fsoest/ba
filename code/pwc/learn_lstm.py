@@ -7,16 +7,15 @@ from sklearn.model_selection import train_test_split
 from multiproc.pwc_helpers import wrapper
 
 
-
 batch_size = 30
 seed = 42
 learning_rate = 1e-2
 n_layers = 2
 # %%
-N = 12
+N = 5
 dt = 5
-N_sobol = 10
-runs = [0, 1]#, 2, 3, 4]
+N_sobol = 15
+runs = range(30)
 rho = 'eigen'
 
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
@@ -27,14 +26,12 @@ test_set = WorkDataset(data_test, N, embed=True)
 valid_set = WorkDataset(data_valid, N, embed=True)
 
 torch.manual_seed(seed)
-model = LSTMNetwork(4, 4, batch_size, n_layers, N)
-model = model.double()
+model = LSTMNetwork(4, 4, 100, batch_size, n_layers, N).double()
 
 
 optimiser = torch.optim.Adam(model.parameters(), lr=learning_rate, betas=(0.9, 0.98), eps=1e-9)
 
 # %%
-torch.device('cpu')
 model.train(train_set, valid_set, optimiser, patience=30)
 
 

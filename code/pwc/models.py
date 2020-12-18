@@ -34,20 +34,23 @@ class SimpleRNN(nn.Module):
 
 
 class LSTMNetwork(nn.Module):
-    def __init__(self, input_size, hidden_size, batch_size, n_layers, N):
+    def __init__(self, input_size, output_size, hidden_size, batch_size, n_layers, N):
         super(LSTMNetwork, self).__init__()
 
         self.N = N
         self.hidden_size = hidden_size
+        self.output_size = output_size
         self.batch_size = batch_size
         self.n_layers = n_layers
         self.lstm = nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=n_layers, batch_first=True)
+        self.fc1 = nn.Linear(hidden_size, output_size)
 
         self.criterion = torch.nn.MSELoss()
 
     def forward(self, input, hidden, cell):
         output, internals = self.lstm(input, (hidden, cell))
         hidden, cell = internals
+        output = self.fc1(output)
         return output, (hidden, cell)
 
     def initHiddenCell(self):
@@ -65,6 +68,7 @@ class LSTMNetwork(nn.Module):
 
         for epoch in range(max_epoch):
             for i, batch in enumerate(dataloader):
+                print('Batch {} of {}'.format(i, len(train_set) // self.batch_size), end='\r')
                 hidden, cell = self.initHiddenCell()
                 x = torch.squeeze(batch['x'])
                 y = torch.squeeze(batch['y'])
