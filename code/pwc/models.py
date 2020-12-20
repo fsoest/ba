@@ -3,34 +3,8 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from multiproc.data_preprocessing import rev_angle_embedding
-from dataset import WorkDataset
+from dataset_y_no_embed import WorkDataset
 from multiproc.pwc_helpers import wrapper
-
-
-class SimpleRNN(nn.Module):
-    def __init__(self, input_size, output_size, hidden_size, batch_size):
-        super(SimpleRNN, self).__init__()
-
-        self.hidden_size = hidden_size
-        self.batch_size = batch_size
-        # self.lstm = nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=n_layers)
-        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
-        self.i2o = nn.Linear(input_size + hidden_size, output_size)
-        self.tanh = nn.Tanh()
-
-
-    def forward(self, input, hidden):
-        combined = torch.cat((input, hidden), 1)
-        hidden = self.i2h(combined)
-        output = self.i2o(combined)
-        output = self.tanh(output)
-        return output, hidden
-
-    def initHidden(self):
-        return torch.zeros(self.batch_size, self.hidden_size)
-
-    def HiddenTest(self, test_size):
-        return torch.zeros(test_size, self.hidden_size)
 
 
 class LSTMNetwork(nn.Module):
@@ -86,6 +60,7 @@ class LSTMNetwork(nn.Module):
                 count += 1
             if count > patience:
                 self.load_state_dict(best_params)
+                self.eval()
                 break
             print('Training loss: {}, Validation loss: {}'.format(loss, valid_loss))
 
@@ -101,13 +76,13 @@ class LSTMNetwork(nn.Module):
         return loss
 
     def work_ratio(self, data, dt):
-        dataset = WorkDataset(data, self.N, embed=True)
+        dataset = WorkDataset(data, self.N, 'lstm')
         with torch.no_grad():
             X = dataset.__getitem__(range(len(dataset)))['x']
             hidden, cell = self.HiddenCellTest(len(X))
             y_pred, internals = self.forward(X, hidden, cell)
 
-        trans_pred = rev_angle_embedding(y_pred, self.N)
+        trans_pred = y_pred.transpose(0, 2, 1).reshape(len(dataset), 2 * self.N)
         E_pred = np.zeros(len(y_pred))
 
         for i in range(len(E_pred)):

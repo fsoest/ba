@@ -12,8 +12,8 @@ batch_size = 30
 seed = 42
 dt = 5
 rho = 'eigen'
-N_sobol = 10
-runs = [0, 2, 3, 4]
+N_sobol = 15
+runs = range(30)
 neurons = [100, 100]
 # %%
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
