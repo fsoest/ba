@@ -1,6 +1,6 @@
 Bachelorarbeit Felix Soest
 
 Dependencies
-pip install stable-baselines qutip numpy gym tensorflow==1.15
+pip install qutip numpy torch argparse wandb sklearn
 
 ML and quantum work
