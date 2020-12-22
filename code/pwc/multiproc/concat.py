@@ -2,7 +2,6 @@ import numpy as np
 import sys
 
 
-
 if __name__ == '__main__':
     args = sys.argv
     if len(sys.argv) == 5:

@@ -7,13 +7,14 @@ def angle_embedding(X, N, reshape=False):
     If reshape: False: X data, Shape is input shape: (N, 4)
     If reshape True: y data, output shape (4 * N,)
     """
-    input = np.zeros((X.shape[0], N, 4))
+    input = np.zeros((X.shape[0], N, 5))
     shaped = np.zeros((X.shape[0], N * 4))
     for i, x in enumerate(X):
         a = np.reshape(x, (2, N)).T
         input[i,:, :2] = np.sin(a)
-        input[i,:, 2:] = np.cos(a)
-        shaped[i] = np.reshape(input[i], (N * 4))
+        input[i,:, 2:-1] = np.cos(a)
+        shaped[i] = np.reshape(input[i, :, :-1], (N * 4))
+        input[i, -1, -1] = 1
     if reshape == True:
         return shaped
     return input
