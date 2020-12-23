@@ -60,7 +60,7 @@ if __name__ == '__main__':
         elif opt_args[k] == 'string':
             opt_args[k] = v
 
-    print(opt_args)
+    # print(opt_args)
 
 
     wandb.init(project='qwork_N_5_rho_eigen_lstm', config=hyperparameter_defaults)

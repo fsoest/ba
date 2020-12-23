@@ -1,6 +1,9 @@
 Bachelorarbeit Felix Soest
 
 Dependencies
-pip install stable-baselines qutip numpy gym tensorflow==1.15
+
+pip install qutip numpy torch argparse wandb sklearn
+
+wandb agent fsoest/ba-code_pwc/vabsptkk
 
 ML and quantum work
