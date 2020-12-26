@@ -27,7 +27,7 @@ class WorkDataset(Dataset):
                 # y = np.zeros((len(idx), self.N, 2))
                 # for i in range(len(idx)):
                 #     x[i] = self.data[i, 0].reshape(2, self.N).T
-                #     y[i] = self.data[i, 1].reshape(2, self.N).T
+                 #     y[i] = self.data[i, 1].reshape(2, self.N).T
                 # x = torch.from_numpy(x)
                 # y = torch.from_numpy(y)
             except:
@@ -42,17 +42,21 @@ class WorkDataset(Dataset):
         elif self.net == 'ann':
             try:
                 iter(idx)
-                x = torch.from_numpy(angle_embedding(self.data[idx, 0], self.N))
-                # Reshape y into (batch, N, 2)
-                y = np.zeros((len(idx), self.N, 2))
-                for i in range(len(idx)):
-                    y[i] = self.data[i, 1].reshape(2, self.N).T
-                y = torch.from_numpy(y)
+                x = torch.from_numpy(angle_embedding(self.data[idx, 0], self.N, reshape=True))
+                y = torch.from_numpy(angle_embedding(self.data[idx, 1], self.N, reshape=True))
+                # x = torch.from_numpy(angle_embedding(self.data[idx, 0], self.N))
+                # # Reshape y into (batch, N, 2)
+                # y = np.zeros((len(idx), self.N, 2))
+                # for i in range(len(idx)):
+                #     y[i] = self.data[i, 1].reshape(2, self.N).T
+                # y = torch.from_numpy(y)
             except:
-                x = torch.from_numpy(angle_embedding(self.data[np.newaxis, idx, 0], self.N))
-                y = self.data[idx, 1].reshape((1, 2, self.N))
-                y = y.transpose(0, 2, 1)
-                y = torch.from_numpy(y)
+                x = torch.from_numpy(angle_embedding(self.data[np.newaxis, idx, 0], self.N, reshape=True))
+                y = torch.from_numpy(angle_embedding(self.data[np.newaxis, idx, 1], self.N, reshape=True))
+                # x = torch.from_numpy(angle_embedding(self.data[np.newaxis, idx, 0], self.N))
+                # y = self.data[idx, 1].reshape((1, 2, self.N))
+                # y = y.transpose(0, 2, 1)
+                # y = torch.from_numpy(y)
         sample = {'x': x, 'y': y}
 
         return sample

@@ -60,7 +60,6 @@ class LSTMNetwork(nn.Module):
         loss_high = 1e3
         count = 0
         dataloader = DataLoader(train_set, batch_size=self.batch_size, shuffle=True, drop_last=True)
-        params = self.state_dict()
         for epoch in range(max_epoch):
             for i, batch in enumerate(dataloader):
                 print('Batch {} of {}'.format(i, len(train_set) // self.batch_size), end='\r')
@@ -79,7 +78,6 @@ class LSTMNetwork(nn.Module):
             if valid_loss < loss_high:
                 loss_high = valid_loss
                 count = 0
-                self.best_params = self.state_dict()
                 torch.save(self, 'best_model')
                 print('Now! Loss: {}'.format(self.calc_loss(valid_set)))
             else:
@@ -152,35 +150,38 @@ class two_layer_fcANN(nn.Module):
         x = self.fc3(x)
         return x
 
-    def train(self, train_set, valid_set, optimiser, max_epoch=1000, patience=30):
+    def learn(self, train_set, valid_set, optimiser, scheduler, max_epoch=1000, patience=30):
         # Parameters for early stopping
         loss_high = 1e3
         count = 0
-
         dataloader = DataLoader(train_set, batch_size=self.batch_size, shuffle=True, drop_last=True)
-
         for epoch in range(max_epoch):
             for i, batch in enumerate(dataloader):
-                x = torch.squeeze(batch['x'])
-                y = torch.squeeze(batch['y'])
+                print('Batch {} of {}'.format(i, len(train_set) // self.batch_size), end='\r')
+                with torch.no_grad():
+                    x = torch.squeeze(batch['x'])
+                    y = torch.squeeze(batch['y'])
                 optimiser.zero_grad()
                 output = self.forward(x)
                 loss = self.criterion(output, y)
                 loss.backward()
                 optimiser.step()
+            self.eval()
             valid_loss = self.calc_loss(valid_set).item()
+            scheduler.step(valid_loss)
             if valid_loss < loss_high:
                 loss_high = valid_loss
                 count = 0
-                best_params = self.state_dict()
+                torch.save(self, 'best_model')
+                print('Now! Loss: {}'.format(self.calc_loss(valid_set)))
             else:
                 count += 1
+            self.train()
             if count > patience:
-                self.load_state_dict(best_params)
                 break
             print('Training loss: {}, Validation loss: {}'.format(loss, valid_loss))
-
         print('Validation loss of best model: {}'.format(self.calc_loss(valid_set)))
+        return epoch
 
     def calc_loss(self, dataset):
         with torch.no_grad():
@@ -191,7 +192,7 @@ class two_layer_fcANN(nn.Module):
         return loss
 
     def work_ratio(self, data, dt):
-        dataset = WorkDataset(data, self.N, embed=True, reshape=True)
+        dataset = WorkDataset(data, self.N, 'ann')
         with torch.no_grad():
             X = dataset.__getitem__(range(len(dataset)))['x']
             y_pred = self.forward(X)

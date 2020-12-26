@@ -7,7 +7,7 @@ rho = 0
 dt_start = 0
 dt_stop = 5
 
-N = np.array([2, 3, 4, 5, 10])
+N = np.array([2, 3, 4, 5, 9, 10])
 
 data = np.zeros((len(N), 20, 500))
 avg = np.zeros((len(N), 20))
@@ -27,10 +27,9 @@ for i, n in enumerate(N):
 
 plt.legend(title='N')
 plt.xlabel('$\Delta T$')
-plt.ylabel('$\\overline{W}/N$')
+plt.ylabel('$\\overline{W}/(N-1)$')
 # plt.hlines(0.5, 0, 5)
 # plt.savefig('/home/fsoest/ba/phystex/img/dt_0.png', dpi=300)
-avg[-1][-1]/9
 # %%
 run = 0
 N_sobol = 10
@@ -38,7 +37,7 @@ rho = 'eigen'
 dt_start = 0
 dt_stop = 5
 
-N = np.array([2, 3, 4, 5, 10])
+N = np.array([2, 3, 4, 5, 9, 10])
 
 data_eigen = np.zeros((len(N), 20, 500))
 avg_eigen = np.zeros((len(N), 20))
@@ -56,5 +55,5 @@ for i, n in enumerate(N):
 
 plt.legend(title='N')
 plt.xlabel('$\Delta T$')
-plt.ylabel('$\\overline{W}/N$')
+plt.ylabel('$\\overline{W}/(N-1)$')
 # plt.savefig('/home/fsoest/ba/phystex/img/dt_eigen.png', dpi=300)
