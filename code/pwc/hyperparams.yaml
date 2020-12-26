@@ -18,7 +18,7 @@ parameters:
     max: 100
   n_layers:
     min: 1
-    max: 5
+    max: 3
   bidirectional:
     value: 'True'
   # optimiser:
