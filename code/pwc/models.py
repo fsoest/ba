@@ -22,6 +22,7 @@ class LSTMNetwork(nn.Module):
         self.batch_size = batch_size
         self.n_layers = n_layers
         self.hidden_input = hidden_input
+        self.dropout = dropout
         self.lstm = nn.LSTM(input_size=hidden_input[1], hidden_size=hidden_size, num_layers=n_layers, batch_first=True, bidirectional=bi, dropout=dropout)
 
         if self.lstm.bidirectional == True:
@@ -78,7 +79,7 @@ class LSTMNetwork(nn.Module):
             if valid_loss < loss_high:
                 loss_high = valid_loss
                 count = 0
-                torch.save(self, 'best_model')
+                torch.save(self, 'best_model_{}'.format(self.dropout))
                 print('Now! Loss: {}'.format(self.calc_loss(valid_set)))
             else:
                 count += 1
@@ -204,3 +205,25 @@ class two_layer_fcANN(nn.Module):
             E_pred[i] = wrapper(trans_pred[i], data[i, 0][:self.N], data[i, 0][self.N:], dt, data[i, 3], self.N)
 
         return np.mean(E_pred / data[:, 2])
+
+
+class LSTM_total_dropout(LSTMNetwork):
+    def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        super(LSTM_total_dropout, self).__init__(input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout)
+        self.dropout_layer = torch.nn.Dropout(self.dropout)
+
+    def forward(self, input, hidden, cell):
+        input = self.fc1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc2(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        output, internals = self.lstm(input, (hidden, cell))
+        hidden, cell = internals
+        output = self.dropout_layer(output)
+        output = self.fc3(output)
+        output = self.dropout_layer(output)
+        output = self.relu(output)
+        output = self.fc4(output)
+        return output, (hidden, cell)

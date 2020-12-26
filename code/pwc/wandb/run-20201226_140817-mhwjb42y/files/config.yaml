@@ -1,0 +1,49 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.12
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.7.3
+batch_size:
+  desc: null
+  value: 65
+bidirectional:
+  desc: null
+  value: 'True'
+dropout:
+  desc: null
+  value: 0.3682995396855632
+hidden_input_1:
+  desc: null
+  value: 540
+hidden_input_2:
+  desc: null
+  value: 675
+hidden_output:
+  desc: null
+  value: 409
+hidden_size:
+  desc: null
+  value: 108
+learning_rate:
+  desc: null
+  value: 0.08408593067894359
+n_layers:
+  desc: null
+  value: 3
+optimiser:
+  desc: null
+  value: g
+pat_drop:
+  desc: null
+  value: 2.177481058773413
+patience:
+  desc: null
+  value: 21
+sched_factor:
+  desc: null
+  value: 0.7650674708166845

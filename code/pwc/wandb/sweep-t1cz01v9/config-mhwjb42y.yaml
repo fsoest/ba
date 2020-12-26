@@ -1,0 +1,28 @@
+wandb_version: 1
+
+batch_size:
+  value: 65
+bidirectional:
+  value: 'True'
+dropout:
+  value: 0.3682995396855632
+hidden_input_1:
+  value: 540
+hidden_input_2:
+  value: 675
+hidden_output:
+  value: 409
+hidden_size:
+  value: 108
+learning_rate:
+  value: 0.08408593067894359
+n_layers:
+  value: 3
+optimiser:
+  value: g
+pat_drop:
+  value: 2.177481058773413
+patience:
+  value: 21
+sched_factor:
+  value: 0.7650674708166845

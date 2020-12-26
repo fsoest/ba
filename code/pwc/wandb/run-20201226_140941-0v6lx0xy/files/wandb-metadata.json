@@ -1,0 +1,36 @@
+{
+    "os": "Linux-4.19.0-12-amd64-x86_64-with-debian-10.6",
+    "python": "3.7.3",
+    "heartbeatAt": "2020-12-26T13:09:42.431360",
+    "startedAt": "2020-12-26T13:09:41.498614",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [
+        "--batch_size=2",
+        "--bidirectional=True",
+        "--dropout=0.3851934201121196",
+        "--hidden_input_1=670",
+        "--hidden_input_2=585",
+        "--hidden_output=651",
+        "--hidden_size=562",
+        "--learning_rate=0.017812577930016754",
+        "--n_layers=1",
+        "--optimiser=d",
+        "--pat_drop=1.703398768698945",
+        "--patience=77",
+        "--sched_factor=0.06080471515083992"
+    ],
+    "state": "running",
+    "codePath": "code/pwc/sweep_full_drop.py",
+    "program": "sweep_full_drop.py",
+    "git": {
+        "remote": "https://github.com/fsoest/ba.git",
+        "commit": "a808b81272b8bcc2c1f121f3690e685256005fec"
+    },
+    "email": "felix@soest-net.de",
+    "root": "/home/fsoest/ba",
+    "host": "tqo05",
+    "username": "fsoest",
+    "executable": "/home/fsoest/env/bin/python"
+}

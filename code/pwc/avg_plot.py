@@ -29,7 +29,7 @@ plt.legend(title='N')
 plt.xlabel('$\Delta T$')
 plt.ylabel('$\\overline{W}/(N-1)$')
 # plt.hlines(0.5, 0, 5)
-# plt.savefig('/home/fsoest/ba/phystex/img/dt_0.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/dt_0.png', dpi=300)
 # %%
 run = 0
 N_sobol = 10
@@ -56,4 +56,4 @@ for i, n in enumerate(N):
 plt.legend(title='N')
 plt.xlabel('$\Delta T$')
 plt.ylabel('$\\overline{W}/(N-1)$')
-# plt.savefig('/home/fsoest/ba/phystex/img/dt_eigen.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/dt_eigen.png', dpi=300)
