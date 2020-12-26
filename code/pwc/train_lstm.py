@@ -62,7 +62,7 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=sched_factor, patience=patience/pat_drop)
     epoch = model.learn(train_set, valid_set, optimiser, scheduler, patience=patience)
 
-    model = torch.load('best_model_{}'.format(self.dropout)).eval()
+    model = torch.load('best_model_{}'.format(dropout)).eval()
     vloss = model.calc_loss(valid_set)
     vwork = model.work_ratio(data_test, dt)
     return epoch, vloss, vwork
