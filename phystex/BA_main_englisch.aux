@@ -6,35 +6,39 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Intro}{1}\protected@file@percent }
+\citation{Lorenzo_2017}
+\citation{beyer2020}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Collision model dynamics}{3}\protected@file@percent }
+\newlabel{col_model}{{2.1}{3}}
+\newlabel{coll_eq}{{2.1}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Setting}{3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis shows qubit state in arbitrary units. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm  {T}$ while $\rho _S$ evolves unitarily.\relax }}{5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{pwc}{{2.1}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta \mathrm  {T}$.\relax }}{5}\protected@file@percent }
+\newlabel{collmodel}{{2.2}{5}}
 \citation{Mitchell97}
 \citation{lu2020dying}
 \citation{TN_libero_mab2)53517}
 \citation{Maas2013RectifierNI}
 \citation{krizhevsky}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{3}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Supervised Machine Learning}{3}\protected@file@percent }
-\newlabel{sml}{{2.1}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Fully-connected feedforward ANNs}{3}\protected@file@percent }
+\citation{rumelhart1986learning}
+\citation{10.1007/978-3-642-46466-9_18}
+\citation{doi:10.1162/neco.1997.9.8.1735}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Supervised Machine Learning}{6}\protected@file@percent }
+\newlabel{sml}{{2.3}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Fully-connected feedforward ANNs}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Long Short-Term Memory}{6}\protected@file@percent }
 \citation{rumelhart1986learning}
 \citation{nielsenneural}
 \citation{LeNail2019}
 \citation{LeNail2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Long Short-Term Memory}{4}\protected@file@percent }
-\citation{Lorenzo_2017}
-\citation{beyer2020}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite  {LeNail2019}\relax }}{5}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{nn}{{2.1}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Collision model dynamics}{5}\protected@file@percent }
-\newlabel{col_model}{{2.2}{5}}
-\newlabel{coll_eq}{{2.1}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Setting}{5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis shows qubit state in arbitrary units. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm  {T}$ while $\rho _S$ evolves unitarily.\relax }}{7}\protected@file@percent }
-\newlabel{pwc}{{2.2}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta \mathrm  {T}$.\relax }}{7}\protected@file@percent }
-\newlabel{collmodel}{{2.3}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite  {LeNail2019}\relax }}{8}\protected@file@percent }
+\newlabel{nn}{{2.3}{8}}
 \citation{2020SciPy-NMeth}
 \citation{LeCun2012}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Experimental Results}{9}\protected@file@percent }
@@ -42,6 +46,8 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm  {T}$ on Work Output}{9}\protected@file@percent }
 \newlabel{single_work}{{3.2}{9}}
+\citation{Deffner_2017}
+\citation{PhysRevA.67.052109}
 \newlabel{dt_0}{{3.1a}{11}}
 \newlabel{sub@dt_0}{{a}{11}}
 \newlabel{dt_eigen}{{3.1b}{11}}
@@ -72,20 +78,24 @@
 \@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{17}\protected@file@percent }
 \newlabel{hyperparams}{{B.1}{17}}
 \bibcite{beyer2020}{1}
-\bibcite{krizhevsky}{2}
-\bibcite{LeCun2012}{3}
-\bibcite{LeNail2019}{4}
-\bibcite{Lorenzo_2017}{5}
-\bibcite{lu2020dying}{6}
-\bibcite{Maas2013RectifierNI}{7}
-\bibcite{Mitchell97}{8}
-\bibcite{nielsenneural}{9}
-\bibcite{rumelhart1986learning}{10}
-\bibcite{2020SciPy-NMeth}{11}
-\bibcite{TN_libero_mab2)53517}{12}
+\bibcite{Deffner_2017}{2}
+\bibcite{10.1007/978-3-642-46466-9_18}{3}
+\bibcite{PhysRevA.67.052109}{4}
+\bibcite{doi:10.1162/neco.1997.9.8.1735}{5}
+\bibcite{krizhevsky}{6}
+\bibcite{LeCun2012}{7}
+\bibcite{LeNail2019}{8}
+\bibcite{Lorenzo_2017}{9}
+\bibcite{lu2020dying}{10}
+\bibcite{Maas2013RectifierNI}{11}
+\bibcite{Mitchell97}{12}
+\bibcite{nielsenneural}{13}
+\bibcite{rumelhart1986learning}{14}
 \@writefile{toc}{\contentsline {chapter}{\numberline {C}Bibliography}{19}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\bibcite{2020SciPy-NMeth}{15}
+\bibcite{TN_libero_mab2)53517}{16}
 \global\csname @altsecnumformattrue\endcsname
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{18.10382pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{25.90468pt}

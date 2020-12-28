@@ -6,7 +6,6 @@ In the following sections we review two ANN architectures, the fully-connected f
 
 \subsection{Fully-connected feedforward ANNs}
 In this section we review ANNs, following the exposition given in \cite{lu2020dying}.
-
 Let $\textfrak{N}$ be a fully-connected feedforward ANN, meaning there are no loops in the neuron connections and all neurons in a layer are connected to every neuron of the next layer, $\textfrak{N}: \mathbb{R}^{n_1} \to \mathbb{R}^{n_L}$. $n_1$ and $n_L$ denote the dimensionality of the input and output respectively. 
 $\textfrak{N}$ has $L$ layers, or columns of neurons.
 The network architecture is given by the amount of neurons $n_l$ in each hidden layer $l \in [2, L - 1]$ (see figure \ref{nn}).
@@ -16,12 +15,30 @@ The activations can then be calculated using the following formulae \cite{TN_lib
 	\vec{a}_2 & = W_1 \vec{a}_1 + \vec{b}_1, \\
 	\vec{a}_l & = W_{l-1} \xi(\vec{a}_{l-1}) + \vec{b}_{l-1}, \ l \in [3, L],
 \end{align*}
-where $\xi(x)$ is a function called the activation function applied elementwise. Historically, functions such as $tanh$ and sigmoid have been used. However, it has been shown \cite{Maas2013RectifierNI, krizhevsky} that the rectified linear unit $\mathrm{ReLU}(x) = \mathrm{max}(0, x)$ often provides better results and is used here.
+where $\xi(x)$ is a function called the activation function applied elementwise. Historically, functions such as $\tanh$ and sigmoid have been used. However, it has been shown \cite{Maas2013RectifierNI, krizhevsky} that the rectified linear unit $\mathrm{ReLU}(x) = \mathrm{max}(0, x)$ often provides better results and is used here.
 
 
 \subsection{Long Short-Term Memory}
-While the network architecture introduced in the previous section performs reasonably well on many problems, it destroys 
+While the network architecture introduced in the previous section performs reasonably well on many problems, it destroys spatial and temporal correlations present in the data. 
+Instead convolutional and recurrent networks are often used for these purposes, e.g. in image recognition and time series forecasting \cite{rumelhart1986learning, 10.1007/978-3-642-46466-9_18}.
 
+Here we use the LSTM architecture, a type of recurrent neural network (RNN) introduced in \cite{doi:10.1162/neco.1997.9.8.1735}. 
+The core idea of RNNs is the usage of loops to store and propagate information through time.
+
+The network is made up of a row of LSTM cells which share parameters.
+The cell uses the current input $x_t$ as well as the previous cell state $c_{t-1}$ and output $h_{t-1}$ to compute the output $h_t$.
+Internally, the cell is comprised of multiple gates which control the storage of information, $i_t, f_t, g_t, o_t$, which are the input, forget, cell and output gates respectively.
+The output and gates of each cell are computed using the following equations:
+\begin{align*}
+i_t & = \sigma (W_{ii} x_t + b_{ii} + W_{hi} h_{t-1} + b_{hi}), \\
+f_t & = \sigma (W_{if} x_t + b_{if} + W_{hf} h_{t-1} + b_{hf}), \\
+g_t & = \tanh (W_{ig} x_t + b_{ig} + W_{hg} h_{t-1} + b_{hg}), \\ 
+o_t & = \sigma (W_{if} x_t + b_{if} + W_{hf} h_{t-1} + b_{hf}), \\
+c_t & = f_t \odot c_{t-1} + i_t \odot g_t, \\
+h_t & = o_t \odot \tanh (c_t).
+\end{align*}
+
+\subsection{Training \& Backpropagation}
 To train an ANN a cost function is defined, often the mean squared error 
 \begin{align*}
 	\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
@@ -35,3 +52,4 @@ The so-called backpropagation algorithm is used to calculate the gradient of the
 	\caption{Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite{LeNail2019}}.
 	\label{nn}
 \end{figure}
+

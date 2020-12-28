@@ -87,7 +87,6 @@ class LSTMNetwork(nn.Module):
             if count > patience:
                 break
             print('Training loss: {}, Validation loss: {}'.format(loss, valid_loss))
-        print('Validation loss of best model: {}'.format(self.calc_loss(valid_set)))
         return epoch
 
     def calc_loss(self, dataset):
@@ -226,4 +225,78 @@ class LSTM_total_dropout(LSTMNetwork):
         output = self.dropout_layer(output)
         output = self.relu(output)
         output = self.fc4(output)
+        return output, (hidden, cell)
+
+
+class FCNN_LSTM(LSTMNetwork):
+    def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        super(FCNN_LSTM, self).__init__(input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout)
+
+        self.lstm = nn.LSTM(input_size=hidden_input[1], hidden_size=hidden_size, num_layers=n_layers, batch_first=True, bidirectional=bi, dropout=dropout)
+
+        self.dropout_layer = torch.nn.Dropout(self.dropout)
+        self.fc1 = nn.Linear(5 * N, hidden_input[0])
+        self.fc2 = nn.Linear(hidden_input[0], N * hidden_input[1])
+        self.fc3 = nn.Linear(self.n_directions * hidden_size, output_hidden)
+        self.fc4 = nn.Linear(output_hidden, output_size)
+        self.relu = nn.ReLU()
+
+    def forward(self, input, hidden, cell):
+        size = len(input)
+        input = torch.reshape(input, (size, 5 * self.N))
+        input = self.fc1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc2(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = torch.reshape(input, (size, self.N, self.hidden_input[1]))
+        output, internals = self.lstm(input, (hidden, cell))
+        hidden, cell = internals
+        output = self.fc3(output)
+        input = self.dropout_layer(input)
+        output = self.relu(output)
+        output = self.fc4(output)
+        return output, (hidden, cell)
+
+
+class C_LSTM(LSTMNetwork):
+    def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        super(C_LSTM, self).__init__(input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout)
+
+
+        self.lstm = nn.LSTM(input_size=hidden_input[2], hidden_size=hidden_size, num_layers=n_layers, batch_first=True, bidirectional=bi, dropout=dropout)
+        self.fc1 = nn.Linear(input_size, hidden_input[0])
+        self.fc2 = nn.Linear(hidden_input[0], hidden_input[1])
+        self.fc3 = nn.Linear(hidden_input[1], hidden_input[2])
+        self.fc4 = nn.Linear(self.n_directions * hidden_size, output_hidden[0])
+        self.fc5 = nn.Linear(output_hidden[0], output_hidden[1])
+        self.fc6 = nn.Linear(output_hidden[1], output_hidden[2])
+        self.fc7 = nn.Linear(output_hidden[2], output_size)
+        self.relu = nn.ReLU()
+        self.dropout_layer = torch.nn.Dropout(self.dropout)
+
+
+    def forward(self, input, hidden, cell):
+        input = self.fc1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc2(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc3(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        output, internals = self.lstm(input, (hidden, cell))
+        hidden, cell = internals
+        output = self.fc4(output)
+        input = self.dropout_layer(input)
+        output = self.relu(output)
+        output = self.fc5(output)
+        input = self.dropout_layer(input)
+        output = self.relu(output)
+        output = self.fc6(output)
+        input = self.dropout_layer(input)
+        output = self.relu(output)
+        output = self.fc7(output)
         return output, (hidden, cell)

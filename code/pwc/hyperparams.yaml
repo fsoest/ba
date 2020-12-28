@@ -21,8 +21,8 @@ parameters:
     max: 3
   bidirectional:
     value: 'True'
-  # optimiser:
-  #   values: 'sgd'
+  optimiser:
+    values: ['sgd', 'adam']
   hidden_size:
     min: 10
     max: 1000

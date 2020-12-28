@@ -6,8 +6,7 @@ To ensure the ancilla and system states remain pure, we follow the approach used
 let $\rho_S$ be the density operator of the system under consideration and $\psi_A$ be the state of the ancilla system.
 Given $\Delta t \ll 1$ the time evolution of $\rho_S$ under $H_{AS}$ acting on the combined system is
 \begin{align}\label{coll_eq}
-\rho'_S & = \mathrm{Tr}_A \{ e^{-i H_{AS} \Delta t} (\ket{\psi_A} \bra{\psi_A} \otimes \rho_S) e^{i H_{AS} \Delta t} \} 
-		& = \rho_S - i \Delta t [\expval{H_{AS}}{\psi_A}, \rho_S] + O(\Delta t^2).
+\rho'_S & = \mathrm{Tr}_A \{ e^{-i H_{AS} \Delta t} (\ket{\psi_A} \bra{\psi_A} \otimes \rho_S) e^{i H_{AS} \Delta t} \} & = \rho_S - i \Delta t [\expval{H_{AS}}{\psi_A}, \rho_S] + O(\Delta t^2).
 \end{align}
 
 In the continuous limit equation \ref{coll_eq} leads to von-Neumann dynamics on the system:

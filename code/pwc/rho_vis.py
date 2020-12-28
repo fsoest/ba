@@ -24,12 +24,12 @@ def exp_xyz(rhos):
 
 # %%
 
-dt1 = np.load('multi_train_data/N_5/dt_1_eigen_sobol_10_run_0.npy', allow_pickle=True)
-dt5 = np.load('multi_train_data/N_5/dt_5_eigen_sobol_10_run_0.npy', allow_pickle=True)
-dt10 = np.load('multi_train_data/N_5/dt_10_eigen_sobol_10_run_0.npy', allow_pickle=True)
+# dt1 = np.load('multi_train_data/N_5/dt_1_eigen_sobol_10_run_0.npy', allow_pickle=True)
+dt5 = np.load('multi_train_data/N_5/dt_5_0_sobol_10_run_0.npy', allow_pickle=True)
+# dt10 = np.load('multi_train_data/N_5/dt_10_eigen_sobol_10_run_0.npy', allow_pickle=True)
 
 # %%
-inx = 0
+inx = 20
 path1, step1, e1 = data_wrapper(dt1[inx], 1, 50)
 path5, step5, e5 = data_wrapper(dt5[inx], 5, 50)
 path10, step10, e10 = data_wrapper(dt10[inx], 10, 50)
@@ -41,7 +41,7 @@ exp_10 = exp_xyz(path10)
 exp5 = exp_xyz(step5)
 # %%
 plt.plot(range(len(e1)), -np.real(e1), label='1')
-plt.plot(range(len(e5)), -np.real(e5), label='5')
+plt.plot(range(len(e5)-1), -np.real(e5)[:-1], label='5')
 plt.plot(range(len(e10)), -np.real(e10), label='10')
 plt.legend(title='$\Delta T$')
 
@@ -49,7 +49,7 @@ plt.legend(title='$\Delta T$')
 a = ['x', 'y', 'z']
 
 for i, dir in enumerate(a):
-    plt.plot(range(len(exp_1)), exp_1[:, i], label='1 {0}'.format(dir))
+    # plt.plot(range(len(exp_1)), exp_1[:, i], label='1 {0}'.format(dir))
     plt.plot(range(len(exp_5)), exp_5[:, i], label='5 {0}'.format(dir))
 # for i, dir in enumerate(a):
 #     plt.plot(range(len(exp_10)), exp_10[:, i], label='10 {0}'.format(dir))

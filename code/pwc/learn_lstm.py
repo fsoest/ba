@@ -1,6 +1,6 @@
 import numpy as np
 from models import LSTMNetwork
-from dataset_y_no_embed import WorkDataset
+from dataset import WorkDataset
 import torch
 from multiproc.data_preprocessing import import_datasets, rev_angle_embedding
 from sklearn.model_selection import train_test_split

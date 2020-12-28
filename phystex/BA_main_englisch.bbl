@@ -5,6 +5,31 @@ Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 \newblock Work as an external quantum observable and an operational quantum
   work fluctuation theorem.
 
+\bibitem{Deffner_2017}
+Sebastian Deffner and Steve Campbell.
+\newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
+  optimal quantum control.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  50(45):453001, Oct 2017.
+
+\bibitem{10.1007/978-3-642-46466-9_18}
+Kunihiko Fukushima and Sei Miyake.
+\newblock Neocognitron: A self-organizing neural network model for a mechanism
+  of visual pattern recognition.
+\newblock In Shun-ichi Amari and Michael~A. Arbib, editors, {\em Competition
+  and Cooperation in Neural Nets}, pages 267--285, Berlin, Heidelberg, 1982.
+  Springer Berlin Heidelberg.
+
+\bibitem{PhysRevA.67.052109}
+Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
+\newblock Quantum limits to dynamical evolution.
+\newblock {\em Phys. Rev. A}, 67:052109, May 2003.
+
+\bibitem{doi:10.1162/neco.1997.9.8.1735}
+Sepp Hochreiter and Jürgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural Computation}, 9(8):1735--1780, 1997.
+
 \bibitem{krizhevsky}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
 \newblock Imagenet classification with deep convolutional neural networks.

@@ -1,5 +1,5 @@
 import wandb
-from train_lstm import train_lstm_total_dropout as train_lstm
+from train_lstm import train_fnn_lstm as train_lstm
 import argparse
 import os
 
@@ -65,15 +65,15 @@ if __name__ == '__main__':
             opt_args[k] = v
 
 
-    wandb.init(project='full-drop-lstm-eigen-n-5', config=hyperparameter_defaults)
-    config = wandb.config
+    # wandb.init(project='full-drop-lstm-eigen-n-5', config=hyperparameter_defaults)
+    # config = wandb.config
 
     epoch, vloss, vwork = train_lstm(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, N_sobol, rho, runs, net)
-
+print(vwork)
 metrics = {
     'n_epochs': epoch,
     'validation_loss': vloss,
     'validation_work_ratio': vwork,
 }
 
-wandb.log(metrics)
+# wandb.log(metrics)

@@ -2,11 +2,12 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}% 
 \contentsline {section}{\numberline {1.1}Intro}{1}% 
 \contentsline {chapter}{\numberline {2}Background}{3}% 
-\contentsline {section}{\numberline {2.1}Supervised Machine Learning}{3}% 
-\contentsline {subsection}{\numberline {2.1.1}Fully-connected feedforward ANNs}{3}% 
-\contentsline {subsection}{\numberline {2.1.2}Long Short-Term Memory}{4}% 
-\contentsline {section}{\numberline {2.2}Collision model dynamics}{5}% 
-\contentsline {section}{\numberline {2.3}Setting}{5}% 
+\contentsline {section}{\numberline {2.1}Collision model dynamics}{3}% 
+\contentsline {section}{\numberline {2.2}Setting}{3}% 
+\contentsline {section}{\numberline {2.3}Supervised Machine Learning}{6}% 
+\contentsline {subsection}{\numberline {2.3.1}Fully-connected feedforward ANNs}{6}% 
+\contentsline {subsection}{\numberline {2.3.2}Long Short-Term Memory}{6}% 
+\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{7}% 
 \contentsline {chapter}{\numberline {3}Experimental Results}{9}% 
 \contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm {T}$ on Work Output}{9}% 
 \contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}% 

@@ -144,6 +144,18 @@ def state_to_angles(kets):
     return theta[:, 0], phi[:, 0]
 
 
+def angles_to_states(angles):
+    """
+    Input: [theta, phi] [2 * N]
+    Output: kets [N, 2]
+    """
+    N = len(angles) // 2
+    kets = np.zeros((N, 2), dtype=np.complex128)
+    kets[:, 0] = np.cos(angles[:N]/2)
+    kets[:, 1] = np.sin(angles[:N]/2) * np.exp(1j * angles[N:])
+    return kets
+
+
 def get_eigen_rho(theta, phi):
     """
     """
@@ -174,4 +186,4 @@ def rho_to_angles(rho):
     w = np.real(rho[0, 0] - rho[1, 1])
     theta = np.arccos(w)
     phi = np.arctan2(np.real(v), u)
-    return theta, phi    
+    return theta, phi

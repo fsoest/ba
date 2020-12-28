@@ -167,4 +167,60 @@
   url       = {http://dx.doi.org/10.1103/PhysRevA.96.032107},
 }
 
+@Article{JMLR:v15:srivastava14a,
+  author  = {Nitish Srivastava and Geoffrey Hinton and Alex Krizhevsky and Ilya Sutskever and Ruslan Salakhutdinov},
+  title   = {Dropout: A Simple Way to Prevent Neural Networks from Overfitting},
+  journal = {Journal of Machine Learning Research},
+  year    = {2014},
+  volume  = {15},
+  number  = {56},
+  pages   = {1929-1958},
+  url     = {http://jmlr.org/papers/v15/srivastava14a.html},
+}
+
+@InProceedings{10.1007/978-3-642-46466-9_18,
+  author    = {Fukushima, Kunihiko and Miyake, Sei},
+  title     = {Neocognitron: A Self-Organizing Neural Network Model for a Mechanism of Visual Pattern Recognition},
+  booktitle = {Competition and Cooperation in Neural Nets},
+  year      = {1982},
+  editor    = {Amari, Shun-ichi and Arbib, Michael A.},
+  pages     = {267--285},
+  address   = {Berlin, Heidelberg},
+  publisher = {Springer Berlin Heidelberg},
+  abstract  = {A neural network model, called a ``neocognitron'', is proposed for a mechanism of visual pattern recognition. It is demonstrated by computer simulation that the neocognitron has characteristics similar to those of visual systems of vertebrates.},
+  isbn      = {978-3-642-46466-9},
+}
+
+@Article{doi:10.1162/neco.1997.9.8.1735,
+  author   = {Hochreiter, Sepp and Schmidhuber, Jürgen},
+  title    = {Long Short-Term Memory},
+  journal  = {Neural Computation},
+  year     = {1997},
+  volume   = {9},
+  number   = {8},
+  pages    = {1735-1780},
+  abstract = { Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms. },
+  doi      = {10.1162/neco.1997.9.8.1735},
+  eprint   = {https://doi.org/10.1162/neco.1997.9.8.1735},
+  url      = { 
+        https://doi.org/10.1162/neco.1997.9.8.1735
+    
+},
+}
+
+@Article{Deffner_2017,
+  author    = {Deffner, Sebastian and Campbell, Steve},
+  title     = {Quantum speed limits: from {Heisenberg}’s uncertainty principle to optimal quantum control},
+  journal   = {Journal of Physics A: Mathematical and Theoretical},
+  year      = {2017},
+  volume    = {50},
+  number    = {45},
+  pages     = {453001},
+  month     = {Oct},
+  issn      = {1751-8121},
+  doi       = {10.1088/1751-8121/aa86c6},
+  publisher = {IOP Publishing},
+  url       = {http://dx.doi.org/10.1088/1751-8121/aa86c6},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

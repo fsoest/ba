@@ -1,5 +1,5 @@
 import wandb
-from train_lstm import train_lstm_total_dropout as train_lstm
+from train_lstm import train_c_lstm as train_lstm
 import argparse
 import os
 
@@ -18,7 +18,10 @@ opt_args = {
     'hidden_size': 'int',
     'hidden_input_1': 'int',
     'hidden_input_2': 'int',
-    'hidden_output': 'int',
+    'hidden_input_3': 'int',
+    'hidden_output_1': 'int',
+    'hidden_output_2': 'int',
+    'hidden_output_3': 'int',
     'pat_drop': 'float',
     'sched_factor': 'float',
  }
@@ -35,7 +38,10 @@ hyperparameter_defaults = dict(
      hidden_size = 10,
      hidden_input_1 = 20,
      hidden_input_2 = 20,
-     hidden_output = 20,
+     hidden_input_3 = 20,
+     hidden_output_1 = 20,
+     hidden_output_2 = 20,
+     hidden_output_3 = 20,
      pat_drop = 2,
      sched_factor = 0.1,
  )
@@ -65,15 +71,15 @@ if __name__ == '__main__':
             opt_args[k] = v
 
 
-    wandb.init(project='full-drop-lstm-eigen-n-5', config=hyperparameter_defaults)
-    config = wandb.config
+    # wandb.init(project='full-drop-lstm-eigen-n-5', config=hyperparameter_defaults)
+    # config = wandb.config
 
-    epoch, vloss, vwork = train_lstm(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, N_sobol, rho, runs, net)
-
+    epoch, vloss, vwork = train_lstm(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_input_3'], opt_args['hidden_output_1'], opt_args['hidden_output_2'], opt_args['hidden_output_3'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, N_sobol, rho, runs, net)
+print(vwork)
 metrics = {
     'n_epochs': epoch,
     'validation_loss': vloss,
     'validation_work_ratio': vwork,
 }
 
-wandb.log(metrics)
+# wandb.log(metrics)
