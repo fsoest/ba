@@ -139,7 +139,8 @@ class two_layer_fcANN(nn.Module):
         self.batch_size = batch_size
         self.fc1 = nn.Linear(4 * N, neurons[0])
         self.fc2 = nn.Linear(neurons[0], neurons[1])
-        self.fc3 = nn.Linear(neurons[1], 4 * N)
+        self.fc3 = nn.Linear(neurons[1], neurons[2])
+        self.fc4 = nn.Linear(neurons[2], 4 * N)
         self.relu = nn.ReLU()
 
     def forward(self, x):
@@ -148,6 +149,8 @@ class two_layer_fcANN(nn.Module):
         x = self.fc2(x)
         x = self.relu(x)
         x = self.fc3(x)
+        x = self.relu(x)
+        x = self.fc4(x)
         return x
 
     def learn(self, train_set, valid_set, optimiser, scheduler, max_epoch=1000, patience=30):
@@ -299,4 +302,37 @@ class C_LSTM(LSTMNetwork):
         input = self.dropout_layer(input)
         output = self.relu(output)
         output = self.fc7(output)
+        return output, (hidden, cell)
+
+
+class LastLSTM(LSTMNetwork):
+    def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        super(LastLSTM, self).__init__(input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout)
+        self.dropout_layer = torch.nn.Dropout(self.dropout)
+
+        self.lstm = nn.LSTM(input_size=hidden_input[1], hidden_size=hidden_size, num_layers=n_layers, batch_first=True, bidirectional=bi, dropout=dropout)
+
+        self.fc1 = nn.Linear(input_size, hidden_input[0])
+        self.fc2 = nn.Linear(hidden_input[0], hidden_input[1])
+        self.fc3 = nn.Linear(self.n_directions * hidden_size, output_hidden)
+        self.fc4 = nn.Linear(output_hidden, self.N * output_size)
+        self.relu = nn.ReLU()
+
+    def forward(self, input, hidden, cell):
+        size = len(input)
+        input = self.fc1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc2(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        output, internals = self.lstm(input, (hidden, cell))
+        hidden, cell = internals
+        output = output[:, -1, :]
+        output = self.dropout_layer(output)
+        output = self.fc3(output)
+        output = self.dropout_layer(output)
+        output = self.relu(output)
+        output = self.fc4(output)
+        output = torch.reshape(output, (size, self.N, self.output_size))
         return output, (hidden, cell)

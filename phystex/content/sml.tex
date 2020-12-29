@@ -43,7 +43,7 @@ To train an ANN a cost function is defined, often the mean squared error
 \begin{align*}
 	\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
 \end{align*}
-where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples, where $\{\vec{x_i}\}$ is the input and $\{\vec{y_i}\}$ the output data, and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ is the output of the neural network.
+where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples. $\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ is the output of the neural network.
 The so-called backpropagation algorithm is used to calculate the gradient of the cost function with respect to the trainable parameters and improve the performance of the ANN \cite{rumelhart1986learning, nielsenneural}.
 
 \begin{figure}

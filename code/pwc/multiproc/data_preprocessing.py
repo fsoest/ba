@@ -20,6 +20,30 @@ def angle_embedding(X, N, reshape=False):
     return input
 
 
+def mult_embedding(X, N):
+    """
+    Creates multiplicative embedding
+    """
+    input = np.zeros((X.shape[0], N, 5))
+    for i, x in enumerate(X):
+        thetas = x[:N]
+        phis = x[N:]
+        input[i, :, 0] = np.sin(thetas) * np.sin(phis)
+        input[i, :, 1] = np.sin(thetas) * np.cos(phis)
+        input[i, :, 2] = np.sin(thetas)
+        input[i, :, 3] = np.cos(thetas)
+        input[i, -1, -1] = 1
+    return input
+
+
+def rev_mult_embedding(X, N):
+    output = np.zeros((X.shape[0], 2 * N))
+    for i, x in enumerate(X):
+        output[i, :N] = np.arctan(x[:, 2], x[:, 3])
+        output[i, N:] = np.arctan2(x[:, 0], x[:, 1])
+    return output
+
+
 def rev_angle_embedding(X, N, reshape=False):
     """
     Creates (theta, phi) data from embedded model data
