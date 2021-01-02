@@ -44,7 +44,7 @@ N = 5
 dt = 5
 N_sobol = 45
 rho = 'eigen'
-runs = range(30)
+runs = range(40)
 net = 'lstm'
 
 if __name__ == '__main__':
