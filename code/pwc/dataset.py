@@ -1,7 +1,7 @@
 import numpy as np
 from torch.utils.data import Dataset
 import torch
-from multiproc.data_preprocessing import angle_embedding, mult_embedding
+from multiproc.data_preprocessing import angle_embedding, mult_embedding, out_embedding
 
 
 class WorkDataset(Dataset):
@@ -61,10 +61,10 @@ class WorkDataset(Dataset):
             try:
                 iter(idx)
                 x = torch.from_numpy(mult_embedding(self.data[idx, 0], self.N))
-                y = torch.from_numpy(mult_embedding(self.data[idx, 1], self.N))
+                y = torch.from_numpy(out_embedding(self.data[idx, 1], self.N))
             except:
                 x = torch.from_numpy(mult_embedding(self.data[np.newaxis, idx, 0], self.N))
-                y = torch.from_numpy(mult_embedding(self.data[np.newaxis, idx, 1], self.N))
+                y = torch.from_numpy(out_embedding(self.data[np.newaxis, idx, 1], self.N))
         sample = {'x': x, 'y': y}
 
         return sample

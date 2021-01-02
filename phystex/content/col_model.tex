@@ -3,7 +3,7 @@ A standard approach to modeling open quantum systems is the collision model.
 The system under consideration interacts with a series of ancilla systems through a unitary transformation on the combined system-ancilla state \cite{Lorenzo_2017}. After a short interaction time $\Delta t$, the ancilla systems are traced out to receive the system state.
 This type of interaction will in general lead to entanglement between system and ancilla.
 To ensure the ancilla and system states remain pure, we follow the approach used in \cite{beyer2020}:
-let $\rho_S$ be the density operator of the system under consideration and $\psi_A$ be the state of the ancilla system.
+let $\rho_S$ be the density operator of the system under consideration and $\ket{\psi_A}$ be the state of the ancilla system.
 Given $\Delta t \ll 1$ the time evolution of $\rho_S$ under $H_{AS}$ acting on the combined system is
 \begin{align}\label{coll_eq}
 \rho'_S & = \mathrm{Tr}_A \{ e^{-i H_{AS} \Delta t} (\ket{\psi_A} \bra{\psi_A} \otimes \rho_S) e^{i H_{AS} \Delta t} \} & = \rho_S - i \Delta t [\expval{H_{AS}}{\psi_A}, \rho_S] + O(\Delta t^2).

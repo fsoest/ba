@@ -30,7 +30,7 @@ def train_lstm(dropout, learning_rate, patience, batch_size, n_layers, bidirecti
     valid_set = WorkDataset(data_valid, N, net)
 
     torch.manual_seed(seed)
-    model = LSTMNetwork(5, 4, hidden_size, [hidden_input_1, hidden_input_2], hidden_output, batch_size, n_layers, N, bidirectional, dropout).double()
+    model = LSTMNetwork(5, 2, hidden_size, [hidden_input_1, hidden_input_2], hidden_output, batch_size, n_layers, N, bidirectional, dropout).double()
 
     if optimiser == 'adam':
         optimiser = torch.optim.Adam(model.parameters(), lr=learning_rate, betas=(0.9, 0.98), eps=1e-9)

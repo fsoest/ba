@@ -24,7 +24,7 @@ def mult_embedding(X, N):
     """
     Creates multiplicative embedding
     """
-    input = np.zeros((X.shape[0], N, 5))
+    input = np.zeros((X.shape[0], N, 7))
     for i, x in enumerate(X):
         thetas = x[:N]
         phis = x[N:]
@@ -32,15 +32,32 @@ def mult_embedding(X, N):
         input[i, :, 1] = np.sin(thetas) * np.cos(phis)
         input[i, :, 2] = np.sin(thetas)
         input[i, :, 3] = np.cos(thetas)
+        input[i, :, 4] = np.sin(phis)
+        input[i, :, 5] = np.cos(phis)
         input[i, -1, -1] = 1
     return input
+
+
+def out_embedding(X, N):
+    output = np.zeros((X.shape[0], N, 2))
+    for i, x in enumerate(X):
+        output[i, :, 0] = x[:N] / np.pi
+        output[i, :, 1] = x[N:] / (2 * np.pi)
+    return output
+
+def rev_out_embedding(X, N):
+    output = np.zeros((X.shape[0], 2 * N))
+    for i, x in enumerate(X):
+        output[i, :N] = x[:, 0] * np.pi
+        output[i, N:] = x[:, 1] * 2 * np.pi
+    return output
 
 
 def rev_mult_embedding(X, N):
     output = np.zeros((X.shape[0], 2 * N))
     for i, x in enumerate(X):
-        output[i, :N] = np.arctan(x[:, 2], x[:, 3])
-        output[i, N:] = np.arctan2(x[:, 0], x[:, 1])
+        output[i, :N] = np.arctan2(x[:, 2], x[:, 3])
+        output[i, N:] = np.arctan2(x[:, 0], x[:, 1]) % (2*np.pi)
     return output
 
 
@@ -95,3 +112,17 @@ def import_datasets(root_dir, N, dt, rho, sobol, runs):
         d = np.load('{0}/N_{1}/dt_{2}_{3}_sobol_{4}_run_{5}.npy'.format(root_dir, N, dt, rho, sobol, run), allow_pickle=True)
         data = np.concatenate((data, d))
     return data
+
+
+def angles_to_cart(angles):
+    """
+    Converts angles [[N*theta, N*pi]] to [x, y, z]
+    """
+    N = angles.shape[1] // 2
+    cart = np.zeros((len(angles), 3 * N))
+    for i, angle in enumerate(angles):
+        x = np.sin(angle[:N]) * np.cos(angle[N:])
+        y = np.sin(angle[:N]) * np.sin(angle[N:])
+        z = np.cos(angle[:N])
+        cart[i] = np.concatenate((x, y, z))
+    return cart

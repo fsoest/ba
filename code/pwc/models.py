@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from multiproc.data_preprocessing import rev_angle_embedding
+from multiproc.data_preprocessing import rev_angle_embedding, rev_mult_embedding, rev_out_embedding
 from dataset import WorkDataset
 from multiproc.pwc_helpers import wrapper
 
@@ -17,6 +17,7 @@ class LSTMNetwork(nn.Module):
         super(LSTMNetwork, self).__init__()
 
         self.N = N
+        self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = output_size
         self.batch_size = batch_size
@@ -105,7 +106,7 @@ class LSTMNetwork(nn.Module):
             hidden, cell = self.HiddenCellTest(len(X))
             y_pred, internals = self.forward(X, hidden, cell)
 
-        trans_pred = rev_angle_embedding(y_pred, self.N)
+        trans_pred = rev_mult_embedding(y_pred, self.N)
         E_pred = np.zeros(len(y_pred))
 
         for i in range(len(E_pred)):
