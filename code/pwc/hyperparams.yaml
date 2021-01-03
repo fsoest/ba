@@ -5,8 +5,8 @@ metric:
   name: vwork
 parameters:
   dropout:
-    min: 0
-    max: 0.5
+    min: 0.1
+    max: 0.8
   learning_rate:
     min: 0.001
     max: 0.1
@@ -14,7 +14,7 @@ parameters:
     min: 10
     max: 100
   batch_size:
-    min: 1
+    min: 20
     max: 100
   n_layers:
     min: 1
@@ -27,14 +27,14 @@ parameters:
     min: 10
     max: 1000
   hidden_input_1:
-    min: 300
+    min: 50
     max: 1500
   hidden_input_2:
-    min: 300
+    min: 50
     max: 1500
   hidden_output:
-    min: 200
-    max: 1000
+    min: 50
+    max: 1500
   pat_drop:
     min: 1.5
     max: 5

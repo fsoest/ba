@@ -42,6 +42,8 @@ lr_schedule = torch.optim.lr_scheduler.ExponentialLR(optimiser, decay)
 # %%
 model.learn(train_set, valid_set, optimiser, lr_schedule)
 # %%
+model = torch.load('best_model')
+
 model.work_ratio(data_test, dt)
 # %%
 # Save model

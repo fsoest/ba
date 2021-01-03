@@ -61,7 +61,7 @@ class LSTMNetwork(nn.Module):
         # Parameters for early stopping
         loss_high = 1e3
         count = 0
-        dataloader = DataLoader(train_set, batch_size=self.batch_size, shuffle=True, drop_last=True)
+        dataloader = DataLoader(train_set, batch_size=self.batch_size, shuffle=True, drop_last=True, num_workers=8)
         for epoch in range(max_epoch):
             for i, batch in enumerate(dataloader):
                 print('Batch {} of {}'.format(i, len(train_set) // self.batch_size), end='\r')
@@ -106,7 +106,7 @@ class LSTMNetwork(nn.Module):
             hidden, cell = self.HiddenCellTest(len(X))
             y_pred, internals = self.forward(X, hidden, cell)
 
-        trans_pred = rev_mult_embedding(y_pred, self.N)
+        trans_pred = rev_angle_embedding(y_pred, self.N)
         E_pred = np.zeros(len(y_pred))
 
         for i in range(len(E_pred)):
