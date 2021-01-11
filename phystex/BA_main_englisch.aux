@@ -25,77 +25,102 @@
 \citation{TN_libero_mab2)53517}
 \citation{Maas2013RectifierNI}
 \citation{krizhevsky}
+\citation{LeNail2019}
+\citation{LeNail2019}
 \citation{rumelhart1986learning}
 \citation{10.1007/978-3-642-46466-9_18}
 \citation{doi:10.1162/neco.1997.9.8.1735}
+\citation{NEURIPS2019_9015}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Supervised Machine Learning}{6}\protected@file@percent }
 \newlabel{sml}{{2.3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Fully-connected feedforward ANNs}{6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Long Short-Term Memory}{6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite  {LeNail2019}.\relax }}{7}\protected@file@percent }
+\newlabel{nn}{{2.3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Example RNN with LSTM architecture. Each LSTM block has the same parameters and information is fed into the network sequentially.\relax }}{7}\protected@file@percent }
+\newlabel{rnn}{{2.4}{7}}
 \citation{rumelhart1986learning}
 \citation{nielsenneural}
-\citation{LeNail2019}
-\citation{LeNail2019}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite  {LeNail2019}\relax }}{8}\protected@file@percent }
-\newlabel{nn}{{2.3}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Visualisation of a single LSTM cell. The input $x_t$ enters the cell in the bottom left and is concatenated with the output $h_{t\text  {-}1}$ of the previous cell. The combined data then enters multiple single-layer neural networks represented by orange rectangles with their respective activation function. The forget gate $f_t$ removes data from the previous cell state $c_{t\text  {-}1}$ while $i_t$ and $g_t$ control how new data is added to the memory. $\tanh $ is applied elementwise over the cell state (yellow ellipse) to determine the cell output $h_t$ together with the output gate $o_t$.\relax }}{9}\protected@file@percent }
+\newlabel{lstm}{{2.5}{9}}
 \citation{2020SciPy-NMeth}
 \citation{LeCun2012}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Experimental Results}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Experimental Results}{11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm  {T}$ on Work Output}{9}\protected@file@percent }
-\newlabel{single_work}{{3.2}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm  {T}$ on Work Output}{11}\protected@file@percent }
+\newlabel{single_work}{{3.2}{11}}
 \citation{Deffner_2017}
 \citation{PhysRevA.67.052109}
-\newlabel{dt_0}{{3.1a}{11}}
-\newlabel{sub@dt_0}{{a}{11}}
-\newlabel{dt_eigen}{{3.1b}{11}}
-\newlabel{sub@dt_eigen}{{b}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) We plot the average work $\overline  {W}$ over 500 runs of random excitations divided by amount of qubit changes $N - 1$, with $\rho _0 = \ket {0}\bra {0}$, for multiple $N$. The error bars correspond to the standard deviation $\sigma _{\overline  {W}}$. (b) We plot $\overline  {W}/(N-1)$ for multiple $N$ where the system state is initialised in an eigenstate of the Drive Hamiltonian $H_{DS}$.\relax }}{11}\protected@file@percent }
-\newlabel{dt_dep}{{3.1}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}\protected@file@percent }
-\newlabel{n_2_ml}{{3.2}{11}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ on the test data for models with a single hidden layer with 10 neurons trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{11}\protected@file@percent }
-\newlabel{n2efftable}{{3.1}{11}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Summary and Outlook}{13}\protected@file@percent }
+\citation{Mezzadri}
+\newlabel{dt_0}{{3.1a}{13}}
+\newlabel{sub@dt_0}{{a}{13}}
+\newlabel{dt_eigen}{{3.1b}{13}}
+\newlabel{sub@dt_eigen}{{b}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) We plot the average work $\overline  {W}$ over $n = 500$ runs of random excitations divided by amount of qubit changes $N - 1$, with $\rho _0 = \ket {0}\bra {0}$, for multiple $N$. The error bars correspond to the standard deviation $\sigma _{W} = \sqrt  {\frac  {1}{n-1} \Sigma _i^n (\overline  {W} - W_i)^2}$. (b) We plot $\overline  {W}/(N-1)$ for multiple $N$ where the system state is initialised in an eigenstate of the Drive Hamiltonian $H_{DS}$.\relax }}{13}\protected@file@percent }
+\newlabel{dt_dep}{{3.1}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{13}\protected@file@percent }
+\newlabel{n_2_ml}{{3.2}{13}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ on the test data for models with a single hidden layer with 10 neurons trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{13}\protected@file@percent }
+\newlabel{n2efftable}{{3.1}{13}}
+\citation{wandb}
+\citation{10.5555/1972505}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}$N=5$}{14}\protected@file@percent }
+\newlabel{n_5_ml}{{3.3}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Efficiencies $\eta $ on the test data for model architectures with given number of trainable parameters.\relax }}{14}\protected@file@percent }
+\newlabel{n5efftable}{{3.2}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Noise resistance}{14}\protected@file@percent }
+\newlabel{}{{3.2a}{15}}
+\newlabel{sub@}{{a}{15}}
+\newlabel{}{{3.2b}{15}}
+\newlabel{sub@}{{b}{15}}
+\newlabel{}{{3.2c}{15}}
+\newlabel{sub@}{{c}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces We plot the efficiency $\eta $ of each data point in the test set over its optimal work output $W$ for the three network architectures and $\rho _0 = \ket {+}\bra {+}$. The top and right plots on each graph are histograms for $W$ and $\eta $ respectively.\relax }}{15}\protected@file@percent }
+\newlabel{}{{3.2}{15}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Summary and Outlook}{17}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Derivations}{15}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Derivations}{19}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Single jump work output}{15}\protected@file@percent }
-\newlabel{deriv_jump}{{A.1}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Optimal ? policy for $N=2$}{16}\protected@file@percent }
-\newlabel{n2_opt_pol}{{A.2}{16}}
-\newlabel{opt_cond}{{A.1}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Single jump work output}{19}\protected@file@percent }
+\newlabel{deriv_jump}{{A.1}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{20}\protected@file@percent }
+\newlabel{n2_opt_pol}{{A.2}{20}}
+\newlabel{commutator}{{A.1}{20}}
 \bibstyle{plain}
 \bibdata{biblio}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Training protocols}{17}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Training protocols}{21}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{eds}{{B.1}{17}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{17}\protected@file@percent }
-\newlabel{hyperparams}{{B.1}{17}}
+\newlabel{eds}{{B.1}{21}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{21}\protected@file@percent }
+\newlabel{hyperparams}{{B.1}{21}}
 \bibcite{beyer2020}{1}
-\bibcite{Deffner_2017}{2}
-\bibcite{10.1007/978-3-642-46466-9_18}{3}
-\bibcite{PhysRevA.67.052109}{4}
-\bibcite{doi:10.1162/neco.1997.9.8.1735}{5}
-\bibcite{krizhevsky}{6}
-\bibcite{LeCun2012}{7}
-\bibcite{LeNail2019}{8}
-\bibcite{Lorenzo_2017}{9}
-\bibcite{lu2020dying}{10}
-\bibcite{Maas2013RectifierNI}{11}
-\bibcite{Mitchell97}{12}
-\bibcite{nielsenneural}{13}
-\bibcite{rumelhart1986learning}{14}
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}Bibliography}{19}\protected@file@percent }
+\bibcite{wandb}{2}
+\bibcite{Deffner_2017}{3}
+\bibcite{10.1007/978-3-642-46466-9_18}{4}
+\bibcite{PhysRevA.67.052109}{5}
+\bibcite{doi:10.1162/neco.1997.9.8.1735}{6}
+\bibcite{krizhevsky}{7}
+\bibcite{LeCun2012}{8}
+\bibcite{LeNail2019}{9}
+\bibcite{Lorenzo_2017}{10}
+\bibcite{lu2020dying}{11}
+\bibcite{Maas2013RectifierNI}{12}
+\bibcite{Mezzadri}{13}
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}Bibliography}{23}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\bibcite{2020SciPy-NMeth}{15}
-\bibcite{TN_libero_mab2)53517}{16}
+\bibcite{Mitchell97}{14}
+\bibcite{nielsenneural}{15}
+\bibcite{10.5555/1972505}{16}
+\bibcite{NEURIPS2019_9015}{17}
+\bibcite{rumelhart1986learning}{18}
+\bibcite{2020SciPy-NMeth}{19}
+\bibcite{TN_libero_mab2)53517}{20}
 \global\csname @altsecnumformattrue\endcsname
 \global\@namedef{scr@dte@chapter@lastmaxnumwidth}{18.10382pt}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{25.90468pt}

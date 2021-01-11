@@ -71,13 +71,13 @@ def rev_angle_embedding(X, N, reshape=False):
     if reshape == False:
         for i, x in enumerate(X):
             output[i, :N] = np.arctan2(x[:, 0], x[:, 2])
-            output[i, N:] = np.arctan2(x[:, 1], x[:, 3])
+            output[i, N:] = np.arctan2(x[:, 1], x[:, 3]) % (2 * np.pi)
         return output
     else:
         for i, x in enumerate(X):
             shape = np.reshape(x, (N, 4))
             output[i, :N] = np.arctan2(shape[:, 0], shape[:, 2])
-            output[i, N:] = np.arctan2(shape[:, 1], shape[:, 3]) %(2*np.pi)
+            output[i, N:] = np.arctan2(shape[:, 1], shape[:, 3]) % (2 * np.pi)
         return output
 
 
