@@ -29,7 +29,8 @@ Contrary to the case of $N=2$, the evolution of the system state becomes relevan
 As the work per time step is determined by $\mathrm{dW} = -\Tr{\rho_S \ dH} = \Tr{\rho_S (H_{ST}^i - H_{ST}^{i+1})}$, where $H_{ST} = \bra{\psi_D}\bra{\psi_T} \mathds{1}_D \otimes H_I \ket{\psi_D} \ket{\psi_T}$ is the partial system Hamiltonian acting only between system and transducer, finding the optimal solution is a compromise of choosing $dH$ so as to maximise the expectation value while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
 We plot the optimal and predicted trajectory of a random data point in the test in figure \ref{bloch_10553} set to illustrate this compromise.
 In \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
-In this case, the prediction for $\ket{\psi_T}$ only deviates from 
+In this case, the prediction for $\ket{\psi_T}$ deviates only slightly from the optimum for $i \in [2, N]$ but deviates significantly for $i=0$.
+
 
 \begin{figure}
 	\centering
