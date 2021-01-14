@@ -37,6 +37,9 @@ def energy(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N):
 
 
 def rho_path(theta_d, phi_d, theta_t, phi_t, dt, rho_0, N, res_steps):
+    """
+    res_steps: Steps for dT for calculation
+    """
     E = np.zeros(N, dtype=np.complex128)
     rhos = np.zeros(((N - 1) * res_steps + 1 , 2, 2), dtype=np.complex128)
     rho_step = np.zeros((N, 2, 2), dtype = np.complex128)
