@@ -142,7 +142,7 @@ plt.legend()
 seed = 42
 np.random.seed(seed)
 # %%
-taus = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1]
+taus = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 for tau in taus[1:]:
     fidel = fidelities(data[500, 0], 1000, tau)
     plt.hist(fidel, label=tau)
@@ -177,16 +177,17 @@ for i, tau in enumerate(taus):
         avg_fidel_drive[i, j] = np.mean(fid)
 
 # %%
-
 for i, tau in enumerate(taus):
-    drive_delta = (-1 * noisy_work_drive[i] + work_drive[i])/(np.abs(noisy_work_drive)[i] + np.abs(work_drive)[i])
-    plt.scatter(avg_fidel_drive[i], drive_delta, label=tau, alpha=0.1)
+    drive_delta = (-1 * noisy_work_drive[i] + work_drive[i])#/(np.abs(noisy_work_drive)[i] + np.abs(work_drive)[i])
+    plt.scatter(avg_fidel_drive[i], drive_delta, label=tau, alpha=0.005)
+    plt.scatter(np.mean(avg_fidel_drive[i]), np.mean(drive_delta), c='k', marker='.')
 leg = plt.legend(title='$\\tau$')
 for lh in leg.legendHandles:
     lh.set_alpha(1)
 plt.xlabel('$\overline{F}_D$')
-plt.ylabel('$\epsilon$')
-plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_bi_true_2.png', dpi=300)
+plt.xlim(0.64, 1.01)
+plt.ylabel('$\Delta W$')
+plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_bi_true_3.png', dpi=300)
 
 # %%
 data_points = len(data_test)
@@ -214,16 +215,18 @@ plt.scatter(avg_fidel[i], ratio_avg[i], label=tau, alpha=0.1)
 plt.legend(title='$\\tau$')
 plt.xlabel('$\overline{F}_T$')
 plt.ylabel('$\epsilon$')
-plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true.png', dpi=300)
+# plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true.png', dpi=300)
 
 
 # %%
 for i, tau in enumerate(taus):
-    trans_delta = (-1 * noisy_work_trans[i] + work_trans[i])/(np.abs(noisy_work_trans)[i] + np.abs(work_trans)[i])
-    plt.scatter(avg_fidel_trans[i], trans_delta, label=tau, alpha=0.1)
+    trans_delta = (-1 * noisy_work_trans[i] + work_trans[i])#/(np.abs(noisy_work_trans)[i] + np.abs(work_trans)[i])
+    plt.scatter(avg_fidel_trans[i], trans_delta, label=tau, alpha=0.005)
+    plt.scatter(np.mean(avg_fidel_trans[i]), np.mean(trans_delta), c='k', marker='.')
 leg = plt.legend(title='$\\tau$')
 for lh in leg.legendHandles:
     lh.set_alpha(1)
 plt.xlabel('$\overline{F}_T$')
-plt.ylabel('$\epsilon$')
-plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true_2.png', dpi=300)
+plt.xlim(0.64, 1.01)
+plt.ylabel('$\Delta W$')
+plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true_3.png', dpi=300)

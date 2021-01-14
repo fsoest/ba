@@ -26,3 +26,8 @@ Instead we define the \textit{efficiency} of a model $\textfrak{N}$ on a dataset
 \end{align}
 i.e. the arithmetic mean of the ratios of work output predicted by the model to optimal work output.
 The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D}\}_i, \{\ket{\psi_T}\}_i)$ returns the work given a Drive and Transducer protocol.
+
+It should be noted that using the MSE for training is not an optimal choice, as we will see later.
+Directly using the work extracted would be a better choice, but we refrain from it here for two main reasons.
+Firstly, the interaction Hamiltonian must be known to the experimenter for use as a cost function.
+Secondly, the computation of the extracted work becomes costly for larger $N$.
