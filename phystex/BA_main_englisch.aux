@@ -14,18 +14,15 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Collision model dynamics}{3}\protected@file@percent }
 \newlabel{col_model}{{2.1}{3}}
 \newlabel{coll_eq}{{2.1}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Setting}{3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis shows qubit state in arbitrary units. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm  {T}$ while $\rho _S$ evolves unitarily.\relax }}{4}\protected@file@percent }
+\newlabel{relham}{{2.2}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Piecewise constant implementation of Drive and Transducer qubits: the vertical axis an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm  {T}$ while $\rho _S$ evolves unitarily.\relax }}{5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{pwc}{{2.1}{4}}
+\newlabel{pwc}{{2.1}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta \mathrm  {T}$.\relax }}{5}\protected@file@percent }
+\newlabel{collmodel}{{2.2}{5}}
 \citation{Mitchell97}
 \citation{lu2020dying}
 \citation{TN_libero_mab2)53517}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Collision model used in this work: Drive and Transducer are series of qubits interact once with the system and evolve the reduced density operator $\rho _S$. The qubit configuration can be changed in intervals of $\Delta \mathrm  {T}$.\relax }}{5}\protected@file@percent }
-\newlabel{collmodel}{{2.2}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Supervised Machine Learning}{5}\protected@file@percent }
-\newlabel{sml}{{2.3}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Fully-connected feedforward ANNs}{5}\protected@file@percent }
 \citation{Maas2013RectifierNI}
 \citation{krizhevsky}
 \citation{LeNail2019}
@@ -33,79 +30,82 @@
 \citation{rumelhart1986learning}
 \citation{10.1007/978-3-642-46466-9_18}
 \citation{doi:10.1162/neco.1997.9.8.1735}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Supervised Machine Learning}{6}\protected@file@percent }
+\newlabel{sml}{{2.2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANNs}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}\protected@file@percent }
 \citation{NEURIPS2019_9015}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Long Short-Term Memory}{6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite  {LeNail2019}.\relax }}{7}\protected@file@percent }
 \newlabel{nn}{{2.3}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Example RNN with LSTM architecture. Each LSTM block has the same parameters and information is fed into the network sequentially.\relax }}{7}\protected@file@percent }
 \newlabel{rnn}{{2.4}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Visualisation of a single LSTM cell. The input $x_t$ enters the cell in the bottom left and is concatenated with the output $h_{t\text  {-}1}$ of the previous cell. The combined data then enters multiple single-layer neural networks represented by orange rectangles with their respective activation function. The forget gate $f_t$ removes data from the previous cell state $c_{t\text  {-}1}$ while $i_t$ and $g_t$ control how new data is added to the memory. $\tanh $ is applied elementwise over the cell state (yellow ellipse) to determine the cell output $h_t$ together with the output gate $o_t$.\relax }}{7}\protected@file@percent }
-\newlabel{lstm}{{2.5}{7}}
 \citation{rumelhart1986learning}
 \citation{nielsenneural}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Visualisation of a single LSTM cell. The input $x_t$ enters the cell in the bottom left and is concatenated with the output $h_{t\text  {-}1}$ of the previous cell. The combined data then enters multiple single-layer neural networks represented by orange rectangles with their respective activation function. The forget gate $f_t$ removes data from the previous cell state $c_{t\text  {-}1}$ while $i_t$ and $g_t$ control how new data is added to the memory. $\tanh $ is applied elementwise over the cell state (yellow ellipse) to determine the cell output $h_t$ together with the output gate $o_t$.\relax }}{9}\protected@file@percent }
+\newlabel{lstm}{{2.5}{9}}
 \citation{2020SciPy-NMeth}
 \citation{LeCun2012}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Experimental Results}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Experimental Results}{11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm  {T}$ on Work Output}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Influence of $\Delta \mathrm  {T}$ on Work Output}{11}\protected@file@percent }
 \citation{Deffner_2017}
 \citation{PhysRevA.67.052109}
-\newlabel{single_work}{{3.2}{10}}
+\newlabel{single_work}{{3.2}{12}}
 \citation{Mezzadri}
-\newlabel{dt_0}{{3.1a}{11}}
-\newlabel{sub@dt_0}{{a}{11}}
-\newlabel{dt_eigen}{{3.1b}{11}}
-\newlabel{sub@dt_eigen}{{b}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) We plot the average work $\overline  {W}$ over $n = 500$ runs of random excitations divided by amount of qubit changes $N - 1$, with $\rho _0 = \ket {0}\bra {0}$, for multiple $N$. The error bars correspond to the standard deviation $\sigma _{W} = \sqrt  {\frac  {1}{n-1} \Sigma _i^n (\overline  {W} - W_i)^2}$. (b) We plot $\overline  {W}/(N-1)$ for multiple $N$ where the system state is initialised in an eigenstate of the Drive Hamiltonian $H_{DS}$.\relax }}{11}\protected@file@percent }
-\newlabel{dt_dep}{{3.1}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}\protected@file@percent }
-\newlabel{n_2_ml}{{3.2}{11}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ on the test data for models with a single hidden layer with 10 neurons trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{11}\protected@file@percent }
-\newlabel{n2efftable}{{3.1}{11}}
+\newlabel{dt_0}{{3.1a}{13}}
+\newlabel{sub@dt_0}{{a}{13}}
+\newlabel{dt_eigen}{{3.1b}{13}}
+\newlabel{sub@dt_eigen}{{b}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces (a) We plot the average work $\overline  {W}$ over $n = 500$ runs of random excitations divided by amount of qubit changes $N - 1$, with $\rho _0 = \ket {0}\bra {0}$, for multiple $N$. The error bars correspond to the standard deviation $\sigma _{W} = \sqrt  {\frac  {1}{n-1} \Sigma _i^n (\overline  {W} - W_i)^2}$. (b) We plot $\overline  {W}/(N-1)$ for multiple $N$ where the system state is initialised in an eigenstate of the Drive Hamiltonian $H_{DS}$.\relax }}{13}\protected@file@percent }
+\newlabel{dt_dep}{{3.1}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{13}\protected@file@percent }
+\newlabel{n_2_ml}{{3.2}{13}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Efficiencies $\eta $ on the test data for models with a single hidden layer with 10 neurons trained on drive protocols with $N = 2$ and differing initial states $\rho _0$.\relax }}{13}\protected@file@percent }
+\newlabel{n2efftable}{{3.1}{13}}
 \citation{wandb}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}$N=5, \Delta \mathrm  {T} = 5$}{12}\protected@file@percent }
-\newlabel{n_5_ml}{{3.3}{12}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Efficiencies $\eta $ on the test data for model architectures with given number of trainable parameters.\relax }}{12}\protected@file@percent }
-\newlabel{n5efftable}{{3.2}{12}}
-\newlabel{bloch_10553}{{3.2a}{13}}
-\newlabel{sub@bloch_10553}{{a}{13}}
-\newlabel{bloch_worst}{{3.2b}{13}}
-\newlabel{sub@bloch_worst}{{b}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \textbf  {(a)} We plot the evolution of a single sample from the test set for $N=5$ and $\Delta \mathrm  {T} = 5$. For this sample we have $W_{opt} = 3.03, W_{pred} = 1.11$. Each Bloch sphere shows $\rho _S^i$ (blue dot), $\rho _S^{i+1}$ (black square), the partial system Hamiltonian acting only between system and drive $H_{DS}^i$ (red vector) as well as $H_{ST}^i$ (yellow vector) and $H_{ST}^{i+1}$ (green vector). \textbf  {Top row:} we plot the system dynamics for the transducer series generated by the optimiser for $i \in [1, N - 1]$. In the optimal case, $H_{ST}^i$ is chosen such that $\rho _S$ remains near the x-y-plane for all times and $\Tr {\rho _S^{i+1} H_{DS}^i}$ is large. \textbf  {Bottom row:} we plot the dynamics for the same drive protocol with transducer qubits predicted by the bidirectional LSTM. The overall difference of $\rho _S$ to the x-y-plane is larger. As shown in figure \ref  {bilstmbox}, $\theta _T$ is often set to $\frac  {\pi }{2}$ which maximises the strength of $H_{ST}$ as can be seen in all Bloch spheres in the bottom row. In this case, the $H_{DS}$ are chosen by the network to be antiparallel, irrespective of the current system state. \textbf  {(b)} We show the same plot as in (a) for the worst performing sample from the test set to illustrate a shortcoming of the model. As can be seen from the yellow and green vectors, the predictions for $j \in [2, N]$ are very close to the optimal solutions. However, the first transducer prediction is wrong, deviating from the optimal system dynamics.\relax }}{13}\protected@file@percent }
-\newlabel{}{{3.3a}{14}}
-\newlabel{sub@}{{a}{14}}
-\newlabel{}{{3.3b}{14}}
-\newlabel{sub@}{{b}{14}}
-\newlabel{}{{3.3c}{14}}
-\newlabel{sub@}{{c}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces We plot the efficiency $\eta $ of each data point in the test set over its optimal work output $W$ for the three network architectures and $\rho _0 = \ket {+}\bra {+}$. The top and right plots on each graph are histograms for $W$ and $\eta $ respectively.\relax }}{14}\protected@file@percent }
-\newlabel{}{{3.3}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \textbf  {Top row:} for the bidirectional LSTM network, we plot boxplots of the optimal, predicted and absolute differences of $\theta _T$ for the five qubits of each trajectory in the test set. The prediction for $\theta _T^N$ is very good as the optimal solution is to set it to $\frac  {\pi }{2}$ in all cases to maximise the work output of the final step. The prediction for $\theta _T^0$ is reasonably good as well, as the optimal solution is again $\frac  {\pi }{2}$ in a majority of trajectories. The network is unable to predict the three central qubits, with median absolute differences of approximately $0.5$. \textbf  {Bottom row:} we plot the same quantities as above for the transducer azimuth $\phi _T$.\relax }}{14}\protected@file@percent }
-\newlabel{bilstmbox}{{3.4}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}$N=5, \Delta \mathrm  {T} = 5$}{14}\protected@file@percent }
+\newlabel{n_5_ml}{{3.3}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Efficiencies $\eta $ on the test data for model architectures with given number of trainable parameters.\relax }}{14}\protected@file@percent }
+\newlabel{n5efftable}{{3.2}{14}}
+\newlabel{bloch_10553}{{3.2a}{15}}
+\newlabel{sub@bloch_10553}{{a}{15}}
+\newlabel{bloch_worst}{{3.2b}{15}}
+\newlabel{sub@bloch_worst}{{b}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces \textbf  {(a)} We plot the evolution of a single sample from the test set for $N=5$ and $\Delta \mathrm  {T} = 5$. For this sample we have $W_{opt} = 3.03, W_{pred} = 1.11$. Each Bloch sphere shows $\rho _S^i$ (blue dot), $\rho _S^{i+1}$ (black square), the partial system Hamiltonian acting only between system and drive $H_{DS}^i$ (red vector) as well as $H_{ST}^i$ (yellow vector) and $H_{ST}^{i+1}$ (green vector). \textbf  {Top row:} we plot the system dynamics for the transducer series generated by the optimiser for $i \in [1, N - 1]$. In the optimal case, $H_{ST}^i$ is chosen such that $\rho _S$ remains near the x-y-plane for all times and $\Tr {\rho _S^{i+1} H_{DS}^i}$ is large. \textbf  {Bottom row:} we plot the dynamics for the same drive protocol with transducer qubits predicted by the bidirectional LSTM. The overall difference of $\rho _S$ to the x-y-plane is larger. As shown in figure \ref  {bilstmbox}, $\theta _T$ is often set to $\frac  {\pi }{2}$ which maximises the strength of $H_{ST}$ as can be seen in all Bloch spheres in the bottom row. In this case, the $H_{DS}$ are chosen by the network to be antiparallel, irrespective of the current system state. \textbf  {(b)} We show the same plot as in (a) for the worst performing sample from the test set to illustrate a shortcoming of the model. As can be seen from the yellow and green vectors, the predictions for $j \in [2, N]$ are very close to the optimal solutions. However, the first transducer prediction is wrong, leading to a deviation from the optimal system dynamics.\relax }}{15}\protected@file@percent }
 \citation{10.5555/1972505}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Noise resistance}{15}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces $\Delta W = \overline  {W}_{noise} - W_{pred}$\relax }}{15}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Summary and Outlook}{17}\protected@file@percent }
+\newlabel{}{{3.3a}{16}}
+\newlabel{sub@}{{a}{16}}
+\newlabel{}{{3.3b}{16}}
+\newlabel{sub@}{{b}{16}}
+\newlabel{}{{3.3c}{16}}
+\newlabel{sub@}{{c}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces We plot the efficiency $\eta $ of each data point in the test set over its optimal work output $W$ for the three network architectures and $\rho _0 = \ket {+}\bra {+}$. The top and right plots on each graph are histograms for $W$ and $\eta $ respectively.\relax }}{16}\protected@file@percent }
+\newlabel{}{{3.3}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Noise resistance}{16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces \textbf  {Top row:} for the bidirectional LSTM network, we plot boxplots of the optimal, predicted and absolute differences of $\theta _T$ for the five qubits of each trajectory in the test set. The prediction for $\theta _T^N$ is very good as the optimal solution is to set it to $\frac  {\pi }{2}$ in all cases to maximise the work output of the final step. The prediction for $\theta _T^0$ is reasonably good as well, as the optimal solution is again $\frac  {\pi }{2}$ in a majority of trajectories. The network is unable to predict the three central qubits, with median absolute differences of approximately $0.5$. \textbf  {Bottom row:} we plot the same quantities as above for the transducer azimuth $\phi _T$.\relax }}{17}\protected@file@percent }
+\newlabel{bilstmbox}{{3.4}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces $\Delta W = \overline  {W}_{noise} - W_{pred}$\relax }}{17}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Summary and Outlook}{19}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Derivations}{19}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Derivations}{21}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Single jump work output}{19}\protected@file@percent }
-\newlabel{deriv_jump}{{A.1}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{20}\protected@file@percent }
-\newlabel{n2_opt_pol}{{A.2}{20}}
-\newlabel{commutator}{{A.1}{20}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Single jump work output}{21}\protected@file@percent }
+\newlabel{deriv_jump}{{A.1}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{22}\protected@file@percent }
+\newlabel{n2_opt_pol}{{A.2}{22}}
+\newlabel{commutator}{{A.1}{22}}
 \bibstyle{plain}
 \bibdata{biblio}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Training protocols}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Training protocols}{23}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{eds}{{B.1}{21}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{21}\protected@file@percent }
-\newlabel{hyperparams}{{B.1}{21}}
+\newlabel{eds}{{B.1}{23}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameters used in training for the models in this work.\relax }}{23}\protected@file@percent }
+\newlabel{hyperparams}{{B.1}{23}}
 \bibcite{beyer2020}{1}
 \bibcite{wandb}{2}
 \bibcite{Deffner_2017}{3}
@@ -119,7 +119,7 @@
 \bibcite{lu2020dying}{11}
 \bibcite{Maas2013RectifierNI}{12}
 \bibcite{Mezzadri}{13}
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}Bibliography}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}Bibliography}{25}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{Mitchell97}{14}
