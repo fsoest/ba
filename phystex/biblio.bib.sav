@@ -238,4 +238,47 @@
   url       = {https://link.aps.org/doi/10.1103/PhysRevA.67.052109},
 }
 
+@InCollection{NEURIPS2019_9015,
+  author    = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+  title     = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+  booktitle = {Advances in Neural Information Processing Systems 32},
+  publisher = {Curran Associates, Inc.},
+  year      = {2019},
+  editor    = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d Alch\'{e}-Buc and E. Fox and R. Garnett},
+  pages     = {8024--8035},
+  url       = {http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf},
+}
+
+@Book{10.5555/1972505,
+  title     = {Quantum Computation and Quantum Information: 10th Anniversary Edition},
+  publisher = {Cambridge University Press},
+  year      = {2011},
+  author    = {Nielsen, Michael A. and Chuang, Isaac L.},
+  address   = {USA},
+  edition   = {10th},
+  isbn      = {1107002176},
+  abstract  = {One of the most cited books in physics of all time, Quantum Computation and Quantum Information remains the best textbook in this exciting field of science. This 10th anniversary edition includes an introduction from the authors setting the work in context. This comprehensive textbook describes such remarkable effects as fast quantum algorithms, quantum teleportation, quantum cryptography and quantum error-correction. Quantum mechanics and computer science are introduced before moving on to describe what a quantum computer is, how it can be used to solve problems faster than 'classical' computers and its real-world implementation. It concludes with an in-depth treatment of quantum information. Containing a wealth of figures and exercises, this well-known textbook is ideal for courses on the subject, and will interest beginning graduate students and researchers in physics, computer science, mathematics, and electrical engineering.},
+}
+
+@Article{Mezzadri,
+  author    = {Francesco Mezzadri},
+  title     = {How to generate random matrices from the classical compact groups},
+  journal   = {Notices of the American Mathematical Society},
+  year      = {2007},
+  volume    = {54},
+  number    = {5},
+  pages     = {592 -- 604},
+  month     = may,
+  issn      = {0002-9920},
+  language  = {English},
+  publisher = {American Mathematical Society},
+}
+
+@Misc{wandb,
+  author = {Biewald, Lukas},
+  title  = {Experiment Tracking with Weights and Biases},
+  year   = {2020},
+  url    = {https://www.wandb.com/},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

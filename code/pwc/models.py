@@ -14,6 +14,18 @@ def encoder_mask(data_size, N):
 
 class LSTMNetwork(nn.Module):
     def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        """
+        input_size = Size of input embedding
+        output_size = size of output embedding
+        hidden_size = hidden size of LSTM
+        hidden_input = list, amount of neurons in each dense layer
+        output_hidden = neurons in dense output layer
+        batch_size
+        n_layers
+        N
+        bi
+        dropout
+        """
         super(LSTMNetwork, self).__init__()
 
         self.N = N
@@ -132,7 +144,7 @@ class single_layer_fcANN(nn.Module):
 
 
 class two_layer_fcANN(nn.Module):
-    def __init__(self, neurons, N, batch_size):
+    def __init__(self, neurons, N, batch_size, dropout):
         super(two_layer_fcANN, self).__init__()
 
         self.criterion = torch.nn.MSELoss()
@@ -143,13 +155,17 @@ class two_layer_fcANN(nn.Module):
         self.fc3 = nn.Linear(neurons[1], neurons[2])
         self.fc4 = nn.Linear(neurons[2], 4 * N)
         self.relu = nn.ReLU()
+        self.dropout_layer = torch.nn.Dropout(dropout)
 
     def forward(self, x):
         x = self.fc1(x)
+        x = self.dropout_layer(x)
         x = self.relu(x)
         x = self.fc2(x)
+        x = self.dropout_layer(x)
         x = self.relu(x)
         x = self.fc3(x)
+        x = self.dropout_layer(x)
         x = self.relu(x)
         x = self.fc4(x)
         return x
@@ -176,7 +192,7 @@ class two_layer_fcANN(nn.Module):
             if valid_loss < loss_high:
                 loss_high = valid_loss
                 count = 0
-                torch.save(self, 'best_model')
+                torch.save(self, 'models/N_5_ann')
                 print('Now! Loss: {}'.format(self.calc_loss(valid_set)))
             else:
                 count += 1
@@ -336,4 +352,33 @@ class LastLSTM(LSTMNetwork):
         output = self.relu(output)
         output = self.fc4(output)
         output = torch.reshape(output, (size, self.N, self.output_size))
+        return output, (hidden, cell)
+
+
+class LSTM_batch_norm(LSTMNetwork):
+    def __init__(self, input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout):
+        super(LSTM_batch_norm, self).__init__(input_size, output_size, hidden_size, hidden_input, output_hidden, batch_size, n_layers, N, bi, dropout)
+        self.dropout_layer = torch.nn.Dropout(self.dropout)
+        self.norm1 = torch.nn.BatchNorm1d(N)
+        # self.norm1 = torch.nn.BatchNorm1d(hidden_input[0])
+        # self.norm2 = torch.nn.BatchNorm1d(hidden_input[1])
+        # self.norm3 = torch.nn.BatchNorm1d(output_hidden)
+
+    def forward(self, input, hidden, cell):
+        input = self.fc1(input)
+        input = self.norm1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        input = self.fc2(input)
+        input = self.norm1(input)
+        input = self.dropout_layer(input)
+        input = self.relu(input)
+        output, internals = self.lstm(input, (hidden, cell))
+        hidden, cell = internals
+        output = self.dropout_layer(output)
+        output = self.fc3(output)
+        output = self.norm1(output)
+        output = self.dropout_layer(output)
+        output = self.relu(output)
+        output = self.fc4(output)
         return output, (hidden, cell)

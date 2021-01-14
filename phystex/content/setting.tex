@@ -7,14 +7,17 @@ In the remainder of this work we use the interaction Hamiltonian on the three qu
 	H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}
 \end{equation*}
 unless otherwise noted.
-The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is time span between qubit switching\footnote{It is important to make the distinction between $\Delta \mathrm{T}$ and $\Delta t$ introduced in section \ref{col_model}. $\Delta t$ is the collision time of a single qubit while $\Delta \mathrm{T}$ is the time for which the qubits have the same initial state. For each time step $i$ we therefore have $n = \Delta \mathrm{T} / \Delta t$ qubits initialised in the same state.}:
+The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is time span between qubit switching:
 \begin{align}
 	H_S^i = \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i} \\
-	\rho_S^{i+1} = U^i \rho_S^i U^{i\dagger}, \ U^i = e^{-iH_S^i \Delta \mathrm{T}} \\
+	\rho_S^{i+1} = U_i \rho_S^i U^{\dagger}_i, \ U_i = e^{-iH_S^i \Delta \mathrm{T}} \\
 	W = - \Sigma_i \mathrm{Tr} \ \rho_S^i \ dH_S^i \\
 	dH_S^i = \bra{\psi_D^i}\bra{\psi_T^{i+1}} H_{DST} \ket{\psi_D^i} \ket{\psi_T^{i+1}} - \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i}.	
 \end{align}
 Here we use the partial Hamiltonian $H_S^i$ on S at time step $i \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S^i$.
+
+It is important to make the distinction between $\Delta \mathrm{T}$ and $\Delta t$ introduced in section \ref{col_model}. $\Delta t$ is the collision time of a single qubit while $\Delta \mathrm{T}$ is the time for which the qubits have the same initial state. For each time step $i$ we therefore have $n = \Delta \mathrm{T} / \Delta t$ qubits initialised in the same state.
+
 
 
 \begin{figure}

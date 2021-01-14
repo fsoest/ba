@@ -9,7 +9,7 @@ In this section we review ANNs, following the exposition given in \cite{lu2020dy
 Let $\textfrak{N}$ be a fully-connected feedforward ANN, meaning there are no loops in the neuron connections and all neurons in a layer are connected to every neuron of the next layer, $\textfrak{N}: \mathbb{R}^{n_1} \to \mathbb{R}^{n_L}$. $n_1$ and $n_L$ denote the dimensionality of the input and output respectively. 
 $\textfrak{N}$ has $L$ layers, or columns of neurons.
 The network architecture is given by the amount of neurons $n_l$ in each hidden layer $l \in [2, L - 1]$ (see figure \ref{nn}).
-The neurons in layer $l$ are represented by their activations $\vec{a}_l \in \mathbb{R}^{n_l}$, which represent the matrix multiplication output. Additionally each layer includes trainable parameters $W_l \in \mathbb{R}^{n_{l+1} \times n_{l}}$ and $\vec{b}_l \in \mathbb{R}^{n_l}$ called weights and biases.
+The neurons in layer $l$ are represented by their activations $\vec{a}_l \in \mathbb{R}^{n_l}$, which represent the matrix multiplication output. Additionally each layer includes trainable parameters $W_l \in \mathbb{R}^{n_{l+1} \times n_{l}}$ and $\vec{b}_l \in \mathbb{R}^{n_l}$ called weights and biases respectively.
 The activations can then be calculated using the following formulae \cite{TN_libero_mab2)53517}:
 \begin{align*}
 	\vec{a}_2 & = W_1 \vec{a}_1 + \vec{b}_1, \\
@@ -17,39 +17,54 @@ The activations can then be calculated using the following formulae \cite{TN_lib
 \end{align*}
 where $\xi(x)$ is a function called the activation function applied elementwise. Historically, functions such as $\tanh$ and sigmoid have been used. However, it has been shown \cite{Maas2013RectifierNI, krizhevsky} that the rectified linear unit $\mathrm{ReLU}(x) = \mathrm{max}(0, x)$ often provides better results and is used here.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/nn}
+	\caption{Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite{LeNail2019}.}
+	\label{nn}
+\end{figure}
 
 \subsection{Long Short-Term Memory}
 While the network architecture introduced in the previous section performs reasonably well on many problems, it destroys spatial and temporal correlations present in the data. 
 Instead convolutional and recurrent networks are often used for these purposes, e.g. in image recognition and time series forecasting \cite{rumelhart1986learning, 10.1007/978-3-642-46466-9_18}.
 
 Here we use the LSTM architecture, a type of recurrent neural network (RNN) introduced in \cite{doi:10.1162/neco.1997.9.8.1735}. 
-The core idea of RNNs is the usage of loops to store and propagate information through time.
+The core idea of RNNs is the usage of loops to store and propagate information through time (figure \ref{rnn}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/rnn}
+	\caption{Example RNN with LSTM architecture. Each LSTM block has the same parameters and information is fed into the network sequentially.}
+	\label{rnn}
+\end{figure}
 
 The network is made up of a row of LSTM cells which share parameters.
 The cell uses the current input $x_t$ as well as the previous cell state $c_{t-1}$ and output $h_{t-1}$ to compute the output $h_t$.
 Internally, the cell is comprised of multiple gates which control the storage of information, $i_t, f_t, g_t, o_t$, which are the input, forget, cell and output gates respectively.
-The output and gates of each cell are computed using the following equations:
+The output and gates of each cell are computed using the following equations \cite{NEURIPS2019_9015}:
 \begin{align*}
 i_t & = \sigma (W_{ii} x_t + b_{ii} + W_{hi} h_{t-1} + b_{hi}), \\
 f_t & = \sigma (W_{if} x_t + b_{if} + W_{hf} h_{t-1} + b_{hf}), \\
 g_t & = \tanh (W_{ig} x_t + b_{ig} + W_{hg} h_{t-1} + b_{hg}), \\ 
-o_t & = \sigma (W_{if} x_t + b_{if} + W_{hf} h_{t-1} + b_{hf}), \\
+o_t & = \sigma (W_{io} x_t + b_{io} + W_{ho} h_{t-1} + b_{ho}), \\
 c_t & = f_t \odot c_{t-1} + i_t \odot g_t, \\
-h_t & = o_t \odot \tanh (c_t).
+h_t & = o_t \odot \tanh (c_t),
 \end{align*}
+where $\odot$ is the Hadamard product and $\sigma(x)$ is the sigmoid function.
+The input and forget gates $i_t, f_t$ express to what extent new data should be incorporated or deleted from the current cell state $c_t$ respectively.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/lstm}
+	\caption{Visualisation of a single LSTM cell. The input $x_t$ enters the cell in the bottom left and is concatenated with the output $h_{t\text{-}1}$ of the previous cell. The combined data then enters multiple single-layer neural networks represented by orange rectangles with their respective activation function. The forget gate $f_t$ removes data from the previous cell state $c_{t\text{-}1}$ while $i_t$ and $g_t$ control how new data is added to the memory. $\tanh$ is applied elementwise over the cell state (yellow ellipse) to determine the cell output $h_t$ together with the output gate $o_t$.}
+	\label{lstm}
+\end{figure}
 
 \subsection{Training \& Backpropagation}
 To train an ANN a cost function is defined, often the mean squared error 
 \begin{align*}
 	\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
 \end{align*}
-where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples. $\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ is the output of the neural network.
+where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples. $\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ the output of the neural network.
 The so-called backpropagation algorithm is used to calculate the gradient of the cost function with respect to the trainable parameters and improve the performance of the ANN \cite{rumelhart1986learning, nielsenneural}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{img/nn}
-	\caption{Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite{LeNail2019}}.
-	\label{nn}
-\end{figure}
 
