@@ -3,19 +3,18 @@
 \contentsline {section}{\numberline {1.1}Intro}{1}% 
 \contentsline {chapter}{\numberline {2}Background}{3}% 
 \contentsline {section}{\numberline {2.1}Collision model dynamics}{3}% 
-\contentsline {section}{\numberline {2.2}Setting}{3}% 
-\contentsline {section}{\numberline {2.3}Supervised Machine Learning}{5}% 
-\contentsline {subsection}{\numberline {2.3.1}Fully-connected feedforward ANNs}{5}% 
-\contentsline {subsection}{\numberline {2.3.2}Long Short-Term Memory}{6}% 
-\contentsline {subsection}{\numberline {2.3.3}Training \& Backpropagation}{8}% 
-\contentsline {chapter}{\numberline {3}Experimental Results}{9}% 
-\contentsline {section}{\numberline {3.1}Dependence of $\Delta \mathrm {T}$ on Work Output}{9}% 
-\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{11}% 
-\contentsline {section}{\numberline {3.3}$N=5, \Delta \mathrm {T} = 5$}{12}% 
-\contentsline {subsection}{\numberline {3.3.1}Noise resistance}{15}% 
-\contentsline {chapter}{\numberline {4}Summary and Outlook}{17}% 
-\contentsline {chapter}{\numberline {A}Derivations}{19}% 
-\contentsline {section}{\numberline {A.1}Single jump work output}{19}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{20}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{21}% 
-\contentsline {chapter}{\numberline {C}Bibliography}{23}% 
+\contentsline {section}{\numberline {2.2}Supervised Machine Learning}{6}% 
+\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANNs}{6}% 
+\contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}% 
+\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}% 
+\contentsline {chapter}{\numberline {3}Experimental Results}{11}% 
+\contentsline {section}{\numberline {3.1}Influence of $\Delta \mathrm {T}$ on Work Output}{11}% 
+\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{13}% 
+\contentsline {section}{\numberline {3.3}$N=5, \Delta \mathrm {T} = 5$}{14}% 
+\contentsline {subsection}{\numberline {3.3.1}Noise resistance}{16}% 
+\contentsline {chapter}{\numberline {4}Summary and Outlook}{19}% 
+\contentsline {chapter}{\numberline {A}Derivations}{21}% 
+\contentsline {section}{\numberline {A.1}Single jump work output}{21}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{22}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{23}% 
+\contentsline {chapter}{\numberline {C}Bibliography}{25}% 
