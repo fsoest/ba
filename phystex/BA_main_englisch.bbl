@@ -101,6 +101,12 @@ David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
 \newblock Learning representations by back-propagating errors.
 \newblock {\em Nature}, 323(6088):533--536, October 1986.
 
+\bibitem{bidirrnn}
+Mike Schuster and Kuldip Paliwal.
+\newblock Bidirectional recurrent neural networks.
+\newblock {\em Signal Processing, IEEE Transactions on}, 45:2673 -- 2681, 12
+  1997.
+
 \bibitem{2020SciPy-NMeth}
 Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
   David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan

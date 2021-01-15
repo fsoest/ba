@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from multiproc.data_preprocessing import import_datasets, rev_angle_embedding
+from multiproc.data_preprocessing import import_datasets, rev_angle_embedding, angle_embedding
 from sklearn.model_selection import train_test_split
 from dataset import WorkDataset
 from torch.utils.data import DataLoader
@@ -83,8 +83,8 @@ plt.savefig('/home/fsoest/ba/phystex/img/delta_theta_box.png', dpi=300)
 num_steps = 20
 pred_work.argmax()
 # Calculate trajectories
-curr_arg = 1437#pred_work.argmin()
-curr_arg = np.argsort(pred_work)[5]
+# curr_arg = 1437#pred_work.argmin()
+curr_arg = np.argsort(pred_work)[len(pred_work)//2]
 rho_worst_pred, rho_step_worst, E_worst_pred = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], trans_pred[curr_arg, :N], trans_pred[curr_arg, N:], dt, data_test[curr_arg, 3], N, num_steps)
 rho_worst_real, rho_step_worst_real, E_worst_real = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], data_test[curr_arg, 1][:N], data_test[curr_arg, 1][N:], dt, data_test[curr_arg, 3], N, num_steps)
 
@@ -207,5 +207,71 @@ def bloch_hamiltonian(data, dt, N, trans):
     # plt.show()
     # plt.savefig('/home/fsoest/ba/phystex/img/bloch_10553.png', dpi=300)
 
-idx = 1437#pred_work.argmin()
-bloch_hamiltonian(data_test[idx], dt, N, trans_pred[idx])
+
+bloch_hamiltonian(data_test[curr_arg], dt, N, trans_pred[curr_arg])
+
+# %%
+curr_arg = 10000
+# Look at variation in drive
+inp = np.copy(data_test[curr_arg, 0])
+emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], 5))
+hidden, cell = model.HiddenCellTest(1)
+emb_out = model(emb_inp, hidden, cell)[0].detach().numpy()
+out = rev_angle_embedding(emb_out, 5)[0]
+# Create input that is different in one qubit
+inp_1 = np.copy(inp)
+inp_1[1] = np.pi/2
+inp_1[6] += 1.41
+emb_inp_1 = torch.from_numpy(angle_embedding(inp_1[np.newaxis], 5))
+hidden, cell = model.HiddenCellTest(1)
+emb_out_1 = model(emb_inp_1, hidden, cell)[0].detach().numpy()
+out_1 = rev_angle_embedding(emb_out_1, 5)[0]
+
+
+# Calculate dynamics
+
+rhos_0, rho_0, E_0 = rho_path(inp[:N], inp[N:], out[:N], out[N:], dt, data_test[curr_arg, 3], N, 1)
+rhos_1, rho_1, E_1 = rho_path(inp_1[:N], inp_1[N:], out_1[:N], out_1[N:], dt, data_test[curr_arg, 3], N, 1)
+
+rho_0_vec = np.zeros((N, 3))
+h_sys_0 = np.zeros((N, 3))
+
+rho_1_vec = np.zeros((N, 3))
+h_sys_1 = np.zeros((N, 3))
+
+h_drive_0 = np.zeros((N, 3))
+h_drive_1 = np.zeros((N, 3))
+for i in range(N):
+    rho_0_vec[i] = np.array([2 * np.real(rhos_0[i][0, 1]), 2 * np.imag(rhos_0[i][1, 0]), rhos_0[i][0, 0] - rhos_0[i][1, 1]])
+    h_sys_0[i] = np.sin(out[i]) *  np.array([np.cos(out[i + N]), np.sin(out[i + N]), 0])
+
+    rho_1_vec[i] = np.array([2 * np.real(rhos_1[i][0, 1]), 2 * np.imag(rhos_1[i][1, 0]), rhos_1[i][0, 0] - rhos_1[i][1, 1]])
+    h_sys_1[i] = np.sin(out_1[i]) *  np.array([np.cos(out_1[i + N]), np.sin(out_1[i + N]), 0])
+
+    h_drive_0[i] = np.sin(inp[i]) *  np.array([np.cos(inp[i + N]), np.sin(inp[i + N]), 0])
+    h_drive_1[i] = np.sin(inp_1[i]) *  np.array([np.cos(inp_1[i + N]), np.sin(inp_1[i + N]), 0])
+
+# %%
+fig = plt.figure(figsize=(15, 8))
+for j in range(N-1):
+    ax = fig.add_subplot(2, 4, j + 1, projection='3d')
+    b = cBloch(fig=fig, axes=ax)
+    b.add_points(rho_0_vec[j], colors='b')
+    b.add_points(rho_0_vec[j+1], colors='k')
+    b.add_vectors(h_drive_0[j], colors='r')
+    b.add_vectors(h_sys_0[j], colors='y')
+    b.add_vectors(h_sys_0[j+1], colors='g')
+    b.render(fig=fig, axes=ax)
+
+    ax = fig.add_subplot(2, 4, j + 5, projection='3d')
+    b = cBloch(fig=fig, axes=ax)
+    b.add_points(rho_1_vec[j], colors='b')
+    b.add_points(rho_1_vec[j+1], colors='k')
+    b.add_vectors(h_drive_1[j], colors='r')
+    b.add_vectors(h_sys_1[j], colors='y')
+    b.add_vectors(h_sys_1[j+1], colors='g')
+    b.render(fig=fig, axes=ax)
+
+# %%
+wrapper(out_1, inp_1[:N], inp_1[N:], dt, data_test[curr_arg, 3], N)
+wrapper(out, inp[:N], inp[N:], dt, data_test[curr_arg, 3], N)

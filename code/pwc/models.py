@@ -48,7 +48,6 @@ class LSTMNetwork(nn.Module):
         self.fc4 = nn.Linear(output_hidden, output_size)
         self.relu = nn.ReLU()
 
-
         self.criterion = torch.nn.MSELoss()
 
     def forward(self, input, hidden, cell):

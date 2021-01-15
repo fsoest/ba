@@ -281,4 +281,15 @@
   url    = {https://www.wandb.com/},
 }
 
+@Article{bidirrnn,
+  author  = {Schuster, Mike and Paliwal, Kuldip},
+  title   = {Bidirectional recurrent neural networks},
+  journal = {Signal Processing, IEEE Transactions on},
+  year    = {1997},
+  volume  = {45},
+  pages   = {2673 - 2681},
+  month   = {12},
+  doi     = {10.1109/78.650093},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
