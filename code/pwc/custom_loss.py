@@ -257,7 +257,7 @@ class LSTMNetwork(nn.Module):
         return loss
 
     def work_ratio(self, data, dt):
-        dataset = WorkDataset(data, self.N, 'lstm')
+        dataset = WorkDataset(data, self.N, 'custom_loss')
         with torch.no_grad():
             X = dataset.__getitem__(range(len(dataset)))['x']
             hidden, cell = self.HiddenCellTest(len(X))
