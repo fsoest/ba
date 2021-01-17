@@ -4,12 +4,11 @@ import numpy
 import argparse
 from qutip import rand_ket_haar as rkh
 import numpy as np
-from multiproc.pwc_helpers import state_to_angles, get_eigen_rho
+from multiproc.pwc_helpers import state_to_angles, get_eigen_rho, wrapper
 from sklearn.model_selection import train_test_split
 from dataset import WorkDataset
 from torch.utils.data import DataLoader
 from multiproc.data_preprocessing import rev_angle_embedding
-from pwc_helpers import wrapper
 
 
 def make_rho_0(rho, theta_d_0, phi_d_0):
