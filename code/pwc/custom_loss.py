@@ -8,6 +8,7 @@ from multiproc.pwc_helpers import state_to_angles, get_eigen_rho
 from sklearn.model_selection import train_test_split
 from dataset import WorkDataset
 from torch.utils.data import DataLoader
+from multiproc.data_preprocessing import rev_angle_embedding
 
 
 def make_rho_0(rho, theta_d_0, phi_d_0):
