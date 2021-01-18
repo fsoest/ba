@@ -9,6 +9,12 @@ Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 Lukas Biewald.
 \newblock Experiment tracking with weights and biases, 2020.
 
+\bibitem{Carleo_2019}
+Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld,
+  Naftali Tishby, Leslie Vogt-Maranto, and Lenka Zdeborová.
+\newblock Machine learning and the physical sciences.
+\newblock {\em Reviews of Modern Physics}, 91(4), Dec 2019.
+
 \bibitem{Deffner_2017}
 Sebastian Deffner and Steve Campbell.
 \newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
@@ -48,6 +54,12 @@ Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
 Alexander LeNail.
 \newblock Nn-svg: Publication-ready neural network architecture schematics.
 \newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
+
+\bibitem{Liu2019}
+Feiyang Liu, Yulong Zhang, Oscar Dahlsten, and Fei Wang.
+\newblock Intelligently chosen interventions have potential to outperform the
+  diode bridge in power conditioning.
+\newblock {\em Scientific Reports}, 9(1):8994, Jun 2019.
 
 \bibitem{Lorenzo_2017}
 Salvatore Lorenzo, Francesco Ciccarello, and G.~Massimo Palma.
@@ -107,6 +119,12 @@ Mike Schuster and Kuldip Paliwal.
 \newblock {\em Signal Processing, IEEE Transactions on}, 45:2673 -- 2681, 12
   1997.
 
+\bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
+
 \bibitem{2020SciPy-NMeth}
 Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
   David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan
@@ -119,6 +137,11 @@ Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
 \newblock {{SciPy} 1.0: Fundamental Algorithms for Scientific Computing in
   Python}.
 \newblock {\em Nature Methods}, 17:261--272, 2020.
+
+\bibitem{wise2021using}
+David~F. Wise, John J.~L. Morton, and Siddharth Dhomkar.
+\newblock Using deep learning to understand and mitigate the qubit noise
+  environment, 2021.
 
 \bibitem{TN_libero_mab2)53517}
 Andreas Zell.

@@ -1,4 +1,3 @@
-%In the following section we present our findings.
 The training data is created using a minimisation algorithm \cite{2020SciPy-NMeth}, which finds the optimal Transducer protocol $\{|\psi_T^i \rangle\}$ given a Drive sequence $\{|\psi_D^i \rangle\}$.
 The networks are trained to learn the mapping $\{|\psi_D^i \rangle\} \to \{|\psi_T^i \rangle\}$.
 Both the input (Drive) and output (Transducer) are transformed by the embedding
@@ -15,7 +14,8 @@ Both the input (Drive) and output (Transducer) are transformed by the embedding
 	\end{pmatrix}
 	\right\}.
 \end{align*}
-The reasons for this operation are twofold: it normalises the data to the interval $[-1, 1]$, which is beneficial to learning \cite{LeCun2012}. Additionally it adds information regarding the periodicity of the qubit angle representation.
+The reasons for this operation are twofold: it normalises the data to the interval $[-1, 1]$, which is beneficial to learning \cite{LeCun2012}. Additionally it encodes information regarding the periodicity of the qubit angle representation.
+We add either a zero or a one as an extra input parameter for LSTM training depending on whether or not the input is the last in a sequence.
 
 
 To compare the accuracy of different models a performance indicator is required. 
@@ -28,6 +28,6 @@ i.e. the arithmetic mean of the ratios of work output predicted by the model to 
 The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D}\}_i, \{\ket{\psi_T}\}_i)$ returns the work given a Drive and Transducer protocol.
 
 It should be noted that using the MSE for training is not an optimal choice, as we will see later.
-Directly using the work extracted would be a better choice, but we refrain from it here for two main reasons.
+Directly using the work extracted would be a better choice, but we refrain from it in the first section for two main reasons.
 Firstly, the interaction Hamiltonian must be known to the experimenter for use as a cost function.
-Secondly, the computation of the extracted work becomes costly for larger $N$.
+Secondly, the computation of the extracted work becomes costly for larger $N$, as calculating the work is $O(N)$ while MSE $= O(1)$.

@@ -1,17 +1,53 @@
-In all models we split the data into training and test data, with a test size of 18 \%.
-The models are trained using the Adam optimiser implementation from TensorFlow, with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
+% !TeX spellcheck = en_GB
+In all models we split the data into training, validation and test data with $p_{test} = 18 \%$ and $p_{valid} = 8.2 \%$. 
+The models are implemented using the PyTorch library \cite{NEURIPS2019_9015}. 
+Training is performed over $n$ epochs, in each of which the complete training set is used once in batches of \textit{batch size}.
+In each batch, the gradient of the loss function with regard to the model parameters is calculated.
+The gradient average over the data points in a batch are used to update the trainable parameters.
+We use early stopping to stop training when the value of the cost function on the validation set does not improve for \textit{patience} epochs.
+
+\section{Hyperparameters section \ref{n_2_ml}}
+For $N=2$, we use the Adam optimiser with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
 \begin{equation} \label{eds}
-	\mathrm{LR} \ (i) = \mathrm{initial \ LR} * \mathrm{decay \ rate} ^{i / \mathrm{decay \ steps}},
+\mathrm{LR} \ (i) = \mathrm{initial \ LR} * \mathrm{decay \ rate}^i,
 \end{equation}
-where $i$ denotes the optimiser step. The parameters for equation \ref{eds} as well as the patience for the early stopping routine are listed in table \ref{hyperparams}.
+where $i$ denotes the optimiser step.
+
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c | c | c | c | c | c}
-		Section & Architecture & Patience & Initial LR & Decay Rate & Decay Steps\\
+		Patience & Initial LR & Decay Rate \\
 		\hline
-		\ref{n_2_ml} & [10] & 100 & $10^{-2}$ & 0.96 & 6000  \\
+		100 & $10^{-2}$ & 0.995 \\
 	\end{tabular}
-	\caption{Hyperparameters used in training for the models in this work.}
-	\label{hyperparams}
+	\caption{Hyperparameters used in training for the models in section \ref{n_2_ml}.}
+	\label{hyperparams_n_2}
+\end{table}
+
+\section{Hyperparameters \ref{n_5_ml}}
+The learning rate (LR) is determined by the `Reduce LR on Plateau' schedule.
+The learning rate is multiplied by the hyperparameter \textit{factor} when the cost function does not improve for \textit{patience} / \textit{pat drop} epochs.
+The hyperparameters are optimised using Bayesian optimisation and can be found in Table \ref{hyperparams_n_5}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{l | r}
+		Hyperparameter & Value \\
+		\hline
+		Optimiser & SGD \\
+		Batch size & 44 \\
+		Dropout & 0.3179732914255167 \\
+		Input layer 1 size & 793 \\
+		Input layer 2 size & 488 \\
+		Output layer size & 228 \\
+		LSTM hidden size & 324 \\
+		Initial learning rate & 0.02847560288866327 \\
+		LSTM layers & 3 \\
+		Pat drop & 3.698498258242224 \\
+		Patience & 55 \\
+		Factor & 0.24509238889070978
+	\end{tabular}
+	\caption{Hyperparameters used for the models in section \ref{n_5_ml}.}
+	\label{hyperparams_n_5}
 \end{table}

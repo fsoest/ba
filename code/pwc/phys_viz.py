@@ -54,10 +54,9 @@ plt.xlabel('Transducer qubit')
 plt.savefig('/home/fsoest/ba/phystex/img/theta_pred_box.png', dpi=300)
 # %%
 plt.boxplot(trans_real[:, :N])
-trans_real[:, 0].argmin()
 plt.ylabel('$\\theta_{opt}$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box.png', dpi=300)
 # %%
 plt.boxplot(trans_pred[:, N:] % (2*np.pi))
 plt.ylabel('$\phi_{pred}$')
@@ -211,7 +210,7 @@ def bloch_hamiltonian(data, dt, N, trans):
 bloch_hamiltonian(data_test[curr_arg], dt, N, trans_pred[curr_arg])
 
 # %%
-curr_arg = 10000
+curr_arg = pred_work.argmin()
 # Look at variation in drive
 inp = np.copy(data_test[curr_arg, 0])
 emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], 5))

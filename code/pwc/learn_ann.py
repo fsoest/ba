@@ -7,14 +7,15 @@ import torch
 import numpy as np
 from multiproc.pwc_helpers import wrapper, rho_to_angles
 # %%
-N = 12
+N = 5
 batch_size = 44
 seed = 42
 dt = 5
 rho = 'eigen'
 N_sobol = 10
-runs = range(31)
-neurons = [2000, 2000, 2000]
+runs = range(1)
+neurons = [10]
+# neurons = [2000, 2000, 2000]
 # %%
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
 data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
@@ -37,19 +38,19 @@ sched_factor = 0.24509238889070978
 dropout = 0.3179732914255167
 # %%
 torch.manual_seed(seed)
-# model = single_layer_fcANN(10, N).double()
-model = two_layer_fcANN(neurons, N, batch_size, dropout).double()
+model = single_layer_fcANN(10, N).double()
+# model = two_layer_fcANN(neurons, N, batch_size, dropout).double()
 learning_rate = 0.02847560288866327
 
 criterion = torch.nn.MSELoss()
 optimiser = torch.optim.SGD(model.parameters(), lr=learning_rate)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=sched_factor, patience=patience/pat_drop)
 
-model.learn(train_set, valid_set, optimiser, scheduler, patience=patience)
+model.train(train_set, valid_set, optimiser, scheduler, patience=patience)
 model.eval().work_ratio(data_test, dt)
 
 torch.save(model, 'models/N_5_ann')
-len(data[27000, 0])
+
 len(np.load('multi_train_data/N_12/dt_5_eigen_sobol_10_run_31.npy', allow_pickle=True))
 
 # %%
@@ -57,12 +58,7 @@ len(np.load('multi_train_data/N_12/dt_5_eigen_sobol_10_run_31.npy', allow_pickle
 
 sum(p.numel() for p in model.parameters() if p.requires_grad)
 
-model = torch.load('models/N_5_rho_eigen_lstm_uni')
+model = torch.load('models/N_5_ann')
 model.eval().work_ratio(data_test, dt)
 model
 model.state_dict()
-
-model
-
-model = torch.load('models/N_5_rho_eigen_lstm')
-model

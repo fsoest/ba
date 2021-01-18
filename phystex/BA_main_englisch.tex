@@ -78,11 +78,9 @@ Deutsch \\
 \mainmatter
 
 \chapter{Introduction}
-
-\section{Intro}
 \input{content/intro}
 
-\chapter{Background}
+\chapter{Background} \label{background}
 \section{Collision model dynamics} \label{col_model}
 \input{content/col_model}
 
@@ -94,15 +92,22 @@ Deutsch \\
 
 \chapter{Experimental Results}
 \input{content/exp_res}
-\section{Influence of $\Delta \mathrm{T}$ on Work Output}
+\section{Influence of $\Delta \mathrm{T}$ on Work Output} \label{dep_dt}
 \input{content/dep_of_dt}
 \section{$N=2$: Learning Single Jump Optimal Control Sequences} \label{n_2_ml}
 \input{content/n_2_ml}
-\section{$N=5, \Delta \mathrm{T} = 5$}\label{n_5_ml}
+\section{$N=5$}
+\subsection{$\Delta \mathrm{T} = 5$}\label{n_5_ml}
 \input{content/n_5_ml}
 \input{content/n_5_noise}
 
-\chapter{Summary and Outlook}
+\subsection{$\Delta \mathrm{T} = 1$}
+\input{content/n_5_dt_1}
+
+\section{Extracted work as cost function}\label{work_cost}
+\input{content/work_cost}
+
+\chapter{Summary and Outlook}\label{outlook}
 
 
 \appendix

@@ -60,7 +60,7 @@ class work_loss():
             # Dimensions: [Batch, Time, Embedding]
             sin_phi_D = x[:, :self.N - 1, 1]
             cos_phi_D = x[:, :self.N - 1, 3]
-            exp_phi_D = cos_phi_D + 1j * sin_phi_D
+            # exp_phi_D = cos_phi_D + 1j * sin_phi_D
             rho_0_real = torch.full((x.shape[0], 2, 2), 0.5)
             rho_0_imag = torch.zeros((x.shape[0], 2, 2))
             rho_0_real[:, 1, 0] *= cos_phi_D[:, 0]
@@ -75,10 +75,10 @@ class work_loss():
             # H_D: [batch, time, 2x2 matrix]
             sin_theta_D = x[:, :self.N - 1, 0]
 
-            H_D = torch.zeros((x.shape[0], self.N - 1, 2, 2), dtype=torch.cdouble)
+            # H_D = torch.zeros((x.shape[0], self.N - 1, 2, 2), dtype=torch.cdouble)
 
-            H_D[:, :, 1, 0] = exp_phi_D * sin_theta_D / 2
-            H_D[:, :, 0, 1] = torch.conj(exp_phi_D) * sin_theta_D / 2
+            # H_D[:, :, 1, 0] = exp_phi_D * sin_theta_D / 2
+            # H_D[:, :, 0, 1] = torch.conj(exp_phi_D) * sin_theta_D / 2
 
             H_D_real = torch.zeros((x.shape[0], self.N - 1, 2, 2))
             H_D_imag = torch.zeros((x.shape[0], self.N -1, 2, 2))
@@ -91,12 +91,12 @@ class work_loss():
 
 
         # H_T: [batch, time, 2x2]
-        H_T = torch.zeros((y.shape[0], self.N, 2, 2), dtype=torch.cdouble)
+        # H_T = torch.zeros((y.shape[0], self.N, 2, 2), dtype=torch.cdouble)
         theta_T = torch.atan2(y[:, :, 0], y[:, :, 2])
         phi_T = torch.atan2(y[:, :, 1], y[:, :, 3])
 
-        H_T[:, :, 1, 0] = (torch.cos(phi_T) + 1j * torch.sin(phi_T)) * torch.sin(theta_T) / 2
-        H_T[:, :, 0, 1] = (torch.cos(phi_T) - 1j * torch.sin(phi_T)) * torch.sin(theta_T) / 2
+        # H_T[:, :, 1, 0] = (torch.cos(phi_T) + 1j * torch.sin(phi_T)) * torch.sin(theta_T) / 2
+        # H_T[:, :, 0, 1] = (torch.cos(phi_T) - 1j * torch.sin(phi_T)) * torch.sin(theta_T) / 2
 
         H_T_real = torch.zeros((y.shape[0], self.N, 2, 2))
         H_T_imag = torch.zeros((y.shape[0], self.N, 2, 2))
@@ -110,17 +110,16 @@ class work_loss():
 
         # Abs value of alpha = delta + tau
         # shape: [batch, 2]
-        abs_alpha = torch.sqrt(torch.pow(torch.sin(theta_T[:, :2]), 2) + torch.pow(sin_theta_D[:, :2], 2) + 2 * torch.sin(theta_T[:, :2]) * sin_theta_D[:, :2] * (torch.cos(phi_T[:, :2]) * cos_phi_D[:, :2] + torch.sin(phi_T[:, :2]) * sin_phi_D[:, :2])) / 2
+        abs_alpha = torch.sqrt(torch.pow(torch.sin(theta_T[:, :self.N - 1]), 2) + torch.pow(sin_theta_D[:, :self.N - 1], 2) + 2 * torch.sin(theta_T[:, :self.N - 1]) * sin_theta_D[:, :self.N - 1] * (torch.cos(phi_T[:, :self.N - 1]) * cos_phi_D[:, :self.N - 1] + torch.sin(phi_T[:, :self.N - 1]) * sin_phi_D[:, :self.N - 1])) / 2
 
-        alpha_real = 0.5 * (sin_theta_D[:, :2] * cos_phi_D[:, :2] + torch.sin(theta_T[:, :2]) * torch.cos(phi_T[:, :2]))
-        alpha_imag = 0.5 * (sin_theta_D[:, :2] * sin_phi_D[:, :2] + torch.sin(theta_T[:, :2]) * torch.sin(phi_T[:, :2]))
+        alpha_real = 0.5 * (sin_theta_D[:, :self.N - 1] * cos_phi_D[:, :self.N - 1] + torch.sin(theta_T[:, :self.N - 1]) * torch.cos(phi_T[:, :self.N - 1]))
+        alpha_imag = 0.5 * (sin_theta_D[:, :self.N - 1] * sin_phi_D[:, :self.N - 1] + torch.sin(theta_T[:, :self.N - 1]) * torch.sin(phi_T[:, :self.N - 1]))
 
         # Unitary evolution operator
-        # Shape: [batch, 2, 2, 2]
+        # Shape: [batch, N-1, 2, 2]
 
-
-        U_real = torch.zeros((x.shape[0], 2, 2, 2))
-        U_imag = torch.zeros((x.shape[0], 2, 2, 2))
+        U_real = torch.zeros((x.shape[0], self.N - 1, 2, 2))
+        U_imag = torch.zeros((x.shape[0], self.N - 1, 2, 2))
 
         # Helpers
         c = torch.cos(abs_alpha * self.dt)
@@ -135,24 +134,35 @@ class work_loss():
         U_imag[:, :, 1, 0] = torch.mul(-1 * alpha_real, s)
 
 
-        U_1 = matexp(H_D[:, 0] + H_T[:, 0], self.dt)
-        U_2 = matexp(H_D[:, 1] + H_T[:, 1], self.dt)
+        # U_1 = matexp(H_D[:, 0] + H_T[:, 0], self.dt)
+        # U_2 = matexp(H_D[:, 1] + H_T[:, 1], self.dt)
 
-        # helper = real_matmul(U_1, rho_0)
 
-        helper_real, helper_imag = real_matmul(U_real[:, 0], U_imag[:, 0], rho_0_real, rho_0_imag)
-        rho_1_real, rho_1_imag = real_matmul(helper_real, helper_imag, torch.transpose(U_real[:, 0], 1, 2), -1 * torch.transpose(U_imag[:, 0], 1, 2))
+        # helper_real, helper_imag = real_matmul(U_real[:, 0], U_imag[:, 0], rho_0_real, rho_0_imag)
+        # rho_1_real, rho_1_imag = real_matmul(helper_real, helper_imag, torch.transpose(U_real[:, 0], 1, 2), -1 * torch.transpose(U_imag[:, 0], 1, 2))
+        #
+        # A_1_real, A_1_imag = real_matmul(rho_1_real, rho_1_imag, (H_T_real[:, 1] - H_T_real[:, 0]), (H_T_imag[:, 1] - H_T_imag[:, 0]))
+        # W_1 = A_1_real[:, 0, 0] + A_1_real[:, 1, 1]
+        #
+        # help2_real, help2_imag = real_matmul(U_real[:, 1], U_imag[:, 1], rho_1_real, rho_1_imag)
+        # rho_2_real, rho_2_imag = real_matmul(help2_real, help2_imag, torch.transpose(U_real[:, 1], 1, 2), torch.transpose(-1 * U_imag[:, 1], 1, 2))
+        #
+        # A_2_real, A_2_imag = real_matmul(rho_2_real, rho_2_imag, H_T_real[:, 2] - H_T_real[:, 1], H_T_imag[:, 2] - H_T_imag[:, 1])
+        # W_2 = A_2_real[:, 0, 0] + A_2_real[:, 1, 1]
 
-        A_1_real, A_1_imag = real_matmul(rho_1_real, rho_1_imag, (H_T_real[:, 1] - H_T_real[:, 0]), (H_T_imag[:, 1] - H_T_imag[:, 0]))
-        W_1 = A_1_real[:, 0, 0] + A_1_real[:, 1, 1]
+        W = torch.zeros((x.shape[0]))
 
-        help2_real, help2_imag = real_matmul(U_real[:, 1], U_imag[:, 1], rho_1_real, rho_1_imag)
-        rho_2_real, rho_2_imag = real_matmul(help2_real, help2_imag, torch.transpose(U_real[:, 1], 1, 2), torch.transpose(-1 * U_imag[:, 1], 1, 2))
+        rho_real = rho_0_real
+        rho_imag = rho_0_imag
 
-        A_2_real, A_2_imag = real_matmul(rho_2_real, rho_2_imag, H_T_real[:, 2] - H_T_real[:, 1], H_T_imag[:, 2] - H_T_imag[:, 1])
-        W_2 = A_2_real[:, 0, 0] + A_2_real[:, 1, 1]
+        for i in range(self.N - 1):
+            helper_real, helper_imag = real_matmul(U_real[:, i], U_imag[:, i], rho_real, rho_imag)
+            rho_real, rho_imag = real_matmul(helper_real, helper_imag, torch.transpose(U_real[:, i], 1, 2), -1 * torch.transpose(U_imag[:, i], 1, 2))
+            A_real, A_imag = real_matmul(rho_real, rho_imag, (H_T_real[:, i+1] - H_T_real[:, i]), (H_T_imag[:, i+1] - H_T_imag[:, i]))
+            W += A_real[:, 0, 0] + A_real[:, 1, 1]
 
-        return torch.mean(W_1 + W_2)
+
+        return torch.mean(W)
 
 
 class LSTMNetwork(nn.Module):
@@ -258,7 +268,7 @@ class LSTMNetwork(nn.Module):
         return loss
 
     def work_ratio(self, data, dt):
-        dataset = WorkDataset(data, self.N, 'custom_loss')
+        dataset = WorkDataset(data[:, 0], self.N, 'custom_loss')
         with torch.no_grad():
             X = dataset.__getitem__(range(len(dataset)))['x']
             hidden, cell = self.HiddenCellTest(len(X))
@@ -297,7 +307,7 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
     print('Generating random initial states')
     data = np.zeros((N_x, 2 * N))
     for i in range(N_x):
-        data[i] = create_data(3, dt, rho, 1, seed)
+        data[i] = create_data(N, dt, rho, 1, seed)
     print('Done!')
 
     torch.autograd.set_detect_anomaly(True)
@@ -323,8 +333,8 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
 
     model = torch.load('best_model_custom_loss').eval()
     vloss = model.calc_loss(valid_set)
-    vwork = model.work_ratio(data_test, dt)
-    return epoch, vloss, vwork
+
+    return epoch, vloss
 
 
 opt_args = {
@@ -343,13 +353,13 @@ opt_args = {
     'sched_factor': 'float',
  }
 
-N = 3
+N = 5
 dt = 5
 seed = 42
 rho = 'eigen'
 net = 'custom_loss'
 N_sobol = 1
-N_x = 30000
+N_x = 80000
 
 
 if __name__ == '__main__':
@@ -369,6 +379,6 @@ if __name__ == '__main__':
         elif opt_args[k] == 'string':
             opt_args[k] = v
 
-    epoch, vloss, vwork = train_lstm_total_dropout(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, rho, net)
+    epoch, vloss = train_lstm_total_dropout(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, rho, net)
 
     print(epoch, vloss, vwork)

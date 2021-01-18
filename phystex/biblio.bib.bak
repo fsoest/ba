@@ -292,4 +292,61 @@
   doi     = {10.1109/78.650093},
 }
 
+@Article{article,
+  author  = {Schuster, Mike and Paliwal, Kuldip},
+  title   = {Bidirectional recurrent neural networks},
+  journal = {Signal Processing, IEEE Transactions on},
+  year    = {1997},
+  volume  = {45},
+  pages   = {2673 - 2681},
+  month   = {12},
+  doi     = {10.1109/78.650093},
+}
+
+@Article{DBLP:journals/corr/VaswaniSPUJGKP17,
+  author        = {Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+  title         = {Attention Is All You Need},
+  journal       = {CoRR},
+  year          = {2017},
+  volume        = {abs/1706.03762},
+  archiveprefix = {arXiv},
+  bibsource     = {dblp computer science bibliography, https://dblp.org},
+  biburl        = {https://dblp.org/rec/journals/corr/VaswaniSPUJGKP17.bib},
+  eprint        = {1706.03762},
+  timestamp     = {Mon, 13 Aug 2018 16:48:37 +0200},
+  url           = {http://arxiv.org/abs/1706.03762},
+}
+
+@Article{Carleo_2019,
+  author    = {Carleo, Giuseppe and Cirac, Ignacio and Cranmer, Kyle and Daudet, Laurent and Schuld, Maria and Tishby, Naftali and Vogt-Maranto, Leslie and Zdeborová, Lenka},
+  title     = {Machine learning and the physical sciences},
+  journal   = {Reviews of Modern Physics},
+  year      = {2019},
+  volume    = {91},
+  number    = {4},
+  month     = {Dec},
+  issn      = {1539-0756},
+  doi       = {10.1103/revmodphys.91.045002},
+  publisher = {American Physical Society (APS)},
+  url       = {http://dx.doi.org/10.1103/RevModPhys.91.045002},
+}
+
+@Misc{wise2021using,
+  author        = {David F. Wise and John J. L. Morton and Siddharth Dhomkar},
+  title         = {Using deep learning to understand and mitigate the qubit noise environment},
+  year          = {2021},
+  archiveprefix = {arXiv},
+  eprint        = {2005.01144},
+  primaryclass  = {quant-ph},
+}
+
+@Misc{liu2018intelligent,
+  author        = {Feiyang Liu and Yulong Zhang and Oscar Dahlsten and Fei Wang},
+  title         = {On intelligent energy harvesting},
+  year          = {2018},
+  archiveprefix = {arXiv},
+  eprint        = {1806.10989},
+  primaryclass  = {eess.SP},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
