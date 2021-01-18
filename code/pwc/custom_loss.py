@@ -8,7 +8,7 @@ from multiproc.pwc_helpers import state_to_angles, get_eigen_rho, wrapper
 from sklearn.model_selection import train_test_split
 from dataset import WorkDataset
 from torch.utils.data import DataLoader
-from multiproc.data_preprocessing import rev_angle_embedding
+from multiproc.data_preprocessing import rev_angle_embedding, import_datasets
 
 
 def make_rho_0(rho, theta_d_0, phi_d_0):
@@ -283,41 +283,17 @@ class LSTMNetwork(nn.Module):
         return np.mean(E_pred / data[:, 2])
 
 
-def create_data(N_dim, dt, rho, N_sobol, seed):
-    # Seed
-    np.random.seed(seed)
-
-    # Arrays to save data
-    X = np.zeros(2 * N_dim)
-    # Create uniform drives
-    kets = np.zeros((N_dim, 2, 1), dtype=np.complex128)
-    for j in range(N_dim):
-        kets[j] = rkh(2).full()
-    # Angles from state vectors
-    theta_d, phi_d = state_to_angles(kets)
-    # rho_0 = make_rho_0(rho, theta_d[0], phi_d[0])
-
-    X[:N_dim] = theta_d
-    X[N_dim:] = phi_d
-
-    return X
-
 
 def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_layers, bidirectional, hidden_size, hidden_input_1, hidden_input_2, hidden_output, optimiser, pat_drop, sched_factor, N, dt, rho, net):
-    print('Generating random initial states')
-    data = np.zeros((N_x, 2 * N))
-    for i in range(N_x):
-        data[i] = create_data(N, dt, rho, 1, seed)
-    print('Done!')
 
-    torch.autograd.set_detect_anomaly(True)
-
-
+    data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
     data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
     data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
-    train_set = WorkDataset(data_train, N, net)
-    test_set = WorkDataset(data_test, N, net)
-    valid_set = WorkDataset(data_valid, N, net)
+    train_set = WorkDataset(data_train[:, 0], N, net=net)
+    test_set = WorkDataset(data_test[:, 0], N, net=net)
+    valid_set = WorkDataset(data_valid[:, 0], N, net=net)
+
+    print(len(data))
 
     torch.manual_seed(seed)
     model = LSTMNetwork(5, 4, hidden_size, [hidden_input_1, hidden_input_2], hidden_output, batch_size, n_layers, N, bidirectional, dropout, dt).double()
@@ -333,6 +309,7 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
 
     model = torch.load('best_model_custom_loss').eval()
     vloss = model.calc_loss(valid_set)
+    # vwork = model.work_ratio()
 
     return epoch, vloss
 
@@ -358,8 +335,8 @@ dt = 5
 seed = 42
 rho = 'eigen'
 net = 'custom_loss'
-N_sobol = 1
-N_x = 80000
+N_sobol = 45
+runs = range(40)
 
 
 if __name__ == '__main__':
