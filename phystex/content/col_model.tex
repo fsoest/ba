@@ -19,6 +19,7 @@ This framework allows the experimenter to create system Hamiltonians with arbitr
 In this fashion one can create piece-wise constant Hamiltonians by initialising $n = \frac{\Delta \mathrm{T}}{\Delta t}$ identical ancillas, where $\Delta \mathrm{T}$ is the time for which the Hamiltonian remains constant.
 
 We use this approach as the implementation for our setting, which consists of three qubits: the Drive, System and Transducer qubits. The Drive and Transducer qubits can be set by the experimenter in N discrete steps modelled as piecewise constant functions (PWC) of ($\theta_D, \phi_D$) and ($\theta_T, \phi_T$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state.
+The reason behind using PWC functions instead of continuous is that computational complexity is greatly reduced.
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}

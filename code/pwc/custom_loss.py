@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from dataset import WorkDataset
 from torch.utils.data import DataLoader
 from multiproc.data_preprocessing import rev_angle_embedding, import_datasets
+import wandb
 
 
 def make_rho_0(rho, theta_d_0, phi_d_0):
@@ -309,7 +310,7 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
 
     model = torch.load('best_model_custom_loss').eval()
     vloss = model.calc_loss(valid_set)
-    # vwork = model.work_ratio()
+    # vwork = model.work_ratio(valid_set, dt)
 
     return epoch, vloss
 
@@ -356,6 +357,18 @@ if __name__ == '__main__':
         elif opt_args[k] == 'string':
             opt_args[k] = v
 
+
     epoch, vloss = train_lstm_total_dropout(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, rho, net)
 
-    print(epoch, vloss, vwork)
+    wandb.init(project='custom_loss_dt_{}'.format(dt), config=opt_args)
+    config = wandb.config
+
+    print(epoch, vloss)
+
+    metrics = {
+        'n_epochs': epoch,
+        'validation_loss': vloss,
+        # 'validation_work_ratio': vwork,
+    }
+
+    wandb.log(metrics)

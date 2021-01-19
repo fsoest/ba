@@ -13,12 +13,12 @@
 \contentsline {subsection}{\numberline {3.3.1}$\Delta \mathrm {T} = 5$}{14}{subsection.3.3.1}% 
 \contentsline {subsubsection}{\nonumberline Noise resistance}{16}{section*.13}% 
 \contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{16}{subsection.3.3.2}% 
-\contentsline {section}{\numberline {3.4}Extracted work as cost function}{18}{section.3.4}% 
-\contentsline {chapter}{\numberline {4}Summary and Outlook}{19}{chapter.4}% 
-\contentsline {chapter}{\numberline {A}Derivations}{21}{appendix.A}% 
-\contentsline {section}{\numberline {A.1}Single jump work output}{21}{section.A.1}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{22}{section.A.2}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{23}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{23}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{23}{section.B.2}% 
-\contentsline {chapter}{\numberline {C}Bibliography}{25}{appendix.C}% 
+\contentsline {section}{\numberline {3.4}Extracted work as cost function}{19}{section.3.4}% 
+\contentsline {chapter}{\numberline {4}Summary and Outlook}{21}{chapter.4}% 
+\contentsline {chapter}{\numberline {A}Derivations}{23}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Single jump work output}{23}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{24}{section.A.2}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{25}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{25}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{25}{section.B.2}% 
+\contentsline {chapter}{\numberline {C}Bibliography}{27}{appendix.C}% 
