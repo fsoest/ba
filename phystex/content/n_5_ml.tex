@@ -13,12 +13,12 @@ The test data efficiency as well as the amount of trainable parameters are prese
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{ c | c | c}
-		Network Architecture & $\eta_{test} \ [\%]$  & \# Parameters \\
+	\begin{tabular}{ c | c | c | c}
+		Network Architecture & $\eta_{test} \ [\%]$ & $\mathrm{MSE}_{test}$ & \# Parameters \\
 		\hline
-		FCANN & 19.3 & 8,086,020 \\
-		Bidirectional LSTM & 33.1 & 7,700,222 \\
-		Unidirectional LSTM & 19.5 & 3,206,990\\
+		FCANN & 19.3 & 0.1083 & 8,086,020 \\
+		Bidir. LSTM & 33.1 & 0.0948 & 7,700,222 \\
+		Unidir. LSTM & 19.5 & 0.1707 & 3,206,990\\
 	\end{tabular}
 	\caption{Efficiencies $\eta$ on the test data for model architectures with given number of trainable parameters.}
 	\label{n5efftable}
@@ -31,7 +31,7 @@ We plot the optimal and predicted trajectory of a random data point in the test 
 In \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
 In this case, the prediction for $\ket{\psi_T}$ deviates only slightly from the optimum for $i \in [2, N]$ but deviates significantly for $i=1$.
 This illustrates the problem of using the MSE as a cost function for training - to the network, this is a good prediction as most Transducer qubits are near their optimal setting.
-The deviation in the first qubit leads to a completely different evolution on the system, especially as $\Delta \mathrm{T} = 5$ is large.
+The deviation in the first qubit causes a completely different evolution on the system, especially as $\Delta \mathrm{T} = 5$ is large.
 This leads to a negative work output when following the predicted protocol.
 
 
@@ -80,7 +80,7 @@ This leads to a negative work output when following the predicted protocol.
 Figure \ref{bilstmbox} shows the prediction of the bidirectional LSTM and optimal values for the trajectories of each data point in the test set.
 There is a notable difference in the predictive quality between the first four qubits and the last one: for the final qubit the dynamics after the work extraction step are inconsequential.
 It is therefore beneficial to maximise the strength during the final switching, i.e. setting $\theta_T^N = \frac{\pi}{2}$, to maximise its work output.
-Additionally $\phi_T^N$ is should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$.
+Additionally $\phi_T^N$ is should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$ on the Bloch sphere.
 The LSTM performance on this parameter indicates that the network does learn a representation of the system state $\rho_S$.
 
 

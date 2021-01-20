@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {3.3.1}$\Delta \mathrm {T} = 5$}{14}{subsection.3.3.1}% 
 \contentsline {subsubsection}{\nonumberline Noise resistance}{16}{section*.13}% 
 \contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{16}{subsection.3.3.2}% 
-\contentsline {section}{\numberline {3.4}Extracted work as cost function}{19}{section.3.4}% 
+\contentsline {section}{\numberline {3.4}Extracted work as cost function}{20}{section.3.4}% 
 \contentsline {chapter}{\numberline {4}Summary and Outlook}{21}{chapter.4}% 
 \contentsline {chapter}{\numberline {A}Derivations}{23}{appendix.A}% 
 \contentsline {section}{\numberline {A.1}Single jump work output}{23}{section.A.1}% 

@@ -40,7 +40,7 @@ trans_pred = rev_angle_embedding(y_pred[0].detach().numpy(), N)
 pred_work = np.zeros(len(trans_pred))
 for i, pred in enumerate(trans_pred):
     pred_work[i] = wrapper(pred, data_test[i, 0][:N], data_test[i, 0][N:], dt, data_test[i, 3], N)
-
+np.mean(pred_work)
 # %%
 trans_real = np.zeros((len(data_test), 10))
 for i, data in enumerate(data_test):
@@ -82,7 +82,7 @@ num_steps = 20
 pred_work.argmax()
 # Calculate trajectories
 # curr_arg = 1437#pred_work.argmin()
-curr_arg = 0#pred_work.argmin()#np.argsort(pred_work)[len(pred_work)//2]
+curr_arg = pred_work.argmax()#np.argsort(pred_work)[len(pred_work)//2]
 rho_worst_pred, rho_step_worst, E_worst_pred = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], trans_pred[curr_arg, :N], trans_pred[curr_arg, N:], dt, data_test[curr_arg, 3], N, num_steps)
 rho_worst_real, rho_step_worst_real, E_worst_real = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], data_test[curr_arg, 1][:N], data_test[curr_arg, 1][N:], dt, data_test[curr_arg, 3], N, num_steps)
 
@@ -178,6 +178,7 @@ x_embed = torch.from_numpy(angle_embedding(data_comp[0, 0, np.newaxis], 5))
 hidden, cell = model.HiddenCellTest(1)
 y_pred = model(x_embed, hidden, cell)
 trans_1 = rev_angle_embedding(y_pred[0].detach().numpy(), N)
+
 bloch_hamiltonian(data_comp[0], dt, N, trans_1[0])
 plt.savefig('/home/fsoest/ba/phystex/img/bloch_comp_1.png', dpi=300)
 data_comp

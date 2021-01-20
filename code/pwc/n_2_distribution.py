@@ -26,84 +26,10 @@ data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
 
 data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
 data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
-train_set = WorkDataset(data_train, N, net='lstm')
+train_set = WorkDataset(data_train, N, net='custom_loss')
 test_set = WorkDataset(data_test, N, net='lstm')
 valid_set = WorkDataset(data_valid, N, net='lstm')
-
 # %%
-import torch
-
-from custom_loss import work_loss
-
-loss = work_loss(5, 3)
-d = train_set.__getitem__(0)
-# %%
-
-t = np.load('multiproc/train_data/N_3/dt_5_eigen_sobol_1_run_0.npy', allow_pickle=True)
-
-
-from multiproc.data_preprocessing import angle_embedding
-t[0][0]
-x = angle_embedding(t[0, 0, np.newaxis], 3)
-y = angle_embedding(t[0, 1, np.newaxis], 3)
-t[0, 2]
-# %%
-a = loss.forward(torch.from_numpy(y), torch.from_numpy(x))
-
-
-#%%
-a = torch.full((1,), 0.7628+0.5j, dtype=torch.cfloat)
-b = torch.full((1, ), 0.6466)
-torch.exp(a)
-torch.atan2(c[:, :, 1], c[:, :, 3]) % (2*np.pi)
-c = train_set.__getitem__(range(2))['x']
-c
-a = np.zeros((3, 2, 2), dtype=np.complex128)
-for i in range(3):
-    a[i] = data_train[i, 3]
-from torch._vmap_internals import vmap
-
-
-tens = torch.from_numpy(a)
-tens
-test = torch.from_numpy(np.array([[[1+2j, 3+4j], [5-6j, 7-8j]], [[5-34j, -8j], [10+1j, 6-4j]]]))
-
-b = torch.transpose(test, 1, 2).conj()
-b
-map_trace = vmap(torch.trace)
-
-857/21
-
-
-mse = torch.nn.MSELoss()
-# %%
-%%timeit
-mse(d['y'], d['x'])
-# %%
-map_trace(b.real)
-
-torch.trace(b.real[0])
-
-b[:, 0, 0] + b[:, 1, 1]
-
-torch.trace(torch.real(b))
-
-torch.trace(tens)
-
-test[1].T.conj()
-
-tens[0] @ tens[0]
-torch.matmul(tens, tens)
-torch.trace(tens[])
-tens[:, 0, 0] + tens[:, 1, 1]
-map = vmap(torch.matrix_exp)
-map(tens)
-tens @ tens
-
-tens[2] @ tens[2]
-torch.matrix_exp(tens[0])
-
-train_set.__getitem__(range(2))['x'][:, 0, 1]
 
 # %%
 # model = single_layer_fcANN(10, N).double()

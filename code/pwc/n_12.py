@@ -23,6 +23,15 @@ test_set = WorkDataset(data_test, N, net='ann')
 valid_set = WorkDataset(data_valid, N, net='ann')
 dataloader = DataLoader(train_set, batch_size=batch_size, shuffle=True, drop_last=True, num_workers=8)
 
+len(data_train)/len(data)
+
+len(data_test)/len(data)
+
+len(data_valid)/len(data)
+
+train_set[0]['']
+
+
 # %%
 model = torch.load('models/N_5_rho_eigen_lstm')
 model.N = 12

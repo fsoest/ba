@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-A standard approach to modeling open quantum systems is the collision model.
+A standard approach to modelling open quantum systems is the collision model.
 The system under consideration interacts with a series of ancilla systems through a unitary transformation on the combined system-ancilla state \cite{Lorenzo_2017}. After a short interaction time $\Delta t$, the ancilla systems are traced out to receive the system state.
 This type of interaction will in general lead to entanglement between system and ancilla.
 To ensure the ancilla and system states remain pure, we follow the approach used in \cite{beyer2020}:
@@ -15,11 +15,11 @@ In the continuous limit equation \ref{coll_eq} leads to von-Neumann dynamics on 
 \end{align*}
 
 As each ancilla only interacts once with the system and is traced out afterwards, $\rho_S$ remains pure in the limit of $\Delta t \to 0$.
-This framework allows the experimenter to create system Hamiltonians with arbitrary time dependence by varying the initial ancilla states.
-In this fashion one can create piece-wise constant Hamiltonians by initialising $n = \frac{\Delta \mathrm{T}}{\Delta t}$ identical ancillas, where $\Delta \mathrm{T}$ is the time for which the Hamiltonian remains constant.
+This framework allows one to model system Hamiltonians with arbitrary time dependence by varying the initial ancilla states.
+In this fashion we can create piece-wise constant Hamiltonians by initialising $n = \frac{\Delta \mathrm{T}}{\Delta t}$ identical ancillas, where $\Delta \mathrm{T}$ is the time for which the Hamiltonian remains constant.
 
-We use this approach as the implementation for our setting, which consists of three qubits: the Drive, System and Transducer qubits. The Drive and Transducer qubits can be set by the experimenter in N discrete steps modelled as piecewise constant functions (PWC) of ($\theta_D, \phi_D$) and ($\theta_T, \phi_T$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state.
-The reason behind using PWC functions instead of continuous is that computational complexity is greatly reduced.
+We use this approach as the implementation for our setting, which consists of three qubits: the Drive, System and Transducer qubits. The Drive and Transducer qubits can be set in N discrete steps modelled as piecewise constant functions (PWC) of ($\theta_D, \phi_D$) and ($\theta_T, \phi_T$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state.
+The reason behind using PWC instead of continuous functions is that computational complexity is greatly reduced.
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}

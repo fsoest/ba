@@ -35,6 +35,10 @@ model = torch.load('models/N_5_rho_eigen_lstm').eval()
 
 # %%
 rhos = np.zeros((len(test_set), N, 2, 2), dtype=np.complex128)
-for i, data in data_test:
+for i, data in enumerate(data_test):
     a, b, c = data_wrapper(data, dt, 1)
     rhos[i] = a
+
+x = test_set.__getitem__(range(14400))
+hidden, cell = model.HiddenCellTest(14400)
+y, internals = model(x['x'], hidden, cell)

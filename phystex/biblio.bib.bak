@@ -340,13 +340,20 @@
   primaryclass  = {quant-ph},
 }
 
-@Misc{liu2018intelligent,
-  author        = {Feiyang Liu and Yulong Zhang and Oscar Dahlsten and Fei Wang},
-  title         = {On intelligent energy harvesting},
-  year          = {2018},
-  archiveprefix = {arXiv},
-  eprint        = {1806.10989},
-  primaryclass  = {eess.SP},
+@Article{Liu2019,
+  author   = {Liu, Feiyang and Zhang, Yulong and Dahlsten, Oscar and Wang, Fei},
+  title    = {Intelligently chosen interventions have potential to outperform the diode bridge in power conditioning},
+  journal  = {Scientific Reports},
+  year     = {2019},
+  volume   = {9},
+  number   = {1},
+  pages    = {8994},
+  month    = {Jun},
+  issn     = {2045-2322},
+  abstract = {We probe the potential for intelligent intervention to enhance the power output of energy harvesters. We investigate general principles and a case study: a bi-resonant piezo electric harvester. We consider intelligent interventions via pre-programmed reversible energy-conserving operations. These include voltage bias flips and voltage phase shifts. These can be used to rectify voltages and to remove destructive interference. We choose the intervention type based on past data, using machine learning techniques. We find that in important parameter regimes the resulting interventions can outperform diode-based intervention, which in contrast has a fundamental minimum power dissipation bound.},
+  day      = {20},
+  doi      = {10.1038/s41598-019-45103-4},
+  url      = {https://doi.org/10.1038/s41598-019-45103-4},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
