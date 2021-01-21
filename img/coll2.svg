@@ -14,8 +14,8 @@
    version="1.1"
    id="svg1472"
    sodipodi:docname="coll2.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
-   inkscape:export-filename="/home/felixsoest/Documents/studium/ba/img/collision_model.png"
+   inkscape:version="0.48.5 r10040"
+   inkscape:export-filename="D:\Dokumente\Studium\ba\phystex\img\coll2.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300">
   <defs
@@ -4209,17 +4209,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4264705"
-     inkscape:cx="356.5903"
-     inkscape:cy="161.91826"
+     inkscape:cx="267.87925"
+     inkscape:cy="965.73445"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="998"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1914"
+     inkscape:window-height="1262"
+     inkscape:window-x="20"
+     inkscape:window-y="8"
+     inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true" />
   <metadata
@@ -4230,7 +4230,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -4253,7 +4253,7 @@
        rx="7.7836804"
        ry="6.5601649" />
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-6"
        cx="63.499989"
        cy="12.000001"
@@ -4405,13 +4405,13 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-21"
        cx="81"
        cy="12.000001"
        r="5.9650693" />
     <circle
-       style="fill:#ff0014;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#d62728;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-6-0-5"
        cx="46.000004"
        cy="26.999998"
@@ -4689,7 +4689,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00d1ff;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#1f77b4;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-8-7"
        cx="11.000001"
        cy="12.000001"
@@ -4841,7 +4841,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00d1ff;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#1f77b4;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-5-4"
        cx="28.500002"
        cy="12.000001"
@@ -4993,7 +4993,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-0-0"
        cx="46.000004"
        cy="12.000001"
@@ -5145,43 +5145,43 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-2-7"
        cx="81"
        cy="42.000004"
        r="5.9650693" />
     <circle
-       style="fill:#00d1ff;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#1f77b4;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-3-6"
        cx="11.000001"
        cy="42.000004"
        r="5.9650693" />
     <circle
-       style="fill:#00d1ff;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#1f77b4;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-7-9"
        cx="28.500002"
        cy="42.000004"
        r="5.9650693" />
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-76-7"
        cx="46.000004"
        cy="42.000004"
        r="5.9650693" />
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-2-1"
        cx="63.500004"
        cy="42.000004"
        r="5.9650693" />
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-2-5"
        cx="136"
        cy="11.999722"
        r="5.9650693" />
     <circle
-       style="fill:#00d1ff;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#1f77b4;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-2-3-3"
        cx="136"
        cy="26.999722"
@@ -6856,7 +6856,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-21-3"
        cx="98.5"
        cy="12.000001"
@@ -7052,7 +7052,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-2-7-4"
        cx="98.5"
        cy="42.000004"
@@ -7249,7 +7249,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-21-9"
        cx="116"
        cy="12.000001"
@@ -7445,7 +7445,7 @@
       </g>
     </g>
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#040000;stroke-width:0.069864;stroke-opacity:0"
+       style="fill:#2ca02c;fill-opacity:1;stroke:#040000;stroke-width:0.06986400000000000;stroke-opacity:0"
        id="path1480-1-94-9-2-7-5"
        cx="116"
        cy="42.000004"
