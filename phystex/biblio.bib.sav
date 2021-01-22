@@ -371,4 +371,13 @@
   url       = {https://doi.org/10.1088/1367-2630/aaf749},
 }
 
+@Misc{hinton2012improving,
+  author        = {Geoffrey E. Hinton and Nitish Srivastava and Alex Krizhevsky and Ilya Sutskever and Ruslan R. Salakhutdinov},
+  title         = {Improving neural networks by preventing co-adaptation of feature detectors},
+  year          = {2012},
+  archiveprefix = {arXiv},
+  eprint        = {1207.0580},
+  primaryclass  = {cs.NE},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

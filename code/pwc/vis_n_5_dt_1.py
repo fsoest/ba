@@ -45,44 +45,54 @@ np.mean(pred_work)
 trans_real = np.zeros((len(data_test), 10))
 for i, data in enumerate(data_test):
     trans_real[i] = data[1]
+# %%
+exps = np.zeros((len(data_test), 5, 3))
+for i, data in enumerate(data_test):
+    rhos, rho_step, E = data_wrapper(data, dt, 1)
+    exps[i] = exp_xyz(rhos)
+
+plt.scatter(trans_real[:, 2], exps[:, 3, 2], alpha=0.02)
+
+plt.hist(exps[:, 0, 2])
+
 # Boxplots
 # %%
 plt.boxplot(trans_pred[:, :N])
 plt.ylabel('$\\theta_{pred}$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/theta_pred_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/theta_pred_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(trans_real[:, :N])
 plt.ylabel('$\\theta_{opt}$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(trans_pred[:, N:] % (2*np.pi))
 plt.ylabel('$\phi_{pred}$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/phi_pred_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/phi_pred_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(trans_real[:, N:] % (2*np.pi))
 plt.ylabel('$\phi_{opt}$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/phi_opt_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/phi_opt_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(np.abs((trans_real[:, N:] % (2*np.pi)) - (trans_pred[:, N:] % (2*np.pi))))
 plt.ylabel('$|\phi_{opt} - \phi_{pred}|$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/delta_phi_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/delta_phi_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(np.abs((trans_real[:, :N]) - (trans_pred[:, :N])))
 plt.ylabel('$|\\theta_{opt} - \\theta_{pred}|$')
 plt.xlabel('Transducer qubit')
-# plt.savefig('/home/fsoest/ba/phystex/img/delta_theta_box.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/delta_theta_box_dt_1.png', dpi=300)
 # %%
 # Steps for dt for rho trajectory
 num_steps = 20
 pred_work.argmax()
 # Calculate trajectories
 # curr_arg = 1437#pred_work.argmin()
-curr_arg = pred_work.argmax()#np.argsort(pred_work)[len(pred_work)//2]
+curr_arg = 3996#pred_work.argmax()#np.argsort(pred_work)[len(pred_work)//2]
 rho_worst_pred, rho_step_worst, E_worst_pred = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], trans_pred[curr_arg, :N], trans_pred[curr_arg, N:], dt, data_test[curr_arg, 3], N, num_steps)
 rho_worst_real, rho_step_worst_real, E_worst_real = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], data_test[curr_arg, 1][:N], data_test[curr_arg, 1][N:], dt, data_test[curr_arg, 3], N, num_steps)
 
@@ -173,15 +183,14 @@ def bloch_hamiltonian(data, dt, N, trans):
 bloch_hamiltonian(data_test[curr_arg], dt, N, trans_pred[curr_arg])
 
 # %%
-data_comp = np.load('multiproc/train_data/N_5/dt_1_eigen_sobol_45_run_0.npy', allow_pickle=True)
+data_comp = np.load('multiproc/train_data/N_5/dt_1_eigen_sobol_45_run_69.npy', allow_pickle=True)
 x_embed = torch.from_numpy(angle_embedding(data_comp[0, 0, np.newaxis], 5))
 hidden, cell = model.HiddenCellTest(1)
 y_pred = model(x_embed, hidden, cell)
 trans_1 = rev_angle_embedding(y_pred[0].detach().numpy(), N)
 
 bloch_hamiltonian(data_comp[0], dt, N, trans_1[0])
-plt.savefig('/home/fsoest/ba/phystex/img/bloch_comp_1.png', dpi=300)
-data_comp
+# plt.savefig('/home/fsoest/ba/phystex/img/bloch_comp_1.png', dpi=300)
 wrapper(trans_1[0], data_comp[0, 0][:N], data_comp[0, 0][N:], dt, data_comp[0, 3], N)
 
 # %%
@@ -200,7 +209,6 @@ emb_inp_1 = torch.from_numpy(angle_embedding(inp_1[np.newaxis], 5))
 hidden, cell = model.HiddenCellTest(1)
 emb_out_1 = model(emb_inp_1, hidden, cell)[0].detach().numpy()
 out_1 = rev_angle_embedding(emb_out_1, 5)[0]
-
 
 # Calculate dynamics
 

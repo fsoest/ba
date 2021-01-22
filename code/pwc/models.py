@@ -123,7 +123,22 @@ class LSTMNetwork(nn.Module):
         for i in range(len(E_pred)):
             E_pred[i] = wrapper(trans_pred[i], data[i, 0][:self.N], data[i, 0][self.N:], dt, data[i, 3], self.N)
 
-        return np.mean(E_pred / data[:, 2])
+        return np.mean(E_pred), np.mean(E_pred / data[:, 2])
+
+    def get_work_array(self, data, dt):
+        dataset = WorkDataset(data, self.N, 'lstm')
+        with torch.no_grad():
+            X = dataset.__getitem__(range(len(dataset)))['x']
+            hidden, cell = self.HiddenCellTest(len(X))
+            y_pred, internals = self.forward(X, hidden, cell)
+
+        trans_pred = rev_angle_embedding(y_pred, self.N)
+        E_pred = np.zeros(len(y_pred))
+
+        for i in range(len(E_pred)):
+            E_pred[i] = wrapper(trans_pred[i], data[i, 0][:self.N], data[i, 0][self.N:], dt, data[i, 3], self.N)
+
+        return E_pred
 
 
 class single_layer_fcANN(nn.Module):
@@ -222,7 +237,7 @@ class two_layer_fcANN(nn.Module):
         for i in range(len(E_pred)):
             E_pred[i] = wrapper(trans_pred[i], data[i, 0][:self.N], data[i, 0][self.N:], dt, data[i, 3], self.N)
 
-        return np.mean(E_pred / data[:, 2])
+        return np.mean(E_pred), np.mean(E_pred / data[:, 2])
 
 
 class LSTM_total_dropout(LSTMNetwork):

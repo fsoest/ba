@@ -5,6 +5,7 @@ Training is performed over $n$ epochs, in each of which the complete training se
 In each batch, the gradient of the loss function with regard to the model parameters is calculated.
 The gradient average over the data points in a batch are used to update the trainable parameters.
 We use early stopping to stop training when the value of the cost function on the validation set does not improve for \textit{patience} epochs.
+We apply dropout \cite{hinton2012improving} after all layers except for input and output.
 
 \section{Hyperparameters section \ref{n_2_ml}}
 For $N=2$, we use the Adam optimiser with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
@@ -16,7 +17,7 @@ where $i$ denotes the optimiser step.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{c | c | c | c | c | c}
+	\begin{tabular}{c | c | c }
 		Patience & Initial LR & Decay Rate \\
 		\hline
 		100 & $10^{-2}$ & 0.995 \\
@@ -28,11 +29,12 @@ where $i$ denotes the optimiser step.
 \section{Hyperparameters \ref{n_5_ml}}
 The learning rate (LR) is determined by the `Reduce LR on Plateau' schedule.
 The learning rate is multiplied by the hyperparameter \textit{factor} when the cost function does not improve for \textit{patience} / \textit{pat drop} epochs.
-The hyperparameters are optimised using Bayesian optimisation and can be found in Table \ref{hyperparams_n_5}.
+The hyperparameters are found using Bayesian optimisation and can be found in Table \ref{hyperparams_n_5}.
+The FCANN in Section \ref{n_5_ml} has three hidden layers with 2000 neurons each.
 
-\begin{table}
+\begin{table}[h]
 	\centering
-	\begin{tabular}{l | r}
+	\begin{tabular}{l | l}
 		Hyperparameter & Value \\
 		\hline
 		Optimiser & SGD \\
@@ -42,12 +44,13 @@ The hyperparameters are optimised using Bayesian optimisation and can be found i
 		Input layer 2 size & 488 \\
 		Output layer size & 228 \\
 		LSTM hidden size & 324 \\
+		Large hidden size in Section \ref{n_5_dt1} & 552 \\
 		Initial learning rate & 0.02847560288866327 \\
 		LSTM layers & 3 \\
 		Pat drop & 3.698498258242224 \\
 		Patience & 55 \\
 		Factor & 0.24509238889070978
 	\end{tabular}
-	\caption{Hyperparameters used for the models in section \ref{n_5_ml}.}
+	\caption{Hyperparameters used for the models in Sections \ref{n5} and \ref{work_cost}.}
 	\label{hyperparams_n_5}
 \end{table}

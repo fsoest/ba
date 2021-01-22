@@ -17,15 +17,16 @@ runs = range(40)
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
 data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
 data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
-train_set = WorkDataset(data_train, N, net='lstm')
-test_set = WorkDataset(data_test, N, net='lstm')
-valid_set = WorkDataset(data_valid, N, net='lstm')
+train_set = WorkDataset(data_train, N, net='ann')
+test_set = WorkDataset(data_test, N, net='ann')
+valid_set = WorkDataset(data_valid, N, net='ann')
 
 # %%
 ann = torch.load('models/N_5_ann')
+ann
 ann.work_ratio(data_test, dt)
 ann.calc_loss(test_set)
-
+dt
 # %%
 bi = torch.load('models/N_5_rho_eigen_lstm')
 bi.work_ratio(data_test, dt)

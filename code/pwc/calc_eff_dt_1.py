@@ -34,9 +34,9 @@ bi.work_ratio(data_test, dt)
 sum(p.numel() for p in bi.parameters() if p.requires_grad)
 bi.calc_loss(test_set)
 
-large = torch.load('models/dt_1_uni_large')
+large = torch.load('models/dt_1_uni_large').eval()
 large.work_ratio(data_test, dt)
 sum(p.numel() for p in large.parameters() if p.requires_grad)
 large.calc_loss(test_set)
-
+large
 # %%

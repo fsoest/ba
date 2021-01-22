@@ -35,6 +35,12 @@ Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
 \newblock Quantum limits to dynamical evolution.
 \newblock {\em Phys. Rev. A}, 67:052109, May 2003.
 
+\bibitem{hinton2012improving}
+Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
+  Ruslan~R. Salakhutdinov.
+\newblock Improving neural networks by preventing co-adaptation of feature
+  detectors, 2012.
+
 \bibitem{doi:10.1162/neco.1997.9.8.1735}
 Sepp Hochreiter and Jürgen Schmidhuber.
 \newblock Long short-term memory.

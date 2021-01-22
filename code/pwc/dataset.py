@@ -10,7 +10,6 @@ class WorkDataset(Dataset):
         self.N = N
         self.net = net
 
-
     def __len__(self):
         return len(self.data)
 

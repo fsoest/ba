@@ -281,7 +281,7 @@ class LSTMNetwork(nn.Module):
         for i in range(len(E_pred)):
             E_pred[i] = wrapper(trans_pred[i], data[i, 0][:self.N], data[i, 0][self.N:], dt, data[i, 3], self.N)
 
-        return np.mean(E_pred / data[:, 2])
+        return np.mean(E_pred), np.mean(E_pred / data[:, 2])
 
 
 
@@ -293,8 +293,6 @@ def train_lstm_total_dropout(dropout, learning_rate, patience, batch_size, n_lay
     train_set = WorkDataset(data_train[:, 0], N, net=net)
     test_set = WorkDataset(data_test[:, 0], N, net=net)
     valid_set = WorkDataset(data_valid[:, 0], N, net=net)
-
-    print(len(data))
 
     torch.manual_seed(seed)
     model = LSTMNetwork(5, 4, hidden_size, [hidden_input_1, hidden_input_2], hidden_output, batch_size, n_layers, N, bidirectional, dropout, dt).double()
@@ -357,11 +355,11 @@ if __name__ == '__main__':
         elif opt_args[k] == 'string':
             opt_args[k] = v
 
+    wandb.init(project='custom_loss_dt_{}'.format(dt), config=opt_args)
 
     epoch, vloss = train_lstm_total_dropout(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, rho, net)
 
-    wandb.init(project='custom_loss_dt_{}'.format(dt), config=opt_args)
-    config = wandb.config
+
 
     print(epoch, vloss)
 

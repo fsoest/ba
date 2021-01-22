@@ -11,14 +11,14 @@
 \contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{13}{section.3.2}% 
 \contentsline {section}{\numberline {3.3}$N=5$}{14}{section.3.3}% 
 \contentsline {subsection}{\numberline {3.3.1}$\Delta \mathrm {T} = 5$}{14}{subsection.3.3.1}% 
-\contentsline {subsubsection}{\nonumberline Noise resistance}{16}{section*.13}% 
-\contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{16}{subsection.3.3.2}% 
-\contentsline {section}{\numberline {3.4}Extracted work as cost function}{20}{section.3.4}% 
-\contentsline {chapter}{\numberline {4}Summary and Outlook}{21}{chapter.4}% 
-\contentsline {chapter}{\numberline {A}Derivations}{23}{appendix.A}% 
-\contentsline {section}{\numberline {A.1}Single jump work output}{23}{section.A.1}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{24}{section.A.2}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{25}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{25}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{25}{section.B.2}% 
-\contentsline {chapter}{\numberline {C}Bibliography}{27}{appendix.C}% 
+\contentsline {subsubsection}{\nonumberline Noise resistance}{15}{section*.13}% 
+\contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{15}{subsection.3.3.2}% 
+\contentsline {section}{\numberline {3.4}Extracted work as cost function}{21}{section.3.4}% 
+\contentsline {chapter}{\numberline {4}Summary and Outlook}{23}{chapter.4}% 
+\contentsline {chapter}{\numberline {A}Derivations}{25}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Single jump work output}{25}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{26}{section.A.2}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{27}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{27}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{27}{section.B.2}% 
+\contentsline {chapter}{\numberline {C}Bibliography}{29}{appendix.C}% 
