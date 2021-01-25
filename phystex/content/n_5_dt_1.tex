@@ -47,7 +47,8 @@ We illustrate the difference between $\Delta \mathrm{T} = 1$ and $\Delta \mathrm
 	\begin{tabular}{ c | c | c | c | c }
 		Network Architecture & $\eta_{test} \ [\%]$ & $\mathrm{MSE}_{test}$  & $W_{test}$ & \# Parameters \\
 		\hline
-		Bidir. LSTM & 97.4 & 0.0238& 1.62   & 7,700,222 \\
+		FCANN        & 96.4 & 0.0265 & 1.61 & 8,086,020 \\
+		Bidir. LSTM  & 97.4 & 0.0238 & 1.62 & 7,700,222 \\
 		Unidir. LSTM & 70.1 & 0.0638 & 1.18 & 3,206,990 \\
 		Unidir. LSTM, higher cell state dimension & 69.9 & 0.0637 & 1.17 & 7,704,062 \\
 	\end{tabular}
@@ -70,6 +71,6 @@ We illustrate the difference between $\Delta \mathrm{T} = 1$ and $\Delta \mathrm
 		\caption{$\Delta \mathrm{T} = 5: W_{opt} = 2.42, W_{pred} = 0.57$}
 		\label{}
 	\end{subfigure}
-	\caption{We plot the optimal (top row) and predicted (bottom row) system state and Transducer settings, using the same representations as in Figure \ref{n_5_blochs}, for $\Delta \mathrm{T} = 1$ (a) and $\Delta \mathrm{T} = 5$ (b). For $\Delta \mathrm{T} = 1$, the optimal system state, where $\Tr{\rho_S^i \sigma_z} = 0$, cannot be reached.}
+	\caption{We plot the optimal (top row) and predicted (bottom row) system state and Transducer settings, using the same representations as in Figure \ref{n_5_blochs}, for $\Delta \mathrm{T} = 1$ (a) and $\Delta \mathrm{T} = 5$ (b). The Drive sequence is the same in all rows and is a sample from the test set. For $\Delta \mathrm{T} = 1$, the optimal system state, where $\Tr{\rho_S^i \sigma_z} = 0$, cannot be reached.}
 	\label{}
 \end{figure}

@@ -4,7 +4,7 @@ from multiproc.data_preprocessing import import_datasets
 from sklearn.model_selection import train_test_split
 import numpy as np
 from multiproc.data_preprocessing import angle_embedding, rev_angle_embedding
-from rho_vis import rho_path
+from rho_vis import exp_xyz, data_wrapper, rho_path
 import matplotlib.pyplot as plt
 from colour_bloch import Bloch as cBloch
 
@@ -32,9 +32,26 @@ uni_pred = uni.get_work_array(data_test, dt)
 bi_pred = bi.get_work_array(data_test, dt)
 
 delta = uni_pred - bi_pred
-
-
 plt.hist(delta)
+
+E_uni = np.zeros((len(data_test), 5))
+E_bi = np.zeros((len(data_test), 5))
+E_opt = np.zeros((len(data_test), 5))
+# Calculate predictions of models
+with torch.no_grad():
+    uni_hidden, uni_cell = uni.HiddenCellTest(len(data_test))
+    d = test_set.__getitem__(range(len(data_test)))
+    uni_pred = uni(d['x'], uni_hidden, uni_cell)[0]
+    bi_hidden, bi_cell = bi.HiddenCellTest(len(data_test))
+    bi_pred = bi(d['x'], bi_hidden, bi_cell)[0]
+
+uni_trans = rev_angle_embedding(uni_pred, N)
+bi_trans = rev_angle_embedding(bi_pred, N)
+
+for i, data in enumerate(data_test):
+    E_uni[i] = rho_path(data[0][:N], data[0][N:], uni_trans[i, :N], uni_trans[i, N:], dt, data[3], N, 1)[2]
+    E_bi[i] = rho_path(data[0][:N], data[0][N:], bi_trans[i, :N], bi_trans[i, N:], dt, data[3], N, 1)[2]
+    E_opt[i] = rho_path(data[0][:N], data[0][N:], data[1][:N], data[1][N:], dt, data[3], N, 1)[2]
 
 # %%
 # Plots
@@ -92,3 +109,75 @@ for j in range(N-1):
     b.render(fig=fig, axes=ax)
 np.cumsum(E_0)[-1]
 np.cumsum(E_1)[-1]
+
+# %%
+curr_arg = np.argsort(delta)[len(delta) //2] + 500
+num_steps = 20
+
+inp = np.copy(data_test[curr_arg, 0])
+emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], N))
+hidden, cell = bi.HiddenCellTest(1)
+emb_out = bi(emb_inp, hidden, cell)[0].detach().numpy()
+out = rev_angle_embedding(emb_out, 5)[0]
+rhos_0, rho_0, E_0 = rho_path(inp[:N], inp[N:], out[:N], out[N:], dt, data_test[curr_arg, 3], N, 1)
+inp_1 = np.copy(inp)
+emb_inp_1 = torch.from_numpy(angle_embedding(inp_1[np.newaxis], N))
+hidden, cell = uni.HiddenCellTest(1)
+emb_out_1 = uni(emb_inp_1, hidden, cell)[0].detach().numpy()
+out_1 = rev_angle_embedding(emb_out_1, 5)[0]
+
+
+# Calculate trajectories
+# curr_arg = 1437#pred_work.argmin()
+#pred_work.argmax()#np.argsort(pred_work)[len(pred_work)//2]
+rho_bi_pred, rho_step_bi, E_bi_pred = rho_path(inp[:N], inp[N:], out[:N], out[N:], dt, data_test[curr_arg, 3], N, num_steps)
+
+rho_uni_pred, rho_step_bi, E_uni_pred = rho_path(inp_1[:N], inp_1[N:], out_1[:N], out_1[N:], dt, data_test[curr_arg, 3], N, num_steps)
+
+rho_bi_real, rho_step_bi_real, E_bi_real = rho_path(data_test[curr_arg, 0][:N], data_test[curr_arg, 0][N:], data_test[curr_arg, 1][:N], data_test[curr_arg, 1][N:], dt, data_test[curr_arg, 3], N, num_steps)
+
+
+expec_bi_pred = exp_xyz(rho_bi_pred)
+expec_pred = exp_xyz(rho_bi_real)
+expec_uni_pred = exp_xyz(rho_uni_pred)
+x = np.zeros(num_steps*(N-1)+1)
+x[1:] = np.linspace(1/num_steps, N-1, num_steps*(N-1))
+# %%
+ax1 = plt.subplot(221)
+ax1.plot(x, expec_bi_pred[:, 0], label='Bidir. LSTM')
+ax1.plot(x, expec_uni_pred[:, 0], label='Unidir. LSTM')
+ax1.plot(x, expec_pred[:, 0], label='Optimum')
+ax1.set_ylabel('$<\sigma_x>$')
+ax1.set_ylim(-1.05, 1.05)
+
+ax2 = plt.subplot(222)
+ax2.plot(x,expec_bi_pred[:, 1], label='Bidir. LSTM')
+ax2.plot(x, expec_uni_pred[:, 1], label='Unidir. LSTM')
+ax2.plot(x,expec_pred[:, 1], label='Optimum')
+
+ax2.set_ylabel('$<\sigma_y>$')
+ax2.set_ylim(-1.05, 1.05)
+
+
+ax3 = plt.subplot(223)
+ax3.plot(x, expec_bi_pred[:, 2], label='Bidir. LSTM')
+ax3.plot(x, expec_uni_pred[:, 2], label='Unidir. LSTM')
+ax3.plot(x, expec_pred[:, 2], label='Optimum')
+ax3.set_ylabel('$<\sigma_z>$')
+ax3.set_ylim(-1.05, 1.05)
+
+
+ax4 = plt.subplot(224)
+E_plot_pred = np.zeros(N)
+E_plot_real = np.zeros(N)
+E_plot_uni = np.zeros(N)
+E_plot_pred[1:] = -1*np.cumsum(np.real(E_bi_pred[:-1]))
+E_plot_real[1:] = -1*np.cumsum(np.real(E_bi_real[:-1]))
+E_plot_uni[1:] = -1*np.cumsum(np.real(E_uni_pred[:-1]))
+ax4.plot(E_plot_pred, label='Bidir. LSTM')
+ax4.plot(E_plot_uni, label='Unidir. LSTM')
+ax4.plot(E_plot_real, label='Optimum')
+ax4.legend()
+ax4.set_ylabel('$W$')
+
+plt.tight_layout()

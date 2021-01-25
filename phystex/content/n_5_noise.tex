@@ -11,6 +11,8 @@ To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ 
 	F_{\text{run}}(\{\ket{\phi_j}\}, \{\ket{\psi_j}\}) = \prod_j F(\ket{\phi_j}, \ket{\psi_j}) = \prod_j \abs{\bra{\phi_j}\ket{\psi_j}}.
 \end{align*}
 
+The performance of the bidirectional LSTM on noisy sequences is presented in Figure \ref{noisedt5} 
+
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
@@ -23,5 +25,6 @@ To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ 
 		\includegraphics[width=\textwidth]{img/noisy_trans_bi_true_3}
 		\subcaption{}
 	\end{subfigure}
-	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM and $\Delta \mathrm{T} = 5$. $W_{pred}$ is the work output following the model prediction. In (a), we create 100 noisy drive sequences and calculate the average $\overline{W}_{noise}$ of their work output following the predicted Transducer protocol. In (b)}
+	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM and $\Delta \mathrm{T} = 5$. $W_{pred}$ is the work output following the model prediction. \textbf{(a)} We create 100 noisy Drive sequences and calculate the average $\overline{W}_{noise}$ of their work output following the predicted Transducer protocol. \textbf{(b)} We create 100 noisy Transducer sequences and calculate the average of their work output with a given Drive sequence from the test set. In both plots, the black dots indicate the averaged fidelities and $\Delta W$ for a given $\tau$.}
+	\label{noisedt5}
 \end{figure}

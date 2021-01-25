@@ -14,7 +14,7 @@
 
   \begin{singlespace}\begin{center}\bfseries\Huge
   
-  Title of Bachelor thesis
+  Learning optimal quantum work extraction protocols with recurrent neural networks
   
   \end{center}\end{singlespace}
 
@@ -54,14 +54,20 @@ Eingereicht am 08.~Februar~2021\vspace{1.5em}
 % Abstractseite
 \newpage
 \begin{center}\large\bfseries Summary\end{center}
-
-
-Abstract \\ 
-English: \\
-Aufmerksamkeit
-große Fragen?
-unsere Frage
-unsere Antwort
+%
+%
+%Abstract \\ 
+%English: \\
+%Aufmerksamkeit
+%große Fragen?
+%unsere Frage
+%unsere Antwort
+An interesting question in the field of quantum thermodynamics is finding optimal protocols to extract work from given system.
+We consider a two-state quantum system that can be driven by an arbitrary piecewise constant function, from which work can be extracted.
+We investigate this system with respect to randomly sampled drives and find their optimal extraction policies numerically.
+Using these pairs as training data we apply recurrent neural networks to predict the optimal transducer policy given a drive sequence.
+We find that our approach performs well for certain model parameters, capable of extracting more than 97 \% of optimum.
+Additionally, we explore the robustness of the model predictions with respect to noise.
 
 \vspace{20em}
 Abstract \\ 
@@ -108,7 +114,7 @@ Deutsch \\
 \input{content/work_cost}
 
 \chapter{Summary and Outlook}\label{outlook}
-
+\input{content/outlook}
 
 \appendix
 \chapter{Derivations}
