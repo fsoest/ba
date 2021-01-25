@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from rho_vis import exp_xyz, data_wrapper
 from multiproc.pwc_helpers import wrapper, rho_path, get_eigen_rho
 # %%
-# %%
 # Import model
 N = 75
 model = torch.load('models/dt_1_bi').eval()

@@ -54,8 +54,16 @@ for i, data in enumerate(data_test):
     E_opt[i] = rho_path(data[0][:N], data[0][N:], data[1][:N], data[1][N:], dt, data[3], N, 1)[2]
 
 # %%
+plt.hist(E_uni.min(axis=1), bins=50, label='Unidir. LSTM')
+plt.hist(E_bi.min(axis=1), bins=50, label='Bidir. LSTM')
+plt.hist(E_opt.min(axis=1), bins=50, label='Opt')
+plt.legend()
+
+# %%
+plt.scatter(E_opt.min(axis=1), -1*E_opt.cumsum(axis=1)[:, -1], alpha=0.02)
+# %%
 # Plots
-curr_arg = delta.argmax()
+curr_arg = 5922
 inp = np.copy(data_test[curr_arg, 0])
 emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], N))
 hidden, cell = bi.HiddenCellTest(1)
@@ -110,8 +118,11 @@ for j in range(N-1):
 np.cumsum(E_0)[-1]
 np.cumsum(E_1)[-1]
 
+
+
 # %%
 curr_arg = np.argsort(delta)[len(delta) //2] + 500
+curr_arg
 num_steps = 20
 
 inp = np.copy(data_test[curr_arg, 0])

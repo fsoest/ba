@@ -1,9 +1,9 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
 We apply the methodology of Section \ref{n_5_ml} to the case of $\Delta \mathrm{T} = 1$ with 5 Drive and Transducer qubits.
-Contrary to $\Delta \mathrm{T} = 5$, the optimal system states\footnote{$\Tr{\rho_S^i \sigma_z} = 0$} cannot be reached, leading to a lower total work output following the protocol determined by the optimiser (Figure \ref{dt_dep}).
+Contrary to $\Delta \mathrm{T} = 5$, the optimal system states\footnote{$\Tr{\rho_S^i \sigma_z} = 0$} cannot be reached from every point on the Bloch sphere, leading to a lower total work output following the protocol determined by the optimiser (Figure \ref{dt_dep}).
 
-We train the LSTM networks from Section \ref{n_5_ml} as well a network with a larger cell state dimension to match the amount of trainable parameters of the Bidirectional LSTM.
+We train the LSTM networks from Section \ref{n_5_ml} as well a network with a larger cell state dimension to match the amount of trainable parameters of the bidirectional LSTM.
 The performance of each network is listed in Table \ref{effdt1}.
 We find that all networks perform better than their $\Delta \mathrm{T} = 5$ counterparts, both in terms of efficiency and average work output.
 In addition, the MSE score on the test data is lower, indicating that the predictions themselves are better.
@@ -71,6 +71,6 @@ We illustrate the difference between $\Delta \mathrm{T} = 1$ and $\Delta \mathrm
 		\caption{$\Delta \mathrm{T} = 5: W_{opt} = 2.42, W_{pred} = 0.57$}
 		\label{}
 	\end{subfigure}
-	\caption{We plot the optimal (top row) and predicted (bottom row) system state and Transducer settings, using the same representations as in Figure \ref{n_5_blochs}, for $\Delta \mathrm{T} = 1$ (a) and $\Delta \mathrm{T} = 5$ (b). The Drive sequence is the same in all rows and is a sample from the test set. For $\Delta \mathrm{T} = 1$, the optimal system state, where $\Tr{\rho_S^i \sigma_z} = 0$, cannot be reached.}
+	\caption{We plot the optimal (top row) and predicted (bottom row) system state and Transducer settings for the bidirectional LSTM, using the same representations as in Figure \ref{n_5_blochs}, for $\Delta \mathrm{T} = 1$ (a) and $\Delta \mathrm{T} = 5$ (b). The Drive sequence is the same in all rows and is a sample from the test set. For $\Delta \mathrm{T} = 1$, the optimal system state, where $\Tr{\rho_S^i \sigma_z} = 0$, cannot be reached.}
 	\label{}
 \end{figure}

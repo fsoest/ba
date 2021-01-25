@@ -30,11 +30,12 @@ unless otherwise noted.
 The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is time span between qubit switching:
 \begin{align}
 H_S^i &= \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i} \label{relham}\\
-\rho_S^{i+1} &= U_i \rho_S^i U^{\dagger}_i, \ U_i = e^{-iH_S^i \Delta \mathrm{T}} \\
-W &= - \Sigma_i \mathrm{Tr} \ \rho_S^i \ dH_S^i \\
+\rho_S &((i+1) \Delta \mathrm{T}) = U_i \ \rho_S(i \Delta \mathrm{T}) \ U^{\dagger}_i \\
+U_i &= e^{-iH_S^i \Delta \mathrm{T}} \\
+W &= - \Sigma_i \Tr{\rho_S(i \Delta \mathrm{T}) \ dH_S^i} \\
 dH_S^i &= \bra{\psi_D^i}\bra{\psi_T^{i+1}} H_{DST} \ket{\psi_D^i} \ket{\psi_T^{i+1}} - \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i}.	
 \end{align}
-Here we use the partial Hamiltonian $H_S^i$ on S at time step $i \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S^i$.
+Here we use the partial Hamiltonian $H_S^i$ on S at time step $i \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S(i \Delta \mathrm{T})$.
 
 Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent Drive and Transducer qubits reduces equation \ref{relham} to
 \begin{align}
@@ -44,7 +45,7 @@ Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{img/pwc}
-	\caption{Piecewise constant implementation of Drive and Transducer qubits: the vertical axis an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily.}
+	\caption{Piecewise constant implementation of Drive and Transducer qubits: the vertical axis an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily. The piece-wise constant Drive and Transducer settings lead to a piece-wise constant system Hamiltonian.}
 	\label{pwc}
 \end{figure}
 

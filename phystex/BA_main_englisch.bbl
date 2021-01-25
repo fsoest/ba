@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{Banchi_2018}
+Leonardo Banchi, Edward Grant, Andrea Rocchetto, and Simone Severini.
+\newblock Modelling non-markovian quantum processes with recurrent neural
+  networks.
+\newblock {\em New Journal of Physics}, 20(12):123030, dec 2018.
+
 \bibitem{beyer2020}
 Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 \newblock Work as an external quantum observable and an operational quantum
@@ -21,6 +27,12 @@ Sebastian Deffner and Steve Campbell.
   optimal quantum control.
 \newblock {\em Journal of Physics A: Mathematical and Theoretical},
   50(45):453001, Oct 2017.
+
+\bibitem{PhysRevX.10.011006}
+E.~Flurin, L.~S. Martin, S.~Hacohen-Gourgy, and I.~Siddiqi.
+\newblock Using a recurrent neural network to reconstruct quantum dynamics of a
+  superconducting qubit from physical observations.
+\newblock {\em Phys. Rev. X}, 10:011006, Jan 2020.
 
 \bibitem{10.1007/978-3-642-46466-9_18}
 Kunihiko Fukushima and Sei Miyake.

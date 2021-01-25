@@ -8,8 +8,6 @@ from rho_vis import rho_path
 import matplotlib.pyplot as plt
 from colour_bloch import Bloch as cBloch
 
-
-
 N = 5
 seed = 42
 batch_size = 44

@@ -1,14 +1,14 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
-In this section we examine the higherdimensional case of $N=5$.
+In this section we examine the higher-dimensional case of $N=5$.
 As the data set with $\rho_0 = \ket{+} \bra{+}$, the eigenstate of the Drive Hamiltonian, performed best in the previous section, we focus our attention on this case.
 We compare the efficiency of a fully connected ANN (FCANN) to a unidirectional and bidirectional LSTM to analyse the effect of different architectures on the predictive power in our setting.
 Both LSTM networks have the same architecture, bar the bi-directionality (see Figure \ref{lstm_network}).
-Before entering the LSTM cell, each embedded $\ket{\psi_D}$ passes through a two layer FCANN to increase the input dimensionality. 
+This hyperparameter distinguished the two cases of whether or not the complete drive sequence is known in advance.
+Before entering the LSTM cell, each embedded $\ket{\psi_D}$ passes through a two layer FCANN to increase the input dimensionality.
 After passing the LSTM a single layer FCANN is applied to the output to produce the embedding size to recover $\ket{\psi_T}$.
 The third network uses three fully connected hidden layers, the size of which is selected to approximately match the amount of trainable parameters of the bidirectional LSTM.
 
-We use Bayesian optimisation implemented by \cite{wandb} to tune model hyperparameters.
 The test data efficiency as well as the amount of trainable parameters are presented in Table \ref{n5efftable}.
 
 \begin{figure}
@@ -31,7 +31,7 @@ The test data efficiency as well as the amount of trainable parameters are prese
 	\label{n5efftable}
 \end{table}
 
-The efficiency of the best model for $N=5$ is drastically lower than that for $N=2$.
+The efficiency of the best model for $N=5, \Delta \mathrm{T} = 5$ is drastically lower than that for $N=2$.
 Contrary to the case of $N=2$, the evolution of the system state becomes relevant over multiple time steps.
 As the work per time step is determined by $\mathrm{dW} = -\Tr{\rho_S \ dH} = \Tr{\rho_S (H_{ST}^i - H_{ST}^{i+1})}$, where $H_{ST} = \bra{\psi_D}\bra{\psi_T} \mathds{1}_D \otimes H_I \ket{\psi_D} \ket{\psi_T}$ is the partial system Hamiltonian acting only between system and Transducer, finding the optimal solution is a compromise of choosing $dH$ so as to maximise the expectation value while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
 We plot the optimal and predicted trajectory of a random data point in the test in Figure \ref{bloch_10553} set to illustrate this compromise.
@@ -89,7 +89,7 @@ Figure \ref{bilstmbox} shows the prediction of the bidirectional LSTM and optima
 There is a notable difference in the predictive quality between the first four qubits and the last one: for the final qubit the dynamics after the work extraction step are inconsequential.
 It is therefore beneficial to maximise the strength during the final switching, i.e. setting $\theta_T^N = \frac{\pi}{2}$, to maximise its work output.
 Additionally $\phi_T^N$ is should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$ on the Bloch sphere.
-The LSTM performance on this parameter indicates that the network does learn a representation of the system state $\rho_S$.
+%The LSTM performance on this parameter indicates that the network does learn a representation of the system state $\rho_S$.
 
 
 \begin{figure}

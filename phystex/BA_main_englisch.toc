@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {3.3}$N=5$}{14}{section.3.3}% 
 \contentsline {subsection}{\numberline {3.3.1}$\Delta \mathrm {T} = 5$}{14}{subsection.3.3.1}% 
 \contentsline {subsubsection}{\nonumberline Noise resistance}{15}{section*.13}% 
-\contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{15}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{18}{subsection.3.3.2}% 
 \contentsline {section}{\numberline {3.4}Extracted work as cost function}{21}{section.3.4}% 
 \contentsline {chapter}{\numberline {4}Summary and Outlook}{23}{chapter.4}% 
 \contentsline {chapter}{\numberline {A}Derivations}{25}{appendix.A}% 

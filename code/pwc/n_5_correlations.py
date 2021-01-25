@@ -31,24 +31,20 @@ class CellDataset(Dataset):
     """
     Dataset to process cell states, takes model as well as raw data as inputs
     """
-    def __init__(self, qub, cell, rhos):
-        self.qub = qub
-        self.cell = cell
+    def __init__(self, inpcell, rhos):
         self.rhos = rhos
+        self.cell = inpcell.permute(1, 0, 2).reshape(inpcell.shape[1], 6 * 324)
 
     def __len__(self):
         return len(self.rhos)
 
     def __getitem__(self, idx):
-        """
-        ith qubit
-        """
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        ith_rho = torch.from_numpy(self.rhos[idx, self.qub])
+        rho = torch.from_numpy(self.rhos[idx, -1])
 
-        return {'x': self.cell[self.qub + 1, idx], 'y': ith_rho}
+        return {'x': self.cell[idx], 'y': rho}
 
 
 class correl_model(torch.nn.Module):
@@ -168,16 +164,16 @@ train_set = WorkDataset(data_train, N, net='lstm')
 test_set = WorkDataset(data_test, N, net='lstm')
 valid_set = WorkDataset(data_valid, N, net='lstm')
 # %%
-rhos_train = np.zeros((len(data_train) // 2, N, 2, 2), dtype=np.complex128)
-for i, data in enumerate(data_train[:len(data_train) //2]):
+rhos_train = np.zeros((len(data_train), N, 2, 2), dtype=np.complex128)
+for i, data in enumerate(data_train[:len(data_train)]):
     a, b, c = data_wrapper(data, dt, 1)
     rhos_train[i] = a
 
 with torch.no_grad():
-    x = train_set.__getitem__(range(len(data_train) // 2))
-    hidden, cell = model.HiddenCellTest(len(data_train) // 2)
+    x = train_set.__getitem__(range(len(data_train)))
+    hidden, cell = model.HiddenCellTest(len(data_train))
     y, internals_train = model(x['x'], hidden, cell)
-train_set_cell = CellDataset(qub, internals_train[1], rhos_train)
+train_set_cell = CellDataset(internals_train[1], rhos_train)
 # %%
 rhos_valid = np.zeros((len(data_valid), N, 2, 2), dtype=np.complex128)
 for i, data in enumerate(data_valid):
@@ -188,7 +184,7 @@ with torch.no_grad():
     x = valid_set.__getitem__(range(len(data_valid)))
     hidden, cell = model.HiddenCellTest(len(data_valid))
     y, internals_valid = model(x['x'], hidden, cell)
-valid_set_cell = CellDataset(qub, internals_valid[1], rhos_valid)
+valid_set_cell = CellDataset(internals_valid[1], rhos_valid)
 
 # %%
 rhos_test = np.zeros((len(data_test), N, 2, 2), dtype=np.complex128)
@@ -200,20 +196,15 @@ with torch.no_grad():
     x = test_set.__getitem__(range(len(data_test)))
     hidden, cell = model.HiddenCellTest(len(data_test))
     y, internals_test = model(x['x'], hidden, cell)
-test_set_cell = CellDataset(qub, internals_test[1], rhos_test)
+test_set_cell = CellDataset(internals_test[1], rhos_test)
 # %%
-cellmodel = correl_model(324, batch_size, 500).double()
+cellmodel = correl_model(6*324, batch_size, 500).double()
 
 optimiser = torch.optim.SGD(cellmodel.parameters(), lr=learning_rate, momentum=0.99, dampening=0, weight_decay=0, nesterov=True)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=sched_factor, patience=patience/pat_drop)
 
+
 cellmodel.learn(train_set_cell, valid_set_cell, optimiser, scheduler)
-cellmodel(train_set_cell.__getitem__(range(len(train_set_cell)))['x']).shape
-len(valid_set_cell)
-
-valid_set_cell.__getitem__(6560)
-
-s = model.get_work_array(data_test, dt)
 
 # %%
 cellmodelload = torch.load('cellmodel').eval()
@@ -222,7 +213,3 @@ with torch.no_grad():
     pred_test = cellmodelload(test_set_cell.__getitem__(range(len(test_set_cell)))['x'])
 
 dist_test = cellmodelload.dist(pred_test, y_test)
-
-plt.scatter(s, dist_test, alpha=0.02)
-
-plt.hist(dist_test)

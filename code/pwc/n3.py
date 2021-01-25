@@ -21,3 +21,7 @@ test_set = WorkDataset(data_test, N, 'lstm')
 bi = torch.load('models/dt_1_bi').eval()
 bi.N = N
 bi.work_ratio(data_test, dt)
+# %%
+uni = torch.load('models/dt_1_uni').eval()
+uni.N = N
+uni.work_ratio(data_test, dt)
