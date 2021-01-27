@@ -33,7 +33,7 @@ The test data efficiency as well as the amount of trainable parameters are prese
 
 The efficiency of the best model for $N=5, \Delta \mathrm{T} = 5$ is drastically lower than that for $N=2$.
 Contrary to the case of $N=2$, the evolution of the system state becomes relevant over multiple time steps.
-As the work per time step is determined by $\mathrm{dW} = -\Tr{\rho_S \ dH} = \Tr{\rho_S (H_{ST}^i - H_{ST}^{i+1})}$, where $H_{ST} = \bra{\psi_D}\bra{\psi_T} \mathds{1}_D \otimes H_I \ket{\psi_D} \ket{\psi_T}$ is the partial system Hamiltonian acting only between system and Transducer, finding the optimal solution is a compromise of choosing $dH$ so as to maximise the expectation value while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
+As the work per time step is determined by $\mathrm{dW} = -\Tr{\rho_S \ dH} = \Tr{\rho_S (H_{ST}^i - H_{ST}^{i+1})}$, where $H_{ST} = \bra{\psi_D}\bra{\psi_T} \mathds{1}_D \otimes H_I \ket{\psi_D} \ket{\psi_T}$ is the partial system Hamilto-nian acting only between System and Transducer, finding the optimal solution is a compromise of choosing $dH$ so as to maximise the expectation value while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
 We plot the optimal and predicted trajectory of a random data point in the test in Figure \ref{bloch_10553} set to illustrate this compromise.
 In \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
 In this case, the prediction for $\ket{\psi_T}$ deviates only slightly from the optimum for $i \in [2, N]$ but deviates significantly for $i=1$.
@@ -85,7 +85,7 @@ This leads to a negative work output when following the predicted protocol.
 %	\label{}
 %\end{figure}
 
-Figure \ref{bilstmbox} shows the prediction of the bidirectional LSTM and optimal values for the trajectories of each data point in the test set.
+Figure \ref{bilstmbox} shows the prediction of the bidirectional LSTM and optimal values for the trajecto-ries of each data point in the test set.
 There is a notable difference in the predictive quality between the first four qubits and the last one: for the final qubit the dynamics after the work extraction step are inconsequential.
 It is therefore beneficial to maximise the strength during the final switching, i.e. setting $\theta_T^N = \frac{\pi}{2}$, to maximise its work output.
 Additionally $\phi_T^N$ is should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$ on the Bloch sphere.

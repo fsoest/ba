@@ -213,3 +213,4 @@ with torch.no_grad():
     pred_test = cellmodelload(test_set_cell.__getitem__(range(len(test_set_cell)))['x'])
 
 dist_test = cellmodelload.dist(pred_test, y_test)
+dist_test

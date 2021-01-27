@@ -28,8 +28,9 @@ test_set = WorkDataset(data_test, N, 'lstm')
 uni = torch.load('models/dt_1_uni').eval()
 bi = torch.load('models/dt_1_bi').eval()
 # %%
-uni_pred = uni.get_work_array(data_test, dt)
-bi_pred = bi.get_work_array(data_test, dt)
+with torch.no_grad():
+    uni_pred = uni.get_work_array(data_test, dt)
+    bi_pred = bi.get_work_array(data_test, dt)
 
 delta = uni_pred - bi_pred
 plt.hist(delta)
@@ -53,11 +54,17 @@ for i, data in enumerate(data_test):
     E_bi[i] = rho_path(data[0][:N], data[0][N:], bi_trans[i, :N], bi_trans[i, N:], dt, data[3], N, 1)[2]
     E_opt[i] = rho_path(data[0][:N], data[0][N:], data[1][:N], data[1][N:], dt, data[3], N, 1)[2]
 
+
+plt.scatter(range(5), -1 * np.mean(E_uni, axis=0))
 # %%
-plt.hist(E_uni.min(axis=1), bins=50, label='Unidir. LSTM')
-plt.hist(E_bi.min(axis=1), bins=50, label='Bidir. LSTM')
-plt.hist(E_opt.min(axis=1), bins=50, label='Opt')
+plt.hist(-1*E_uni.min(axis=1), bins=50, label='Unidir. LSTM')
+plt.hist(-1*E_bi.min(axis=1), bins=50, label='Bidir. LSTM')
+plt.hist(-1*E_opt.min(axis=1), bins=50, label='Opt')
+plt.xlabel('$dW_{max}$')
 plt.legend()
+
+plt.hist(E_uni[:-1].argmin(axis=1))
+
 
 # %%
 plt.scatter(E_opt.min(axis=1), -1*E_opt.cumsum(axis=1)[:, -1], alpha=0.02)

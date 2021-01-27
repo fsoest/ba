@@ -4,6 +4,7 @@ from multiproc.data_preprocessing import import_datasets
 from sklearn.model_selection import train_test_split
 import numpy as np
 from multiproc.data_preprocessing import angle_embedding, rev_angle_embedding
+from rho_vis import rho_path
 # %%
 N = 12
 seed = 42
@@ -20,8 +21,44 @@ test_set = WorkDataset(data_test, N, 'lstm')
 # %%
 bi = torch.load('models/dt_1_bi').eval()
 bi.N = N
-bi.work_ratio(data_test, dt)
+with torch.no_grad():
+    x = bi.work_ratio(data_test, dt)
 
 uni = torch.load('models/dt_1_uni').eval()
 uni.N = N
-uni.work_ratio(data_test, dt)
+with torch.no_grad():
+    y = uni.work_ratio(data_test, dt)
+
+
+with torch.no_grad():
+    uni_hidden, uni_cell = uni.HiddenCellTest(len(data_test))
+    d = test_set.__getitem__(range(len(data_test)))
+    uni_pred = uni(d['x'], uni_hidden, uni_cell)[0]
+    bi_hidden, bi_cell = bi.HiddenCellTest(len(data_test))
+    bi_pred = bi(test_set.__getitem__(range(len(data_test)))['x'], bi_hidden, bi_cell)[0]
+
+uni_trans = rev_angle_embedding(uni_pred, N)
+bi_trans = rev_angle_embedding(bi_pred, N)
+
+E_uni = np.zeros((len(data_test), 12))
+E_bi = np.zeros((len(data_test), 12))
+for i, data in enumerate(data_test):
+    E_uni[i] = rho_path(data[0][:N], data[0][N:], uni_trans[i, :N], uni_trans[i, N:], dt, data[3], N, 1)[2]
+    E_bi[i] = rho_path(data[0][:N], data[0][N:], bi_trans[i, :N], bi_trans[i, N:], dt, data[3], N, 1)[2]
+
+E_bi.shape
+import matplotlib.pyplot as plt
+plt.plot(range(12), -1*E_bi.T)
+# %%
+E_bi.shape
+np.mean(E_bi, axis=0).shape
+plt.scatter(range(12), -1 * np.mean(E_bi, axis=0))
+plt.hlines(0, 12, 0)
+# %%
+np.cumsum(E_bi, axis=1)[:, -1].shape
+np.mean(np.cumsum(E_bi, axis=1)[:, -1])
+# %%
+E_bi.shape
+np.mean(E_uni, axis=0).shape
+plt.scatter(range(12), -1 * np.mean(E_uni, axis=0))
+plt.hlines(0, 12, 0)

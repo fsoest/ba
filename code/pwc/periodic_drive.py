@@ -5,6 +5,18 @@ import matplotlib.pyplot as plt
 from rho_vis import exp_xyz, data_wrapper
 from multiproc.pwc_helpers import wrapper, rho_path, get_eigen_rho
 # %%
+
+
+kets = np.zeros((N_dim, 2, 1), dtype=np.complex128)
+for j in range(N_dim):
+    kets[j] = rkh(2).full()
+# Angles from state vectors
+theta_d, phi_d = state_to_angles(kets)
+rho_0 = make_rho_0(rho, theta_d[0], phi_d[0])
+
+
+
+# %%
 # Import model
 N = 75
 model = torch.load('models/dt_1_bi').eval()
@@ -14,8 +26,8 @@ dt = 1
 # Create periodic drive
 tau = 3 * dt
 t = np.linspace(0, N-1, N)
-drive_theta = np.pi/2 * (np.cos(2 * np.pi * t / tau) + 1)
-drive_phi = np.pi * (np.cos(2 * np.pi * t /tau) + 1)
+drive_theta = np.pi/2 * (np.sin(2 * np.pi * t / tau) + 1)
+drive_phi = np.pi * (np.sin(2 * np.pi * t /tau) + 1)
 drive = np.concatenate((drive_theta, drive_phi))
 
 drive_embed = angle_embedding(drive[np.newaxis], model.N)
