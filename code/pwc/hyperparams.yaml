@@ -1,8 +1,10 @@
-program: sweep_full_drop.py
+program: custom_loss.py
 method: bayes
 metric:
-  goal: maximize
+  goal: minimize
   name: vwork
+project:
+  name: custom_loss_sweep
 parameters:
   dropout:
     min: 0.1

@@ -330,12 +330,12 @@ opt_args = {
  }
 
 N = 5
-dt = 5
+dt = 1
 seed = 42
 rho = 'eigen'
 net = 'custom_loss'
 N_sobol = 45
-runs = range(40)
+runs = range(21)
 
 
 if __name__ == '__main__':
@@ -359,9 +359,6 @@ if __name__ == '__main__':
 
     epoch, vloss = train_lstm_total_dropout(opt_args['dropout'], opt_args['learning_rate'],opt_args['patience'], opt_args['batch_size'], opt_args['n_layers'], opt_args['bidirectional'], opt_args['hidden_size'], opt_args['hidden_input_1'], opt_args['hidden_input_2'], opt_args['hidden_output'], opt_args['optimiser'], opt_args['pat_drop'], opt_args['sched_factor'], N, dt, rho, net)
 
-
-
-    print(epoch, vloss)
 
     metrics = {
         'n_epochs': epoch,

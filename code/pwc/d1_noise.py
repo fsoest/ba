@@ -171,23 +171,12 @@ work_drive = np.zeros((len(taus), data_points))
 avg_fidel_drive = np.zeros((len(taus), data_points))
 for i, tau in enumerate(taus):
     for j in range(data_points):
-        work, noisy_work, fid = noisy_drive(data_test[j, 0], 100, tau, model, 5, data_test[j, 3], 5)
+        work, noisy_work, fid = noisy_drive(data_test[j, 0], 100, tau, model, dt, data_test[j, 3], 5)
         noisy_work_drive[i, j] = np.mean(noisy_work)
         work_drive[i, j] = work
         avg_fidel_drive[i, j] = np.mean(fid)
 
-# %%
-for i, tau in enumerate(taus):
-    drive_delta = (-1 * noisy_work_drive[i] + work_drive[i])#/(np.abs(noisy_work_drive)[i] + np.abs(work_drive)[i])
-    plt.scatter(avg_fidel_drive[i], drive_delta, label=tau, alpha=0.005)
-    plt.scatter(np.mean(avg_fidel_drive[i]), np.mean(drive_delta), c='k', marker='.')
-leg = plt.legend(title='$\\tau$')
-for lh in leg.legendHandles:
-    lh.set_alpha(1)
-plt.xlabel('$\overline{F}_D$')
-plt.xlim(0.64, 1.01)
-plt.ylabel('$\Delta W$')
-# plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_bi_true_3.png', dpi=300)
+
 # %%
 e_opt = np.zeros(len(noisy_work_drive[2]))
 for i, d in enumerate(data_test):
@@ -201,11 +190,10 @@ work_trans = np.zeros((len(taus), data_points))
 avg_fidel_trans = np.zeros((len(taus), data_points))
 for i, tau in enumerate(taus):
     for j in range(data_points):
-        work, noisy_work, fid = noisy_trans(data_test[j, 0], 100, tau, model, 5, data_test[j, 3], 5)
+        work, noisy_work, fid = noisy_trans(data_test[j, 0], 100, tau, model, dt, data_test[j, 3], 5)
         noisy_work_trans[i, j] = np.mean(noisy_work)
         work_trans[i, j] = work
         avg_fidel_trans[i, j] = np.mean(fid)
-
 
 # %%
 np.save('noise/noisy_work_drive_dt_1', noisy_work_drive)
@@ -223,9 +211,12 @@ plt.ylabel('$\epsilon$')
 # plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true.png', dpi=300)
 
 # %%
-noisy_work_drive = np.load('noise/noisy_work_drive.npy')
-work_drive = np.load('noise/work_drive.npy')
-avg_fidel_drive = np.load('noise/avg_fidel_trans.npy')
+noisy_work_drive = np.load('noise/noisy_work_drive_dt_1.npy')
+work_drive = np.load('noise/work_drive_dt_1.npy')
+avg_fidel_drive = np.load('noise/avg_fidel_trans_dt_1.npy')
+noisy_work_trans = np.load('noise/noisy_work_trans_dt_1.npy')
+work_trans = np.load('noise/work_trans_dt_1.npy')
+avg_fidel_trans = np.load('noise/avg_fidel_trans_dt_1.npy')
 # %%
 for i, tau in enumerate(taus):
     trans_delta = (-1 * noisy_work_trans[i] + work_trans[i])#/(np.abs(noisy_work_trans)[i] + np.abs(work_trans)[i])
@@ -237,4 +228,17 @@ for lh in leg.legendHandles:
 plt.xlabel('$\overline{F}_T$')
 plt.xlim(0.64, 1.01)
 plt.ylabel('$\Delta W$')
-plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true_3.png', dpi=300)
+plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_dt_1.png', dpi=300)
+
+# %%
+for i, tau in enumerate(taus):
+    drive_delta = (-1 * noisy_work_drive[i] + work_drive[i])#/(np.abs(noisy_work_drive)[i] + np.abs(work_drive)[i])
+    plt.scatter(avg_fidel_drive[i], drive_delta, label=tau, alpha=0.005)
+    plt.scatter(np.mean(avg_fidel_drive[i]), np.mean(drive_delta), c='k', marker='.')
+leg = plt.legend(title='$\\tau$')
+for lh in leg.legendHandles:
+    lh.set_alpha(1)
+plt.xlabel('$\overline{F}_D$')
+plt.xlim(0.64, 1.01)
+plt.ylabel('$\Delta W$')
+plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_dt_1.png', dpi=300)
