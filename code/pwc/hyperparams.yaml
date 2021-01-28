@@ -2,16 +2,16 @@ program: custom_loss.py
 method: bayes
 metric:
   goal: minimize
-  name: vwork
+  name: vloss
 project:
-  name: custom_loss_sweep
+  custom_loss_sweep
 parameters:
   dropout:
     min: 0.1
     max: 0.8
   learning_rate:
-    min: 0.001
-    max: 0.1
+    min: 0.01
+    max: 0.5
   patience:
     min: 10
     max: 100
@@ -20,23 +20,23 @@ parameters:
     max: 100
   n_layers:
     min: 1
-    max: 3
+    max: 2
   bidirectional:
     value: 'True'
   optimiser:
-    values: ['sgd', 'adam']
+    values: ['adam']
   hidden_size:
     min: 10
-    max: 1000
+    max: 500
   hidden_input_1:
-    min: 50
-    max: 1500
+    min: 10
+    max: 300
   hidden_input_2:
-    min: 50
-    max: 1500
+    min: 10
+    max: 300
   hidden_output:
-    min: 50
-    max: 1500
+    min: 10
+    max: 300
   pat_drop:
     min: 1.5
     max: 5

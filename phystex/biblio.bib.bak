@@ -364,7 +364,7 @@
   volume    = {20},
   number    = {12},
   pages     = {123030},
-  month     = {dec},
+  month     = {Dec},
   abstract  = {Quantum systems interacting with an unknown environment are notoriously difficult to model, especially in presence of non-Markovian and non-perturbative effects. Here we introduce a neural network based approach, which has the mathematical simplicity of the Gorini–Kossakowski–Sudarshan–Lindblad master equation, but is able to model non-Markovian effects in different regimes. This is achieved by using recurrent neural networks (RNNs) for defining Lindblad operators that can keep track of memory effects. Building upon this framework, we also introduce a neural network architecture that is able to reproduce the entire quantum evolution, given an initial state. As an application we study how to train these models for quantum process tomography, showing that RNNs are accurate over different times and regimes.},
   doi       = {10.1088/1367-2630/aaf749},
   publisher = {{IOP} Publishing},

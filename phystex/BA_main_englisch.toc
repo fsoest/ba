@@ -15,10 +15,10 @@
 \contentsline {subsection}{\numberline {3.3.3}Noise resistance}{19}{subsection.3.3.3}% 
 \contentsline {section}{\numberline {3.4}Extracted work as cost function}{21}{section.3.4}% 
 \contentsline {chapter}{\numberline {4}Summary and Outlook}{23}{chapter.4}% 
-\contentsline {chapter}{\numberline {A}Derivations}{25}{appendix.A}% 
-\contentsline {section}{\numberline {A.1}Single jump work output}{25}{section.A.1}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{26}{section.A.2}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{27}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{27}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{27}{section.B.2}% 
-\contentsline {chapter}{\numberline {C}Bibliography}{29}{appendix.C}% 
+\contentsline {chapter}{\numberline {5}Bibliography}{25}{chapter.5}% 
+\contentsline {chapter}{\numberline {A}Derivations}{29}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Single jump work output}{29}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{30}{section.A.2}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{31}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{31}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{31}{section.B.2}% 

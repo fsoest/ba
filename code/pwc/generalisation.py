@@ -11,6 +11,7 @@ from rho_vis import rho_path
 from qutip import rand_ket_haar as rkh
 from multiproc.pwc_helpers import state_to_angles, get_eigen_rho
 import matplotlib.pyplot as plt
+from custom_loss import LSTMNetwork, work_loss
 # %%
 N_max = 50
 N_data = 1000
@@ -30,8 +31,8 @@ for i in range(N_data):
 rho_0 = get_eigen_rho(thetas[:, 0], phis[:, 0])
 # %%
 # Make predictions and calculate work outputs
-uni = torch.load('models/dt_1_uni').eval()
-bi = torch.load('models/dt_1_bi').eval()
+uni = torch.load('models/custom_loss_dt_1_uni').eval()
+bi = torch.load('models/custom_loss_dt_1_bi').eval()
 
 # Works: [N_data, N_max, N_max]
 E_uni = np.zeros((N_data, N_max, N_max))
@@ -55,8 +56,8 @@ for n in N:
         E_uni[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_uni[i, :n], y_uni[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         E_bi[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_bi[i, :n], y_bi[i, n:], dt, rho_0[i], n, 1)[2][:-1]
 
-np.save('gen/E_bi', E_bi)
-np.save('gen/E_uni', E_uni)
+np.save('gen/E_bi_cust', E_bi)
+np.save('gen/E_uni_cust', E_uni)
 # %%
 # Visualisation
 E_uni_sum = np.mean(np.cumsum(E_uni, axis=2)[:, :, -1], axis=0)
@@ -66,4 +67,5 @@ plt.scatter(N, -1 * E_bi_sum, label='Bidir. LSTM')
 plt.legend()
 plt.xlabel('$N$')
 plt.ylabel('$W$')
-plt.savefig('/home/fsoest/ba/phystex/img/gen50.png')
+# plt.savefig('/home/fsoest/ba/phystex/img/gen50.png')
+# %%
