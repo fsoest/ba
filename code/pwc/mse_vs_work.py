@@ -27,21 +27,7 @@ work_test = WorkDataset(data_test[:, 0], N, net='custom_loss')
 # %%
 mse_model = torch.load('models/dt_1_bi')
 from custom_loss import LSTMNetwork, work_loss
-work_model = torch.load('models/custom_loss_dt_1_bi')
-
-dict = mse_model.state_dict()
-work_model.load_state_dict(dict)
-
-work_model.work_ratio(data_test, dt)
-work_model.work_ratio(data_valid, dt)
-train_set = WorkDataset(data_train[:, 0], N, net='custom_loss')
-valid_set = WorkDataset(data_valid[:, 0], N, net='custom_loss')
-
-optimiser = torch.optim.SGD(work_model.parameters(), lr=0.02847, momentum=0.99, dampening=0, weight_decay=0, nesterov=True)
-scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=0.234, patience=55/3.7)
-
-work_model.learn(train_set, valid_set, optimiser, scheduler)
-
+work_model = torch.load('models/custom_loss_dt_1_better')
 # %%
 
 work_model.work_ratio(data_test, dt)
@@ -49,7 +35,7 @@ work_model.work_ratio(data_test, dt)
 from dataset import WorkDataset
 work_model.calc_loss(work_test)
 # %%
-curr_arg = 80
+curr_arg = 5000
 inp = np.copy(data_test[curr_arg, 0])
 emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], N))
 hidden, cell = mse_model.HiddenCellTest(1)

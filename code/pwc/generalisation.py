@@ -12,13 +12,14 @@ from qutip import rand_ket_haar as rkh
 from multiproc.pwc_helpers import state_to_angles, get_eigen_rho
 import matplotlib.pyplot as plt
 from custom_loss import LSTMNetwork, work_loss
+from lower_bound import lower_bound
 # %%
 N_max = 50
 N_data = 1000
-dt = 1
 # %%
+np.random.seed(42)
 # Create random drives to N_max
-N = np.array(range(N_max)) + 2
+N_arr = np.array(range(N_max)) + 2
 rho_0 = np.zeros((N_data, 2, 2), dtype=np.complex128)
 thetas = np.zeros((N_data, N_max + 2))
 phis = np.zeros((N_data, N_max + 2))
@@ -31,15 +32,34 @@ for i in range(N_data):
 rho_0 = get_eigen_rho(thetas[:, 0], phis[:, 0])
 # %%
 # Make predictions and calculate work outputs
-uni = torch.load('models/custom_loss_dt_1_uni').eval()
-bi = torch.load('models/custom_loss_dt_1_bi').eval()
+uni = torch.load('models/dt_1_uni').eval()
+bi = torch.load('models/dt_1_bi').eval()
+# %%
+N = 5
+seed = 42
+batch_size = 44
+dt = 1
+rho = 'eigen'
+N_sobol = 45
+runs = range(21)
+
+# %%
+data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
+data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
+data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
+train_set = WorkDataset(data_train, N, net='lstm')
+test_set = WorkDataset(data_test, N, net='lstm')
+valid_set = WorkDataset(data_valid, N, net='lstm')
+
+# %%
 
 # Works: [N_data, N_max, N_max]
 E_uni = np.zeros((N_data, N_max, N_max))
 E_bi = np.zeros((N_data, N_max, N_max))
+E_triv = np.zeros((N_data, N_max, N_max))
 
 # %%
-for n in N:
+for n in N_arr:
     x_embed = angle_embedding(np.concatenate((thetas[:, :n], phis[:, :n]), axis=1), n)
     x_embed = torch.from_numpy(x_embed)
     uni.N = n
@@ -55,17 +75,24 @@ for n in N:
     for i in range(N_data):
         E_uni[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_uni[i, :n], y_uni[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         E_bi[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_bi[i, :n], y_bi[i, n:], dt, rho_0[i], n, 1)[2][:-1]
+        a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
+        E_triv[i, n-2, :n-1] = a[0][:-1]
 
-np.save('gen/E_bi_cust', E_bi)
-np.save('gen/E_uni_cust', E_uni)
+
+
+np.save('gen/E_bi_dt_1', E_bi)
+np.save('gen/E_uni_dt_1', E_uni)
+np.save('gen/E_triv_dt_1', E_triv)
 # %%
 # Visualisation
 E_uni_sum = np.mean(np.cumsum(E_uni, axis=2)[:, :, -1], axis=0)
 E_bi_sum = np.mean(np.cumsum(E_bi, axis=2)[:, :, -1], axis=0)
+E_triv_sum = np.mean(np.cumsum(E_triv, axis=2)[:, :, -1], axis=0)
 plt.scatter(N, -1 * E_uni_sum, label='Unidir. LSTM')
 plt.scatter(N, -1 * E_bi_sum, label='Bidir. LSTM')
+plt.scatter(N, -1 * E_triv_sum, label='Local opt.')
 plt.legend()
 plt.xlabel('$N$')
 plt.ylabel('$W$')
-# plt.savefig('/home/fsoest/ba/phystex/img/gen50.png')
+plt.savefig('/home/fsoest/ba/phystex/img/gen50_dt_1_custom.png')
 # %%

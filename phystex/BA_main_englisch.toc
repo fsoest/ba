@@ -6,19 +6,21 @@
 \contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANNs}{6}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}{subsection.2.2.2}% 
 \contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}{subsection.2.2.3}% 
-\contentsline {chapter}{\numberline {3}Experimental Results}{11}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Influence of $\Delta \mathrm {T}$ on Work Output}{11}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}$N=2$: Learning Single Jump Optimal Control Sequences}{13}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}$N=5$}{14}{section.3.3}% 
-\contentsline {subsection}{\numberline {3.3.1}$\Delta \mathrm {T} = 5$}{14}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}$\Delta \mathrm {T} = 1$}{15}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}Noise resistance}{19}{subsection.3.3.3}% 
-\contentsline {section}{\numberline {3.4}Extracted work as cost function}{21}{section.3.4}% 
-\contentsline {chapter}{\numberline {4}Summary and Outlook}{23}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Bibliography}{25}{chapter.5}% 
-\contentsline {chapter}{\numberline {A}Derivations}{29}{appendix.A}% 
-\contentsline {section}{\numberline {A.1}Single jump work output}{29}{section.A.1}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{30}{section.A.2}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{31}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{31}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{31}{section.B.2}% 
+\contentsline {chapter}{\numberline {3}Work lower bound}{11}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Local optimisation protocol}{11}{section.3.1}% 
+\contentsline {chapter}{\numberline {4}Experimental Results}{13}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Influence of $\Delta \mathrm {T}$ on Work Output}{13}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}$N=2$: Learning Single Jump Optimal Control Sequences}{15}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}$N=5$}{16}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}$\Delta \mathrm {T} = 5$}{16}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}$\Delta \mathrm {T} = 1$}{17}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Noise resistance}{19}{subsection.4.3.3}% 
+\contentsline {section}{\numberline {4.4}Extracted work as cost function}{23}{section.4.4}% 
+\contentsline {chapter}{\numberline {5}Summary and Outlook}{25}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Bibliography}{27}{chapter.6}% 
+\contentsline {chapter}{\numberline {A}Derivations}{31}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Single jump work output}{31}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{32}{section.A.2}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{33}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{33}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{33}{section.B.2}% 

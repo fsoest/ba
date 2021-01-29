@@ -4,6 +4,8 @@ from multiproc.data_preprocessing import import_datasets
 from sklearn.model_selection import train_test_split
 from train_lstm import train_lstm_total_dropout as train_lstm
 # from models import LSTM_total_dropout as LSTMNetwork
+import numpy as np
+from lower_bound import lower_bound
 
 N = 5
 seed = 42
@@ -34,9 +36,11 @@ bi.work_ratio(data_test, dt)
 sum(p.numel() for p in bi.parameters() if p.requires_grad)
 bi.calc_loss(test_set)
 
-large = torch.load('models/dt_1_uni_large').eval()
-large.work_ratio(data_test, dt)
-sum(p.numel() for p in large.parameters() if p.requires_grad)
-large.calc_loss(test_set)
-large
 # %%
+e_min = np.zeros(len(data_test))
+for i, d in enumerate(data_test):
+    a = lower_bound(d[0], N, dt)
+    e_min[i] = np.cumsum(a[0])[-1]
+
+np.mean(e_min)
+np.mean(data_test[:, 2])

@@ -30,6 +30,11 @@ with torch.no_grad():
     y = uni.work_ratio(data_test, dt)
 
 
+x
+y
+
+
+
 with torch.no_grad():
     uni_hidden, uni_cell = uni.HiddenCellTest(len(data_test))
     d = test_set.__getitem__(range(len(data_test)))
