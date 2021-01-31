@@ -64,12 +64,14 @@ Eingereicht am 08.~Februar~2021\vspace{1.5em}
 %unsere Antwort
 An interesting question in the field of quantum thermodynamics is finding optimal protocols to extract work from a given system.
 We consider a two-state quantum system that can be driven by an arbitrary piecewise constant function, from which work can be extracted.
-We investigate this system with respect to randomly sampled drives and find their optimal extraction policies numerically.
+We show that for this system a policy exists that is able to extract a non-negative work output independent of the excitation.
+We investigate the system with respect to randomly sampled drives and find their optimal extraction policies numerically.
 Using these pairs as training data we apply recurrent neural networks to predict the optimal transducer policy given a drive sequence.
 We find that our approach performs well for certain model parameters, capable of extracting more than 97 \% of optimum.
 Additionally, we explore the robustness of the model predictions with respect to noise.
 
 \vspace{20em}
+\begin{center}\large\bfseries Zusammenfassung\end{center}
 Abstract \\ 
 Deutsch \\
  
@@ -92,17 +94,17 @@ Deutsch \\
 
 %\section{Setting}
 %\input{content/setting}
-\section{Supervised Machine Learning} \label{sml}
+\section{Supervised machine learning} \label{sml}
 \input{content/sml}
 
 \chapter{Work lower bound} \label{lower_bound}
 \input{content/lower_bound}
 
-\chapter{Experimental Results}
+\chapter{Experimental results}
 \input{content/exp_res}
 \section{Influence of $\Delta \mathrm{T}$ on Work Output} \label{dep_dt}
 \input{content/dep_of_dt}
-\section{$N=2$: Learning Single Jump Optimal Control Sequences} \label{n_2_ml}
+\section{$N=2$: Learning single jump optimal control sequences} \label{n_2_ml}
 \input{content/n_2_ml}
 \section{$N=5$}\label{n5}
 \subsection{$\Delta \mathrm{T} = 5$}\label{n_5_ml}
@@ -114,10 +116,13 @@ Deutsch \\
 \subsection{Noise resistance}
 \input{content/n_5_noise}
 
-\section{Extracted work as cost function}\label{work_cost}
+\subsection{Extracted work as cost function}\label{work_cost}
 \input{content/work_cost}
 
-\chapter{Summary and Outlook}\label{outlook}
+\section{Generalisation to other $N$}
+\input{content/gen} 
+
+\chapter{Summary and outlook}\label{outlook}
 \input{content/outlook}
 
 \bibliographystyle{plain}

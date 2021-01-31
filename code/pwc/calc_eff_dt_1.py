@@ -37,10 +37,11 @@ sum(p.numel() for p in bi.parameters() if p.requires_grad)
 bi.calc_loss(test_set)
 
 # %%
-e_min = np.zeros(len(data_test))
-for i, d in enumerate(data_test):
+e_min = np.zeros(len(data))
+for i, d in enumerate(data):
     a = lower_bound(d[0], N, dt)
     e_min[i] = np.cumsum(a[0])[-1]
 
-np.mean(e_min)
-np.mean(data_test[:, 2])
+# %%
+uni_local = torch.load('models/local_opt/dt1_uni').eval()
+uni_local.work_ratio(data_test, dt)

@@ -41,8 +41,8 @@ with torch.no_grad():
     uniloss = uni.calc_loss(test_set)
 
 # %%
-e_min = np.zeros(len(data_test))
-for i, d in enumerate(data_test):
+e_min = np.zeros(len(data))
+for i, d in enumerate(data):
     a = lower_bound(d[0], N, dt)
     e_min[i] = np.cumsum(a[0])[-1]
 

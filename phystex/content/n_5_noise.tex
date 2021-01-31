@@ -2,7 +2,7 @@
 Besides the efficiency of the networks the resistance of their predictions to noise is also of interest.
 We create a noisy sequence $\{\ket{\phi_j}\}$ of N qubits from $\{\ket{\psi_j}\}$ using
 \begin{align*}
-	\ket{\phi_j} = e^{-i H_j \tau} \ket{\psi_j}, \ \forall j \in [1, N].
+	\ket{\phi_j} = e^{-i H_j \tau} \ket{\psi_j} \ \forall j \in [1, N].
 \end{align*}
 $H_j$ are randomly generated Hermitian matrices and $\tau$ is a real parameter used to control the strength of the noise.
 To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ we use the fidelity $F$ as defined in \cite{10.5555/1972505}:
@@ -11,30 +11,31 @@ To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ 
 \end{align*}
 
 The performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$ and $\Delta \mathrm{T} = 5$ on noisy sequences is presented in Figure \ref{noisedt5}.
-
+For $\Delta \mathrm{T} = 1$, the performance degrades quickly and uniformly among the test set, as the noiseless predictions are near their optima.
+The variance in the deviation of work output between noisy and noiseless data $\Delta W$ is larger for $\Delta \mathrm{T} = 5$ as the network is less likely to predict a policy with large work output.
 
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/noisy_drive_bi_true_3}
-		\subcaption{Noisy Drive sequence, $\Delta \mathrm{T} = 5$}
+		\subcaption{Noisy drive sequence, $\Delta \mathrm{T} = 5$}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{img/noisy_drive_dt_1}
-	\subcaption{Noisy Drive sequence, $\Delta \mathrm{T} = 1$}
+	\subcaption{Noisy drive sequence, $\Delta \mathrm{T} = 1$}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/noisy_trans_bi_true_3}
-		\subcaption{Noisy Transducer sequence, $\Delta \mathrm{T} = 5$}
+		\subcaption{Noisy transducer sequence, $\Delta \mathrm{T} = 5$}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/noisy_trans_dt_1}
-		\subcaption{Noisy Transducer sequence, $\Delta \mathrm{T} = 1$}
+		\subcaption{Noisy transducer sequence, $\Delta \mathrm{T} = 1$}
 	\end{subfigure}
-	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM. $W_{pred}$ is the work output following the model prediction. \textbf{(a), (b)} We create 100 noisy Drive sequences and calculate the average $\overline{W}_{noise}$ of their work output following the predicted Transducer protocol. \textbf{(c), (d)} We create 100 noisy Transducer sequences and calculate the average of their work output with a given Drive sequence from the test set. In both plots, the black dots indicate the averaged fidelities and $\Delta W$ for a given $\tau$.}
+	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM. $W_{pred}$ is the work output following the model prediction. \textbf{(a), (b)} We create 100 noisy drive sequences and calculate the average $\overline{W}_{noise}$ of their work output following the predicted transducer protocol. \textbf{(c), (d)} We create 100 noisy transducer sequences and calculate the average of their work output with a given drive sequence from the test set. In both plots, the black dots indicate the average fidelities and $\Delta W$ for a given $\tau$.}
 	\label{noisedt5}
 \end{figure}

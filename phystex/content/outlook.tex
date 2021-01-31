@@ -1,12 +1,14 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
-We demonstrated that our approach is capable of predicting Transducer policies that will produce a positive work output given a Drive data set.
+We demonstrated that our approach is capable of predicting transducer policies that will produce a positive work output given a drive data set.
 We found that the efficiency greatly depends on the model parameters $N$ and $\Delta \mathrm{T}$.
 For $N=2$ and $\rho_0 = \ket{+}\bra{+}$, where an analytic optimum exists, a simple linear network is able to reproduce the optimal policy.
 For the higher-dimensional case $N=5$, we examined two switching times $\Delta \mathrm{T}$, finding that the network performs better on the shorter than the longer time.
-Investigating more switching times in between the two would be an interesting extension to 
 
-In all cases the bidirectional outperforms the unidirectional LSTM, as the former has access to the complete Drive sequence while the latter can only make predictions from the previous and current Drive qubits.
+
+In all cases the bidirectional outperforms the unidirectional LSTM, as the former has access to the complete drive sequence while the latter can only make predictions from the previous and current drive qubits.
+
+For $N=5$ and $\Delta \mathrm{T}=1$, ev
 We identified the use of the mean squared error as a disadvantage in calculating the loss during training.
 Training the network directly on the extracted work did not create models with greater predictive powers due to the non-convexity of the cost function.
 Instead, following an approach similar to those in \cite{Banchi_2018, PhysRevX.10.011006}, where recurrent neural networks are used to directly model the system dynamics, might alleviate these shortcomings.

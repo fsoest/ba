@@ -330,12 +330,12 @@ opt_args = {
  }
 
 N = 5
-dt = 1
+dt = 5
 seed = 42
 rho = 'eigen'
 net = 'custom_loss'
 N_sobol = 45
-runs = range(21)
+runs = range(40)
 
 
 if __name__ == '__main__':

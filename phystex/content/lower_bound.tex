@@ -1,16 +1,15 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
 \section{Local optimisation protocol}
-In this Chapter we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$ when the system state $\rho_S$ is initialised the eigenstate $\ket{+}\bra{+}$ with higher eigenvalue of the partial system Hamiltonian $H_{DS} = \bra{\psi_D}\bra{\psi_T} H_I \otimes \mathds{1}_T \ket{\psi_D} \ket{\psi_T}$.
+In this Chapter we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$ when the system state $\rho_S$ is initialised in the eigenstate $\ket{+}\bra{+}$ with higher eigenvalue of the partial system Hamiltonian $H_{DS} = \bra{\psi_D}\bra{\psi_T} H_I \otimes \mathds{1}_T \ket{\psi_D} \ket{\psi_T}$.
 By following a policy where the work output of each step $dW$ is optimised locally, we find that the transducer can be chosen such that $dW \geq 0$ for all drives.
 
 We start in an eigenstate of the drive Hamiltonian, without loss of generality let $H_{DS} \propto \sigma_x$.
 By local optimisation we find $H_{ST}' = -\frac{\sigma_x}{2}, H_{ST} = \frac{\sigma_x}{2}$.
 This extracts the maximal $dW = 1$.
 
-We now examine the following step, where state and transducer are now anti-parallel on the Bloch sphere.
-We can generalise this to an arbitrary state with zero y-component $\rho_S = (\cos(\theta/2) \ket{0} + \sin(\theta/2) \ket{1})(\cos(\theta/2) \bra{0} + \sin(\theta/2) \bra{1})$.
-The current transducer Hamiltonian is determined by the previous optimisation as $H_{ST} = -\frac{\sigma_x}{2}$.
+We now examine the following step and generalise to an arbitrary state with zero y-component $\rho_S = (\cos(\theta/2) \ket{0} + \sin(\theta/2) \ket{1})(\cos(\theta/2) \bra{0} + \sin(\theta/2) \bra{1})$.
+Note that its projection onto the x-y-plane on the Bloch sphere is anti-parallel to the transducer, which is determined by the previous optimisation as $H_{ST} = -\frac{\sigma_x}{2}$.
 The total system Hamiltonian is given by
 \begin{align*}
 H &= H_{DS} + H_{ST} =  \delta \sigma_+ + \delta^* \sigma_{-} - \frac{\sigma_x}{2} =: \alpha \sigma_+ + h.c. = \Re{\alpha} \sigma_x + \Im{\alpha} \sigma_y, \\
@@ -40,4 +39,4 @@ dW_{lo} = \frac{1}{2}\left(\sqrt{\Re{a}^2 + \Im{a}^2} -\Re{a}\right) \geq 0 \ \f
 $H'_{ST}$ is again anti-parallel to the projection of $\rho'_S$ onto the x-y-plane and thus the prerequisite (after a passive transformation) for the above is given.
 
 $a$ only depends on the current $\ket{\psi_D}$ and $\rho_S$.
-For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist.
+For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally.

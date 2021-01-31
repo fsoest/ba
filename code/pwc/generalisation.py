@@ -34,6 +34,7 @@ rho_0 = get_eigen_rho(thetas[:, 0], phis[:, 0])
 # Make predictions and calculate work outputs
 uni = torch.load('models/dt_1_uni').eval()
 bi = torch.load('models/dt_1_bi').eval()
+uni_local = torch.load('models/dt_1_bi').eval()
 # %%
 N = 5
 seed = 42
@@ -57,7 +58,7 @@ valid_set = WorkDataset(data_valid, N, net='lstm')
 E_uni = np.zeros((N_data, N_max, N_max))
 E_bi = np.zeros((N_data, N_max, N_max))
 E_triv = np.zeros((N_data, N_max, N_max))
-
+E_local = np.zeros((N_data, N_max, N_max))
 # %%
 for n in N_arr:
     x_embed = angle_embedding(np.concatenate((thetas[:, :n], phis[:, :n]), axis=1), n)
@@ -67,14 +68,18 @@ for n in N_arr:
     with torch.no_grad():
         hidden_uni, cell_uni = uni.HiddenCellTest(N_data)
         hidden_bi, cell_bi = bi.HiddenCellTest(N_data)
+        hidden_local, cell_local = uni_local.HiddenCellTest(N_data)
         y_uni = uni(x_embed, hidden_uni, cell_uni)[0]
         y_bi = bi(x_embed, hidden_bi, cell_bi)[0]
+        y_local = uni_local(x_embed, hidden_local, cell_local)[0]
     y_uni = rev_angle_embedding(y_uni.detach().numpy(), n)
     y_bi = rev_angle_embedding(y_bi.detach().numpy(), n)
+    y_local = rev_angle_embedding(y_local.detach().numpy(), n)
     # Calculate energies
     for i in range(N_data):
         E_uni[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_uni[i, :n], y_uni[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         E_bi[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_bi[i, :n], y_bi[i, n:], dt, rho_0[i], n, 1)[2][:-1]
+        E_local[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_local[i, :n], y_local[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
         E_triv[i, n-2, :n-1] = a[0][:-1]
 

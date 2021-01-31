@@ -1,12 +1,12 @@
 Machine learning is a subfield of artificial intelligence, `concerned with the question of how to construct computer programs that automatically improve with experience.' \cite{Mitchell97}
 Supervised machine learning is one of the three machine learning disciplines, besides unsupervised and reinforcement learning.
 The goal is to find a mapping between an input and an output, in our case an excitation and its respective optimal harvesting policy.
-Multiple algorithms to find such a mapping exist, however for high dimensional problems artificial neural networks (ANNs) are usually used.
-In general, ANNs are a collection of neurons which are connected and can transmit signals to each other.
-The ANN can learn by changing how different information is passed through the network.
+Multiple algorithms to find such a mapping exist, however for high dimensional problems artificial neural networks (ANNs) are often used.
+In general, ANNs are a collection of neurons, usually grouped in layers, which are connected and can transmit signals to each other.
+The ANN can learn by changing how information is passed through the network.
 In the following sections we review two ANN architectures, the fully-connected feedforward ANN and the Long Short-Term Memory (LSTM) network.
 
-\subsection{Fully-connected feedforward ANNs}
+\subsection{Fully-connected feedforward ANN}
 In this section we review ANNs, following the exposition given in \cite{lu2020dying}.
 Let $\textfrak{N}$ be a fully-connected feedforward ANN, meaning there are no loops in the neuron connections and all neurons in a layer are connected to every neuron of the next layer, $\textfrak{N}: \mathbb{R}^{n_1} \to \mathbb{R}^{n_L}$. $n_1$ and $n_L$ denote the dimensionality of the input and output respectively. 
 $\textfrak{N}$ has $L$ layers, or columns of neurons.
@@ -28,7 +28,7 @@ where $\xi(x)$ is a function called the activation function applied elementwise.
 
 \subsection{Long Short-Term Memory}
 While the network architecture introduced in the previous section performs reasonably well on many problems, it destroys spatial and temporal correlations present in the data. 
-Instead convolutional and recurrent networks are often used for these purposes, e.g. in image recognition and time series forecasting \cite{rumelhart1986learning, 10.1007/978-3-642-46466-9_18}.
+So-called convolutional and recurrent networks are often used for these purposes instead, e.g. in image recognition and time series forecasting \cite{rumelhart1986learning, 10.1007/978-3-642-46466-9_18}.
 
 Here we use the LSTM architecture, a type of recurrent neural network (RNN) introduced in \cite{doi:10.1162/neco.1997.9.8.1735}. 
 The core idea of RNNs is the usage of loops to store and propagate information through time (Figure \ref{rnn}).
@@ -42,7 +42,7 @@ The core idea of RNNs is the usage of loops to store and propagate information t
 
 The network is made up of one or multiple rows of LSTM cells, each of which share parameters.
 The cell uses the current input $x_t$ as well as the previous cell state $c_{t-1}$ and output $h_{t-1}$ to compute the output $h_t$.
-Internally, the cell is comprised of multiple gates which control the storage of information, $i_t, f_t, g_t, o_t$, which are the input, forget, cell and output gates respectively.
+Internally, the cell is comprised of multiple gates which control the storage of information $i_t, f_t, g_t, o_t$; which are the input, forget, cell and output gates respectively.
 The output and gates of each cell are computed using the following equations \cite{NEURIPS2019_9015}:
 \begin{align*}
 i_t & = \sigma (W_{ii} x_t + b_{ii} + W_{hi} h_{t-1} + b_{hi}), \\
@@ -54,6 +54,7 @@ h_t & = o_t \odot \tanh (c_t),
 \end{align*}
 where $\odot$ is the Hadamard product and $\sigma(x)$ is the sigmoid function.
 The input and forget gates $i_t, f_t$ express to what extent new data should be incorporated or deleted from the current cell state $c_t$ respectively.
+Figure \ref{lstm} illustrates the internal workings of a LSTM cell.
 
 In some time-series problems data from a future time step might be required for the current prediction.
 In these cases, bidirectional RNNs can provide a better performance.

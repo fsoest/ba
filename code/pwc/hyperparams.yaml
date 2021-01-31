@@ -4,7 +4,7 @@ metric:
   goal: minimize
   name: vloss
 project:
-  custom_loss_sweep
+  custom_loss_sweep_dt_5
 parameters:
   dropout:
     min: 0.1
@@ -24,19 +24,19 @@ parameters:
   bidirectional:
     value: 'True'
   optimiser:
-    values: ['adam']
+    values: ['adam', 'sgd']
   hidden_size:
     min: 10
     max: 500
   hidden_input_1:
     min: 10
-    max: 300
+    max: 1500
   hidden_input_2:
     min: 10
-    max: 300
+    max: 1500
   hidden_output:
     min: 10
-    max: 300
+    max: 1500
   pat_drop:
     min: 1.5
     max: 5

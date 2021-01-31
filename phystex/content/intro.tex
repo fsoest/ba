@@ -6,11 +6,13 @@ Additionally, these methods are being applied to a broad range of problems in th
 Machine learning has also found use in the field of energy harvesting, concerned with extracting energy from external excitations, e.g. vibrations in human motion \cite{Liu2019}.
 In this work we extend this concept to the quantum case.
 We examine a system that can be driven by an arbitrary excitation, modelled as a time-dependent system Hamiltonian.
-The Transducer is modelled in a similar fashion and can extract work from the system following the framework in \cite{beyer2020}.
-We train neural networks to predict Transducer protocols given a Drive sequence, considering both the case where the sequence is known beforehand and the one where it is not.
+The transducer is modelled in a similar fashion and can extract work from the system following the framework in \cite{beyer2020}.
+By following a policy of local optimisation of the work output, we show that a lower bound of the extractable work exists for specific initial conditions.
+We train neural networks to predict transducer protocols given a drive sequence, considering both the case where the sequence is known beforehand and the one where it is not.
 
 The remainder of this work is structured as follows.
 In Chapter \ref{background} we review the collision model framework used in our approach and introduce two machine learning architectures.
+In Chapter \ref{lower_bound} we show that for a given drive sequence a lower bound on the extractable work exists.
 We investigate the system under consideration in Section \ref{dep_dt} and apply the aforementioned architectures in Sections \ref{n_2_ml} to \ref{work_cost}.
 We summarise our findings and provide an outlook in Chapter \ref{outlook}.
 
