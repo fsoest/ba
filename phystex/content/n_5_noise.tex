@@ -12,7 +12,8 @@ To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ 
 
 The performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$ and $\Delta \mathrm{T} = 5$ on noisy sequences is presented in Figure \ref{noisedt5}.
 For $\Delta \mathrm{T} = 1$, the performance degrades quickly and uniformly among the test set, as the noiseless predictions are near their optima.
-The variance in the deviation of work output between noisy and noiseless data $\Delta W$ is larger for $\Delta \mathrm{T} = 5$ as the network is less likely to predict a policy with large work output.
+The variance in the deviation of work output between noisy and noiseless data $\Delta W$ is larger for $\Delta \mathrm{T} = 5$ as the longer evolution time leads to a larger difference between the system states of the noisy and noiseless case.
+As the network is less likely to predict a solution near the optimum, the noisy data will sometimes be closer to the optimum and thus data points with $\Delta W > 0$ exist as well.
 
 \begin{figure}
 	\centering

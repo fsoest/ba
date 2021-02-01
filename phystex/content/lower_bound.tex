@@ -1,7 +1,7 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
 \section{Local optimisation protocol}
-In this Chapter we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$ when the system state $\rho_S$ is initialised in the eigenstate $\ket{+}\bra{+}$ with higher eigenvalue of the partial system Hamiltonian $H_{DS} = \bra{\psi_D}\bra{\psi_T} H_I \otimes \mathds{1}_T \ket{\psi_D} \ket{\psi_T}$.
+In this section we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$ when the system state $\rho_S$ is initialised in the eigenstate $\ket{+}\bra{+}$ with higher eigenvalue of the partial system Hamiltonian $H_{DS} = \bra{\psi_D}\bra{\psi_T} H_I \otimes \mathds{1}_T \ket{\psi_D} \ket{\psi_T}$.
 By following a policy where the work output of each step $dW$ is optimised locally, we find that the transducer can be chosen such that $dW \geq 0$ for all drives.
 
 We start in an eigenstate of the drive Hamiltonian, without loss of generality let $H_{DS} \propto \sigma_x$.
@@ -15,28 +15,17 @@ The total system Hamiltonian is given by
 H &= H_{DS} + H_{ST} =  \delta \sigma_+ + \delta^* \sigma_{-} - \frac{\sigma_x}{2} =: \alpha \sigma_+ + h.c. = \Re{\alpha} \sigma_x + \Im{\alpha} \sigma_y, \\
 \delta &= \sin{\theta_D} e^{i\phi_D} / 2.
 \end{align*}
-The evolved state $\rho'$ can be stated as (see Appendix \ref{deriv_jump})
-\begin{align*}
-\rho_S' &= e^{-iH\Delta \mathrm{T}} \rho_S \ e^{iH\Delta \mathrm{T}} \\
-&=\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma}),       
-\end{align*}
-with
-\begin{align*}
-\vec{r} &= ( \ \Re{a}, \ \Im{a}, \ b/2 + \cos{(2 \alpha \Delta \mathrm{T})} \cos{\theta} \ ), \\
-a &= -\frac{\alpha}{\abs{\alpha}} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) \cos{\theta} + \frac{\alpha}{\alpha^*} \sin{\theta} \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + \sin{\theta} \ \cos^2(\abs{\alpha} \Delta \mathrm{T}), \\
-b &= -\frac{1}{\alpha} \sin{(2 \abs{\alpha} \Delta \mathrm{T})} \sin{(\theta)} \Im{\alpha}.
-\end{align*}
-The step work output $dW$ is then given by
+Consider then an evolved state $\rho_S' =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$, with $\vec{r} = ( x, y, z )$, where $\vec{r}$ would be determined by a unitary transformation in our case (note that the following is valid for any CPTP operation). The step work output $dW$ is then given by
 \begin{align*}
 dW &= \Tr{\rho' (H_{ST} - H'_{ST})} = \Tr{\rho' \left(-\frac{\sigma_x}{2} - \Re{\tau} \sigma_x - \Im{\tau} \sigma_y \right)} \\
-&= -\frac{1}{2} \Re{a} - \Re{\tau}\Re{a} - \Im{\tau} \Im{a}, \\
+&= -\frac{x}{2} - \Re{\tau} x - \Im{\tau} y, \\
 \tau &= \frac{1}{2} \sin{\theta_T} e^{i\phi_T}. 
 \end{align*}
-$dW$ has a maximum for $\theta_T = \frac{\pi}{2}, \phi_T = \arctan{\frac{\Im{a}}{\Re{a}}} + \pi$, giving
+$dW$ has a maximum for $\theta_T = \frac{\pi}{2}, \phi_T = \arctan{\frac{y}{x}} + \pi$, giving
 \begin{align*}
-dW_{lo} = \frac{1}{2}\left(\sqrt{\Re{a}^2 + \Im{a}^2} -\Re{a}\right) \geq 0 \ \forall a.
+dW_{lo} = \frac{1}{2}\left(\sqrt{x^2 + y^2} -x\right) \geq 0 \ \forall x, y.
 \end{align*}
 $H'_{ST}$ is again anti-parallel to the projection of $\rho'_S$ onto the x-y-plane and thus the prerequisite (after a passive transformation) for the above is given.
 
 $a$ only depends on the current $\ket{\psi_D}$ and $\rho_S$.
-For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally.
+For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally over all time steps.

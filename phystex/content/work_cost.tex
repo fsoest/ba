@@ -3,24 +3,11 @@
 In Section \ref{n_5_ml} we encountered a conceptional problem regarding using the MSE as a loss function, where a low MSE score does not necessarily imply a large work output.
 In the following we aim to investigate whether directly using extracted work $W$ as the network cost function can improve performance.
 
-To ensure comparability between the different cost functions, we continue using the same hyperparameters to train both a bidirectional and a unidirectional LSTM.
-The performance for both networks and two switching times $\Delta \mathrm{T}$ are given in Table \ref{workcosttable}.
-We find that for both $\Delta \mathrm{T}$, the models trained on the extracted work perform worse than their MSE-trained analogues.
-This is not unexpected, as the non-convexity of the extracted work complicates finding an optimal solution.
-We circumvent this problem in the creation of training data for the MSE loss by initialising the optimiser in different states.
-This problem becomes more complex when trying to optimise multiple drive sequence at the same time, as is the case when using the work directly as a loss function.
+%To ensure comparability between the different cost functions, we continue using the same hyperparameters to train both a bidirectional and a unidirectional LSTM.
+%The performance for both networks and two switching times $\Delta \mathrm{T}$ are given in Table \ref{workcosttable}.
+%We find that for both $\Delta \mathrm{T}$, the models trained on the extracted work perform worse than their MSE-trained analogues.
+%This is not unexpected, as the non-convexity of the extracted work complicates finding an optimal solution.
+%We circumvent this problem in the creation of training data for the MSE loss by initialising the optimiser in different states.
+%This problem becomes more complex when trying to optimise multiple drive sequence at the same time, as is the case when using the work directly as a loss function.
 
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c | c | c | c }
-		$\Delta \mathrm{T}$ & Network architecture        & $\eta_{test} \ [\%]$ & $W_{test}$ \\
-		\hline
-		\multirow{2}{*}{1}  & Bidir. LSTM                 &    48.6              & 0.80  \\
-		                    & Unidir. LSTM                &    47.2              & 0.77  \\
-		\hline
-		\multirow{2}{*}{5}  & Bidir. LSTM                 &    21.5              & 0.58  \\
-		                    & Unidir. LSTM                &    14.9              & 0.40  \\
-	\end{tabular}
-	\caption{Model performance for differing network architectures and two switching times $\Delta \mathrm{T}$.}
-	\label{workcosttable}
-\end{table}
+For $\Delta \mathrm{T} = 1$, we train a bidirectional LSTM using this approach, giving a work output of $W_{test} = 1.51$ and efficiency $\eta_{test} = 91.0 \%$.

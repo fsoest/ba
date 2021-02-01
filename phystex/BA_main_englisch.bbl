@@ -137,6 +137,11 @@ Mike Schuster and Kuldip Paliwal.
 \newblock {\em Signal Processing, IEEE Transactions on}, 45:2673 -- 2681, 12
   1997.
 
+\bibitem{Sutton1998}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock {\em Reinforcement Learning: An Introduction}.
+\newblock The MIT Press, second edition, 2018.
+
 \bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
   Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
