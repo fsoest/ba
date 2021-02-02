@@ -14,6 +14,7 @@ runs = range(40)
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
 
 # %%
+dt = 0.2
 local_data = np.copy(data)
 for d in local_data:
     E_arr, theta, phi = lower_bound(d[0], N, dt)

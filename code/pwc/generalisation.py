@@ -39,22 +39,21 @@ bi = torch.load('models/N_5_rho_eigen_lstm').eval()
 uni_local = torch.load('models/local_opt/dt5_uni').eval()
 better = torch.load('models/custom_loss_dt_1_better').eval()
 # %%
-N = 5
+N = 12
 seed = 42
 batch_size = 44
 dt = 1
 rho = 'eigen'
 N_sobol = 45
-runs = range(21)
+runs = range(5)
 
 # %%
-# data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
-# data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
-# data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
-# train_set = WorkDataset(data_train, N, net='lstm')
-# test_set = WorkDataset(data_test, N, net='lstm')
-# valid_set = WorkDataset(data_valid, N, net='lstm')
-
+data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
+data_train, data_test = train_test_split(data, test_size=0.18, random_state=seed)
+data_train, data_valid = train_test_split(data_train, test_size=0.1, random_state=seed)
+train_set = WorkDataset(data_train, N, net='lstm')
+test_set = WorkDataset(data_test, N, net='lstm')
+valid_set = WorkDataset(data_valid, N, net='lstm')
 # %%
 
 # Works: [N_data, N_max, N_max]
@@ -91,10 +90,10 @@ for n in N_arr:
         # E_uni[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_uni[i, :n], y_uni[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         # E_bi[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_bi[i, :n], y_bi[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         # E_local[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_local[i, :n], y_local[i, n:], dt, rho_0[i], n, 1)[2][:-1]
-        # a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
-        # E_triv[i, n-2, :n-1] = a[0][:-1]
+        a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
+        E_triv[i, n-2, :n-1] = a[0][:-1]
 
-        E_better[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_better[i, :n], y_better[i, n:], dt, rho_0[i], n, 1)[2][:-1]
+        # E_better[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_better[i, :n], y_better[i, n:], dt, rho_0[i], n, 1)[2][:-1]
 
 
 
@@ -102,12 +101,23 @@ for n in N_arr:
 # np.save('gen/E_uni_dt_{0}'.format(dt), E_uni)
 # np.save('gen/E_triv_dt_{0}'.format(dt), E_triv)
 # np.save('gen/E_local_dt_{0}'.format(dt), E_local)
+# np.save('gen/E_better_dt_1', E_better)
+
+# N = [2, 3, 4, 5, 9, 10]
+# E_n = []
 # # %%
-dt = 5
-E_bi = np.load('gen/E_bi_dt_5.npy')
-E_uni = np.load('gen/E_uni_dt_5.npy')
-E_triv = np.load('gen/E_triv_dt_5.npy')
-E_local = np.load('gen/E_local_dt_5.npy')
+dt = 1
+E_bi = np.load('gen/E_bi_dt_{0}.npy'.format(dt))
+E_uni = np.load('gen/E_uni_dt_{0}.npy'.format(dt))
+E_triv = np.load('gen/E_triv_dt_{0}.npy'.format(dt))
+E_local = np.load('gen/E_local_dt_{0}.npy'.format(dt))
+
+# %%
+for n in N:
+    e = np.load('multi_train_data/dt/vardt_N_{0}_rho_eigen/dt_0_5_E_sobol_10_run_0.npy'.format(n))
+    E_n.append(np.mean(e[-1]))
+
+
 
 # %%
 # Visualisation
@@ -115,13 +125,22 @@ E_uni_sum = np.mean(np.cumsum(E_uni, axis=2)[:, :, -1], axis=0)
 E_bi_sum = np.mean(np.cumsum(E_bi, axis=2)[:, :, -1], axis=0)
 E_triv_sum = np.mean(np.cumsum(E_triv, axis=2)[:, :, -1], axis=0)
 E_local_sum = np.mean(np.cumsum(E_local, axis=2)[:, :, -1], axis=0)
-E_better_sum = np.mean(np.cumsum(E_better, axis=2)[:, :, -1], axis=0)
+# E_better_sum = np.mean(np.cumsum(E_better, axis=2)[:, :, -1], axis=0)
 plt.scatter(N_arr, -1 * E_uni_sum, label='Unidir. LSTM', marker='.')
 plt.scatter(N_arr, -1 * E_bi_sum, label='Bidir. LSTM', marker='.')
 plt.scatter(N_arr, -1 * E_triv_sum, label='Local opt.', marker='.')
 plt.scatter(N_arr, -1 * E_local_sum, label='Local LSTM', marker='.')
-plt.scatter(N_arr, -1 * E_better_sum, label='Better', marker='.')
+plt.scatter(N_arr, -1 * E_better_sum, label='Work loss', marker='.')
+plt.scatter(n_dt_1, -1 * np.array(E_n), label='Global opt.', marker='1', c='k')
+
+# plt.scatter(5, -1 * np.mean(data[:, 2]), marker='1')
 plt.legend()
 plt.xlabel('$N$')
 plt.ylabel('$\overline{W}$')
 plt.savefig('/home/fsoest/ba/phystex/img/gen_dt_{0}.png'.format(dt), dpi=300)
+
+# %%
+n_dt_1 = np.array([2, 3, 5, 12])
+E_n = np.zeros(4)
+E_n[-1] = np.mean(data[:, 2])
+E_n[0] *=-1

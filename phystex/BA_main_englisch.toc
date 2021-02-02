@@ -7,7 +7,6 @@
 \contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}{subsection.2.2.2}% 
 \contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}{subsection.2.2.3}% 
 \contentsline {chapter}{\numberline {3}Work lower bound}{11}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Local optimisation protocol}{11}{section.3.1}% 
 \contentsline {chapter}{\numberline {4}Experimental results}{13}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Influence of $\Delta \mathrm {T}$ on Work Output}{13}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}$N=2$: Learning single jump optimal control sequences}{15}{section.4.2}% 
@@ -23,5 +22,5 @@
 \contentsline {section}{\numberline {A.1}Single jump work output}{31}{section.A.1}% 
 \contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{32}{section.A.2}% 
 \contentsline {chapter}{\numberline {B}Training protocols}{33}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters section \ref {n_2_ml}}{33}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters \ref {n_5_ml}}{33}{section.B.2}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters Section \ref {n_2_ml}}{33}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters Sections \ref {n_5_ml} and \ref {n_5_dt1}}{33}{section.B.2}% 

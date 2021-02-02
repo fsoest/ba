@@ -4,16 +4,19 @@ The modular structure of the LSTM networks used in this work allows us to genera
 In this section we investigate the performance of the trained networks when varying the amount of extraction steps.
 We compare the performance of the uni- and bidirectional LSTM networks trained on the MSE loss to a unidirectional LSTM model trained on the locally optimised protocol as well as the work output when following the policy of local optimisation directly.
 We plot the average work output of the aforementioned in Figure \ref{genplot}.
-The LSTM networks trained perform best for values of $N$ close to the one they were trained on and are unable to generalise to larger $N$.
+For $\Delta \mathrm{T} = 1$, the LSTM networks trained using the MSE loss perform best for values close to $N=5$, which they were trained on, and are unable to generalise to larger $N$.
 This is not unusual as the training set consists of policies optimal only for $N=5$.
-The LSTM trained on the locally optimised policies is able to generalise to larger $N$ for $\Delta \mathrm{T}$, although the extracted work per step decreases with $N$.
+$\overline{W}$ drops for $N > 6$ while no such drop can be seen in the LSTM model trained using the work as loss.
+The LSTM trained on the locally optimised policies is able to generalise to larger $N$ for $\Delta \mathrm{T} = 1$, although the extracted work per step decreases with $N$.
 Learning the locally optimised policy requires learning a representation of the system state $\rho_S$, the errors of which will propagate if the representation is not exact.
 For large $N$, this representation will be no better than the fully mixed state, leading to $dW = 0$ on average.
 
 For $\Delta \mathrm{T} = 5$, all models fail to generalise to larger $N$.
 A possible reason can be found in the poor performance of the unidirectional LSTM trained on the locally optimised protocol.
 Here, it becomes evident that the model is unable to learn a precise representation of the system state which remains valid for larger $N$.
-
+Two possible reasons come to mind, firstly the larger evolution time leads to a faster propagation of errors in the representation.
+Additionally, the mapping from the initial to evolved state is harder to represent for the LSTM cell.
+For small $\Delta \mathrm{T}$, it can be approximated by a linear mapping, but the quality of this approximation decreases when $\Delta \mathrm{T}$ is large.
 
 \begin{figure}
 	\centering
@@ -27,6 +30,6 @@ Here, it becomes evident that the model is unable to learn a precise representat
 	\includegraphics[width=\textwidth]{img/gen_dt_5}
 	\subcaption{$\Delta \mathrm{T} = 5$}
 \end{subfigure}
-	\caption{Generalisability of MSE and local optimisation models. For each $N$, we generate 1000 random drives and predict their transducer policies. We plot the mean of their work output $\overline{W}$ for varying $N$. Where available, we plot the optimal average work output. For $\Delta \mathrm{T} = 1$, we additionally plot $\overline{W}$ for the bidirectional LSTM trained using the extracted work as the loss function.}
+	\caption{Generalisability of MSE and local optimisation models. For each $N$, we generate 1000 random drives and predict their transducer policies. We plot the mean of their work output $\overline{W}$ for varying $N$. Where available, we plot the optimal average work output. For $\Delta \mathrm{T} = 1$, we additionally plot $\overline{W}$ for the bidirectional LSTM trained using the extracted work as the loss function. The average output of the local optimisation protocol is plotted as a benchmark.}
 	\label{genplot}
 \end{figure}

@@ -28,6 +28,12 @@ Sebastian Deffner and Steve Campbell.
 \newblock {\em Journal of Physics A: Mathematical and Theoretical},
   50(45):453001, Oct 2017.
 
+\bibitem{Egloff_2015}
+D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
+\newblock A measure of majorization emerging from single-shot statistical
+  mechanics.
+\newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
+
 \bibitem{PhysRevX.10.011006}
 E.~Flurin, L.~S. Martin, S.~Hacohen-Gourgy, and I.~Siddiqi.
 \newblock Using a recurrent neural network to reconstruct quantum dynamics of a
@@ -141,6 +147,14 @@ Mike Schuster and Kuldip Paliwal.
 Richard~S. Sutton and Andrew~G. Barto.
 \newblock {\em Reinforcement Learning: An Introduction}.
 \newblock The MIT Press, second edition, 2018.
+
+\bibitem{thomson_2011}
+William Thomson.
+\newblock {\em ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF
+  THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
+  volume~1 of {\em Cambridge Library Collection - Physical Sciences}, page
+  100–106.
+\newblock Cambridge University Press, 2011.
 
 \bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,

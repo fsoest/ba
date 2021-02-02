@@ -395,4 +395,33 @@
   url       = {https://link.aps.org/doi/10.1103/PhysRevX.10.011006},
 }
 
+@Book{Sutton1998,
+  title     = {Reinforcement Learning: An Introduction},
+  publisher = {The MIT Press},
+  year      = {2018},
+  author    = {Sutton, Richard S. and Barto, Andrew G.},
+  edition   = {Second},
+  added-at  = {2019-07-13T10:11:53.000+0200},
+  biburl    = {https://www.bibsonomy.org/bibtex/2f46601cf8b13d39d1378af0d79438b12/lanteunis},
+  interhash = {ac6b144aaec1819919a2fba9f705c852},
+  intrahash = {f46601cf8b13d39d1378af0d79438b12},
+  timestamp = {2019-07-13T10:11:53.000+0200},
+  url       = {http://incompleteideas.net/book/the-book-2nd.html},
+}
+
+@Article{Egloff_2015,
+  author    = {D Egloff and O C O Dahlsten and R Renner and V Vedral},
+  title     = {A measure of majorization emerging from single-shot statistical mechanics},
+  journal   = {New Journal of Physics},
+  year      = {2015},
+  volume    = {17},
+  number    = {7},
+  pages     = {073001},
+  month     = {jul},
+  abstract  = {The use of the von Neumann entropy in formulating the laws of thermodynamics has recently been challenged. It is associated with the average work whereas the work guaranteed to be extracted in any single run of an experiment is the more interesting quantity in general. We show that an expression that quantifies majorization determines the optimal guaranteed work. We argue it should therefore be the central quantity of statistical mechanics, rather than the von Neumann entropy. In the limit of many identical and independent subsystems (asymptotic i.i.d) the von Neumann entropy expressions are recovered but in the non-equilbrium regime the optimal guaranteed work can be radically different to the optimal average. Moreover our measure of majorization governs which evolutions can be realized via thermal interactions, whereas the non-decrease of the von Neumann entropy is not sufficiently restrictive. Our results are inspired by single-shot information theory.},
+  doi       = {10.1088/1367-2630/17/7/073001},
+  publisher = {{IOP} Publishing},
+  url       = {https://doi.org/10.1088/1367-2630/17/7/073001},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
