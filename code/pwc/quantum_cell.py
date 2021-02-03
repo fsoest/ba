@@ -41,8 +41,8 @@ class Quantum_cell(torch.nn.Module):
 
     def q_cell(self, drive, cell):
         input = self.w_input(drive)
-        T = torch.relu(self.td(input) + self.ts(cell))
-        U = torch.relu(self.ud(input) + self.ut(T))
+        T = torch.tanh(self.td(input) + self.ts(cell))
+        U = torch.tanh(self.ud(input) + self.ut(T))
         T = self.dropout_layer(T)
         U = self.dropout_layer(U)
         U = torch.reshape(U, (drive.shape[0], self.cell_size, self.cell_size))

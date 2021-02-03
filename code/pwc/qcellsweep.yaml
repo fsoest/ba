@@ -28,7 +28,7 @@ parameters:
     max: 300
   output_size:
     min: 10
-    max: 1500
+    max: 300
   pat_drop:
     min: 1.5
     max: 5

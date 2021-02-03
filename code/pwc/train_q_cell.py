@@ -6,7 +6,7 @@ import torch
 import numpy as np
 import argparse
 import wandb
-
+# %%
 
 opt_args = {
     'dropout': 'float',
@@ -60,12 +60,12 @@ output_size = opt_args['output_size']
 cell_size = opt_args['output_size']
 
 wandb.init(project='quantum_cell_dt_{0}'.format(dt), config=opt_args)
-
 # %%
 model = Quantum_cell(5, 4, input_size, output_size, cell_size, batch_size, dropout).double()
 optimiser = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=0.99, dampening=0, weight_decay=0, nesterov=True)
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=sched_factor, patience=patience/pat_drop)
 epoch, valid_loss = model.learn(train_set, valid_set, optimiser, scheduler, patience=patience)
+
 
 metrics = {
     'epoch': epoch,
