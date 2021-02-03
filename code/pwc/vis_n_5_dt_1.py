@@ -27,16 +27,15 @@ test_set = WorkDataset(data_test, N, net='lstm')
 valid_set = WorkDataset(data_valid, N, net='lstm')
 dataloader = DataLoader(train_set, batch_size=batch_size, shuffle=True, drop_last=True, num_workers=8)
 # %%
-model = torch.load('models/curr_dt1').eval()
-
-hidden, cell = model.HiddenCellTest(14400)
-x_test_embed = test_set.__getitem__(range(14400))['x']
+model = torch.load('models/dt_1_bi').eval()
 
 with torch.no_grad():
+    hidden, cell = model.HiddenCellTest(14400)
+    x_test_embed = test_set.__getitem__(range(14400))['x']
     y_pred = model(x_test_embed, hidden, cell)
 
 trans_pred = rev_angle_embedding(y_pred[0].detach().numpy(), N)
-
+# %%
 pred_work = np.zeros(len(trans_pred))
 for i, pred in enumerate(trans_pred):
     pred_work[i] = wrapper(pred, data_test[i, 0][:N], data_test[i, 0][N:], dt, data_test[i, 3], N)
@@ -58,14 +57,14 @@ plt.hist(exps[:, 0, 2])
 # Boxplots
 # %%
 plt.boxplot(trans_pred[:, :N])
-plt.ylabel('$\\theta_{pred}$')
-plt.xlabel('Transducer qubit')
-plt.savefig('/home/fsoest/ba/phystex/img/theta_pred_box_dt_1.png', dpi=300)
+plt.ylabel('$\\theta_{pred}$', fontsize=15)
+plt.xlabel('Transducer qubit', fontsize=15)
+plt.savefig('/home/fsoest/ba/phystex/img/theta_pred_box_dt_12.png', dpi=300)
 # %%
 plt.boxplot(trans_real[:, :N])
-plt.ylabel('$\\theta_{opt}$')
-plt.xlabel('Transducer qubit')
-plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box_dt_1.png', dpi=300)
+plt.ylabel('$\\theta_{opt}$', fontsize=15)
+plt.xlabel('Transducer qubit', fontsize=15)
+plt.savefig('/home/fsoest/ba/phystex/img/theta_opt_box_dt_12.png', dpi=300)
 # %%
 plt.boxplot(trans_pred[:, N:] % (2*np.pi))
 plt.ylabel('$\phi_{pred}$')
@@ -78,14 +77,14 @@ plt.xlabel('Transducer qubit')
 plt.savefig('/home/fsoest/ba/phystex/img/phi_opt_box_dt_1.png', dpi=300)
 # %%
 plt.boxplot(np.abs((trans_real[:, N:] % (2*np.pi)) - (trans_pred[:, N:] % (2*np.pi))))
-plt.ylabel('$|\phi_{opt} - \phi_{pred}|$')
-plt.xlabel('Transducer qubit')
-plt.savefig('/home/fsoest/ba/phystex/img/delta_phi_box_dt_1.png', dpi=300)
+plt.ylabel('$|\phi_{opt} - \phi_{pred}|$', fontsize=15)
+plt.xlabel('Transducer qubit', fontsize=15)
+plt.savefig('/home/fsoest/ba/phystex/img/delta_phi_box_dt_12.png', dpi=300)
 # %%
 plt.boxplot(np.abs((trans_real[:, :N]) - (trans_pred[:, :N])))
-plt.ylabel('$|\\theta_{opt} - \\theta_{pred}|$')
-plt.xlabel('Transducer qubit')
-plt.savefig('/home/fsoest/ba/phystex/img/delta_theta_box_dt_1.png', dpi=300)
+plt.ylabel('$|\\theta_{opt} - \\theta_{pred}|$', fontsize=15)
+plt.xlabel('Transducer qubit', fontsize=15)
+plt.savefig('/home/fsoest/ba/phystex/img/delta_theta_box_dt_12.png', dpi=300)
 # %%
 # Steps for dt for rho trajectory
 num_steps = 20

@@ -13,14 +13,14 @@ s_z = np.array([[1, 0], [0, 1]], dtype=np.complex256)
 
 def rand_herm():
     rand = np.random.uniform(low=-1, high=1, size=8)
-    rand /= np.linalg.norm(rand)
+    # rand /= np.linalg.norm(rand)
     comp = np.zeros(4, dtype=np.complex128)
     for i in range(len(comp)):
         comp[i] = rand[i] + 1j * rand[i + 4]
     H = comp.reshape(2, 2)
 
     H = (H + H.T.conj())/2
-    return H
+    return H / np.linalg.norm(H)
 
 def rand_unit(tau):
     H = rand_herm()
@@ -114,7 +114,6 @@ def fidelities(angles, runs, tau):
             noisy_kets[run, n] = U[run, n] @ kets[n]
             fidelities[run] *= fidelity(noisy_kets[run, n], kets[n])
     return fidelities
-
 # %%
 N = 1000
 

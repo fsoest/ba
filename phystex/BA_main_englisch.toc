@@ -2,8 +2,8 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}% 
 \contentsline {section}{\numberline {2.1}Collision model dynamics}{3}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}Supervised machine learning}{6}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANN}{6}{subsection.2.2.1}% 
+\contentsline {section}{\numberline {2.2}Supervised machine learning}{5}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANN}{5}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}{subsection.2.2.2}% 
 \contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}{subsection.2.2.3}% 
 \contentsline {chapter}{\numberline {3}Work lower bound}{11}{chapter.3}% 
@@ -12,9 +12,9 @@
 \contentsline {section}{\numberline {4.2}$N=2$: Learning single jump optimal control sequences}{15}{section.4.2}% 
 \contentsline {section}{\numberline {4.3}$N=5$}{15}{section.4.3}% 
 \contentsline {subsection}{\numberline {4.3.1}$\Delta \mathrm {T} = 5$}{15}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}$\Delta \mathrm {T} = 1$}{16}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Noise resistance}{21}{subsection.4.3.3}% 
-\contentsline {subsection}{\numberline {4.3.4}Extracted work as cost function}{21}{subsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.3.2}$\Delta \mathrm {T} = 1$}{17}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Noise resistance}{20}{subsection.4.3.3}% 
+\contentsline {subsection}{\numberline {4.3.4}Extracted work as cost function}{23}{subsection.4.3.4}% 
 \contentsline {section}{\numberline {4.4}Generalisation to other $N$}{23}{section.4.4}% 
 \contentsline {chapter}{\numberline {5}Summary and outlook}{25}{chapter.5}% 
 \contentsline {chapter}{\numberline {6}Bibliography}{27}{chapter.6}% 

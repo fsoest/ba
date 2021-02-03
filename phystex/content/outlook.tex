@@ -6,7 +6,7 @@ We demonstrated that our approach is capable of predicting transducer policies t
 We found that the efficiency greatly depends on the model parameters $N$ and $\Delta \mathrm{T}$.
 For $N=2$ and $\rho_0 = \ket{+}\bra{+}$, where an analytic optimum exists, a simple linear network is able to reproduce the optimal policy.
 For the higher-dimensional case $N=5$, we examined two switching times $\Delta \mathrm{T}$, finding that the network performs better on the shorter than the longer time.
-For $\Delta \mathrm{T} = 5$ were unable to outperform the lower bound and were only able to extract 33.1 \% of the optimum.
+For $\Delta \mathrm{T} = 5$, the models were unable to outperform the lower bound and were only able to extract 33.1 \% of the optimum.
 The reason for the lower performance is likely a combination of two factors.
 The models struggle to find a representation of the system state, which is necessary to predict the optimal next step.
 Additionally, we found an inherent difference in the optimal solutions between the two switching times. For $\Delta \mathrm{T} = 1$, the transducer Hamiltonian strength was maximised for most samples and thus $\theta_T$ constant.
@@ -20,10 +20,9 @@ An alternative to the work loss is following an approach similar to those in \ci
 
 An extension to the model is to add dissipative effects to the system state $\rho_S$.
 
-
 It has to be noted that the approach followed in this work depends on maximising expectation values of work outputs.
 While this is certainly justified in the limit of infinite experimental realisations, the question of how the results might differ in the single shot case remains.
 A reinforcement learning based approach, where problems are usually formulated as Markov Decision Problems and probabilistic reward functions are common \cite{Sutton1998}, would be a suitable alternative.
 
-We calculate the work output as the negative expectation value of the internal energy of the system, which is extracted through the use of transducer qubits.
-The question of how this output can be used to charge a battery to be used remains open.
+We calculated the work output as the negative expectation value of the internal energy of the system, which is extracted through the use of transducer qubits.
+The question of how this output could be used in practice, e.g. to charge a battery, remains open.

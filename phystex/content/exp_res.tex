@@ -4,13 +4,13 @@ Both the input (drive) and output (transducer) are transformed by the embedding
 \begin{align*}
 	\left\{
 	\begin{pmatrix}
-	\theta^i & \phi^i \\
+	\theta^n & \phi^n \\
 	\end{pmatrix}
 	\right\}
 	\to
 	\left\{
 	\begin{pmatrix}
-	\sin(\theta^i) & \sin(\phi^i) & \cos(\theta^i)  & \cos(\phi^i) \\
+	\sin(\theta^n) & \sin(\phi^n) & \cos(\theta^n)  & \cos(\phi^n) \\
 	\end{pmatrix}
 	\right\}.
 \end{align*}
@@ -24,7 +24,7 @@ Instead we define the \textit{efficiency} of a model $\textfrak{N}$ on a dataset
 	\eta = \frac{1}{N} \sum_{i=1}^N \frac{W(\vec{x}_i,\textfrak{N}(\vec{x}_i))}{W(\vec{x}_i,\vec{y}_i)},
 \end{align}
 i.e. the arithmetic mean of the ratios of work output predicted by the model to optimal work output.
-The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D}\}_i, \{\ket{\psi_T}\}_i)$ returns the work given a drive and transducer sequence.
+The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D^n}\}_i, \{\ket{\psi_T^n}\}_i)$ returns the work given a drive and transducer sequence.
 
 It should be noted that using the MSE for training is not the only choice, and perhaps not the obvious one.
 Directly using the work extracted is possibly a more intuitive choice, but we refrain from it in the first section for two main reasons.

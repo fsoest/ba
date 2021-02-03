@@ -1,13 +1,13 @@
 % !TeX spellcheck = en_GB
 For the simplest case of $N = 2$, we generate data sets for $\rho_0 = \ket{0} \bra{0}, \ket{+} \bra{+}$ and random pure states.
-The drive qubits are sampled randomly from the Haar measure \cite{Mezzadri}.
+The drive qubits, represented by $\theta_D^1, \phi_D^1, \theta_D^2, \phi_D^2$, are sampled randomly from the Haar measure \cite{Mezzadri}.
 We train each data set on a fully-connected feedforward ANN with a single hidden layer with 10 neurons.
 The efficiency of the models is presented in Table \ref{n2efftable}.
 For $N = 2$, starting in an eigenstate of the drive Hamiltonian $H_{DS}$ gives the highest model efficiency, as the optimal transducer policy is trivial to learn and implement (see Appendix \ref{n2_opt_pol}).
 
 For random initial states the efficiency is close to zero.
-This is to be expected, as without knowledge of the system state $\rho_0$ the optimal transducer policy cannot be determined.\footnote{The deviation from zero is a relic of the way the test data is shuffled. For $N_{\mathrm{data}} \to \infty$ it would disappear.}
-We therefore train the same network with the random initial state as additional inputs using the same embedding as the drive sequence.
+This is to be expected, as without knowledge of the system state $\rho_0$ the optimal transducer policy cannot be determined.\footnote{The deviation from zero is a relic of the finite sample size. For $N_{\mathrm{data}} \to \infty$ it would disappear.}
+For comparison, we train a network with the same hyperparameters using the random initial state as additional inputs.
 This increases the test data efficiency, but is still far below the efficiency for $\rho_0 = \ket{+} \bra{+}$.
 
 

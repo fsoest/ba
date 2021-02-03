@@ -2,6 +2,7 @@
 A standard approach to modelling open quantum systems is the collision model.
 The system under consideration interacts with a series of ancilla systems through a unitary transformation on the combined system-ancilla state \cite{Lorenzo_2017}. After a short interaction time $\Delta t$, the ancilla systems are traced out to receive the system state.
 This type of interaction will in general lead to entanglement between system and ancilla.
+This is undesirable in our setting, the reason for which will become apparent in the next paragraph.
 To ensure the ancilla and system states remain pure, we follow the approach used in \cite{beyer2020}:
 let $\rho_S$ be the density operator of the system under consideration and $\ket{\psi_A}$ the state of the ancilla system.
 Given $\Delta t \ll 1$ the time evolution of $\rho_S$ under $H_{AS}$ acting on the combined system is
@@ -9,49 +10,51 @@ Given $\Delta t \ll 1$ the time evolution of $\rho_S$ under $H_{AS}$ acting on t
 \rho'_S & = \mathrm{Tr}_A \{ e^{-i H_{AS} \Delta t} (\ket{\psi_A} \bra{\psi_A} \otimes \rho_S) e^{i H_{AS} \Delta t} \} & = \rho_S - i \Delta t [\expval{H_{AS}}{\psi_A}, \rho_S] + O(\Delta t^2).
 \end{align}
 
-In the continuous limit Equation \ref{coll_eq} leads to von-Neumann dynamics on the system:
+In the continuous limit Eq. (\ref{coll_eq}) leads to von-Neumann dynamics on the system for an infinite stream of qubits initialised in the same state $\ket{\psi_A}$:
 \begin{align*}
 	\dot{\rho}_S = - i [\expval{H_{AS}}{\psi_A}, \rho_S].
 \end{align*}
 
 As each ancilla only interacts once with the system and is traced out afterwards, $\rho_S$ remains pure in the limit of $\Delta t \to 0$.
-This framework allows one to model system Hamiltonians with arbitrary time dependence by varying the initial ancilla states.
-In this fashion we can create piece-wise constant Hamiltonians by initialising $n = \frac{\Delta \mathrm{T}}{\Delta t}$ identical ancillas, where $\Delta \mathrm{T}$ is the time for which the Hamiltonian remains constant.
 
-We use this approach as the implementation for our setting, which consists of three qubits: the drive, system and transducer qubits. The drive and transducer qubits can be set in N discrete steps modelled as piecewise constant functions (PWC) of ($\theta_D, \phi_D$) and ($\theta_T, \phi_T$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state.
-The reason behind using PWC instead of continuous functions is that computational complexity is greatly reduced.
+We use this approach as the implementation for our setting, which consists of three qubits: the drive, system and transducer qubits.
+We focus on piece-wise constant (PWC) functions of the drive ($\ket{\psi_D}$) and transducer ($\ket{\psi_T}$) qubits, as it greatly reduces computational complexity.
+These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\psi_D} \otimes \ket{\psi_T}$ constant for time $\Delta \mathrm{T}$ (Figure \ref{col_model}).
+The drive and transducer qubits can be set in N discrete intervals represented by ($\theta_D^n, \phi_D^n$) and ($\theta_T^n, \phi_T^n$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state $\rho_S$.
+Here, the necessity for pure ancillas, in this case both drive and transducer qubit, becomes clear, as a mixed drive or transducer state would not be compatible with the PWC approach where we assume to be in control of drive and transducer.
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
 H_{DST} = H_{I} \otimes \mathds{1}_T + \mathds{1}_D \otimes H_{I}, \\
-H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+},
+H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
 \end{equation*}
-unless otherwise noted.
+Note that the interaction Hamiltonian itself is constant and the time dependence comes from the change in the stream of ancillas only.
+The energy scale of the Hamiltonian is therefore limited and so are the dynamics of the system state $\rho_S$.
 The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is time span between qubit switching:
 \begin{align}
-H_S^i &= \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i}, \label{relham}\\
-\rho_S &((i+1) \Delta \mathrm{T}) = U_i \ \rho_S(i \Delta \mathrm{T}) \ U^{\dagger}_i, \\
-U_i &= e^{-iH_S^i \Delta \mathrm{T}}, \\
-W &= - \Sigma_i \Tr{\rho_S(i \Delta \mathrm{T}) \ dH_S^i}, \\
-dH_S^i &= \bra{\psi_D^i}\bra{\psi_T^{i+1}} H_{DST} \ket{\psi_D^i} \ket{\psi_T^{i+1}} - \bra{\psi_D^i}\bra{\psi_T^i} H_{DST} \ket{\psi_D^i} \ket{\psi_T^i}.	
+H_S^n &= \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}, \label{relham}\\
+\rho_S &((n+1) \Delta \mathrm{T}) = U_n \ \rho_S(n \Delta \mathrm{T}) \ U^{\dagger}_n, \\
+U_n &= e^{-iH_S^n \Delta \mathrm{T}}, \\
+W &= - \Sigma_n \Tr{\rho_S(n \Delta \mathrm{T}) \ dH_S^n}, \\
+dH_S^n &= \bra{\psi_D^n}\bra{\psi_T^{n+1}} H_{DST} \ket{\psi_D^n} \ket{\psi_T^{n+1}} - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}.	
 \end{align}
-Here we use the partial Hamiltonian $H_S^i$ on the system at time step $i \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S(i \Delta \mathrm{T})$.
+Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
 
-Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces equation \ref{relham} to
+Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces Eq. (\ref{relham}) to
 \begin{align}
-	H_S^i &= \frac{1}{2} \left[\sin(\theta_D^i) e^{i\phi_D^i} + \sin(\theta_T^i) e^{i\phi_T^i}\right] \sigma_{+} + h.c. =  H_{DS} + H_{ST}.
+	H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{DS} + H_{ST}.
 \end{align}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{img/pwc2}
-	\caption{Piecewise constant implementation of drive and transducer qubits: the vertical axis represents an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily. The piece-wise constant drive and transducer settings lead to a piece-wise constant system Hamiltonian.}
-	\label{pwc}
-\end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/coll2}
 	\caption{Collision model used in this work: drive and transducer are series of qubits that interact once with the system and evolve the reduced density operator $\rho_S$. The qubit configuration can be changed in intervals of $\Delta \mathrm{T}$.}
 	\label{collmodel}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/pwc2}
+	\caption{Piecewise constant implementation of drive and transducer qubits: the vertical axis represents an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily. The piece-wise constant drive and transducer settings lead to a piece-wise constant system Hamiltonian.}
+	\label{pwc}
 \end{figure}

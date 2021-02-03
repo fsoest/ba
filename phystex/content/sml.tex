@@ -11,7 +11,7 @@ In this section we review ANNs, following the exposition given in \cite{lu2020dy
 Let $\textfrak{N}$ be a fully-connected feedforward ANN, meaning there are no loops in the neuron connections and all neurons in a layer are connected to every neuron of the next layer, $\textfrak{N}: \mathbb{R}^{n_1} \to \mathbb{R}^{n_L}$. $n_1$ and $n_L$ denote the dimensionality of the input and output respectively. 
 $\textfrak{N}$ has $L$ layers, or columns of neurons.
 The network architecture is given by the amount of neurons $n_l$ in each hidden layer $l \in [2, L - 1]$ (see Figure \ref{nn}).
-The neurons in layer $l$ are represented by their activations $\vec{a}_l \in \mathbb{R}^{n_l}$, which represent the matrix multiplication output. Additionally each layer includes trainable parameters $W_l \in \mathbb{R}^{n_{l+1} \times n_{l}}$ and $\vec{b}_l \in \mathbb{R}^{n_l}$ called weights and biases respectively.
+The neurons in layer $l$ are represented by their activations $\vec{a}_l \in \mathbb{R}^{n_l}$, which represent the matrix multiplication output. Additionally each layer includes trainable parameters $W_l \in \mathbb{R}^{n_{l+1} \times n_{l}}$ and $\vec{b}_l \in \mathbb{R}^{n_{l+1}}$ called weights and biases respectively.
 The activations can then be calculated using the following formulae \cite{TN_libero_mab2)53517}:
 \begin{align*}
 	\vec{a}_2 & = W_1 \vec{a}_1 + \vec{b}_1, \\
@@ -41,7 +41,8 @@ The core idea of RNNs is the usage of loops to store and propagate information t
 \end{figure}
 
 The network is made up of one or multiple rows of LSTM cells, each of which share parameters.
-The cell uses the current input $x_t$ as well as the previous cell state $c_{t-1}$ and output $h_{t-1}$ to compute the output $h_t$.
+Figure \ref{lstm} illustrates the internal workings of a single LSTM cell.
+Besides the current input $x_t$ and the previous output $h_{t-1}$, the LSTM cell has access to the so called cell state $c_{t-1}$, which acts as the memory and to which the cell can add and delete information, to compute the output $h_t$.
 Internally, the cell is comprised of multiple gates which control the storage of information $i_t, f_t, g_t, o_t$; which are the input, forget, cell and output gates respectively.
 The output and gates of each cell are computed using the following equations \cite{NEURIPS2019_9015}:
 \begin{align*}
@@ -54,7 +55,6 @@ h_t & = o_t \odot \tanh (c_t),
 \end{align*}
 where $\odot$ is the Hadamard product and $\sigma(x)$ is the sigmoid function.
 The input and forget gates $i_t, f_t$ express to what extent new data should be incorporated or deleted from the current cell state $c_t$ respectively.
-Figure \ref{lstm} illustrates the internal workings of a LSTM cell.
 
 In some time-series problems data from a future time step might be required for the current prediction.
 In these cases, bidirectional RNNs can provide a better performance.

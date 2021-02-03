@@ -1,6 +1,6 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
-We apply the methodology of Section \ref{n_5_ml} to the case of $\Delta \mathrm{T} = 1$ with 5 drive and transducer qubits.
+We apply the methodology of Section \ref{n_5_ml} to the case of $\Delta \mathrm{T} = 1$ with $N=5$ drive and transducer qubits.
 Contrary to $\Delta \mathrm{T} = 5$, the optimal system states\footnote{$\Tr{\rho_S^i \sigma_z} = 0$} cannot be reached from every point on the Bloch sphere, leading to a lower total work output following the protocol determined by the optimiser (Figure \ref{dt_dep}).
 
 We train neural networks with the same hyperparameters as in Section \ref{n_5_ml}.
@@ -28,31 +28,35 @@ For $\Delta \mathrm{T} = 1$, all models beat the locally optimised average $W_{l
 
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.32\textwidth}
+	\begin{subfigure}{0.35\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/theta_opt_box_dt_1}
+		\includegraphics[width=\textwidth]{img/theta_opt_box_dt_12}
+		\subcaption{$\theta^n_{\text{opt}}$}
 	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
+	\begin{subfigure}{0.35\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/theta_pred_box_dt_1}
+		\includegraphics[width=\textwidth]{img/theta_pred_box_dt_12}
+		\subcaption{$\theta^n_{\text{pred}}$}
 	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
+	\begin{subfigure}{0.35\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/delta_theta_box_dt_1}
+		\includegraphics[width=\textwidth]{img/delta_theta_box_dt_12}
+		\subcaption{$|\theta^n_{\text{opt}} - \theta^n_{\text{pred}}|$}
 	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
+%	\begin{subfigure}{0.32\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{img/phi_opt_box_dt_1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.32\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{img/phi_pred_box_dt_1}
+%	\end{subfigure}
+	\begin{subfigure}{0.35\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/phi_opt_box_dt_1}
+		\includegraphics[width=\textwidth]{img/delta_phi_box_dt_12}
+		\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}
 	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/phi_pred_box_dt_1}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/delta_phi_box_dt_1}
-	\end{subfigure}
-	\caption{\textbf{Top row:} we plot the performance of the bidirectional LSTM on $\theta_T$ for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T = \frac{\pi}{2}$ for a majority of the central three qubits as well. \textbf{Bottom row:} we plot the performance for the transducer azimuth $\phi_T$.}
+	\caption{We plot the performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T^n = \frac{\pi}{2}$ for a majority of the central three qubits as well. Again, predicted and optimal $\phi^n_T$ are distributed equally and thus we do not plot them here.}
 	\label{dt1box}
 \end{figure}
 
