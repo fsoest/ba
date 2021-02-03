@@ -34,6 +34,12 @@ D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
   mechanics.
 \newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
 
+\bibitem{1905AnP...322..132E}
+A.~{Einstein}.
+\newblock {{\"U}ber einen die Erzeugung und Verwandlung des Lichtes
+  betreffenden heuristischen Gesichtspunkt}.
+\newblock {\em Annalen der Physik}, 322(6):132--148, January 1905.
+
 \bibitem{PhysRevX.10.011006}
 E.~Flurin, L.~S. Martin, S.~Hacohen-Gourgy, and I.~Siddiqi.
 \newblock Using a recurrent neural network to reconstruct quantum dynamics of a

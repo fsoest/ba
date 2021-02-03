@@ -424,4 +424,18 @@
   url       = {https://doi.org/10.1088/1367-2630/17/7/073001},
 }
 
+@InBook{thomson_2011,
+  pages      = {100–106},
+  title      = {ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
+  publisher  = {Cambridge University Press},
+  year       = {2011},
+  author     = {Thomson, William},
+  volume     = {1},
+  series     = {Cambridge Library Collection - Physical Sciences},
+  booktitle  = {Mathematical and Physical Papers},
+  collection = {Cambridge Library Collection - Physical Sciences},
+  doi        = {10.1017/CBO9780511996009.040},
+  place      = {Cambridge},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

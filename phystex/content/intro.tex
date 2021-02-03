@@ -1,18 +1,20 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
 Thermodynamics has been a central field of interest in physics ever since its inception in the 19th century \cite{thomson_2011}.
+It was in fact a thermodynamic insight which led Einstein to conclude that electromagnetic radiation is quantised \cite{1905AnP...322..132E}.
+Naturally, it makes sense to combine the fields to study the thermodynamic properties of quantum systems.
+We focus on work extraction, which is often modelled as a system coupled to a heat bath, and bounds for the extractable work exist \cite{Egloff_2015}.
+We take a different approach, following the framework given in \cite{beyer2020}.
+We examine a system that can be driven by an arbitrary excitation, modelled as a time-dependent system Hamiltonian.
+The transducer is modelled in a similar fashion and can extract work from the system.
 
 Due to the increasing availability of data and computing power, machine learning methods have become a standard approach in many fields such as natural language processing \cite{DBLP:journals/corr/VaswaniSPUJGKP17}.
 Additionally, these methods are being applied to a broad range of problems in the physical sciences, from statistical physics to quantum computing \cite{Carleo_2019, wise2021using}.
 
 Machine learning has also found use in the field of energy harvesting, concerned with extracting energy from external excitations, e.g. vibrations in human motion \cite{Liu2019}.
 In this work we extend this concept to the quantum case.
-Work extraction is often modelled as a system coupled to a heat bath, and bounds for the extractable work exist \cite{Egloff_2015}.
-We take a different approach, following the framework given in \cite{beyer2020}.
-We examine a system that can be driven by an arbitrary excitation, modelled as a time-dependent system Hamiltonian.
-The transducer is modelled in a similar fashion and can extract work from the system.
+We train recurrent neural networks to predict transducer protocols given a drive sequence, considering both the case where the sequence is known beforehand and the one where it is not.
 By following a policy of local optimisation of the work output, we show that a lower bound of the extractable work exists for specific initial conditions.
-We train neural networks to predict transducer protocols given a drive sequence, considering both the case where the sequence is known beforehand and the one where it is not.
 
 The remainder of this work is structured as follows.
 In Chapter \ref{background} we review the collision model framework used in our approach and introduce two machine learning architectures.
