@@ -2,20 +2,20 @@
 % !TeX spellcheck = en_GB
 In this section we examine the higher-dimensional case of $N=5$.
 As the data set with $\rho_0 = \ket{+} \bra{+}$, the eigenstate of the drive Hamiltonian, performed best in the previous section, we focus our attention on this case.
-We compare the efficiency of a fully connected ANN (FCANN) to a unidirectional and bidirectional LSTM to analyse the effect of different architectures on the predictive power in our setting.
+We compare the efficiency of a fully-connected ANN (FCANN) to a unidirectional and bidirectional LSTM to analyse the effect of different architectures on the predictive power in our setting.
 Both LSTM networks have the same architecture, bar the bi-directionality (see Figure \ref{lstm_network}).
 This hyperparameter distinguishes the two cases of whether or not the complete drive sequence is known in advance.
-Before entering the LSTM cell, each embedded $\ket{\psi_D^n}$ passes through a two layer FCANN to increase the input dimensionality.
-After passing the LSTM a single layer FCANN is applied to the output to produce the embedding size to recover $\ket{\psi_T^n}$.
+Before entering the LSTM cell, each embedded $\ket{\psi_D^n}$ passes through two fully-connected layers to increase the input dimensionality.
+After passing the LSTM a single fully-connected layer is applied to the output to produce the embedding size to recover $\ket{\psi_T^n}$.
 
-We additionally train a third network, which uses only three fully connected hidden layers, the size of which are selected to approximately match the amount of trainable parameters of the bidirectional LSTM.
+The FCANN is made up of three fully connected hidden layers, the size of which are selected to approximately match the amount of trainable parameters of the bidirectional LSTM.
 
 The test data efficiency as well as the amount of trainable parameters are presented in Table \ref{n5efftable}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{img/lstm_network}
-	\caption{Architecture of the LSTM networks. The green blocks represent the unidirectional case. For the bidirectional case, a second LSTM block (orange) is included with separate trainable parameters. The blocks labeled `FC' represent fully-connected layers.}
+	\caption{Architecture of the LSTM networks. The green blocks represent the unidirectional case. For the bidirectional case, a second LSTM block (orange) is included with separate trainable parameters. Each LSTM block includes multiple layers of LSTM cells. The blocks labeled `FC' represent fully-connected layers.}
 	\label{lstm_network}
 \end{figure}
 
@@ -42,21 +42,21 @@ We plot the optimal and predicted trajectory of a random data point in the test 
 In \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
 In this case, the prediction for $\ket{\psi_T^n}$ deviates only slightly from the optimum for $n \in [2, N]$ but deviates significantly for $n=1$.
 This illustrates the problem of using the MSE as a cost function for training - to the network, this is a good prediction as most transducer qubits are near their optimal setting.
-The deviation in the first qubit causes a completely different evolution on the system, especially as $\Delta \mathrm{T} = 5$ is large.
+However, the deviation in the first qubit causes a completely different evolution on the system, especially as $\Delta \mathrm{T} = 5$ is large.
 This leads to a negative work output when following the predicted protocol.
 
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.85\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/bloch_10553_crop}
+		\includegraphics[width=\textwidth]{img/bloch_10553_crop_sphere}
 		\caption{$W_{opt} = 3.03, W_{pred} = 1.11$}
 		\label{bloch_10553}
 	\end{subfigure}
 	\begin{subfigure}{0.85\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{img/bloch_worst_crop}
+		\includegraphics[width=\textwidth]{img/bloch_worst_crop_sphere}
 		\caption{$W_{opt} = 3.06, W_{pred} = -2.65$}
 		\label{bloch_worst}
 	\end{subfigure}
@@ -70,19 +70,19 @@ There is a notable difference in the predictive quality between the first four q
 It is therefore beneficial to maximise the strength during the final switching, i.e. setting $\theta_T^N = \frac{\pi}{2}$, to maximise its work output.
 Additionally $\phi_T^N$ should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$ on the Bloch sphere.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\begin{subfigure}{0.35\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/theta_opt_box2}
 		\subcaption{$\theta^n_{\text{opt}}$}
 	\end{subfigure}
-	\begin{subfigure}{0.35\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/theta_pred_box2}
 		\subcaption{$\theta^n_{\text{pred}}$}
 	\end{subfigure}
-	\begin{subfigure}{0.35\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/delta_theta_box2}
 		\subcaption{$|\theta^n_{\text{opt}} - \theta^n_{\text{pred}}|$}
@@ -95,7 +95,7 @@ Additionally $\phi_T^N$ should be set so that $H_{ST}^N$ is antiparallel to $\rh
 %	\centering
 %	\includegraphics[width=\textwidth]{img/phi_pred_box}
 %\end{subfigure}
-\begin{subfigure}{0.35\textwidth}
+\begin{subfigure}{0.45\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{img/delta_phi_box2}
 	\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}

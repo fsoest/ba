@@ -17,11 +17,12 @@ In the continuous limit Eq. (\ref{coll_eq}) leads to von-Neumann dynamics on the
 
 As each ancilla only interacts once with the system and is traced out afterwards, $\rho_S$ remains pure in the limit of $\Delta t \to 0$.
 
+
 We use this approach as the implementation for our setting, which consists of three qubits: the drive, system and transducer qubits.
 We focus on piece-wise constant (PWC) functions of the drive ($\ket{\psi_D}$) and transducer ($\ket{\psi_T}$) qubits, as it greatly reduces computational complexity.
-These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\psi_D} \otimes \ket{\psi_T}$ constant for time $\Delta \mathrm{T}$ (Figure \ref{col_model}).
+These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\psi_D} \otimes \ket{\psi_T}$ constant for time $\Delta \mathrm{T}$ (Figure \ref{collmodel}).
 The drive and transducer qubits can be set in N discrete intervals represented by ($\theta_D^n, \phi_D^n$) and ($\theta_T^n, \phi_T^n$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state $\rho_S$.
-Here, the necessity for pure ancillas, in this case both drive and transducer qubit, becomes clear, as a mixed drive or transducer state would not be compatible with the PWC approach where we assume to be in control of drive and transducer.
+Here, the necessity for pure ancillas, in this case both drive and transducer qubit, becomes clear, as a mixed drive or transducer state would not be compatible with the PWC approach where we assume the experimenter to be in control of drive and transducer at all times.
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
@@ -39,6 +40,7 @@ W &= - \Sigma_n \Tr{\rho_S(n \Delta \mathrm{T}) \ dH_S^n}, \\
 dH_S^n &= \bra{\psi_D^n}\bra{\psi_T^{n+1}} H_{DST} \ket{\psi_D^n} \ket{\psi_T^{n+1}} - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}.	
 \end{align}
 Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
+An advantage of this framework is that the extracted work is available to the experimenter as a quantum observable \cite{beyer2020}.
 
 Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces Eq. (\ref{relham}) to
 \begin{align}

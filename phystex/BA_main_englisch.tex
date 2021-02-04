@@ -73,11 +73,11 @@ Additionally, we explore the robustness of the model predictions with respect to
 \vspace{10em}
 \begin{center}\large\bfseries Zusammenfassung\end{center}
 Eine interessante Frage im Gebiet der Quanten-Thermodynamik ist, wie man die maximale Menge an Arbeit aus einem gegebenen System extrahieren kann.
-Wir betrachten ein zwei-Niveau-Quantensystem, welches durch eine beliebige stückweise konstante Funktion angetrieben wird und aus dem Arbeit extrahiert werden kann.
-Wir zeigen, dass für dieses System ein Strategie existiert, das in der Lage ist, eine nicht-negative Arbeit unabhängig von der Anregung zu extrahieren.
+Wir betrachten ein zwei-Niveau-Quantensystem, welches durch eine beliebige stückweise konstante Funktion angetrie-ben wird und aus dem Arbeit extrahiert werden kann.
+Wir zeigen, dass für dieses System eine Strategie existiert, die in der Lage ist, eine nicht-negative Arbeit unabhängig von der Anregung zu extrahieren.
 Wir untersuchen das System in Bezug auf zufällig generierte Antriebe und finden deren optimale Extraktionssequenz numerisch.
-Unter Verwendung dieser Paare als Trainingsdaten verwenden rekurrente neuronale Netze, um die optimale Extraktionsstrategie einer gegebenen Antriebssequenz vorherzusagen.
-Für bestimmte Modellparameter funktioniert dieser Ansatz gut und ist inder Lage, mehr als 97 \% des Optimums zu extrahieren.
+Unter Verwendung dieser Paare als Trainingsdaten verwenden wir rekurrente neuronale Netze, um die optimale Extraktionsstrate-gie einer gegebenen Antriebssequenz vorherzusagen.
+Für bestimmte Modellparameter funktio-niert dieser Ansatz gut und ist in der Lage, mehr als 97 \% des Optimums zu extrahieren.
 Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Rauschen und die Fähigkeit unserer Modelle, auf längere Antriebssequenzen zu generalisieren.
  
  
@@ -106,9 +106,10 @@ Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Ra
 \input{content/lower_bound}
 
 \chapter{Experimental results}
-\input{content/exp_res}
 \section{Influence of $\Delta \mathrm{T}$ on Work Output} \label{dep_dt}
 \input{content/dep_of_dt}
+\section{Data creation, training and evaluation}
+\input{content/exp_res}
 \section{$N=2$: Learning single jump optimal control sequences} \label{n_2_ml}
 \input{content/n_2_ml}
 \section{$N=5$}\label{n5}

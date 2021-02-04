@@ -10,7 +10,7 @@ For $\Delta \mathrm{T} = 5$, the models were unable to outperform the lower boun
 The reason for the lower performance is likely a combination of two factors.
 The models struggle to find a representation of the system state, which is necessary to predict the optimal next step.
 Additionally, we found an inherent difference in the optimal solutions between the two switching times. For $\Delta \mathrm{T} = 1$, the transducer Hamiltonian strength was maximised for most samples and thus $\theta_T$ constant.
-For $\Delta \mathrm{T} = 5$, where the amount of reachable states on the Bloch sphere is greater, the optimal transducer strength is chosen such that the evolved state is near the x-y-plane.
+For $\Delta \mathrm{T} = 5$, where the amount of reachable states on the Bloch sphere is greater, the optimal transducer strength is chosen such that the evolved state is in a favourable position.
 This dependence on both the initial and evolved state adds difficulty.
 In all cases the bidirectional outperformed the unidirectional LSTM, as the former has access to the complete drive sequence while the latter can only make predictions from the previous and current drive qubits.
 
