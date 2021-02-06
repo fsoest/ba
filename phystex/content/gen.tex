@@ -11,25 +11,25 @@ The LSTM trained on the locally optimised policies is able to generalise to larg
 Learning the locally optimised policy requires learning a representation of the system state $\rho_S$, the errors of which will propagate if the representation is not exact.
 For large $N$, this representation will be no better than the fully mixed state, leading to $dW = 0$ on average.
 
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/gen_dt_1}
+		\subcaption{$\Delta \mathrm{T} = 1$}
+	\end{subfigure}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/gen_dt_5}
+		\subcaption{$\Delta \mathrm{T} = 5$}
+	\end{subfigure}
+	\caption{Generalisability of MSE and local optimisation models. For each $N$, we generate 1000 random drives and predict their transducer policies. We plot the mean of their work output $\overline{W}$ for varying $N$. Where available, we plot the optimal average work output. For $\Delta \mathrm{T} = 1$, we additionally plot $\overline{W}$ for the bidirectional LSTM trained using the extracted work as the loss function. The average output of the local optimisation protocol is plotted as a benchmark.}
+	\label{genplot}
+\end{figure}
+
 For $\Delta \mathrm{T} = 5$, all models fail to generalise to larger $N$.
 A possible reason can be found in the poor performance of the unidirectional LSTM trained on the locally optimised protocol.
 Here, it becomes evident that the model is unable to learn a precise representation of the system state which remains valid for larger $N$.
 Two possible reasons come to mind, firstly the larger evolution time leads to a faster propagation of errors in the representation.
 Additionally, the mapping $U = e^{-i H_s \Delta \mathrm{T}}$ from initial to evolved state, which depends non-linearly on $\Delta \mathrm{T}$ and the model inputs and outputs, is more difficult to represent for the LSTM cell.
 For small $\Delta \mathrm{T}$, it can be approximated by a linear mapping $U \approx \mathds{1} - i H_S \Delta \mathrm{T}$, but the quality of this approximation decreases when $\Delta \mathrm{T}$ is large.
-
-\begin{figure}
-	\centering
-\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{img/gen_dt_1}
-	\subcaption{$\Delta \mathrm{T} = 1$}
-\end{subfigure}
-\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{img/gen_dt_5}
-	\subcaption{$\Delta \mathrm{T} = 5$}
-\end{subfigure}
-	\caption{Generalisability of MSE and local optimisation models. For each $N$, we generate 1000 random drives and predict their transducer policies. We plot the mean of their work output $\overline{W}$ for varying $N$. Where available, we plot the optimal average work output. For $\Delta \mathrm{T} = 1$, we additionally plot $\overline{W}$ for the bidirectional LSTM trained using the extracted work as the loss function. The average output of the local optimisation protocol is plotted as a benchmark.}
-	\label{genplot}
-\end{figure}

@@ -4,7 +4,7 @@ We create a noisy sequence $\{\ket{\phi_j}\}$ of N qubits from $\{\ket{\psi_j}\}
 \begin{align*}
 	\ket{\phi_j} = e^{-i H_j \tau} \ket{\psi_j} \ \forall j \in [1, N].
 \end{align*}
-$H_j$ are randomly generated Hermitian matrices and $\tau$ is a real parameter used to control the strength of the noise.
+$H_j$ are randomly generated Hermitian matrices with $\norm{H_j} = 1$ and $\tau$ is a real parameter used to control the strength of the noise.
 To quantify the dissimilarity between $\{\ket{\phi_j}\}$ and $\{\ket{\psi_j}\}$ we use the fidelity $F$ as defined in \cite{10.5555/1972505}:
 \begin{align*}
 	F_{\text{run}}(\{\ket{\phi_j}\}, \{\ket{\psi_j}\}) = \prod_j F(\ket{\phi_j}, \ket{\psi_j}) = \prod_j \abs{\bra{\phi_j}\ket{\psi_j}}.
@@ -15,7 +15,7 @@ For $\Delta \mathrm{T} = 1$, the performance degrades among the test set, as the
 The variance in the deviation of work output between noisy and noiseless data $\Delta W$ is larger for $\Delta \mathrm{T} = 5$ as the longer evolution time leads to a larger difference between the system states of the noisy and noiseless case.
 As the network is less likely to predict a solution near the optimum, the noisy data will sometimes be closer to the optimum and thus a significant amount of data points with $\Delta W > 0$ exist as well.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering

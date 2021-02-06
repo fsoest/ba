@@ -15,8 +15,10 @@ This dependence on both the initial and evolved state adds difficulty.
 In all cases the bidirectional outperformed the unidirectional LSTM, as the former has access to the complete drive sequence while the latter can only make predictions from the previous and current drive qubits.
 
 We identified the use of the mean squared error as a possible disadvantage in calculating the loss during training, especially for $\Delta \mathrm{T} = 5$.
-For $\Delta \mathrm{T} = 1$ we trained a bidirectional model on the extracted work directly which performed slightly worse than the model trained on MSE loss but has a better generalisability.
-An alternative to the work loss is following an approach similar to those in \cite{Banchi_2018, PhysRevX.10.011006}, where recurrent neural networks are used to directly model the system dynamics.
+For $\Delta \mathrm{T} = 1$ we trained a bidirectional model on the extracted work directly which performed slightly worse than the model trained on MSE loss but has better generalisability.
+Overall, the main difficulty in all models seems to have been representing the current system state correctly.
+In our approach, this representation had to be found implicitly, as $\rho_S$ was not included in the training data.
+An alternative would be following an approach similar to those in \cite{Banchi_2018, PhysRevX.10.011006}, where recurrent neural networks are used to directly model the system dynamics.
 
 An extension to the model is to add dissipative effects to the system state $\rho_S$.
 

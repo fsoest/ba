@@ -1,14 +1,21 @@
 % !TeX spellcheck = en_GB
-In all models we split the data into training, validation and test data with $p_{test} = 18 \%$ and $p_{valid} = 8.2 \%$. 
+In all models we split the data into training, validation and test data sets with $p_{test} = 18 \%$ and $p_{valid} = 8.2 \%$.
 The models are implemented using the PyTorch library \cite{NEURIPS2019_9015}. 
-Training is performed over $n$ epochs, in each of which the complete training set is used once in batches of \textit{batch size}.
-In each batch, the gradient of the loss function with regard to the model parameters is calculated.
-The gradient average over the data points in a batch are used to update the trainable parameters.
-We use early stopping to stop training when the value of the cost function on the validation set does not improve for \textit{patience} epochs.
-We apply dropout \cite{hinton2012improving} after all layers except for input and output.
+Training is performed over $n$ epochs, in each of which the complete training data set is used once in batches of \textit{batch size}.
+In each batch, the gradient of the loss function with regard to the model parameters is calculated and the parameters updated.
+
+A common problem in machine learning is \textit{overfitting}, where the model learns noise in the data instead of the underlying functional correlation.
+It is indicated by a good performance on the training data but poor performance on unseen data.
+We employ two techniques to prevent overfitting.
+Firstly we use early stopping to stop training when the cost function on the validation set (unseen data) does not decrease for \textit{patience} epochs.
+Additionally, we apply dropout after all layers except for input and output.
+During training, each neuron is deactivated with probability \textit{dropout}.
+This has been proven to prevent overfitting \cite{hinton2012improving}.
+
+All performance data is calculated on the test set, which the model has seen neither during training or has been used for early stopping.
 
 \section{Hyperparameters Section \ref{n_2_ml}}
-For $N=2$, we use the Adam optimiser with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
+For $N=2$, we use the Adam \cite{kingma2017adam} optimiser with $\beta_1 = 0.9$, $\beta_2 = 0.98$ and $\epsilon = 10^{-9}$. The learning rate (LR) is determined by an exponential decay schedule
 \begin{equation} \label{eds}
 \mathrm{LR} \ (i) = \mathrm{initial \ LR} * \mathrm{decay \ rate}^i,
 \end{equation}
@@ -26,10 +33,11 @@ where $i$ denotes the optimiser step.
 	\label{hyperparams_n_2}
 \end{table}
 
-\section{Hyperparameters Sections \ref{n_5_ml} and \ref{n_5_dt1}}
+\section{Hyperparameters Section \ref{n5}}
 The learning rate (LR) is determined by the `Reduce LR on Plateau' schedule.
-The learning rate is multiplied by the hyperparameter \textit{factor} when the cost function does not improve for \textit{patience} / \textit{pat drop} epochs.
-The hyperparameters are found using Bayesian optimisation implemented by \cite{wandb} and can be found in Table \ref{hyperparams_n_5}.
+The learning rate is multiplied by the hyperparameter \textit{factor} if the cost function decreased for the past \textit{patience} / \textit{pat drop} epochs.
+The hyperparameters are found using Bayesian optimisation \cite{frazier2018tutorial}, which uses multiple training runs with different hyperparameters to create a statistical model of the model performance with respect to the hyperparameters, implemented by \cite{wandb}.
+The values can be found in Table \ref{hyperparams_n_5}.
 The FCANN in Section \ref{n_5_ml} has three hidden layers with 2000 neurons each.
 The hyperparameters for the bidirectional LSTM from Section \ref{work_cost} are presented in Table \ref{hyperparams_work_cost}.
 
@@ -51,7 +59,7 @@ The hyperparameters for the bidirectional LSTM from Section \ref{work_cost} are 
 		Patience & 55 \\
 		Factor & 0.24509238889070978
 	\end{tabular}
-	\caption{Hyperparameters used for the models in Sections \ref{n5} and \ref{work_cost}.}
+	\caption{Hyperparameters used for the models in Sections \ref{n_5_ml} to \ref{ml_noise}.}
 	\label{hyperparams_n_5}
 \end{table}
 
@@ -73,6 +81,6 @@ The hyperparameters for the bidirectional LSTM from Section \ref{work_cost} are 
 		Patience & 78 \\
 		Factor & 0.5967308787201352
 	\end{tabular}
-	\caption{Hyperparameters used for the models in Sections \ref{n5} and \ref{work_cost}.}
+	\caption{Hyperparameters used for the models in Section \ref{work_cost}.}
 	\label{hyperparams_work_cost}
 \end{table}

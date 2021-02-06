@@ -150,7 +150,7 @@ plt.legend()
 # %%
 import torch
 model = torch.load('models/N_5_rho_eigen_lstm')
-model
+
 seed = 42
 N = 5
 dt = 5
@@ -184,7 +184,7 @@ leg = plt.legend(title='$\\tau$')
 for lh in leg.legendHandles:
     lh.set_alpha(1)
 plt.xlabel('$\overline{F}_D$')
-plt.xlim(0.64, 1.01)
+plt.xlim(0.4, 1.01)
 plt.ylabel('$\Delta W$')
 plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_bi_true_3.png', dpi=300)
 # %%
@@ -207,13 +207,13 @@ for i, tau in enumerate(taus):
 
 
 # %%
-np.save('noise/noisy_work_drive', noisy_work_drive)
-np.save('noise/work_drive', work_drive)
-np.save('noise/avg_fidel_drive', avg_fidel_drive)
+np.save('noise/noisy_work_drive2', noisy_work_drive)
+np.save('noise/work_drive2', work_drive)
+np.save('noise/avg_fidel_drive2', avg_fidel_drive)
 
-np.save('noise/noisy_work_trans', noisy_work_trans)
-np.save('noise/work_trans', work_trans)
-np.save('noise/avg_fidel_trans', avg_fidel_trans)
+np.save('noise/noisy_work_trans2', noisy_work_trans)
+np.save('noise/work_trans2', work_trans)
+np.save('noise/avg_fidel_trans2', avg_fidel_trans)
 # %%
 plt.scatter(avg_fidel[i], ratio_avg[i], label=tau, alpha=0.1)
 plt.legend(title='$\\tau$')
@@ -233,7 +233,7 @@ for i, tau in enumerate(taus):
 leg = plt.legend(title='$\\tau$')
 for lh in leg.legendHandles:
     lh.set_alpha(1)
-plt.xlabel('$\overline{F}_T$')
-plt.xlim(0.64, 1.01)
-plt.ylabel('$\Delta W$')
+plt.xlabel('$\overline{F}_T$', fontsize=15)
+plt.xlim(0.4, 1.01)
+plt.ylabel('$\Delta W$', fontsize=15)
 plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true_3.png', dpi=300)

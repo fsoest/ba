@@ -1,6 +1,8 @@
+% !TeX root = ../BA_main_englisch.tex
+% !TeX spellcheck = en_GB
 Machine learning is a subfield of artificial intelligence, `concerned with the question of how to construct computer programs that automatically improve with experience.' \cite{Mitchell97}
 Supervised machine learning is one of the three machine learning disciplines, besides unsupervised and reinforcement learning.
-The goal is to find a mapping between an input and an output, in our case an excitation and its respective optimal harvesting policy.
+The goal is to find a mapping between an input and an output, in our case a drive and its respective optimal transducer policy.
 Multiple algorithms to find such a mapping exist, however for high dimensional problems artificial neural networks (ANNs) are often used.
 In general, ANNs are a collection of neurons, usually grouped in layers, which are connected and can transmit signals to each other.
 The ANN can learn by changing how information is passed through the network.
@@ -19,9 +21,9 @@ The activations can then be calculated using the following formulae \cite{TN_lib
 \end{align*}
 where $\xi(x)$ is a function called the activation function applied elementwise. Historically, functions such as $\tanh$ and sigmoid have been used. However, it has been shown \cite{Maas2013RectifierNI, krizhevsky} that the rectified linear unit $\mathrm{ReLU}(x) = \mathrm{max}(0, x)$ often provides better results and is used here.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{img/nn}
+	\includegraphics[width=0.75\textwidth]{img/nn}
 	\caption{Example fully-connected feedforward ANN with four layers, including input, output and two hidden layers \cite{LeNail2019}.}
 	\label{nn}
 \end{figure}
@@ -32,10 +34,11 @@ So-called convolutional and recurrent networks are often used for these purposes
 
 Here we use the LSTM architecture, a type of recurrent neural network (RNN) introduced in \cite{doi:10.1162/neco.1997.9.8.1735}. 
 The core idea of RNNs is the usage of loops to store and propagate information through time (Figure \ref{rnn}).
+This is fundamentally different to feedforward networks, where information can only travel in one direction.
 
-\begin{figure}
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{img/rnn}
+	\includegraphics[width=0.75\textwidth]{img/rnn}
 	\caption{Example two-layer RNN with LSTM architecture. Each row of LSTM blocks has the same parameters and information is fed into the network sequentially.}
 	\label{rnn}
 \end{figure}
@@ -53,7 +56,7 @@ o_t & = \sigma (W_{io} x_t + b_{io} + W_{ho} h_{t-1} + b_{ho}), \\
 c_t & = f_t \odot c_{t-1} + i_t \odot g_t, \\
 h_t & = o_t \odot \tanh (c_t),
 \end{align*}
-where $\odot$ is the Hadamard product and $\sigma(x)$ is the sigmoid function.
+where $\odot$ and $\sigma(x)$ are elementwise multiplication and application of the sigmoid function respectively.
 The input and forget gates $i_t, f_t$ express to what extent new data should be incorporated or deleted from the current cell state $c_t$ respectively.
 
 In some time-series problems data from a future time step might be required for the current prediction.
@@ -62,16 +65,27 @@ First introduced in \cite{bidirrnn}, the network is split into a forward and bac
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{img/lstm}
+	\includegraphics[width=0.75\textwidth]{img/lstm}
 	\caption{Visualisation of a single LSTM cell. The input $x_t$ enters the cell in the bottom left and is concatenated with the output $h_{t\text{-}1}$ of the previous cell. The combined data then enters multiple single-layer neural networks represented by orange rectangles with their respective activation functions. The forget gate $f_t$ removes data from the previous cell state $c_{t\text{-}1}$ while $i_t$ and $g_t$ control how new data is added to the memory. $\tanh$ is applied elementwise over the cell state (yellow ellipse) to determine the cell output $h_t$ together with the output gate $o_t$.}
 	\label{lstm}
 \end{figure}
 
-\subsection{Training \& Backpropagation} \label{trainbackprop}
-To train an ANN a cost function is defined, often the mean squared error 
-\begin{align*}
-	\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
-\end{align*}
-where the summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples. $\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ the output of the neural network.
-The so-called backpropagation algorithm is used to calculate the gradient of the cost function with respect to the trainable parameters and improve the performance of the ANN \cite{rumelhart1986learning, nielsenneural}.
+\newpage
 
+\subsection{Training \& Backpropagation} \label{trainbackprop}
+Whereas in the previous sections we considered how information travels through the networks, the question of how one can improve the performance remains.
+A \textit{cost function} is needed to quantify the dissimilarity between the network predictions and correct values.
+It is important that this function is differentiable, as this allows to calculate the gradient of the cost function with respect to the trainable parameters.
+This is implemented by the so-called \textit{backpropagation} algorithm \cite{rumelhart1986learning, nielsenneural}, which, in simple terms, uses the chain rule to calculate these derivatives.
+The gradient is then used by an optimiser such as Adam \cite{kingma2017adam} or Stochastic Gradient Descent (SGD) to update the trainable parameters and move the predictions closer to the desired values.
+For \textit{regression} problems such as ours, where one tries to predict a continuous function, the mean squared error (MSE)
+\begin{align*}
+\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
+\end{align*}
+is often used.
+The summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples.
+$\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ the output of the neural network.
+
+Besides the trainable parameters, every machine learning model has one or multiple hyper-parameters.
+These values are not changed in training and have to be chosen ahead of time.
+An example is the amount of hidden layers and neurons per layer in a fully-connected feedforward ANN.

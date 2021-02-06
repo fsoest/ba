@@ -10,7 +10,7 @@ If the system qubit is initialised in the pure state $\rho_S = \ket{0} \bra{0}$,
 \end{equation*}
 
 We note that for $\Delta \mathrm{T} \to 0, \ W \to 0$ as $\Tr{\rho_S H_S} = 0$ for all configurations of $\ket{\psi_D}$ and $ \ket{\psi_T}$.
-We simulate 500 random drive functions for multiple values of $N$ and each $\Delta \mathrm{T}$, finding their optimal transducer policy. The average work output over the 500 runs scaled by the number of work extractions $\overline{W}/(N-1)$ for 20 values of $\Delta \mathrm{T}$ is shown in Figure \ref{dt_0}.
+We simulate 500 random drive functions for multiple values of $N$ and each $\Delta \mathrm{T}$, finding their optimal transducer policy numerically using a minimiser algorithm\footnote{The work output function is non-convex and therefore difficult to optimise. We try to circumvent this problem by initialising the minimiser in multiple different positions and choosing the minimum of the outputs. It is not guaranteed that these solutions are global minima. In the remainder of this work, by the `optimal' solution we mean the minimum of the minimiser solutions.} \cite{2020SciPy-NMeth}. The average work output over the 500 runs scaled by the number of work extractions $\overline{W}/(N-1)$ for 20 values of $\Delta \mathrm{T}$ is shown in Figure \ref{dt_0}.
 
 In Figure \ref{dt_eigen}, we plot the average work when the system qubit is initialised in an eigenstate $\rho_0 = \ket{+}\bra{+}$ of the partial system Hamiltonian $H_{DS}$.
 For $\Delta \mathrm{T} = 0$, the work output is $W = 1$ for all $N$. This is the amount of work that can be extracted by switching the Hamiltonian in such a way that the eigenvalues change signs.

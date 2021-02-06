@@ -1,13 +1,19 @@
-For $\rho_0 = \ket{+} \bra{+}$, or $a = e^{-i \phi_D}/\sqrt{2}, b = 1/\sqrt{2}$ following the notation used in Appendix \ref{deriv_jump}, finding the optimal solution of $\mathrm{dW}$ for $N = 2$ requires finding the transducer setting that ensures
+For $\rho_0 = \ket{+} \bra{+}$, or $a = e^{-i \phi_D}/\sqrt{2}, b = 1/\sqrt{2}$ following the notation used in Appendix \ref{deriv_jump}, finding the optimal solution of $dW$ for $N = 2$ requires finding the transducer setting that ensures
 \begin{align}\label{commutator}
 	[H_{DS}, H_S] &= [\delta \sigma_{+} + \delta^* \sigma_{-}, \alpha \sigma_{+} + \alpha^* \sigma_{-}] = 0
 \end{align}
 with $\delta = \frac{1}{2} \sin{\theta_D} e^{i \phi_D}$.
 Considering only the principal branch, Eq. (\ref{commutator}) is equivalent to
-\begin{align*}
-	\Im{\alpha \delta^*} &= 0 \implies \arg{\alpha} = \phi_D \implies a b^* = a^* b \frac{\alpha^*}{\alpha},
-\end{align*}
-which leads to the independence of dW with regard to $\Delta \mathrm{T}$, as Eq. (\ref{dwformula}) reduces to
-\begin{align*}
-	dW &= - \Re{\tau' - \tau}
-\end{align*}
+\begin{align}
+	\Im{\alpha \delta^*} &= 0 \implies \arg{\alpha} = \phi_D \implies a b^* = a^* b \frac{\alpha^*}{\alpha} \implies \phi_T^{opt} = \phi_D, \label{phiopt}
+\end{align}
+which leads to the independence of $dW = W$ (for $N=2$, the sum collapses to a single term) with regard to $\Delta \mathrm{T}$, as Eq. (\ref{dwformula}) reduces to
+\begin{align}
+	W &= - \Re{(\tau' - \tau) e^{-i\phi_D}} = - \frac{1}{2} \Re{(\sin \theta'_T e^{i\phi'_T} - \sin \theta_T e^{i\phi_T}) e^{-i\phi_D}} \\
+	&\overset{\ref{phiopt}}{=} - \frac{1}{2} \Re{(\sin \theta'_T e^{i\phi'_T} - \sin \theta_T e^{i\phi_D}) e^{-i\phi_D}}. \label{singleopt}
+\end{align}
+Eq. (\ref{singleopt}) is maximised by $\theta'_T = \theta_T = \frac{\pi}{2}$ and $\phi'_T = \phi_D + \pi$, giving
+\begin{align}
+	W &= - \frac{1}{2} \sin \frac{\pi}{2} \Re{(e^{i(\phi_D + \pi)} - e^{i\phi_D}) e^{-i\phi_D}} \nonumber \\
+	&= - \frac{1}{2} \Re{ -2 e^{i\phi_D} e^{-i\phi_D}} = 1.
+\end{align}

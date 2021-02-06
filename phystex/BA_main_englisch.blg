@@ -1,51 +1,51 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: BA_main_englisch.aux
-The style file: plain.bst
+The style file: unsrt.bst
 Database file #1: biblio.bib
 Warning--empty journal in beyer2020
 Warning--empty year in beyer2020
-Warning--can't use both author and editor fields in LeCun2012
 Warning--empty booktitle in Maas2013RectifierNI
-You've used 32 entries,
-            2118 wiz_defined-function locations,
-            715 strings with 10765 characters,
-and the built_in function-call counts, 12184 in all, are:
-= -- 1095
-> -- 815
+Warning--can't use both author and editor fields in LeCun2012
+You've used 33 entries,
+            1791 wiz_defined-function locations,
+            667 strings with 10378 characters,
+and the built_in function-call counts, 8000 in all, are:
+= -- 614
+> -- 511
 < -- 5
-+ -- 321
-- -- 288
-* -- 973
-:= -- 2096
-add.period$ -- 93
-call.type$ -- 32
-change.case$ -- 232
++ -- 183
+- -- 150
+* -- 600
+:= -- 1312
+add.period$ -- 95
+call.type$ -- 33
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 394
-empty$ -- 809
-format.name$ -- 288
-if$ -- 2452
+cite$ -- 37
+duplicate$ -- 335
+empty$ -- 727
+format.name$ -- 150
+if$ -- 1750
 int.to.chr$ -- 0
-int.to.str$ -- 32
+int.to.str$ -- 33
 missing$ -- 35
-newline$ -- 158
-num.names$ -- 68
-pop$ -- 258
+newline$ -- 162
+num.names$ -- 37
+pop$ -- 118
 preamble$ -- 1
-purify$ -- 204
+purify$ -- 0
 quote$ -- 0
-skip$ -- 287
+skip$ -- 167
 stack$ -- 0
-substring$ -- 543
-swap$ -- 78
+substring$ -- 382
+swap$ -- 79
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 114
+type$ -- 0
 warning$ -- 4
-while$ -- 92
-width$ -- 34
-write$ -- 342
+while$ -- 61
+width$ -- 35
+write$ -- 350
 (There were 4 warnings)

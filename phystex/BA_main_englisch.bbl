@@ -1,38 +1,12 @@
 \begin{thebibliography}{10}
 
-\bibitem{Banchi_2018}
-Leonardo Banchi, Edward Grant, Andrea Rocchetto, and Simone Severini.
-\newblock Modelling non-markovian quantum processes with recurrent neural
-  networks.
-\newblock {\em New Journal of Physics}, 20(12):123030, Dec 2018.
-
-\bibitem{beyer2020}
-Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
-\newblock Work as an external quantum observable and an operational quantum
-  work fluctuation theorem.
-
-\bibitem{wandb}
-Lukas Biewald.
-\newblock Experiment tracking with weights and biases, 2020.
-
-\bibitem{Carleo_2019}
-Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld,
-  Naftali Tishby, Leslie Vogt-Maranto, and Lenka Zdeborová.
-\newblock Machine learning and the physical sciences.
-\newblock {\em Reviews of Modern Physics}, 91(4), Dec 2019.
-
-\bibitem{Deffner_2017}
-Sebastian Deffner and Steve Campbell.
-\newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
-  optimal quantum control.
-\newblock {\em Journal of Physics A: Mathematical and Theoretical},
-  50(45):453001, Oct 2017.
-
-\bibitem{Egloff_2015}
-D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
-\newblock A measure of majorization emerging from single-shot statistical
-  mechanics.
-\newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
+\bibitem{thomson_2011}
+William Thomson.
+\newblock {\em ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF
+  THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
+  volume~1 of {\em Cambridge Library Collection - Physical Sciences}, page
+  100–106.
+\newblock Cambridge University Press, 2011.
 
 \bibitem{1905AnP...322..132E}
 A.~{Einstein}.
@@ -40,50 +14,33 @@ A.~{Einstein}.
   betreffenden heuristischen Gesichtspunkt}.
 \newblock {\em Annalen der Physik}, 322(6):132--148, January 1905.
 
-\bibitem{PhysRevX.10.011006}
-E.~Flurin, L.~S. Martin, S.~Hacohen-Gourgy, and I.~Siddiqi.
-\newblock Using a recurrent neural network to reconstruct quantum dynamics of a
-  superconducting qubit from physical observations.
-\newblock {\em Phys. Rev. X}, 10:011006, Jan 2020.
+\bibitem{Egloff_2015}
+D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
+\newblock A measure of majorization emerging from single-shot statistical
+  mechanics.
+\newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
 
-\bibitem{10.1007/978-3-642-46466-9_18}
-Kunihiko Fukushima and Sei Miyake.
-\newblock Neocognitron: A self-organizing neural network model for a mechanism
-  of visual pattern recognition.
-\newblock In Shun-ichi Amari and Michael~A. Arbib, editors, {\em Competition
-  and Cooperation in Neural Nets}, pages 267--285, Berlin, Heidelberg, 1982.
-  Springer Berlin Heidelberg.
+\bibitem{beyer2020}
+Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
+\newblock Work as an external quantum observable and an operational quantum
+  work fluctuation theorem.
 
-\bibitem{PhysRevA.67.052109}
-Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
-\newblock Quantum limits to dynamical evolution.
-\newblock {\em Phys. Rev. A}, 67:052109, May 2003.
+\bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
 
-\bibitem{hinton2012improving}
-Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
-  Ruslan~R. Salakhutdinov.
-\newblock Improving neural networks by preventing co-adaptation of feature
-  detectors, 2012.
+\bibitem{Carleo_2019}
+Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld,
+  Naftali Tishby, Leslie Vogt-Maranto, and Lenka Zdeborová.
+\newblock Machine learning and the physical sciences.
+\newblock {\em Reviews of Modern Physics}, 91(4), Dec 2019.
 
-\bibitem{doi:10.1162/neco.1997.9.8.1735}
-Sepp Hochreiter and Jürgen Schmidhuber.
-\newblock Long short-term memory.
-\newblock {\em Neural Computation}, 9(8):1735--1780, 1997.
-
-\bibitem{krizhevsky}
-Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
-\newblock Imagenet classification with deep convolutional neural networks.
-\newblock {\em Neural Information Processing Systems}, 25, 01 2012.
-
-\bibitem{LeCun2012}
-Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
-\newblock {\em Efficient BackProp}, pages 9--48.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
-
-\bibitem{LeNail2019}
-Alexander LeNail.
-\newblock Nn-svg: Publication-ready neural network architecture schematics.
-\newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
+\bibitem{wise2021using}
+David~F. Wise, John J.~L. Morton, and Siddharth Dhomkar.
+\newblock Using deep learning to understand and mitigate the qubit noise
+  environment, 2021.
 
 \bibitem{Liu2019}
 Feiyang Liu, Yulong Zhang, Oscar Dahlsten, and Fei Wang.
@@ -96,36 +53,52 @@ Salvatore Lorenzo, Francesco Ciccarello, and G.~Massimo Palma.
 \newblock Composite quantum collision models.
 \newblock {\em Physical Review A}, 96(3), Sep 2017.
 
+\bibitem{Mitchell97}
+Tom~M. Mitchell.
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill, New York, 1997.
+
 \bibitem{lu2020dying}
 Lu~Lu, Yeonjong Shin, Yanhui Su, and George~Em Karniadakis.
 \newblock Dying relu and initialization: Theory and numerical examples, 2020.
+
+\bibitem{TN_libero_mab2)53517}
+Andreas Zell.
+\newblock {\em Simulation neuronaler Netze}.
+\newblock Oldenbourg, München, 2., unveränd. nachdr. edition, 1997.
 
 \bibitem{Maas2013RectifierNI}
 Andrew~L. Maas.
 \newblock Rectifier nonlinearities improve neural network acoustic models.
 \newblock 2013.
 
-\bibitem{Mezzadri}
-Francesco Mezzadri.
-\newblock How to generate random matrices from the classical compact groups.
-\newblock {\em Notices of the American Mathematical Society}, 54(5):592 -- 604,
-  May 2007.
+\bibitem{krizhevsky}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock {\em Neural Information Processing Systems}, 25, 01 2012.
 
-\bibitem{Mitchell97}
-Tom~M. Mitchell.
-\newblock {\em Machine Learning}.
-\newblock McGraw-Hill, New York, 1997.
+\bibitem{LeNail2019}
+Alexander LeNail.
+\newblock Nn-svg: Publication-ready neural network architecture schematics.
+\newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
 
-\bibitem{nielsenneural}
-Michael~A. Nielsen.
-\newblock {\em Neural Networks and Deep Learning}.
-\newblock Determination Press, 2015.
+\bibitem{rumelhart1986learning}
+David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323(6088):533--536, October 1986.
 
-\bibitem{10.5555/1972505}
-Michael~A. Nielsen and Isaac~L. Chuang.
-\newblock {\em Quantum Computation and Quantum Information: 10th Anniversary
-  Edition}.
-\newblock Cambridge University Press, USA, 10th edition, 2011.
+\bibitem{10.1007/978-3-642-46466-9_18}
+Kunihiko Fukushima and Sei Miyake.
+\newblock Neocognitron: A self-organizing neural network model for a mechanism
+  of visual pattern recognition.
+\newblock In Shun-ichi Amari and Michael~A. Arbib, editors, {\em Competition
+  and Cooperation in Neural Nets}, pages 267--285, Berlin, Heidelberg, 1982.
+  Springer Berlin Heidelberg.
+
+\bibitem{doi:10.1162/neco.1997.9.8.1735}
+Sepp Hochreiter and Jürgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural Computation}, 9(8):1735--1780, 1997.
 
 \bibitem{NEURIPS2019_9015}
 Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
@@ -138,35 +111,32 @@ Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
   E.~Fox, and R.~Garnett, editors, {\em Advances in Neural Information
   Processing Systems 32}, pages 8024--8035. Curran Associates, Inc., 2019.
 
-\bibitem{rumelhart1986learning}
-David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
-\newblock Learning representations by back-propagating errors.
-\newblock {\em Nature}, 323(6088):533--536, October 1986.
-
 \bibitem{bidirrnn}
 Mike Schuster and Kuldip Paliwal.
 \newblock Bidirectional recurrent neural networks.
 \newblock {\em Signal Processing, IEEE Transactions on}, 45:2673 -- 2681, 12
   1997.
 
-\bibitem{Sutton1998}
-Richard~S. Sutton and Andrew~G. Barto.
-\newblock {\em Reinforcement Learning: An Introduction}.
-\newblock The MIT Press, second edition, 2018.
+\bibitem{nielsenneural}
+Michael~A. Nielsen.
+\newblock {\em Neural Networks and Deep Learning}.
+\newblock Determination Press, 2015.
 
-\bibitem{thomson_2011}
-William Thomson.
-\newblock {\em ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF
-  THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
-  volume~1 of {\em Cambridge Library Collection - Physical Sciences}, page
-  100–106.
-\newblock Cambridge University Press, 2011.
+\bibitem{kingma2017adam}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization, 2017.
 
-\bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
-Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
-  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
-\newblock Attention is all you need.
-\newblock {\em CoRR}, abs/1706.03762, 2017.
+\bibitem{Deffner_2017}
+Sebastian Deffner and Steve Campbell.
+\newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
+  optimal quantum control.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  50(45):453001, Oct 2017.
+
+\bibitem{PhysRevA.67.052109}
+Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
+\newblock Quantum limits to dynamical evolution.
+\newblock {\em Phys. Rev. A}, 67:052109, May 2003.
 
 \bibitem{2020SciPy-NMeth}
 Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
@@ -181,14 +151,48 @@ Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
   Python}.
 \newblock {\em Nature Methods}, 17:261--272, 2020.
 
-\bibitem{wise2021using}
-David~F. Wise, John J.~L. Morton, and Siddharth Dhomkar.
-\newblock Using deep learning to understand and mitigate the qubit noise
-  environment, 2021.
+\bibitem{LeCun2012}
+Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
+\newblock {\em Efficient BackProp}, pages 9--48.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
 
-\bibitem{TN_libero_mab2)53517}
-Andreas Zell.
-\newblock {\em Simulation neuronaler Netze}.
-\newblock Oldenbourg, München, 2., unveränd. nachdr. edition, 1997.
+\bibitem{Mezzadri}
+Francesco Mezzadri.
+\newblock How to generate random matrices from the classical compact groups.
+\newblock {\em Notices of the American Mathematical Society}, 54(5):592 -- 604,
+  May 2007.
+
+\bibitem{10.5555/1972505}
+Michael~A. Nielsen and Isaac~L. Chuang.
+\newblock {\em Quantum Computation and Quantum Information: 10th Anniversary
+  Edition}.
+\newblock Cambridge University Press, USA, 10th edition, 2011.
+
+\bibitem{Banchi_2018}
+Leonardo Banchi, Edward Grant, Andrea Rocchetto, and Simone Severini.
+\newblock Modelling non-markovian quantum processes with recurrent neural
+  networks.
+\newblock {\em New Journal of Physics}, 20(12):123030, Dec 2018.
+
+\bibitem{PhysRevX.10.011006}
+E.~Flurin, L.~S. Martin, S.~Hacohen-Gourgy, and I.~Siddiqi.
+\newblock Using a recurrent neural network to reconstruct quantum dynamics of a
+  superconducting qubit from physical observations.
+\newblock {\em Phys. Rev. X}, 10:011006, Jan 2020.
+
+\bibitem{Sutton1998}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock {\em Reinforcement Learning: An Introduction}.
+\newblock The MIT Press, second edition, 2018.
+
+\bibitem{hinton2012improving}
+Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
+  Ruslan~R. Salakhutdinov.
+\newblock Improving neural networks by preventing co-adaptation of feature
+  detectors, 2012.
+
+\bibitem{wandb}
+Lukas Biewald.
+\newblock Experiment tracking with weights and biases, 2020.
 
 \end{thebibliography}

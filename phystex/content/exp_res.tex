@@ -1,7 +1,9 @@
-The training data is created using a minimisation algorithm \cite{2020SciPy-NMeth}, which finds the optimal transducer protocol $\{|\psi_T^i \rangle\}$ given a drive sequence $\{|\psi_D^i \rangle\}$.
+The training data is created as in the previous section, creating pairs of drive sequences $\{|\psi_D^i \rangle\}$ and their respective optimal transducer protocols $\{|\psi_T^i \rangle\}$.
+The drive sequences, represented by $\{\theta_D^n, \phi_D^n\}$, are sampled randomly from the Haar measure \cite{Mezzadri}.
+
 The networks are trained to learn the mapping $\{|\psi_D^i \rangle\} \to \{|\psi_T^i \rangle\}$.
 Both the input (drive) and output (transducer) are transformed by the embedding
-\begin{align*}
+\begin{align} \label{embedding}
 	\left\{
 	\begin{pmatrix}
 	\theta^n & \phi^n \\
@@ -13,12 +15,11 @@ Both the input (drive) and output (transducer) are transformed by the embedding
 	\sin(\theta^n) & \sin(\phi^n) & \cos(\theta^n)  & \cos(\phi^n) \\
 	\end{pmatrix}
 	\right\}.
-\end{align*}
+\end{align}
 The reasons for this operation are twofold: it normalises the data to the interval $[-1, 1]$, which is beneficial to learning \cite{LeCun2012}. Additionally it encodes information regarding the periodicity of the qubit angle representation.
 We add either a zero or a one as an extra input parameter for LSTM training depending on whether or not the input is the last in a sequence.
 
 \subsection{Choice of cost function for training}
-To quantify dissimilarity between the training data and model predictions as well as to update the trainable parameters a differentiable cost function is needed.
 Throughout most of this work we use the MSE as introduced in Section \ref{trainbackprop}.
 It should be noted that using the MSE for training is not the only choice, and perhaps not the obvious one.
 Directly using the work extracted is possibly a more intuitive choice, but we refrain from it in the beginning for two main reasons.
@@ -34,3 +35,5 @@ Instead we define the \textit{efficiency} of a model $\textfrak{N}$ on a dataset
 \end{align}
 i.e. the arithmetic mean of the ratios of work output predicted by the model to optimal work output.
 The function $W(\vec{x}_i, \vec{y}_i) = W(\{\ket{\psi_D^n}\}_i, \{\ket{\psi_T^n}\}_i)$ returns the work given a drive and transducer sequence.
+
+See Appendix \ref{training} for a detailed description of the training implemented as well as the hyperparameters used in this work.

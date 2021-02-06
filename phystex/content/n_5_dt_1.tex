@@ -9,6 +9,7 @@ We find that all networks outperform their $\Delta \mathrm{T} = 5$ counterparts,
 In addition, the MSE score on the test data is lower, indicating that the predictions themselves are better.
 There are two reasons for this occurrence: firstly, the predictive power of the networks is greater for $\Delta \mathrm{T} = 1$ than $\Delta \mathrm{T} = 5$, illustrated in Figure \ref{dt1box}.
 Secondly, deviations between optimal and predicted transducer settings lead to a smaller difference between the respective system states as the evolution time is shorter.
+This can be seen in Figure \ref{blochsdt15}, where we plot optimal and predicted transducer policies of the same drive for the two switching times.
 
 \begin{table}[h]
 	\centering
@@ -24,45 +25,11 @@ Secondly, deviations between optimal and predicted transducer settings lead to a
 \end{table}
 
 For $\Delta \mathrm{T} = 1$, all models beat the locally optimised average $W_{lo} = 1.14$.
+It is therefore beneficial to follow the model predictions instead of the policy governed by local optimisation even if the drive sequence is unknown.
 
+\newpage
 
-\begin{figure}
-	\centering
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/theta_opt_box_dt_12}
-		\subcaption{$\theta^n_{\text{opt}}$}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/theta_pred_box_dt_12}
-		\subcaption{$\theta^n_{\text{pred}}$}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/delta_theta_box_dt_12}
-		\subcaption{$|\theta^n_{\text{opt}} - \theta^n_{\text{pred}}|$}
-	\end{subfigure}
-%	\begin{subfigure}{0.32\textwidth}
-%		\centering
-%		\includegraphics[width=\textwidth]{img/phi_opt_box_dt_1}
-%	\end{subfigure}
-%	\begin{subfigure}{0.32\textwidth}
-%		\centering
-%		\includegraphics[width=\textwidth]{img/phi_pred_box_dt_1}
-%	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{img/delta_phi_box_dt_12}
-		\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}
-	\end{subfigure}
-	\caption{We plot the performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T^n = \frac{\pi}{2}$ for a majority of the central three qubits as well. Again, predicted and optimal $\phi^n_T$ are distributed equally and thus we do not plot them here.}
-	\label{dt1box}
-\end{figure}
-
-We illustrate the difference between $\Delta \mathrm{T} = 1$ and $\Delta \mathrm{T} = 5$ in Figure \ref{blochsdt15}.
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.85\textwidth}
 		\centering
@@ -79,3 +46,31 @@ We illustrate the difference between $\Delta \mathrm{T} = 1$ and $\Delta \mathrm
 	\caption{We plot the optimal (top row) and predicted (bottom row) system state and transducer settings for the bidirectional LSTM, using the same representation as in Figure \ref{n_5_blochs}, for $\Delta \mathrm{T} = 1$ (a) and $\Delta \mathrm{T} = 5$ (b). The drive sequence is the same in all rows and is a sample from the test set. For $\Delta \mathrm{T} = 1$, the optimal system state, where $\Tr{\rho_S^i \sigma_z} = 0$, cannot be reached.}
 	\label{blochsdt15}
 \end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/theta_opt_box_dt_12}
+		\subcaption{$\theta^n_{\text{opt}}$}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/theta_pred_box_dt_12}
+		\subcaption{$\theta^n_{\text{pred}}$}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/delta_theta_box_dt_12}
+		\subcaption{$|\theta^n_{\text{opt}} - \theta^n_{\text{pred}}|$}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/delta_phi_box_dt_12}
+		\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}
+	\end{subfigure}
+	\caption{We plot the performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T^n = \frac{\pi}{2}$ for a majority of the central three qubits as well. Again, predicted and optimal $\phi^n_T$ are distributed equally and therefore we do not plot them here.}
+	\label{dt1box}
+\end{figure}
+
+\newpage

@@ -32,20 +32,22 @@ for i in range(N_data):
 rho_0 = get_eigen_rho(thetas[:, 0], phis[:, 0])
 # %%
 # Make predictions and calculate work outputs
-uni = torch.load('models/dt_5_uni').eval()
+# uni = torch.load('models/dt_5_uni').eval()
 uni = torch.load('models/N_5_rho_eigen_lstm_uni').eval()
-bi = torch.load('models/dt_5_bi').eval()
+# bi = torch.load('models/dt_5_bi').eval()
 bi = torch.load('models/N_5_rho_eigen_lstm').eval()
 uni_local = torch.load('models/local_opt/dt5_uni').eval()
-better = torch.load('models/custom_loss_dt_1_better').eval()
+# better = torch.load('models/custom_loss_dt_1_better').eval()
+qcell = torch.load('models/q_cell_try').eval()
 # %%
 N = 12
 seed = 42
 batch_size = 44
-dt = 1
+dt = 5
 rho = 'eigen'
 N_sobol = 45
 runs = range(5)
+
 
 # %%
 data = import_datasets('multi_train_data', N, dt, rho, N_sobol, runs)
@@ -62,6 +64,7 @@ E_bi = np.zeros((N_data, N_max, N_max))
 E_triv = np.zeros((N_data, N_max, N_max))
 E_local = np.zeros((N_data, N_max, N_max))
 E_better = np.zeros((N_data, N_max, N_max))
+E_qcell = np.zeros((N_data, N_max, N_max))
 # %%
 for n in N_arr:
     x_embed = angle_embedding(np.concatenate((thetas[:, :n], phis[:, :n]), axis=1), n)
@@ -69,16 +72,16 @@ for n in N_arr:
     uni.N = n
     bi.N = n
     with torch.no_grad():
-        # hidden_uni, cell_uni = uni.HiddenCellTest(N_data)
-        # hidden_bi, cell_bi = bi.HiddenCellTest(N_data)
-        # hidden_local, cell_local = uni_local.HiddenCellTest(N_data)
+        hidden_uni, cell_uni = uni.HiddenCellTest(N_data)
+        hidden_bi, cell_bi = bi.HiddenCellTest(N_data)
+        hidden_local, cell_local = uni_local.HiddenCellTest(N_data)
 
-        h_better, c_better = better.HiddenCellTest(N_data)
-        # y_uni = uni(x_embed, hidden_uni, cell_uni)[0]
-        # y_bi = bi(x_embed, hidden_bi, cell_bi)[0]
-        # y_local = uni_local(x_embed, hidden_local, cell_local)[0]
+        h_better, c_better = qcell.HiddenCellTest(N_data)
+        y_uni = uni(x_embed, hidden_uni, cell_uni)[0]
+        y_bi = bi(x_embed, hidden_bi, cell_bi)[0]
+        y_local = uni_local(x_embed, hidden_local, cell_local)[0]
 
-        y_better = better(x_embed, h_better, c_better)[0]
+        y_better = qcell(x_embed, h_better, c_better)[0]
 
     # y_uni = rev_angle_embedding(y_uni.detach().numpy(), n)
     # y_bi = rev_angle_embedding(y_bi.detach().numpy(), n)
@@ -90,10 +93,11 @@ for n in N_arr:
         # E_uni[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_uni[i, :n], y_uni[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         # E_bi[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_bi[i, :n], y_bi[i, n:], dt, rho_0[i], n, 1)[2][:-1]
         # E_local[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_local[i, :n], y_local[i, n:], dt, rho_0[i], n, 1)[2][:-1]
-        a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
-        E_triv[i, n-2, :n-1] = a[0][:-1]
+        # a = lower_bound(np.concatenate((thetas[i, :n], phis[i, :n])), n, dt)
+        # E_triv[i, n-2, :n-1] = a[0][:-1]
 
         # E_better[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_better[i, :n], y_better[i, n:], dt, rho_0[i], n, 1)[2][:-1]
+        E_qcell[i, n-2, :n-1] = rho_path(thetas[i, :n], phis[i, :n], y_better[i, :n], y_better[i, n:], dt, rho_0[i], n, 1)[2][:-1]
 
 
 
@@ -102,20 +106,20 @@ for n in N_arr:
 # np.save('gen/E_triv_dt_{0}'.format(dt), E_triv)
 # np.save('gen/E_local_dt_{0}'.format(dt), E_local)
 # np.save('gen/E_better_dt_1', E_better)
-
+np.save('gen/E_qcell_dt_5', E_qcell)
 # N = [2, 3, 4, 5, 9, 10]
 # E_n = []
 # # %%
-dt = 1
+dt = 5
 E_bi = np.load('gen/E_bi_dt_{0}.npy'.format(dt))
 E_uni = np.load('gen/E_uni_dt_{0}.npy'.format(dt))
 E_triv = np.load('gen/E_triv_dt_{0}.npy'.format(dt))
 E_local = np.load('gen/E_local_dt_{0}.npy'.format(dt))
 
 # %%
-for n in N:
-    e = np.load('multi_train_data/dt/vardt_N_{0}_rho_eigen/dt_0_5_E_sobol_10_run_0.npy'.format(n))
-    E_n.append(np.mean(e[-1]))
+# for n in N:
+#     e = np.load('multi_train_data/dt/vardt_N_{0}_rho_eigen/dt_0_5_E_sobol_10_run_0.npy'.format(n))
+#     E_n.append(np.mean(e[-1]))
 
 
 
@@ -140,7 +144,7 @@ plt.ylabel('$\overline{W}$')
 plt.savefig('/home/fsoest/ba/phystex/img/gen_dt_{0}.png'.format(dt), dpi=300)
 
 # %%
-n_dt_1 = np.array([2, 3, 5, 12])
-E_n = np.zeros(4)
-E_n[-1] = np.mean(data[:, 2])
-E_n[0] *=-1
+# n_dt_1 = np.array([2, 3, 5, 12])
+# E_n = np.zeros(4)
+# E_n[-1] = np.mean(data[:, 2])
+# E_n[0] *=-1

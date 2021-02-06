@@ -1,57 +1,24 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
-%Before we apply neural networks, we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$ when the system state $\rho_S$ is initialised in the eigenstate $\ket{+}\bra{+}$ with higher eigenvalue of the partial system Hamiltonian $H_{DS} = \bra{\psi_D}\bra{\psi_T} H_I \otimes \mathds{1}_T \ket{\psi_D} \ket{\psi_T}$.
-%By following a policy where the work output of each step $dW$ is optimised locally, we find that the transducer can be chosen such that $dW \geq 0$ for all drives.
-%
-%We start in an eigenstate of the drive Hamiltonian, without loss of generality let $H_{DS} \propto \sigma_x$.
-%By local optimisation we find $H_{ST}' = -\frac{\sigma_x}{2}, H_{ST} = \frac{\sigma_x}{2}$.
-%This extracts the maximal $dW = 1$.
-%
-%We now examine the following step and generalise to an arbitrary state with zero y-component $\rho_S = (\cos(\theta/2) \ket{0} + \sin(\theta/2) \ket{1})(\cos(\theta/2) \bra{0} + \sin(\theta/2) \bra{1})$.
-%Note that its projection onto the x-y-plane on the Bloch sphere is anti-parallel to the transducer Hamiltonian, which is determined by the previous optimisation as $H_{ST} = -\frac{\sigma_x}{2}$.
-%
-%Consider the evolved state $\rho_S' =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$ after time $\Delta \mathrm{T}$, with $\vec{r} = ( x, y, z )$, where $\vec{r}$ would be determined by a unitary transformation in our case (note that the following is valid for any CPTP operation). The step work output $dW$ is then given by
-%\begin{align*}
-%dW &= \Tr{\rho' (H_{ST} - H'_{ST})} = \Tr{\rho' \left(-\frac{\sigma_x}{2} - \Re{\tau} \sigma_x - \Im{\tau} \sigma_y \right)} \\
-%&= -\frac{x}{2} - \Re{\tau} x - \Im{\tau} y, \\
-%\tau &= \frac{1}{2} \sin{\theta_T} e^{i\phi_T}. 
-%\end{align*}
-%$dW$ has a maximum for $\theta_T = \frac{\pi}{2}, \phi_T = \arctan{\frac{y}{x}} + \pi$, giving
-%\begin{align*}
-%dW_{lo} = \frac{1}{2}\left(\sqrt{x^2 + y^2} -x\right) \geq 0 \ \forall x, y.
-%\end{align*}
-%$H'_{ST}$ is again anti-parallel to the projection of $\rho'_S$ onto the x-y-plane and thus the prerequisite (after a rotation about the z-axis) for the above is given.
-%
-%$\vec{r}$ only depends on the current $\ket{\psi_D}$ and $\rho_S$.
-%For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally over all time steps.
-
-
-
 Before we apply neural networks, we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$.
 By following a policy where the work output of each step $dW$ is optimised locally, we find that the transducer can be chosen such that $dW \geq 0$ for all drives.
 
-We start in an arbitrary system state $\rho_S^n$.
-Consider the evolved state $\rho_S^{n+1} =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$ after time $\Delta \mathrm{T}$, with $\vec{r} = ( x, y, z )$, where $\vec{r}$ would be determined by a unitary transformation in our case (note that the following is valid for any CPTP operation). The step work output $dW$ is then given by
+We start in an arbitrary system state $\rho_S(n \Delta \mathrm{T})$.
+Consider the evolved state $\rho_S((n+1) \Delta \mathrm{T}) =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$ after time $\Delta \mathrm{T}$, with $\vec{r} = ( x, y, z )$, where $\vec{r}$ would be determined by a unitary transformation in our case (note that the following is valid for any completely positive trace preserving (CPT) operation). According to Eqs. (\ref{dw}) and (\ref{simpledeltaham}), the step work output $dW_n$ is then given by
 \begin{align*}
-dW &= \Tr{\rho' (H_{ST}^{n} - H_{ST}^{n+1})} \\
-&= \Tr{\rho' \left((\Re{\tau^n} - \Re{\tau^{n+1}}) \sigma_x + (\Im{\tau^n} - \Im{\tau^{n+1}} ) \sigma_y \right)} \\
+dW_n &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) (H_{ST}^{n} - H_{ST}^{n+1})} \\
+&= \Tr{\rho_S((n+1) \Delta \mathrm{T}) \left((\Re{\tau^n} - \Re{\tau^{n+1}}) \sigma_x + (\Im{\tau^n} - \Im{\tau^{n+1}} ) \sigma_y \right)} \\
 &= x (\Re{\tau^n} - \Re{\tau^{n+1}}) + y (\Im{\tau^n} - \Im{\tau^{n+1}}), \\
 \tau^n &= \frac{1}{2} \sin{\theta_T^n} e^{i\phi_T^n}. 
 \end{align*}
 $\tau^n$ is determined by the previous step and thus we can only vary $\tau^{n+1}$.
-$dW$ has a maximum for $\theta_T^{n+1} = \frac{\pi}{2}, \ \phi_T^{n+1} = \arctan{\frac{y}{x}} + \pi$, giving
+$dW_n$ has a maximum for $\theta_T^{n+1} = \frac{\pi}{2}, \ \phi_T^{n+1} = \arctan{\frac{y}{x}} + \pi$, giving
 \begin{align*}
-dW_{lo} &= \frac{1}{2}\left(\sqrt{x^2 + y^2} + \sin(\theta^n_T) \begin{pmatrix} \cos(\phi^n_T) \\ \sin(\phi^n_T) \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} \right) \\
+dW_{n, lo} &= \frac{1}{2}\left(\sqrt{x^2 + y^2} + \sin(\theta^n_T) \begin{pmatrix} \cos(\phi^n_T) \\ \sin(\phi^n_T) \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} \right) \\
  &\geq \frac{1}{2}\left(\sqrt{x^2 + y^2} - \abs{ \begin{pmatrix} \cos(\phi^n_T) \\ \sin(\phi^n_T) \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix}} \right) \\
  &\geq \frac{1}{2}\left(\sqrt{x^2 + y^2} - \sqrt{x^2 + y^2} \right) = 0,
 \end{align*}
 where we used the Cauchy-Schwarz inequality going from the second to the third line.
 
-\begin{align*}
-dW_{lo} &= \frac{1}{2}\left(\sqrt{x^2 + y^2} + (x \cos\phi^n_T + y \sin\phi_T^n) \sin\theta_T^n \right) \\
-&\geq \frac{1}{2}\left( \sqrt{x^2 + y^2} - \sqrt{(x \cos\phi^n_T + y \sin\phi_T^n)^2} \right) \\
-&\geq \frac{1}{2}\left(\sqrt{x^2 + y^2} - \sqrt{x^2 + y^2} \right) = 0,
-\end{align*}
-
-$\vec{r}$ only depends on the current $\ket{\psi_D}$ and $\rho_S$.
-For a given drive sequence the sum of the locally optimised work outputs $dW_{lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally over all time steps.
+In our setting, $\vec{r}$ only depends on the current $\ket{\psi_D}$ and $\rho_S$.
+For a given drive sequence the sum of the locally optimised work outputs $dW_{n, lo}$ provides a lower bound on the total extractable work as each contribution is non-negative. In the following chapter we will show that protocols with higher outputs exist by optimising globally over all time steps.
