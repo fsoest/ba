@@ -461,4 +461,13 @@
   primaryclass  = {cs.LG},
 }
 
+@Misc{frazier2018tutorial,
+  author        = {Peter I. Frazier},
+  title         = {A Tutorial on Bayesian Optimization},
+  year          = {2018},
+  archiveprefix = {arXiv},
+  eprint        = {1807.02811},
+  primaryclass  = {stat.ML},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

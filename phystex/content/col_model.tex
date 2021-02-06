@@ -31,6 +31,15 @@ These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\ps
 
 The drive and transducer qubits can be set in N discrete intervals represented by ($\theta_D^n, \phi_D^n$) and ($\theta_T^n, \phi_T^n$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state $\rho_S$.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img/pwc2}
+	\caption{Piecewise constant implementation of drive and transducer qubits: the vertical axis represents an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily. The piece-wise constant drive and transducer settings lead to a piece-wise constant system Hamiltonian.}
+	\label{pwc}
+\end{figure}
+
+\newpage
+
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
 H_{DST} = H_{I} \otimes \mathds{1}_T + \mathds{1}_D \otimes H_{I}, \\
@@ -57,10 +66,3 @@ Eq. (\ref{deltaham}) can then be expressed in a simpler form
 \begin{align}
 \Delta H_S^n &= H_{ST}^{n+1} - H_{ST}^n. \label{simpledeltaham}
 \end{align}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{img/pwc2}
-	\caption{Piecewise constant implementation of drive and transducer qubits: the vertical axis represents an arbitrary parameter of the ancilla states. The qubit states are switched instantaneously and then kept constant for $\Delta \mathrm{T}$ while $\rho_S$ evolves unitarily. The piece-wise constant drive and transducer settings lead to a piece-wise constant system Hamiltonian.}
-	\label{pwc}
-\end{figure}

@@ -4,6 +4,8 @@ In Section \ref{n_5_ml} we encountered a conceptional problem regarding using th
 In the following we aim to investigate whether directly using extracted work $W$ as the network cost function can improve performance.
 
 For $\Delta \mathrm{T} = 1$, we train a bidirectional LSTM using this approach, giving a work output of $W_{test} = 1.51$ and efficiency $\eta_{test} = 91.0 \%$.
+This is below the performance of the model trained on the MSE loss.
+A possible reason for this difference is that while each training sample for the MSE loss is optimised individually, the work loss maximises the output of multiple drive samples at the same time because of the batch training used in this work (Appendix \ref{training}).
 
 %To ensure comparability between the different cost functions, we continue using the same hyperparameters to train both a bidirectional and a unidirectional LSTM.
 %The performance for both networks and two switching times $\Delta \mathrm{T}$ are given in Table \ref{workcosttable}.

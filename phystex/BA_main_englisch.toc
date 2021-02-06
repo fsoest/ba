@@ -5,12 +5,12 @@
 \contentsline {section}{\numberline {2.2}Supervised machine learning}{4}{section.2.2}% 
 \contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANN}{4}{subsection.2.2.1}% 
 \contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{5}{subsection.2.2.2}% 
-\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{7}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}{subsection.2.2.3}% 
 \contentsline {chapter}{\numberline {3}Work lower bound}{9}{chapter.3}% 
 \contentsline {chapter}{\numberline {4}Experimental results}{10}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Influence of $\Delta \mathrm {T}$ on Work Output}{10}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Data creation, training and evaluation}{11}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Choice of cost function for training}{11}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.1}Choice of cost function for training}{12}{subsection.4.2.1}% 
 \contentsline {subsection}{\numberline {4.2.2}Evaluation of network performance}{12}{subsection.4.2.2}% 
 \contentsline {section}{\numberline {4.3}$N=2$: Learning single jump optimal control sequences}{12}{section.4.3}% 
 \contentsline {section}{\numberline {4.4}$N=5$}{13}{section.4.4}% 

@@ -20,7 +20,12 @@ Overall, the main difficulty in all models seems to have been representing the c
 In our approach, this representation had to be found implicitly, as $\rho_S$ was not included in the training data.
 An alternative would be following an approach similar to those in \cite{Banchi_2018, PhysRevX.10.011006}, where recurrent neural networks are used to directly model the system dynamics.
 
+In all machine learning based approaches, the performance of such models highly depends on the choice of hyperparameters.
+We employed Bayesian optimisation (see Appendix \ref{training} for more details) to find hyperparameters that maximise performance.
+However, the approach is limited in the amount of computing power available and the maximum over the total hyperparameter space may not be found in finite time.
+
 An extension to the model is to add dissipative effects to the system state $\rho_S$.
+Depending on its realisation, this can lead to a defined steady-state of the system which might be easier for the models to represent.
 
 It has to be noted that the approach followed in this work depends on maximising expectation values of work outputs.
 While this is certainly justified in the limit of infinite experimental realisations, the question of how the results might differ in the single shot case remains.

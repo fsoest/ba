@@ -7,7 +7,6 @@ Both LSTM networks have the same architecture, bar the bi-directionality (see Fi
 This hyperparameter distinguishes the two cases of whether or not the complete drive sequence is known in advance.
 
 Before entering the LSTM cell, each embedded $\ket{\psi_D^n}$ passes through two fully-connected layers to increase the input dimensionality and add non-linearities to the input.
-This allows us to freely choose the dimensionality of the hidden and cell state, which would be limited to the embedding size of 4 (Eq. (\ref{embedding})) if we only used LSTM cells.
 After passing the LSTM a single fully-connected layer is applied to the output to produce the embedding size to recover $\ket{\psi_T^n}$.
 
 \begin{figure}[h]

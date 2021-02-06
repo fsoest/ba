@@ -180,12 +180,13 @@ for i, tau in enumerate(taus):
     drive_delta = (-1 * noisy_work_drive[i] + work_drive[i])#/(np.abs(noisy_work_drive)[i] + np.abs(work_drive)[i])
     plt.scatter(avg_fidel_drive[i], drive_delta, label=tau, alpha=0.005)
     plt.scatter(np.mean(avg_fidel_drive[i]), np.mean(drive_delta), c='k', marker='.')
-leg = plt.legend(title='$\\tau$')
+leg = plt.legend(title='$\\tau$', fontsize=10)
 for lh in leg.legendHandles:
     lh.set_alpha(1)
-plt.xlabel('$\overline{F}_D$')
+plt.xlabel('$\overline{F}_D$', fontsize=15)
 plt.xlim(0.4, 1.01)
-plt.ylabel('$\Delta W$')
+plt.ylabel('$\Delta W$', fontsize=15)
+plt.tight_layout()
 plt.savefig('/home/fsoest/ba/phystex/img/noisy_drive_bi_true_3.png', dpi=300)
 # %%
 e_opt = np.zeros(len(noisy_work_drive[2]))
@@ -230,7 +231,7 @@ for i, tau in enumerate(taus):
     trans_delta = (-1 * noisy_work_trans[i] + work_trans[i])#/(np.abs(noisy_work_trans)[i] + np.abs(work_trans)[i])
     plt.scatter(avg_fidel_trans[i], trans_delta, label=tau, alpha=0.005)
     plt.scatter(np.mean(avg_fidel_trans[i]), np.mean(trans_delta), c='k', marker='.')
-leg = plt.legend(title='$\\tau$')
+leg = plt.legend(title='$\\tau$', fontsize=10)
 for lh in leg.legendHandles:
     lh.set_alpha(1)
 plt.xlabel('$\overline{F}_T$', fontsize=15)

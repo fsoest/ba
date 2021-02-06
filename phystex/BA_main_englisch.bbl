@@ -2,8 +2,8 @@
 
 \bibitem{thomson_2011}
 William Thomson.
-\newblock {\em ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF
-  THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
+\newblock {\em On an absolute thermometric scale founded on Carnot's theory of
+  the motive power of hear, and calculated from Regnault's observations},
   volume~1 of {\em Cambridge Library Collection - Physical Sciences}, page
   100–106.
 \newblock Cambridge University Press, 2011.
@@ -126,18 +126,6 @@ Michael~A. Nielsen.
 Diederik~P. Kingma and Jimmy Ba.
 \newblock Adam: A method for stochastic optimization, 2017.
 
-\bibitem{Deffner_2017}
-Sebastian Deffner and Steve Campbell.
-\newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
-  optimal quantum control.
-\newblock {\em Journal of Physics A: Mathematical and Theoretical},
-  50(45):453001, Oct 2017.
-
-\bibitem{PhysRevA.67.052109}
-Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
-\newblock Quantum limits to dynamical evolution.
-\newblock {\em Phys. Rev. A}, 67:052109, May 2003.
-
 \bibitem{2020SciPy-NMeth}
 Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
   David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan
@@ -151,16 +139,28 @@ Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
   Python}.
 \newblock {\em Nature Methods}, 17:261--272, 2020.
 
-\bibitem{LeCun2012}
-Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
-\newblock {\em Efficient BackProp}, pages 9--48.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
+\bibitem{Deffner_2017}
+Sebastian Deffner and Steve Campbell.
+\newblock Quantum speed limits: from {Heisenberg}’s uncertainty principle to
+  optimal quantum control.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  50(45):453001, Oct 2017.
+
+\bibitem{PhysRevA.67.052109}
+Vittorio Giovannetti, Seth Lloyd, and Lorenzo Maccone.
+\newblock Quantum limits to dynamical evolution.
+\newblock {\em Phys. Rev. A}, 67:052109, May 2003.
 
 \bibitem{Mezzadri}
 Francesco Mezzadri.
 \newblock How to generate random matrices from the classical compact groups.
 \newblock {\em Notices of the American Mathematical Society}, 54(5):592 -- 604,
   May 2007.
+
+\bibitem{LeCun2012}
+Yann~A. LeCun, L{\'e}on Bottou, Genevieve~B. Orr, and Klaus-Robert M{\"u}ller.
+\newblock {\em Efficient BackProp}, pages 9--48.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2012.
 
 \bibitem{10.5555/1972505}
 Michael~A. Nielsen and Isaac~L. Chuang.
@@ -190,6 +190,10 @@ Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
   Ruslan~R. Salakhutdinov.
 \newblock Improving neural networks by preventing co-adaptation of feature
   detectors, 2012.
+
+\bibitem{frazier2018tutorial}
+Peter~I. Frazier.
+\newblock A tutorial on bayesian optimization, 2018.
 
 \bibitem{wandb}
 Lukas Biewald.

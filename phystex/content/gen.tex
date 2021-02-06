@@ -32,4 +32,4 @@ A possible reason can be found in the poor performance of the unidirectional LST
 Here, it becomes evident that the model is unable to learn a precise representation of the system state which remains valid for larger $N$.
 Two possible reasons come to mind, firstly the larger evolution time leads to a faster propagation of errors in the representation.
 Additionally, the mapping $U = e^{-i H_s \Delta \mathrm{T}}$ from initial to evolved state, which depends non-linearly on $\Delta \mathrm{T}$ and the model inputs and outputs, is more difficult to represent for the LSTM cell.
-For small $\Delta \mathrm{T}$, it can be approximated by a linear mapping $U \approx \mathds{1} - i H_S \Delta \mathrm{T}$, but the quality of this approximation decreases when $\Delta \mathrm{T}$ is large.
+The quality of any polynomial approximation of $U$ learned by the model will degrade more quickly for large $\Delta \mathrm{T}$.

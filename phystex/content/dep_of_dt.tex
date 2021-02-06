@@ -13,9 +13,18 @@ We note that for $\Delta \mathrm{T} \to 0, \ W \to 0$ as $\Tr{\rho_S H_S} = 0$ f
 We simulate 500 random drive functions for multiple values of $N$ and each $\Delta \mathrm{T}$, finding their optimal transducer policy numerically using a minimiser algorithm\footnote{The work output function is non-convex and therefore difficult to optimise. We try to circumvent this problem by initialising the minimiser in multiple different positions and choosing the minimum of the outputs. It is not guaranteed that these solutions are global minima. In the remainder of this work, by the `optimal' solution we mean the minimum of the minimiser solutions.} \cite{2020SciPy-NMeth}. The average work output over the 500 runs scaled by the number of work extractions $\overline{W}/(N-1)$ for 20 values of $\Delta \mathrm{T}$ is shown in Figure \ref{dt_0}.
 
 In Figure \ref{dt_eigen}, we plot the average work when the system qubit is initialised in an eigenstate $\rho_0 = \ket{+}\bra{+}$ of the partial system Hamiltonian $H_{DS}$.
-For $\Delta \mathrm{T} = 0$, the work output is $W = 1$ for all $N$. This is the amount of work that can be extracted by switching the Hamiltonian in such a way that the eigenvalues change signs.
+For $\Delta \mathrm{T} = 0$, the work output is $W = 1$ for all $N$.
+This is the amount of work that can be withdrawn from the system by maximising the strength of the extraction Hamiltonians (and therefore their eigenvalues $\lambda_i = \pm \omega$) and switching them such that their eigenvalues change signs. Additionally, they must be chosen so they are diagonal in the basis of $\rho_0$:
+\begin{align*}
+	H_{ST}^n &= \omega (\ket{+}\bra{+} - \ket{-}\bra{-}), \\
+	H_{ST}^{n+1} &= \omega (\ket{-}\bra{-} - \ket{+}\bra{+}), \\
+	dW_n &= \Tr{\rho_0 (H_{ST}^n - H_{ST}^{n+1})} = 2 \omega \Tr{\ket{+}\bra{+} (\ket{+}\bra{+} - \ket{-}\bra{-}) } \\
+	&= 2 \omega.
+\end{align*}
+This can be done only once, as $\Delta \mathrm{T} = 0$ prevents any evolution of $\rho_S$.
+
 A special case occurs for $N = 2$: the optimal case is independent of $\Delta \mathrm{T}$.
-Here, the maximum work output per step of $W = 1$ can be achieved by setting the transducer such that the total system Hamiltonian commutes with $H_{DS}$. $\rho_S$ remains in the eigenstate and after time $\Delta \mathrm{T}$, \ $W = 1$ can be extracted from the system as with $\Delta \mathrm{T} = 0$.
+Here, the maximum work output per step of $W = 1$ can be achieved by setting the transducer such that the total system Hamiltonian commutes with $H_{DS}$. $\rho_S$ remains in the eigenstate and after time $\Delta \mathrm{T}$, \ $W = 1$ can be extracted from the system as with $\Delta \mathrm{T} = 0$ (Appendix \ref{n2_opt_pol}).
 
 For both initial system states and large $N$ and $\Delta \mathrm{T}$, the maximum work per extraction step $\frac{\overline{W}}{N-1} = 0.5$.
 For smaller $\Delta \mathrm{T}$, the work per extraction step is lower, as the optimal system state cannot be reached due to the speed limit in unitary dynamics \cite{Deffner_2017, PhysRevA.67.052109}.
