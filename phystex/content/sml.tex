@@ -73,18 +73,18 @@ First introduced in \cite{bidirrnn}, the network is split into a forward and bac
 \newpage
 
 \subsection{Training \& Backpropagation} \label{trainbackprop}
-Whereas in the previous sections we considered how information travels through the networks, the question of how one can improve the performance remains.
-A \textit{cost function} is needed to quantify the dissimilarity between the network predictions and correct values.
+Whereas in the previous sections we considered how information travels through the networks, the question of how one can improve their performance remains.
+A \texttt{loss} or \textit{cost function} is needed to quantify the dissimilarity between the network predictions and correct values.
 It is important that this function is differentiable, as this allows to calculate the gradient of the cost function with respect to the trainable parameters.
-This is implemented by the so-called \textit{backpropagation} algorithm \cite{rumelhart1986learning, nielsenneural}, which, in simple terms, uses the chain rule to calculate these derivatives.
-The gradient is then used by an optimiser such as Adam \cite{kingma2017adam} or Stochastic Gradient Descent (SGD) to update the trainable parameters and move the predictions closer to the desired values.
+This is implemented by the so-called \textit{backpropagation} algorithm \cite{rumelhart1986learning, nielsenneural}, which, in simple terms, uses the chain rule to calculate the gradient.
+It is then used by an optimiser such as Adam \cite{kingma2017adam} or Stochastic Gradient Descent (SGD) to update the trainable parameters and move the predictions closer to the desired values.
 For \textit{regression} problems such as ours, where one tries to predict a continuous function, the mean squared error (MSE)
 \begin{align*}
 \mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,
 \end{align*}
 is often used.
 The summation is performed over the training data $\{(\vec{x}_i, \vec{y}_i)\}$ with $N$ samples.
-$\{\vec{x_i}\}$ is the input, $\{\vec{y_i}\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ the output of the neural network.
+$\{\vec{x}_i\}$ is the input, $\{\vec{y}_i\}$ the output data and $\vec{a}_{L, i} = \textfrak{N}(\vec{x}_i)$ the output of the neural network.
 
 Besides the trainable parameters, every machine learning model has one or multiple hyper-parameters.
 These values are not changed in training and have to be chosen ahead of time.

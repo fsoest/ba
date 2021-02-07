@@ -237,4 +237,5 @@ for lh in leg.legendHandles:
 plt.xlabel('$\overline{F}_T$', fontsize=15)
 plt.xlim(0.4, 1.01)
 plt.ylabel('$\Delta W$', fontsize=15)
+plt.tight_layout()
 plt.savefig('/home/fsoest/ba/phystex/img/noisy_trans_bi_true_3.png', dpi=300)

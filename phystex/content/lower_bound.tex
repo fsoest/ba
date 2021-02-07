@@ -1,18 +1,18 @@
 % !TeX root = ../BA_main_englisch.tex
 % !TeX spellcheck = en_GB
-Before we apply neural networks, we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^i}\}$.
+Before we apply neural networks, we derive a lower bound on the extractable work given a drive sequence $\{\ket{\psi_D^n}\}$.
 By following a policy where the work output of each step $dW$ is optimised locally, we find that the transducer can be chosen such that $dW \geq 0$ for all drives.
 
 We start in an arbitrary system state $\rho_S(n \Delta \mathrm{T})$.
 Consider the evolved state $\rho_S((n+1) \Delta \mathrm{T}) =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$ after time $\Delta \mathrm{T}$, with $\vec{r} = ( x, y, z )$, where $\vec{r}$ would be determined by a unitary transformation in our case (note that the following is valid for any completely positive trace preserving (CPT) operation). According to Eqs. (\ref{dw}) and (\ref{simpledeltaham}), the step work output $dW_n$ is then given by
-\begin{align*}
-dW_n &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) (H_{ST}^{n} - H_{ST}^{n+1})} \\
-&= \Tr{\rho_S((n+1) \Delta \mathrm{T}) \left((\Re{\tau^n} - \Re{\tau^{n+1}}) \sigma_x + (\Im{\tau^n} - \Im{\tau^{n+1}} ) \sigma_y \right)} \\
-&= x (\Re{\tau^n} - \Re{\tau^{n+1}}) + y (\Im{\tau^n} - \Im{\tau^{n+1}}), \\
-\tau^n &= \frac{1}{2} \sin{\theta_T^n} e^{i\phi_T^n}. 
-\end{align*}
-$\tau^n$ is determined by the previous step and thus we can only vary $\tau^{n+1}$.
-$dW_n$ has a maximum for $\theta_T^{n+1} = \frac{\pi}{2}, \ \phi_T^{n+1} = \arctan{\frac{y}{x}} + \pi$, giving
+\begin{align} \label{dWn}
+dW_n &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) (H_{ST}^{n} - H_{ST}^{n+1})} \nonumber \\
+&= \Tr{\rho_S((n+1) \Delta \mathrm{T}) \left((\Re{\tau_n} - \Re{\tau_{n+1}}) \sigma_x + (\Im{\tau_n} - \Im{\tau_{n+1}} ) \sigma_y \right)} \nonumber \\
+&= x (\Re{\tau_n} - \Re{\tau_{n+1}}) + y (\Im{\tau_n} - \Im{\tau_{n+1}}), \\
+\tau_n &= \frac{1}{2} \sin{\theta_T^n} e^{i\phi_T^n}. \nonumber
+\end{align}
+$\tau_n$ is determined by the previous step and thus we can only vary $\tau_{n+1}$.
+Eq. (\ref{dWn}) has a maximum for $\theta_T^{n+1} = \frac{\pi}{2}, \ \phi_T^{n+1} = \arctan{\frac{y}{x}} + \pi$, giving
 \begin{align*}
 dW_{n, lo} &= \frac{1}{2}\left(\sqrt{x^2 + y^2} + \sin(\theta^n_T) \begin{pmatrix} \cos(\phi^n_T) \\ \sin(\phi^n_T) \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} \right) \\
  &\geq \frac{1}{2}\left(\sqrt{x^2 + y^2} - \abs{ \begin{pmatrix} \cos(\phi^n_T) \\ \sin(\phi^n_T) \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix}} \right) \\

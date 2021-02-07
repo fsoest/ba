@@ -37,10 +37,10 @@ The efficiency of the best model for $N=5, \ \Delta \mathrm{T} = 5$ is drastical
 Crucially, the models are unable to extract the test set average of the lower bound calculated by local optimisation $W_{lo} = 1.4$.
 
 Contrary to the case of $N=2$, the evolution of the system state becomes relevant over multiple time steps.
-As the work per time step is determined by $dW = -\Tr{\rho_S \ dH} = \Tr{\rho_S (H_{ST}^n - H_{ST}^{n+1})}$, finding the optimal solution is a compromise of choosing $dH$ so as to maximise the expectation value while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
-This is beneficial as the system Hamiltonians only have $\sigma_x$- and $\sigma_y$-, but no $\sigma_z$-components.
+As the work per time step is determined by $dW = -\Tr{\rho_S \ \Delta H} = \Tr{\rho_S (H_{ST}^n - H_{ST}^{n+1})}$, finding the optimal solution is a compromise of choosing $\Delta H$ so as to maximise the expectation value $dW$ while controlling the unitary evolution of $\rho_S$ such that $\Tr{\sigma_z \rho_S}$ is small.
+This is beneficial as the system Hamiltonians and thus $\Delta H$ only have $\sigma_x$- and $\sigma_y$-, but no $\sigma_z$-components.
 We plot the optimal and predicted trajectory of a random data point in the test in Figure \ref{bloch_10553} set to illustrate this compromise.
-In \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
+In Figure \ref{bloch_worst} we plot the trajectories for the worst-performing sample in the test set.
 In this case, the prediction for $\ket{\psi_T^n}$ deviates only slightly from the optimum for $n \in [2, N]$ but deviates significantly for $n=1$.
 This illustrates the problem of using the MSE as a cost function for training - to the network, this is a good prediction as most transducer qubits are near their optimal setting.
 However, the deviation in the first qubit causes a completely different evolution on the system, especially as $\Delta \mathrm{T} = 5$ is large.
@@ -49,7 +49,7 @@ This leads to a negative work output when following the predicted protocol.
 Figure \ref{bilstmbox} shows the prediction of the bidirectional LSTM and optimal values for the trajecto-ries of each data point in the test set.
 There is a notable difference in the predictive quality between the first four qubits and the last one: for the final qubit the dynamics after the work extraction step are inconsequential.
 It is therefore beneficial to maximise the strength during the final switching, i.e. setting $\theta_T^N = \frac{\pi}{2}$, to maximise its work output.
-Additionally $\phi_T^N$ should be set so that $H_{ST}^N$ is antiparallel to $\rho_S^N$ on the Bloch sphere.
+Additionally $\phi_T^N$ should be set so that $H_{ST}^N$ is antiparallel to the projection of $\rho_S^N$ onto the x-y-plane of the Bloch sphere.
 
 \newpage
 
@@ -94,7 +94,7 @@ Additionally $\phi_T^N$ should be set so that $H_{ST}^N$ is antiparallel to $\rh
 	\includegraphics[width=\textwidth]{img/delta_phi_box2}
 	\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}
 \end{subfigure}
-\caption{For the bidirectional LSTM network and $\Delta \mathrm{T} = 5$, we plot boxplots of the optimal \textbf{(a)}, predicted \textbf{(b)} and absolute differences \textbf{(c)} of $\theta^n_T$ for the five qubits of each trajectory in the test set. The prediction for $\theta_T^N$ is very good as the optimal solution is to set it to $\frac{\pi}{2}$ in all cases to maximise the work output of the final step. The prediction for $\theta_T^0$ is reasonably good too, as the optimal solution is again $\frac{\pi}{2}$ in a majority of trajectories. The network is unable to predict the three central qubits, with median absolute differences of approximately $0.5$. \textbf{(d)}: we plot the absolute difference between optimal and predicted $\phi_T^n$. We refrain from plotting the optimal and predicted $\phi_T^n$ themselves as these are distributed equally.}
+\caption{For the bidirectional LSTM network and $\Delta \mathrm{T} = 5$, we plot boxplots (inside the box are values from the lower to the upper quartile (25th to 75th percentile), the orange line represents the median and the vertical lines represent the values that lie in 1.5 times the interquartile range (height of the box)) of the optimal \textbf{(a)}, predicted \textbf{(b)} and absolute differences \textbf{(c)} of $\theta^n_T$ for the five qubits of each trajectory in the test set. The prediction for $\theta_T^N$ is very good as the optimal solution is to set it to $\frac{\pi}{2}$ in all cases to maximise the work output of the final step. The prediction for $\theta_T^0$ is reasonably good too, as the optimal solution is again $\frac{\pi}{2}$ in a majority of trajectories. The network is unable to predict the three central qubits, with median absolute differences of approximately $0.5$. \textbf{(d)}: we plot the absolute difference between optimal and predicted $\phi_T^n$. We refrain from plotting the optimal and predicted $\phi_T^n$ themselves as these are distributed equally.}
 \label{bilstmbox}
 \end{figure}
 

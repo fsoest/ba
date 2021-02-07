@@ -9,7 +9,7 @@ For the higher-dimensional case $N=5$, we examined two switching times $\Delta \
 For $\Delta \mathrm{T} = 5$, the models were unable to outperform the lower bound and were only able to extract 33.1 \% of the optimum.
 The reason for the lower performance is likely a combination of two factors.
 The models struggle to find a representation of the system state, which is necessary to predict the optimal next step.
-Additionally, we found an inherent difference in the optimal solutions between the two switching times. For $\Delta \mathrm{T} = 1$, the transducer Hamiltonian strength was maximised for most samples and thus $\theta_T$ constant.
+Additionally, we found an inherent difference in the optimal solutions between the two switching times: for $\Delta \mathrm{T} = 1$, the transducer Hamiltonian strength was maximised for most samples and thus $\theta_T$ easy to predict.
 For $\Delta \mathrm{T} = 5$, where the amount of reachable states on the Bloch sphere is greater, the optimal transducer strength is chosen such that the evolved state is in a favourable position.
 This dependence on both the initial and evolved state adds difficulty.
 In all cases the bidirectional outperformed the unidirectional LSTM, as the former has access to the complete drive sequence while the latter can only make predictions from the previous and current drive qubits.
@@ -20,16 +20,18 @@ Overall, the main difficulty in all models seems to have been representing the c
 In our approach, this representation had to be found implicitly, as $\rho_S$ was not included in the training data.
 An alternative would be following an approach similar to those in \cite{Banchi_2018, PhysRevX.10.011006}, where recurrent neural networks are used to directly model the system dynamics.
 
+An extension to the model is to add dissipative effects to the system state $\rho_S$.
+Depending on its realisation, this can lead to a defined steady-state of the system which might be easier for the models to learn.
+
 In all machine learning based approaches, the performance of such models highly depends on the choice of hyperparameters.
 We employed Bayesian optimisation (see Appendix \ref{training} for more details) to find hyperparameters that maximise performance.
 However, the approach is limited in the amount of computing power available and the maximum over the total hyperparameter space may not be found in finite time.
 
-An extension to the model is to add dissipative effects to the system state $\rho_S$.
-Depending on its realisation, this can lead to a defined steady-state of the system which might be easier for the models to represent.
 
 It has to be noted that the approach followed in this work depends on maximising expectation values of work outputs.
 While this is certainly justified in the limit of infinite experimental realisations, the question of how the results might differ in the single shot case remains.
 A reinforcement learning based approach, where problems are usually formulated as Markov Decision Problems and probabilistic reward functions are common \cite{Sutton1998}, would be a suitable alternative.
+Additionally, this approach could be extended to the case of continuous drive and transducer functions.
 
 We calculated the work output as the negative expectation value of the internal energy of the system, which is extracted through the use of transducer qubits.
 The question of how this output could be used in practice, e.g. to charge a battery, remains open.

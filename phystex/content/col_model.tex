@@ -38,8 +38,6 @@ The drive and transducer qubits can be set in N discrete intervals represented b
 	\label{pwc}
 \end{figure}
 
-\newpage
-
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
 H_{DST} = H_{I} \otimes \mathds{1}_T + \mathds{1}_D \otimes H_{I}, \\
@@ -47,7 +45,7 @@ H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
 \end{equation*}
 Note that the interaction Hamiltonian itself is constant and the time dependence comes from the change in the stream of ancillas only.
 The energy scale of the Hamiltonian is therefore limited and so are the dynamics of the system state $\rho_S$.
-The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is time span between qubit switching:
+The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is the time span between qubit switching:
 \begin{align}
 H_S^n &= \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}, \label{relham}\\
 \rho_S &((n+1) \Delta \mathrm{T}) = U_n \ \rho_S(n \Delta \mathrm{T}) \ U^{\dagger}_n, \nonumber \\
@@ -55,13 +53,14 @@ U_n &= e^{-iH_S^n \Delta \mathrm{T}}, \nonumber \\
 W &= \Sigma_n dW_n = - \Sigma_n \Tr{\rho_S(n \Delta \mathrm{T}) \ \Delta H_S^n}, \label{dw} \\
 \Delta H_S^n &= \bra{\psi_D^n}\bra{\psi_T^{n+1}} H_{DST} \ket{\psi_D^n} \ket{\psi_T^{n+1}} - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}. \label{deltaham}
 \end{align}
-Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
+Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as the corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
 An advantage of this framework is that the extracted work is available to the experimenter as a quantum observable \cite{beyer2020}.
 
 Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces Eq. (\ref{relham}) to
 \begin{align}
 H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{DS}^n + H_{ST}^n. \nonumber
 \end{align}
+In the following, we will call $H_DS$ the drive and $H_ST$ the transducer Hamiltonian, but note that both Hamiltonians act on the system state $\rho_S$ only.
 Eq. (\ref{deltaham}) can then be expressed in a simpler form
 \begin{align}
 \Delta H_S^n &= H_{ST}^{n+1} - H_{ST}^n. \label{simpledeltaham}

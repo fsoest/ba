@@ -40,7 +40,7 @@ uni_local = torch.load('models/local_opt/dt5_uni').eval()
 # better = torch.load('models/custom_loss_dt_1_better').eval()
 qcell = torch.load('models/q_cell_try').eval()
 # %%
-N = 12
+N = 5
 seed = 42
 batch_size = 44
 dt = 5
@@ -76,12 +76,13 @@ for n in N_arr:
         hidden_bi, cell_bi = bi.HiddenCellTest(N_data)
         hidden_local, cell_local = uni_local.HiddenCellTest(N_data)
 
-        h_better, c_better = qcell.HiddenCellTest(N_data)
+        # h_better, c_better = qcell.HiddenCellTest(N_data)
         y_uni = uni(x_embed, hidden_uni, cell_uni)[0]
         y_bi = bi(x_embed, hidden_bi, cell_bi)[0]
         y_local = uni_local(x_embed, hidden_local, cell_local)[0]
 
-        y_better = qcell(x_embed, h_better, c_better)[0]
+        q_cell = qcell.init_cell(x_embed[:, 0])
+        y_better = qcell(x_embed, q_cell)[0]
 
     # y_uni = rev_angle_embedding(y_uni.detach().numpy(), n)
     # y_bi = rev_angle_embedding(y_bi.detach().numpy(), n)

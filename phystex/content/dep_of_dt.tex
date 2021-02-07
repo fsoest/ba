@@ -2,15 +2,15 @@
 We start our investigation by determining the work output $W$ when varying the time between qubit switching $\Delta \mathrm{T}$.
 If the system qubit is initialised in the pure state $\rho_S = \ket{0} \bra{0}$, the work output for a single jump is given by (see appendix \ref{deriv_jump} for a derivation)
 \begin{equation} \label{single_work}
-	W = \frac{1}{\abs{\alpha}} \sin(2\abs{\alpha}\Delta \mathrm{T}) \Im{(\tau' - \tau) \alpha^*}
+	W = \frac{1}{\abs{\alpha}} \sin(2\abs{\alpha}\Delta \mathrm{T}) \Im{(\tau_2 - \tau_1) \alpha^*}
 \end{equation}
 \begin{equation*}
 	\alpha = \frac{1}{2} \left[\sin(\theta_D^1) e^{i\phi_D^1} + \sin(\theta_T^1) e^{i\phi_T^1}\right], \\
-	\tau' - \tau = \frac{1}{2} \left[ \sin(\theta_T^2)e^{i\phi_T^2} - \sin(\theta_T^1)e^{i\phi_T^1} \right].
+	\tau_2 - \tau_1 = \frac{1}{2} \left[ \sin(\theta_T^2)e^{i\phi_T^2} - \sin(\theta_T^1)e^{i\phi_T^1} \right].
 \end{equation*}
 
 We note that for $\Delta \mathrm{T} \to 0, \ W \to 0$ as $\Tr{\rho_S H_S} = 0$ for all configurations of $\ket{\psi_D}$ and $ \ket{\psi_T}$.
-We simulate 500 random drive functions for multiple values of $N$ and each $\Delta \mathrm{T}$, finding their optimal transducer policy numerically using a minimiser algorithm\footnote{The work output function is non-convex and therefore difficult to optimise. We try to circumvent this problem by initialising the minimiser in multiple different positions and choosing the minimum of the outputs. It is not guaranteed that these solutions are global minima. In the remainder of this work, by the `optimal' solution we mean the minimum of the minimiser solutions.} \cite{2020SciPy-NMeth}. The average work output over the 500 runs scaled by the number of work extractions $\overline{W}/(N-1)$ for 20 values of $\Delta \mathrm{T}$ is shown in Figure \ref{dt_0}.
+We simulate 500 random drive functions for multiple values of $N$ and each $\Delta \mathrm{T}$, finding their optimal transducer policy numerically using a minimiser algorithm\footnote{The work output function is non-convex and therefore difficult to optimise. We try to circumvent this problem by initialising the minimiser in multiple different positions and choosing the minimum of the outputs. It is not guaranteed that these solutions are global minima. In the remainder of this work, by the `optimal' solution we mean the minimum of the minimiser solutions.} \cite{2020SciPy-NMeth}. The average work output over the 500 runs scaled by the number of extraction steps $\overline{W}/(N-1)$ for 20 values of $\Delta \mathrm{T}$ is shown in Figure \ref{dt_0}.
 
 In Figure \ref{dt_eigen}, we plot the average work when the system qubit is initialised in an eigenstate $\rho_0 = \ket{+}\bra{+}$ of the partial system Hamiltonian $H_{DS}$.
 For $\Delta \mathrm{T} = 0$, the work output is $W = 1$ for all $N$.
@@ -23,7 +23,7 @@ This is the amount of work that can be withdrawn from the system by maximising t
 \end{align*}
 This can be done only once, as $\Delta \mathrm{T} = 0$ prevents any evolution of $\rho_S$.
 
-A special case occurs for $N = 2$: the optimal case is independent of $\Delta \mathrm{T}$.
+A special case occurs for $N = 2$: the optimal work output is independent of $\Delta \mathrm{T}$.
 Here, the maximum work output per step of $W = 1$ can be achieved by setting the transducer such that the total system Hamiltonian commutes with $H_{DS}$. $\rho_S$ remains in the eigenstate and after time $\Delta \mathrm{T}$, \ $W = 1$ can be extracted from the system as with $\Delta \mathrm{T} = 0$ (Appendix \ref{n2_opt_pol}).
 
 For both initial system states and large $N$ and $\Delta \mathrm{T}$, the maximum work per extraction step $\frac{\overline{W}}{N-1} = 0.5$.
