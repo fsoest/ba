@@ -20,16 +20,33 @@ D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
   mechanics.
 \newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
 
-\bibitem{PhysRevA.101.022113}
-Bao-Ming Xu, Zhan~Chun Tu, and Jian Zou.
-\newblock Duality in quantum work.
-\newblock {\em Phys. Rev. A}, 101:022113, Feb 2020.
+\bibitem{PhysRevE.93.022131}
+Peter Talkner and Peter H\"anggi.
+\newblock Aspects of quantum work.
+\newblock {\em Phys. Rev. E}, 93:022131, Feb 2016.
 
 \bibitem{beyer2020}
 Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 \newblock Work as an external quantum observable and an operational quantum
   work fluctuation theorem.
 \newblock {\em Phys. Rev. Research}, 2:033508, Sep 2020.
+
+\bibitem{WEI20171}
+Chongfeng Wei and Xingjian Jing.
+\newblock A comprehensive review on vibration energy harvesting: Modelling and
+  realization.
+\newblock {\em Renewable and Sustainable Energy Reviews}, 74:1--18, 2017.
+
+\bibitem{expharv}
+Min Zhang and Junlei Wang.
+\newblock Experimental study on piezoelectric energy harvesting from
+  vortex-induced vibrations and wake-induced vibrations.
+\newblock {\em Journal of Sensors}, 2016:1--7, 01 2016.
+
+\bibitem{sothmann}
+Björn Sothmann and Andrew Jordan.
+\newblock Thermoelectric energy harvesting with quantum dots.
+\newblock {\em Nanotechnology}, 26, 06 2014.
 
 \bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,

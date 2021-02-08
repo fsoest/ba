@@ -289,6 +289,7 @@
   author = {Biewald, Lukas},
   title  = {Experiment Tracking with Weights and Biases},
   year   = {2020},
+  note   = {https://www.wandb.com/, accessed February 2020},
   url    = {https://www.wandb.com/},
 }
 
@@ -526,11 +527,61 @@
 
 @InProceedings{8614252,
   author    = {S. {Siami-Namini} and N. {Tavakoli} and A. {Siami Namin}},
-  title     = {A Comparison of ARIMA and LSTM in Forecasting Time Series},
+  title     = {A Comparison of {ARIMA} and {LSTM} in Forecasting Time Series},
   booktitle = {2018 17th IEEE International Conference on Machine Learning and Applications (ICMLA)},
   year      = {2018},
   pages     = {1394-1401},
   doi       = {10.1109/ICMLA.2018.00227},
+}
+
+@Article{PhysRevE.93.022131,
+  author    = {Talkner, Peter and H\"anggi, Peter},
+  title     = {Aspects of quantum work},
+  journal   = {Phys. Rev. E},
+  year      = {2016},
+  volume    = {93},
+  pages     = {022131},
+  month     = {Feb},
+  doi       = {10.1103/PhysRevE.93.022131},
+  issue     = {2},
+  numpages  = {11},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PhysRevE.93.022131},
+}
+
+@Article{WEI20171,
+  author   = {Chongfeng Wei and Xingjian Jing},
+  title    = {A comprehensive review on vibration energy harvesting: Modelling and realization},
+  journal  = {Renewable and Sustainable Energy Reviews},
+  year     = {2017},
+  volume   = {74},
+  pages    = {1-18},
+  issn     = {1364-0321},
+  abstract = {This paper presents a state-of-the-art review on a hot topic in the literature, i.e., vibration based energy harvesting techniques, including theory, modelling methods and the realizations of the piezoelectric, electromagnetic and electrostatic approaches. To minimize the requirement of external power source and maintenance for electric devices such as wireless sensor networks, the energy harvesting technique based on vibrations has been a dynamic field of studying interest over past years. One important limitation of existing energy harvesting techniques is that the power output performance is seriously subject to the resonant frequencies of ambient vibrations, which are often random and broadband. To solve this problem, researchers have concentrated on developing efficient energy harvesters by adopting new materials and optimising the harvesting devices. Particularly, among these approaches, different types of energy harvesters have been designed with consideration of nonlinear characteristics so that the frequency bandwidth for effective energy harvesting of energy harvesters can be broadened. This paper reviews three main and important vibration-to-electricity conversion mechanisms, their design theory or methods and potential applications in the literature. As one of important factors to estimate the power output performance, the energy conversion efficiency of different conversion mechanisms is also summarised. Finally, the challenging issues based on the existing methods and future requirement of energy harvesting are discussed.},
+  doi      = {https://doi.org/10.1016/j.rser.2017.01.073},
+  keywords = {Energy harvesting, Vibration, Nonlinearity, Energy conversion mechanism},
+  url      = {https://www.sciencedirect.com/science/article/pii/S1364032117300837},
+}
+
+@Article{expharv,
+  author  = {Zhang, Min and Wang, Junlei},
+  title   = {Experimental Study on Piezoelectric Energy Harvesting from Vortex-Induced Vibrations and Wake-Induced Vibrations},
+  journal = {Journal of Sensors},
+  year    = {2016},
+  volume  = {2016},
+  pages   = {1-7},
+  month   = {01},
+  doi     = {10.1155/2016/2673292},
+}
+
+@Article{sothmann,
+  author  = {Sothmann, Björn and Jordan, Andrew},
+  title   = {Thermoelectric energy harvesting with quantum dots},
+  journal = {Nanotechnology},
+  year    = {2014},
+  volume  = {26},
+  month   = {06},
+  doi     = {10.1088/0957-4484/26/3/032001},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -1,29 +1,29 @@
 \babel@toc {nil}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
-\contentsline {chapter}{\numberline {2}Background}{2}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Collision model dynamics}{2}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}Supervised machine learning}{4}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANN}{5}{subsection.2.2.1}% 
-\contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{6}{subsection.2.2.2}% 
-\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{8}{subsection.2.2.3}% 
-\contentsline {chapter}{\numberline {3}Work lower bound}{9}{chapter.3}% 
-\contentsline {chapter}{\numberline {4}Simulation results}{10}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Influence of $\Delta \mathrm {T}$ on Work Output}{10}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Data creation, training and evaluation}{11}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Choice of cost function for training}{12}{subsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.2.2}Evaluation of network performance}{12}{subsection.4.2.2}% 
-\contentsline {section}{\numberline {4.3}Amount of qubit switches $N=2$: Learning single extraction step optimal control sequences}{12}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Amount of qubit switches $N=5$}{13}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Interaction time $\Delta \mathrm {T} = 5$}{13}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}Interaction time $\Delta \mathrm {T} = 1$}{17}{subsection.4.4.2}% 
-\contentsline {subsection}{\numberline {4.4.3}Noise resistance}{19}{subsection.4.4.3}% 
-\contentsline {subsection}{\numberline {4.4.4}Extracted work as cost function}{20}{subsection.4.4.4}% 
-\contentsline {section}{\numberline {4.5}Generalisation to other $N$}{21}{section.4.5}% 
-\contentsline {chapter}{\numberline {5}Conclusion and outlook}{23}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Bibliography}{25}{chapter.6}% 
-\contentsline {chapter}{\numberline {A}Derivations}{29}{appendix.A}% 
-\contentsline {section}{\numberline {A.1}Single extraction step work output}{29}{section.A.1}% 
-\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{30}{section.A.2}% 
-\contentsline {chapter}{\numberline {B}Training protocols}{31}{appendix.B}% 
-\contentsline {section}{\numberline {B.1}Hyperparameters Section \ref {n_2_ml}}{31}{section.B.1}% 
-\contentsline {section}{\numberline {B.2}Hyperparameters Section \ref {n5}}{31}{section.B.2}% 
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Collision model dynamics}{3}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Supervised machine learning}{5}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Fully-connected feedforward ANN}{6}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Long Short-Term Memory}{7}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Training \& Backpropagation}{9}{subsection.2.2.3}% 
+\contentsline {chapter}{\numberline {3}Work lower bound}{10}{chapter.3}% 
+\contentsline {chapter}{\numberline {4}Simulation results}{11}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Influence of $\Delta \mathrm {T}$ on Work Output}{11}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Data creation, training and evaluation}{12}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Choice of cost function for training}{13}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Evaluation of network performance}{13}{subsection.4.2.2}% 
+\contentsline {section}{\numberline {4.3}Amount of qubit switches $N=2$: Learning single extraction step optimal control sequences}{13}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Amount of qubit switches $N=5$}{14}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Interaction time $\Delta \mathrm {T} = 5$}{14}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Interaction time $\Delta \mathrm {T} = 1$}{18}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Noise resistance}{20}{subsection.4.4.3}% 
+\contentsline {subsection}{\numberline {4.4.4}Extracted work as cost function}{21}{subsection.4.4.4}% 
+\contentsline {section}{\numberline {4.5}Generalisation to other $N$}{22}{section.4.5}% 
+\contentsline {chapter}{\numberline {5}Conclusion and outlook}{24}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Bibliography}{26}{chapter.6}% 
+\contentsline {chapter}{\numberline {A}Derivations}{30}{appendix.A}% 
+\contentsline {section}{\numberline {A.1}Single extraction step work output}{30}{section.A.1}% 
+\contentsline {section}{\numberline {A.2}Optimal policy for $N=2$}{31}{section.A.2}% 
+\contentsline {chapter}{\numberline {B}Training protocols}{32}{appendix.B}% 
+\contentsline {section}{\numberline {B.1}Hyperparameters Section \ref {n_2_ml}}{32}{section.B.1}% 
+\contentsline {section}{\numberline {B.2}Hyperparameters Section \ref {n5}}{32}{section.B.2}% 

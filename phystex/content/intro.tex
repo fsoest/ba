@@ -3,26 +3,31 @@
 Thermodynamics has been a central field of interest in physics ever since its inception in the 19th century \cite{thomson_2011}.
 It was in fact a thermodynamic insight which led Einstein to conclude that electromagnetic radiation is quantised \cite{1905AnP...322..132E}.
 These fields have been combined to study the thermodynamic properties of quantum systems, where quantum and thermal fluctuations are of similar scale.
-We focus on work extraction.
-Multiple frameworks exist, including coupling the system to a heat bath \cite{Egloff_2015} and driving by an externally controlled parameter \cite{PhysRevA.101.022113}.
+In particular, the exact definition of quantum work is still under debate.
+Multiple frameworks for its definition exist \cite{Egloff_2015, PhysRevE.93.022131}.
 
+We examine the work output that can be extracted from a driven system, extending the framework given in Ref.~\cite{beyer2020}.
+This allows us to explicitly include the driving and the work extraction in the quantum picture using a collision model.
+We examine the case where the drive is given and the aim is to find the extraction policy to maximise the work output.
+This problem is known as energy harvesting.
+In the classical case, it has been analysed in different setups, both theoretically \cite{WEI20171} and experimentally \cite{expharv}, where energy is extracted from external excitations, e.g. vibrations in human motion.
+In contrast, in the quantum case only few results exist \cite{sothmann}.
+Finding the optimal extraction policy in non-trivial in general.
+In particular, analytic solutions often do not exist.
+Recently, it has been shown in Ref.~\cite{Liu2019} that machine learning techniques are capable of finding and improving energy harvesting policies.
+In this thesis, we employ a machine learning based approach to our quantum work extraction framework.
 
-which is often modelled as a system coupled to a heat bath, and bounds for the extractable work exist \cite{Egloff_2015}.
-We take a different approach, following the framework given in \cite{beyer2020}, as it allows us to model a system explicitly driven by a quantum system.
-The driving is modelled as a time-dependent system Hamiltonian using a collision model.
-The transducer is modelled in a similar fashion and can extract work from the system.
-
-Due to the increasing availability of data and computing power, machine learning methods have become a standard approach in many fields such as natural language processing \cite{DBLP:journals/corr/VaswaniSPUJGKP17}.
-Additionally, these methods are being applied to a broad range of problems in the physical sciences, from statistical physics to quantum computing \cite{Carleo_2019, wise2021using}.
-
-Machine learning has also found use in the field of energy harvesting, concerned with extracting energy from external excitations, e.g. vibrations in human motion \cite{Liu2019}.
-In this work we extend this concept to the quantum case.
-We train recurrent neural networks to predict transducer protocols given a drive sequence, considering both the case where the sequence is known beforehand and the one where it is not.
+Machine learning methods, such as neural networks, have become popular due to the increasing availability of computing power.
+Prime examples include image recognition and machine translation \cite{DBLP:journals/corr/VaswaniSPUJGKP17}, where machine learning approaches outperform all other available algorithms.
+In recent years, they have also been applied to a broad range of problems in the physical sciences, from statistical physics to quantum computing \cite{Carleo_2019, wise2021using}.
+We use multiple neural network architectures to predict extraction protocols given a drive sequence.
+This thesis focuses on recurrent neural networks, as they have been shown to perform well for time-series data~\cite{8614252}.
 
 The remainder of this work is structured as follows.
-In Chapter \ref{background} we review the collision model framework used in our approach and introduce two machine learning architectures.
-In Chapter \ref{lower_bound} we show that for a given drive sequence a lower bound on the expectation value of the extractable work exists.
-We investigate the system under consideration in Section \ref{dep_dt} and apply the aforementioned architectures in Sections \ref{n_2_ml} to \ref{work_cost}.
+In Chapter~\ref{background} we review the collision model framework used in our approach
+Furthermore we introduce two machine learning architectures, the fully-connected feedforward artificial neural network and the Long Short-Term Memory cell.
+In Chapter~\ref{lower_bound} we show that for a given drive sequence a lower bound on the expectation value of the extractable work exists.
+We investigate the system under consideration in Sec-tion~\ref{dep_dt} and apply the aforementioned architectures in Sections~\ref{n_2_ml} and \ref{n5}.
 The robustness of our solutions to noise as well as the ability of the models to generalise to longer drive sequences are studied thereafter.
 We summarise our findings and provide an outlook in Chapter \ref{outlook}.
 

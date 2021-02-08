@@ -78,7 +78,7 @@ Whereas in the previous sections we considered how information travels through t
 A \textit{loss} or \textit{cost function} is needed to quantify the dissimilarity between the network predictions and correct values.
 It is important that the function is differentiable, as this allows to calculate the gradient of the cost function with respect to the trainable parameters.
 The calculation is implemented by the so-called \textit{backpropagation} algorithm \cite{rumelhart1986learning, nielsenneural}, which, in simple terms, uses the chain rule to calculate the gradient.
-It is then used by an optimiser such as Adam \cite{kingma2017adam} or Stochastic Gradient Descent (SGD) to update the trainable parameters and move the predictions closer to the desired values.
+An \textit{optimiser} such as Adam \cite{kingma2017adam} or Stochastic Gradient Descent (SGD) uses the gradient to update the trainable parameters and move the predictions closer to the desired values.
 For \textit{regression} problems such as ours, where one tries to predict a continuous function, the mean squared error (MSE)
 \begin{align*}
 \mathrm{MSE} = \frac{1}{N} \sum_{i=1}^N (\vec{a}_{L, i} - \vec{y}_i)^2,

@@ -34,8 +34,8 @@ where $i$ denotes the optimiser step.
 \end{table}
 
 \section{Hyperparameters Section \ref{n5}}
-The learning rate (LR) is determined by the `Reduce LR on Plateau' schedule.
-The learning rate is multiplied by the hyperparameter \textit{factor} if the cost function decreased for the past \textit{patience} / \textit{pat drop} epochs.
+The learning rate (LR) is determined by the `Reduce LR on Plateau' schedule:
+the learning rate is multiplied by the hyperparameter \textit{factor} if the cost function decreased for the past \textit{patience} / \textit{pat drop} epochs.
 The hyperparameters are found using Bayesian optimisation \cite{10.5555/2999325.2999464}, which uses multiple training runs with different hyperparameters to create a statistical model of the model performance with respect to the hyperparameters, implemented by \cite{wandb}.
 The values can be found in Table \ref{hyperparams_n_5}.
 The FCANN in Section \ref{n_5_ml} has three hidden layers with 2000 neurons each.

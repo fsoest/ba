@@ -39,8 +39,8 @@ The drive and transducer qubits can be set in N discrete intervals represented b
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
-H_{DST} = H^{I}_{DS} \otimes \mathds{1}_T + \mathds{1}_D \otimes H^{I}_{ST}, \\
-H^{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
+H_{DST} = H_{DS} \otimes \mathds{1}_T + \mathds{1}_D \otimes H_{ST}, \\
+H_{DS} = H_{ST} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
 \end{equation*}
 The Hamiltonians are unitless and therefore the interaction strength is given by the evolution time.
 Note that the interaction Hamiltonian itself is constant and the time dependence comes from the change in the stream of ancillas only.
@@ -54,12 +54,16 @@ W &= \Sigma_n dW_n = - \Sigma_n \Tr{\rho_S(n \Delta \mathrm{T}) \ \Delta H_S^n},
 \Delta H_S^n &= \bra{\psi_D^n}\bra{\psi_T^{n+1}} H_{DST} \ket{\psi_D^n} \ket{\psi_T^{n+1}} - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}. \label{deltaham}
 \end{align}
 Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as the corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
-An advantage of this framework is that the extracted work is available to the experimenter as a quantum observable \cite{beyer2020}.
+An advantage of this framework is that the extracted work is in principle measurable for the experimenter as a quantum observable \cite{beyer2020}.
+However, unlike in the classical case, experimental realisations are still missing.
+Conceptual and technological issues remain, which need further investigation to make the work output available for practical applications.
+These questions are beyond the scope of this thesis.
 
 Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces Eq. (\ref{relham}) to
 \begin{align}
-H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{DS}^n + H_{ST}^n. \nonumber
+H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{(D)S}^n + H_{S(T)}^n, \nonumber \\
 \end{align}
+where $H_{(D)S} = $
 In the following, we will call $H_{DS}$ the drive and $H_{ST}$ the transducer Hamiltonian, but note that both Hamiltonians act on the system Hilbert space only.
 Eq. (\ref{deltaham}) can then be expressed in a simpler form
 \begin{align}
