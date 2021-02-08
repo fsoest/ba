@@ -48,6 +48,12 @@ Björn Sothmann and Andrew Jordan.
 \newblock Thermoelectric energy harvesting with quantum dots.
 \newblock {\em Nanotechnology}, 26, 06 2014.
 
+\bibitem{Liu2019}
+Feiyang Liu, Yulong Zhang, Oscar Dahlsten, and Fei Wang.
+\newblock Intelligently chosen interventions have potential to outperform the
+  diode bridge in power conditioning.
+\newblock {\em Scientific Reports}, 9(1):8994, Jun 2019.
+
 \bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
   Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
@@ -66,11 +72,11 @@ David~F. Wise, John~J.L. Morton, and Siddharth Dhomkar.
   environment.
 \newblock {\em PRX Quantum}, 2:010316, Jan 2021.
 
-\bibitem{Liu2019}
-Feiyang Liu, Yulong Zhang, Oscar Dahlsten, and Fei Wang.
-\newblock Intelligently chosen interventions have potential to outperform the
-  diode bridge in power conditioning.
-\newblock {\em Scientific Reports}, 9(1):8994, Jun 2019.
+\bibitem{8614252}
+S.~{Siami-Namini}, N.~{Tavakoli}, and A.~{Siami Namin}.
+\newblock A comparison of {ARIMA} and {LSTM} in forecasting time series.
+\newblock In {\em 2018 17th IEEE International Conference on Machine Learning
+  and Applications (ICMLA)}, pages 1394--1401, 2018.
 
 \bibitem{Lorenzo_2017}
 Salvatore Lorenzo, Francesco Ciccarello, and G.~Massimo Palma.
@@ -116,12 +122,6 @@ Kunihiko Fukushima and Sei Miyake.
 \newblock In Shun-ichi Amari and Michael~A. Arbib, editors, {\em Competition
   and Cooperation in Neural Nets}, pages 267--285, Berlin, Heidelberg, 1982.
   Springer Berlin Heidelberg.
-
-\bibitem{8614252}
-S.~{Siami-Namini}, N.~{Tavakoli}, and A.~{Siami Namin}.
-\newblock A comparison of {ARIMA} and {LSTM} in forecasting time series.
-\newblock In {\em 2018 17th IEEE International Conference on Machine Learning
-  and Applications (ICMLA)}, pages 1394--1401, 2018.
 
 \bibitem{doi:10.1162/neco.1997.9.8.1735}
 Sepp Hochreiter and Jürgen Schmidhuber.
@@ -238,5 +238,6 @@ Jasper Snoek, Hugo Larochelle, and Ryan~P. Adams.
 \bibitem{wandb}
 Lukas Biewald.
 \newblock Experiment tracking with weights and biases, 2020.
+\newblock https://www.wandb.com/, accessed February 2021.
 
 \end{thebibliography}

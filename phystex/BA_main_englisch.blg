@@ -6,16 +6,16 @@ Database file #1: biblio.bib
 Warning--can't use both author and editor fields in LeCun2012
 You've used 39 entries,
             1791 wiz_defined-function locations,
-            721 strings with 11806 characters,
-and the built_in function-call counts, 9984 in all, are:
-= -- 819
+            722 strings with 11852 characters,
+and the built_in function-call counts, 9993 in all, are:
+= -- 821
 > -- 570
 < -- 7
 + -- 204
 - -- 165
 * -- 738
-:= -- 1608
-add.period$ -- 119
+:= -- 1610
+add.period$ -- 120
 call.type$ -- 39
 change.case$ -- 35
 chr.to.int$ -- 0
@@ -23,17 +23,17 @@ cite$ -- 40
 duplicate$ -- 448
 empty$ -- 904
 format.name$ -- 165
-if$ -- 2222
+if$ -- 2224
 int.to.chr$ -- 0
 int.to.str$ -- 39
 missing$ -- 45
-newline$ -- 197
+newline$ -- 198
 num.names$ -- 45
 pop$ -- 108
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 234
+skip$ -- 233
 stack$ -- 0
 substring$ -- 548
 swap$ -- 122
@@ -44,5 +44,5 @@ type$ -- 0
 warning$ -- 1
 while$ -- 77
 width$ -- 41
-write$ -- 436
+write$ -- 438
 (There was 1 warning)

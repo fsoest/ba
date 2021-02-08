@@ -51,7 +51,7 @@ H_S^n &= \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}, \la
 \rho_S &((n+1) \Delta \mathrm{T}) = U_n \ \rho_S(n \Delta \mathrm{T}) \ U^{\dagger}_n, \nonumber \\
 U_n &= e^{-iH_S^n \Delta \mathrm{T}}, \nonumber \\ 
 W &= \Sigma_n dW_n = - \Sigma_n \Tr{\rho_S(n \Delta \mathrm{T}) \ \Delta H_S^n}, \label{dw} \\
-\Delta H_S^n &= \bra{\psi_D^n}\bra{\psi_T^{n+1}} H_{DST} \ket{\psi_D^n} \ket{\psi_T^{n+1}} - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}. \label{deltaham}
+\Delta H_S^n &= \bra{\psi_D^n} \langle \psi_T^{n+1} | H_{DST} \ket{\psi_D^n} | \psi_T^{n+1} \rangle  - \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}. \label{deltaham}
 \end{align}
 Here we use the partial Hamiltonian $H_S^n$ on the system at time step $n \in [1, N - 1]$, as well as the corresponding system density matrix $\rho_S(n \Delta \mathrm{T})$.
 An advantage of this framework is that the extracted work is in principle measurable for the experimenter as a quantum observable \cite{beyer2020}.
@@ -62,10 +62,12 @@ These questions are beyond the scope of this thesis.
 Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{0} + e^{i \phi} \sin(\frac{\theta}{2})\ket{1}$ to represent drive and transducer qubits reduces Eq. (\ref{relham}) to
 \begin{align}
 H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{(D)S}^n + H_{S(T)}^n, \nonumber \\
+H_{(D)S}^n &= \bra{\psi_D^n} \bra{\psi_T^{n}} H_{DS} \otimes \mathds{1}_T \ket{\psi_D^n} \ket{\psi_T^n}, \nonumber \\
+H_{S(T)}^n &= \bra{\psi_D^n} \bra{\psi_T^{n}} \mathds{1}_D \otimes H_{ST}  \ket{\psi_D^n} \ket{\psi_T^n} \nonumber
 \end{align}
-where $H_{(D)S} = $
-In the following, we will call $H_{DS}$ the drive and $H_{ST}$ the transducer Hamiltonian, but note that both Hamiltonians act on the system Hilbert space only.
+In the following, we will call $H_{(D)S}^n$ the drive and $H_{S(T)}^n$ the transducer Hamiltonian, but note that both Hamiltonians act on the system Hilbert space only.
 Eq. (\ref{deltaham}) can then be expressed in a simpler form
 \begin{align}
-\Delta H_S^n &= H_{ST}^{n+1} - H_{ST}^n. \label{simpledeltaham}
+\Delta H_S^n &= H_{(D)S}^{n} + H_{S(T)}^{n+1} - H_{(D)S}^{n} - H_{S(T)}^n \nonumber \\
+ 	&= H_{S(T)}^{n+1} - H_{S(T)}^n. \label{simpledeltaham}
 \end{align}

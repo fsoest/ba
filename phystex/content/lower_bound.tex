@@ -6,7 +6,7 @@ By following a policy where the work output of each step $dW$ is optimised local
 We start in an arbitrary system state $\rho_S(n \Delta \mathrm{T})$.
 Consider the evolved state $\rho_S((n+1) \Delta \mathrm{T}) =\frac{1}{2} (\mathds{1} + \vec{r} \cdot \vec{\sigma})$ after time $\Delta \mathrm{T}$, with Bloch vector $\vec{r} = ( x, y, z )$, where $\vec{r}$ is determined by a unitary transformation in our case (note that the following is valid for any completely positive trace preserving (CPT) operation). According to Eqs. (\ref{dw}) and (\ref{simpledeltaham}), the step work output $dW_n$ is then given by
 \begin{align} \label{dWn}
-dW_n &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) (H_{ST}^{n} - H_{ST}^{n+1})} \nonumber \\
+dW_n &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) (H_{S(T)}^{n} - H_{S(T)}^{n+1})} \nonumber \\
 &= \Tr{\rho_S((n+1) \Delta \mathrm{T}) \left((\Re{\tau_n} - \Re{\tau_{n+1}}) \sigma_x + (\Im{\tau_n} - \Im{\tau_{n+1}} ) \sigma_y \right)} \nonumber \\
 &= x (\Re{\tau_n} - \Re{\tau_{n+1}}) + y (\Im{\tau_n} - \Im{\tau_{n+1}}), \\
 \tau_n &= \frac{1}{2} \sin{\theta_T^n} e^{i\phi_T^n}. \nonumber
