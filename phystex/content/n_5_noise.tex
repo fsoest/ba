@@ -1,10 +1,10 @@
 % !TeX spellcheck = en_GB
-Besides the efficiency of the networks the resistance of their predictions to noise is also of interest.
+Besides the efficiency of the networks, the resistance of their predictions to noise is also of interest.
 We create a noisy sequence $\{\ket{\phi_n}\}$ of N qubits from $\{\ket{\psi_n}\}$ using
 \begin{align*}
 	\ket{\phi_n} = e^{-i H_n \tau} \ket{\psi_n} \ \forall n \in [1, N].
 \end{align*}
-$H_n$ are randomly generated Hermitian matrices with $\norm{H_n} = 1$ and $\tau$ is a real parameter used to control the strength of the noise.
+$H_n$ are randomly generated Hermitian matrices with $\norm{H_n} = \sqrt{\Sigma_{ij} \abs{h^n_{ij}}^2} = 1$ and $\tau$ is a real parameter used to control the strength of the noise.
 To quantify the dissimilarity between $\{\ket{\phi_n}\}$ and $\{\ket{\psi_n}\}$ we use the fidelity $F$ as defined in \cite{10.5555/1972505}:
 \begin{align*}
 	F_{\text{run}}(\{\ket{\phi_n}\}, \{\ket{\psi_n}\}) = \prod_n F(\ket{\phi_n}, \ket{\psi_n}) = \prod_n \abs{\bra{\phi_n}\ket{\psi_n}}.

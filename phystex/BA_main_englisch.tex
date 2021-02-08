@@ -67,7 +67,7 @@ We consider a two-state quantum system that is driven by an arbitrary piecewise 
 We show that for this system a policy exists that is able to extract a non-negative work output independent of the excitation.
 We investigate the system with respect to randomly sampled drives and find their optimal extraction policies numerically.
 Using these pairs as training data we employ recurrent neural networks to predict the optimal transducer policy given a drive sequence.
-We find that our approach performs well for certain model parameters, capable of extracting more than 97 \% of optimum.
+We find that our approach performs reasonably well, even capable of extracting more than 97 \% of the optimum for certain model parameters.
 Additionally, we explore the robustness of the model predictions with respect to noise and the ability of our models to generalise to longer drive sequences.
 
 \vspace{10em}
@@ -77,7 +77,7 @@ Wir betrachten ein zwei-Niveau-Quantensystem, welches durch eine beliebige stüc
 Wir zeigen, dass für dieses System eine Strategie existiert, die in der Lage ist, eine nicht-negative Arbeit unabhängig von der Anregung zu extrahieren.
 Wir untersuchen das System in Bezug auf zufällig generierte Antriebe und finden deren optimale Extraktionssequenz numerisch.
 Unter Verwendung dieser Paare als Trainingsdaten verwenden wir rekurrente neuronale Netze, um die optimale Extraktionsstrate-gie einer gegebenen Antriebssequenz vorherzusagen.
-Für bestimmte Modellparameter funktio-niert dieser Ansatz gut und ist in der Lage, mehr als 97 \% des Optimums zu extrahieren.
+Dieser Ansatz funktioniert recht gut, und ist sogar in der Lage, mehr als 97 \% des Optimums für bestimmte Modellparameter zu extrahieren.
 Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Rauschen und die Fähigkeit unserer Modelle, auf längere Antriebssequenzen zu generalisieren.
  
  
@@ -105,18 +105,18 @@ Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Ra
 \chapter{Work lower bound} \label{lower_bound}
 \input{content/lower_bound}
 
-\chapter{Experimental results}
+\chapter{Simulation results}
 \section{Influence of $\Delta \mathrm{T}$ on Work Output} \label{dep_dt}
 \input{content/dep_of_dt}
 \section{Data creation, training and evaluation}
 \input{content/exp_res}
-\section{$N=2$: Learning single jump optimal control sequences} \label{n_2_ml}
+\section{Amount of qubit switches $N=2$: Learning single extraction step optimal control sequences} \label{n_2_ml}
 \input{content/n_2_ml}
-\section{$N=5$}\label{n5}
-\subsection{$\Delta \mathrm{T} = 5$}\label{n_5_ml}
+\section{Amount of qubit switches $N=5$}\label{n5}
+\subsection{Interaction time $\Delta \mathrm{T} = 5$}\label{n_5_ml}
 \input{content/n_5_ml}
 
-\subsection{$\Delta \mathrm{T} = 1$}\label{n_5_dt1}
+\subsection{Interaction time $\Delta \mathrm{T} = 1$}\label{n_5_dt1}
 \input{content/n_5_dt_1}
 
 \subsection{Noise resistance}\label{ml_noise}
@@ -128,7 +128,7 @@ Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Ra
 \section{Generalisation to other $N$}
 \input{content/gen} 
 
-\chapter{Summary and outlook}\label{outlook}
+\chapter{Conclusion and outlook}\label{outlook}
 \input{content/outlook}
 
 \bibliographystyle{unsrt}
@@ -136,7 +136,7 @@ Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Ra
 
 \appendix
 \chapter{Derivations}
-\section{Single jump work output}
+\section{Single extraction step work output}
 \input{content/app_jump_work} \label{deriv_jump}
 
 \section{Optimal policy for $N=2$} \label{n2_opt_pol}

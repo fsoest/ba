@@ -9,17 +9,18 @@
 }
 
 @Article{beyer2020,
-  author       = {Konstantin Beyer and Kimmo Luoma and Walter T. Strunz},
-  title        = {Work as an external quantum observable and an operational quantum work fluctuation theorem},
-  abstract     = {We propose a definition of externally measurable quantum work in driven systems. Work is given as a quantum observable on a control device which is forcing the system and can be determined without knowledge of the system Hamiltonian $H_\mathcal{S}$. We argue that quantum work fluctuation theorems which rely on the knowledge of $H_\mathcal{S}$ are of little practical relevance, contrary to their classical counterparts. Using our framework, we derive a fluctuation theorem which is operationally accessible and could in principle be implemented in experiments to determine bounds on free energy differences of unknown systems.},
-  date         = {2020-03-13},
-  doi          = {10.1103/PhysRevResearch.2.033508},
-  eprint       = {2003.06437v2},
-  eprintclass  = {quant-ph},
-  eprinttype   = {arXiv},
-  file         = {online:http\://arxiv.org/pdf/2003.06437v2:PDF},
-  journaltitle = {Phys. Rev. Research 2, 033508 (2020)},
-  keywords     = {quant-ph},
+  author    = {Beyer, Konstantin and Luoma, Kimmo and Strunz, Walter T.},
+  title     = {Work as an external quantum observable and an operational quantum work fluctuation theorem},
+  journal   = {Phys. Rev. Research},
+  year      = {2020},
+  volume    = {2},
+  pages     = {033508},
+  month     = {Sep},
+  doi       = {10.1103/PhysRevResearch.2.033508},
+  issue     = {3},
+  numpages  = {9},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PhysRevResearch.2.033508},
 }
 
 @Book{Mitchell97,
@@ -54,10 +55,14 @@
   url       = {https://doi.org/10.21105/joss.00747},
 }
 
-@InProceedings{Maas2013RectifierNI,
-  author = {Andrew L. Maas},
-  title  = {Rectifier Nonlinearities Improve Neural Network Acoustic Models},
-  year   = {2013},
+@Conference{Maas2013RectifierNI,
+  author        = {Maas, A.L. and Hannun, A.Y. and Ng, A.Y.},
+  title         = {Rectifier Nonlinearities Improve Neural Network Acoustic Models},
+  booktitle     = {Proceedings of the International Conference on Machine Learning},
+  year          = {2013},
+  address       = {Atlanta, Georgia},
+  date-added    = {2013-12-03 21:52:00 +0000},
+  date-modified = {2013-12-12 19:00:23 +0000},
 }
 
 @Book{nielsenneural,
@@ -119,13 +124,19 @@
   doi     = {10.1038/s41592-019-0686-2},
 }
 
-@Misc{lu2020dying,
-  author        = {Lu Lu and Yeonjong Shin and Yanhui Su and George Em Karniadakis},
-  title         = {Dying ReLU and Initialization: Theory and Numerical Examples},
-  year          = {2020},
-  archiveprefix = {arXiv},
-  eprint        = {1903.06733},
-  primaryclass  = {stat.ML},
+@Article{lu2020dying,
+  author    = {Lu, Lu},
+  title     = {Dying ReLU and Initialization: Theory and Numerical Examples},
+  journal   = {Communications in Computational Physics},
+  year      = {2020},
+  volume    = {28},
+  number    = {5},
+  pages     = {1671–1706},
+  month     = {Jun},
+  issn      = {1991-7120},
+  doi       = {10.4208/cicp.oa-2020-0165},
+  publisher = {Global Science Press},
+  url       = {http://dx.doi.org/10.4208/cicp.OA-2020-0165},
 }
 
 @Article{krizhevsky,
@@ -331,13 +342,19 @@
   url       = {http://dx.doi.org/10.1103/RevModPhys.91.045002},
 }
 
-@Misc{wise2021using,
-  author        = {David F. Wise and John J. L. Morton and Siddharth Dhomkar},
-  title         = {Using deep learning to understand and mitigate the qubit noise environment},
-  year          = {2021},
-  archiveprefix = {arXiv},
-  eprint        = {2005.01144},
-  primaryclass  = {quant-ph},
+@Article{wise2021using,
+  author    = {Wise, David F. and Morton, John J.L. and Dhomkar, Siddharth},
+  title     = {Using Deep Learning to Understand and Mitigate the Qubit Noise Environment},
+  journal   = {PRX Quantum},
+  year      = {2021},
+  volume    = {2},
+  pages     = {010316},
+  month     = {Jan},
+  doi       = {10.1103/PRXQuantum.2.010316},
+  issue     = {1},
+  numpages  = {14},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PRXQuantum.2.010316},
 }
 
 @Article{Liu2019,
@@ -371,13 +388,18 @@
   url       = {https://doi.org/10.1088/1367-2630/aaf749},
 }
 
-@Misc{hinton2012improving,
-  author        = {Geoffrey E. Hinton and Nitish Srivastava and Alex Krizhevsky and Ilya Sutskever and Ruslan R. Salakhutdinov},
+@Article{hinton2012improving,
+  author        = {Geoffrey E. Hinton and Nitish Srivastava and Alex Krizhevsky and Ilya Sutskever and Ruslan Salakhutdinov},
   title         = {Improving neural networks by preventing co-adaptation of feature detectors},
+  journal       = {CoRR},
   year          = {2012},
+  volume        = {abs/1207.0580},
   archiveprefix = {arXiv},
+  bibsource     = {dblp computer science bibliography, https://dblp.org},
+  biburl        = {https://dblp.org/rec/journals/corr/abs-1207-0580.bib},
   eprint        = {1207.0580},
-  primaryclass  = {cs.NE},
+  timestamp     = {Mon, 13 Aug 2018 16:46:10 +0200},
+  url           = {http://arxiv.org/abs/1207.0580},
 }
 
 @Article{PhysRevX.10.011006,
@@ -426,7 +448,7 @@
 
 @InBook{thomson_2011,
   pages      = {100–106},
-  title      = {ON AN ABSOLUTE THERMOMETRIC SCALE FOUNDED ON CARNOT'S THEORY OF THE MOTIVE POWER OF HEAT, AND CALCULATED FROM REGNAULT'S OBSERVATIONS},
+  title      = {On an absolute thermometric scale founded on Carnot's theory of the motive power of hear, and calculated from Regnault's observations},
   publisher  = {Cambridge University Press},
   year       = {2011},
   author     = {Thomson, William},
@@ -452,13 +474,16 @@
   doi     = {10.1002/andp.19053220607},
 }
 
-@Misc{kingma2017adam,
-  author        = {Diederik P. Kingma and Jimmy Ba},
-  title         = {Adam: A Method for Stochastic Optimization},
-  year          = {2017},
-  archiveprefix = {arXiv},
-  eprint        = {1412.6980},
-  primaryclass  = {cs.LG},
+@InProceedings{kingma2017adam,
+  author    = {Diederik P. Kingma and Jimmy Ba},
+  title     = {Adam: {A} Method for Stochastic Optimization},
+  booktitle = {3rd International Conference on Learning Representations, {ICLR} 2015, San Diego, CA, USA, May 7-9, 2015, Conference Track Proceedings},
+  year      = {2015},
+  editor    = {Yoshua Bengio and Yann LeCun},
+  bibsource = {dblp computer science bibliography, https://dblp.org},
+  biburl    = {https://dblp.org/rec/journals/corr/KingmaB14.bib},
+  timestamp = {Thu, 25 Jul 2019 14:25:37 +0200},
+  url       = {http://arxiv.org/abs/1412.6980},
 }
 
 @Misc{frazier2018tutorial,
@@ -468,6 +493,44 @@
   archiveprefix = {arXiv},
   eprint        = {1807.02811},
   primaryclass  = {stat.ML},
+}
+
+@InProceedings{10.5555/2999325.2999464,
+  author    = {Snoek, Jasper and Larochelle, Hugo and Adams, Ryan P.},
+  title     = {Practical Bayesian Optimization of Machine Learning Algorithms},
+  booktitle = {Proceedings of the 25th International Conference on Neural Information Processing Systems - Volume 2},
+  year      = {2012},
+  series    = {NIPS'12},
+  pages     = {2951–2959},
+  address   = {Red Hook, NY, USA},
+  publisher = {Curran Associates Inc.},
+  abstract  = {The use of machine learning algorithms frequently involves careful tuning of learning parameters and model hyperparameters. Unfortunately, this tuning is often a "black art" requiring expert experience, rules of thumb, or sometimes brute-force search. There is therefore great appeal for automatic approaches that can optimize the performance of any given learning algorithm to the problem at hand. In this work, we consider this problem through the framework of Bayesian optimization, in which a learning algorithm's generalization performance is modeled as a sample from a Gaussian process (GP). We show that certain choices for the nature of the GP, such as the type of kernel and the treatment of its hyperparameters, can play a crucial role in obtaining a good optimizer that can achieve expertlevel performance. We describe new algorithms that take into account the variable cost (duration) of learning algorithm experiments and that can leverage the presence of multiple cores for parallel experimentation. We show that these proposed algorithms improve on previous automatic procedures and can reach or surpass human expert-level optimization for many algorithms including latent Dirichlet allocation, structured SVMs and convolutional neural networks.},
+  location  = {Lake Tahoe, Nevada},
+  numpages  = {9},
+}
+
+@Article{PhysRevA.101.022113,
+  author    = {Xu, Bao-Ming and Tu, Zhan Chun and Zou, Jian},
+  title     = {Duality in quantum work},
+  journal   = {Phys. Rev. A},
+  year      = {2020},
+  volume    = {101},
+  pages     = {022113},
+  month     = {Feb},
+  doi       = {10.1103/PhysRevA.101.022113},
+  issue     = {2},
+  numpages  = {6},
+  publisher = {American Physical Society},
+  url       = {https://link.aps.org/doi/10.1103/PhysRevA.101.022113},
+}
+
+@InProceedings{8614252,
+  author    = {S. {Siami-Namini} and N. {Tavakoli} and A. {Siami Namin}},
+  title     = {A Comparison of ARIMA and LSTM in Forecasting Time Series},
+  booktitle = {2018 17th IEEE International Conference on Machine Learning and Applications (ICMLA)},
+  year      = {2018},
+  pages     = {1394-1401},
+  doi       = {10.1109/ICMLA.2018.00227},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

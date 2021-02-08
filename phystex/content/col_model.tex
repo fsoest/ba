@@ -1,7 +1,7 @@
 % !TeX spellcheck = en_GB
-A standard approach to modelling open quantum systems is the collision model.
-The system under consideration interacts with a series of ancilla systems through a unitary transformation on the combined system-ancilla state \cite{Lorenzo_2017}. After a short interaction time $\Delta t$, the ancilla systems are traced out to receive the system state.
-We use this approach to model our setting, which consists of three qubits: the drive ($\ket{\psi_D}$), system and transducer ($\ket{\psi_T}$) qubits.
+A standard approach to model open quantum systems is the collision model.
+The system under consideration interacts with a series of ancilla systems through a unitary transformation on the combined system-ancilla state \cite{Lorenzo_2017}. After a short interaction time $\Delta t$, the ancilla systems are traced out to obtain the system state.
+We use this approach to model our setting, which consists of three qubits: the drive ($\ket{\psi_D}$), system and transducer ($\ket{\psi_T}$) qubits, where drive and transducer are considered ancilla qubits.
 In general, a collision model approach leads to entanglement between system and ancilla.
 This is undesirable in our model as we assume the drive and transducer to be in definitive, i.e. pure, states.
 To ensure the ancilla and system states remain pure, we follow the approach used in \cite{beyer2020}:
@@ -17,7 +17,6 @@ In the continuous limit Eq. (\ref{coll_eq}) leads to von-Neumann dynamics on the
 \end{align*}
 
 As each ancilla only interacts once with the system and is traced out afterwards, $\rho_S$ remains pure in the limit of $\Delta t \to 0$.
-
 
 We focus on piece-wise constant (PWC) functions of the drive ($\ket{\psi_D}$) and transducer ($\ket{\psi_T}$) qubits, as it greatly reduces computational complexity.
 These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\psi_D} \otimes \ket{\psi_T}$ constant for time $\Delta \mathrm{T}$ (Figure \ref{collmodel}).
@@ -40,9 +39,10 @@ The drive and transducer qubits can be set in N discrete intervals represented b
 
 In the remainder of this work we use the interaction Hamiltonian on the three qubit Hilbert space
 \begin{equation*}
-H_{DST} = H_{I} \otimes \mathds{1}_T + \mathds{1}_D \otimes H_{I}, \\
-H_{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
+H_{DST} = H^{I}_{DS} \otimes \mathds{1}_T + \mathds{1}_D \otimes H^{I}_{ST}, \\
+H^{I} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
 \end{equation*}
+The Hamiltonians are unitless and therefore the interaction strength is given by the evolution time.
 Note that the interaction Hamiltonian itself is constant and the time dependence comes from the change in the stream of ancillas only.
 The energy scale of the Hamiltonian is therefore limited and so are the dynamics of the system state $\rho_S$.
 The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is the time span between qubit switching:

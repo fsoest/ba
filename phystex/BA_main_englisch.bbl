@@ -20,10 +20,16 @@ D~Egloff, O~C~O Dahlsten, R~Renner, and V~Vedral.
   mechanics.
 \newblock {\em New Journal of Physics}, 17(7):073001, jul 2015.
 
+\bibitem{PhysRevA.101.022113}
+Bao-Ming Xu, Zhan~Chun Tu, and Jian Zou.
+\newblock Duality in quantum work.
+\newblock {\em Phys. Rev. A}, 101:022113, Feb 2020.
+
 \bibitem{beyer2020}
 Konstantin Beyer, Kimmo Luoma, and Walter~T. Strunz.
 \newblock Work as an external quantum observable and an operational quantum
   work fluctuation theorem.
+\newblock {\em Phys. Rev. Research}, 2:033508, Sep 2020.
 
 \bibitem{DBLP:journals/corr/VaswaniSPUJGKP17}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
@@ -38,9 +44,10 @@ Giuseppe Carleo, Ignacio Cirac, Kyle Cranmer, Laurent Daudet, Maria Schuld,
 \newblock {\em Reviews of Modern Physics}, 91(4), Dec 2019.
 
 \bibitem{wise2021using}
-David~F. Wise, John J.~L. Morton, and Siddharth Dhomkar.
+David~F. Wise, John~J.L. Morton, and Siddharth Dhomkar.
 \newblock Using deep learning to understand and mitigate the qubit noise
-  environment, 2021.
+  environment.
+\newblock {\em PRX Quantum}, 2:010316, Jan 2021.
 
 \bibitem{Liu2019}
 Feiyang Liu, Yulong Zhang, Oscar Dahlsten, and Fei Wang.
@@ -59,8 +66,10 @@ Tom~M. Mitchell.
 \newblock McGraw-Hill, New York, 1997.
 
 \bibitem{lu2020dying}
-Lu~Lu, Yeonjong Shin, Yanhui Su, and George~Em Karniadakis.
-\newblock Dying relu and initialization: Theory and numerical examples, 2020.
+Lu~Lu.
+\newblock Dying relu and initialization: Theory and numerical examples.
+\newblock {\em Communications in Computational Physics}, 28(5):1671–1706, Jun
+  2020.
 
 \bibitem{TN_libero_mab2)53517}
 Andreas Zell.
@@ -68,9 +77,10 @@ Andreas Zell.
 \newblock Oldenbourg, München, 2., unveränd. nachdr. edition, 1997.
 
 \bibitem{Maas2013RectifierNI}
-Andrew~L. Maas.
+A.L. Maas, A.Y. Hannun, and A.Y. Ng.
 \newblock Rectifier nonlinearities improve neural network acoustic models.
-\newblock 2013.
+\newblock In {\em Proceedings of the International Conference on Machine
+  Learning}, Atlanta, Georgia, 2013.
 
 \bibitem{krizhevsky}
 Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton.
@@ -82,11 +92,6 @@ Alexander LeNail.
 \newblock Nn-svg: Publication-ready neural network architecture schematics.
 \newblock {\em Journal of Open Source Software}, 4(33):747, 2019.
 
-\bibitem{rumelhart1986learning}
-David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
-\newblock Learning representations by back-propagating errors.
-\newblock {\em Nature}, 323(6088):533--536, October 1986.
-
 \bibitem{10.1007/978-3-642-46466-9_18}
 Kunihiko Fukushima and Sei Miyake.
 \newblock Neocognitron: A self-organizing neural network model for a mechanism
@@ -94,6 +99,12 @@ Kunihiko Fukushima and Sei Miyake.
 \newblock In Shun-ichi Amari and Michael~A. Arbib, editors, {\em Competition
   and Cooperation in Neural Nets}, pages 267--285, Berlin, Heidelberg, 1982.
   Springer Berlin Heidelberg.
+
+\bibitem{8614252}
+S.~{Siami-Namini}, N.~{Tavakoli}, and A.~{Siami Namin}.
+\newblock A comparison of {ARIMA} and {LSTM} in forecasting time series.
+\newblock In {\em 2018 17th IEEE International Conference on Machine Learning
+  and Applications (ICMLA)}, pages 1394--1401, 2018.
 
 \bibitem{doi:10.1162/neco.1997.9.8.1735}
 Sepp Hochreiter and Jürgen Schmidhuber.
@@ -117,6 +128,11 @@ Mike Schuster and Kuldip Paliwal.
 \newblock {\em Signal Processing, IEEE Transactions on}, 45:2673 -- 2681, 12
   1997.
 
+\bibitem{rumelhart1986learning}
+David~E. Rumelhart, Geoffrey~E. Hinton, and Ronald~J. Williams.
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323(6088):533--536, October 1986.
+
 \bibitem{nielsenneural}
 Michael~A. Nielsen.
 \newblock {\em Neural Networks and Deep Learning}.
@@ -124,7 +140,10 @@ Michael~A. Nielsen.
 
 \bibitem{kingma2017adam}
 Diederik~P. Kingma and Jimmy Ba.
-\newblock Adam: A method for stochastic optimization, 2017.
+\newblock Adam: {A} method for stochastic optimization.
+\newblock In Yoshua Bengio and Yann LeCun, editors, {\em 3rd International
+  Conference on Learning Representations, {ICLR} 2015, San Diego, CA, USA, May
+  7-9, 2015, Conference Track Proceedings}, 2015.
 
 \bibitem{2020SciPy-NMeth}
 Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
@@ -187,13 +206,17 @@ Richard~S. Sutton and Andrew~G. Barto.
 
 \bibitem{hinton2012improving}
 Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
-  Ruslan~R. Salakhutdinov.
+  Ruslan Salakhutdinov.
 \newblock Improving neural networks by preventing co-adaptation of feature
-  detectors, 2012.
+  detectors.
+\newblock {\em CoRR}, abs/1207.0580, 2012.
 
-\bibitem{frazier2018tutorial}
-Peter~I. Frazier.
-\newblock A tutorial on bayesian optimization, 2018.
+\bibitem{10.5555/2999325.2999464}
+Jasper Snoek, Hugo Larochelle, and Ryan~P. Adams.
+\newblock Practical bayesian optimization of machine learning algorithms.
+\newblock In {\em Proceedings of the 25th International Conference on Neural
+  Information Processing Systems - Volume 2}, NIPS'12, page 2951–2959, Red
+  Hook, NY, USA, 2012. Curran Associates Inc.
 
 \bibitem{wandb}
 Lukas Biewald.

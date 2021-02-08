@@ -14,7 +14,7 @@ For $\Delta \mathrm{T} = 5$, where the amount of reachable states on the Bloch s
 This dependence on both the initial and evolved state adds difficulty.
 In all cases the bidirectional outperformed the unidirectional LSTM, as the former has access to the complete drive sequence while the latter can only make predictions from the previous and current drive qubits.
 
-We identified the use of the mean squared error as a possible disadvantage in calculating the loss during training, especially for $\Delta \mathrm{T} = 5$.
+We identified the use of the mean squared error as loss a possible disadvantage in training, especially for $\Delta \mathrm{T} = 5$.
 For $\Delta \mathrm{T} = 1$ we trained a bidirectional model on the extracted work directly which performed slightly worse than the model trained on MSE loss but has better generalisability.
 Overall, the main difficulty in all models seems to have been representing the current system state correctly.
 In our approach, this representation had to be found implicitly, as $\rho_S$ was not included in the training data.
@@ -25,8 +25,7 @@ Depending on its realisation, this can lead to a defined steady-state of the sys
 
 In all machine learning based approaches, the performance of such models highly depends on the choice of hyperparameters.
 We employed Bayesian optimisation (see Appendix \ref{training} for more details) to find hyperparameters that maximise performance.
-However, the approach is limited in the amount of computing power available and the maximum over the total hyperparameter space may not be found in finite time.
-
+However, the approach by limited in the amount of computing power available and the maximum over the total hyperparameter space may not be found in finite time.
 
 It has to be noted that the approach followed in this work depends on maximising expectation values of work outputs.
 While this is certainly justified in the limit of infinite experimental realisations, the question of how the results might differ in the single shot case remains.

@@ -1,8 +1,12 @@
+We start from the Hamiltonian $H_S$ on the system and the resulting $\Delta H$
 \begin{align}
-	H_S&(\theta_D^t, \phi_D^t, \theta_T^t, \phi_T^t) = \frac{1}{2} \left[\sin(\theta_D^t) e^{i\phi_D^t} + \sin(\theta_T^t) e^{i\phi_T^t}\right] \sigma_{+} + h.c. \nonumber \\
-	& = \alpha \sigma_{+} + h.c. \nonumber \\
-	dH & = H_S(\theta_D^t, \phi_D^t, \theta_T^{t+1}, \phi_T^{t+1}) - H_S(\theta_D^t, \phi_D^t, \theta_T^t, \phi_T^t) \nonumber \\
-	& = \frac{1}{2}(\sin(\theta_T^{t+1})e^{i\phi_T^{t+1}} - \sin(\theta_T^t)e^{i\phi_T^t}) \sigma_{+} + h.c. =: (\tau' - \tau) \sigma_{+} + h.c. \nonumber \\
+	H_S&(\theta_D^n, \phi_D^n, \theta_T^n, \phi_T^n) = \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. \nonumber \\
+	& = \alpha \sigma_{+} + h.c., \nonumber \\
+	\Delta H & = H_S(\theta_D^n, \phi_D^n, \theta_T^{n+1}, \phi_T^{n+1}) - H_S(\theta_D^n, \phi_D^n, \theta_T^n, \phi_T^n) \nonumber \\
+	& = \frac{1}{2}(\sin(\theta_T^{n+1})e^{i\phi_T^{n+1}} - \sin(\theta_T^n)e^{i\phi_T^n}) \sigma_{+} + h.c. =: (\tau^{n+1} - \tau^n) \sigma_{+} + h.c. \nonumber
+\end{align}
+The unitary evolution of the system is given by
+\begin{align}
 	U & = e^{-iH_S \Delta \mathrm{T}} = 
 	\exp \begin{pmatrix}
 	0 & -i\alpha^* \Delta \mathrm{T} \\
@@ -24,7 +28,7 @@
 	& = \begin{pmatrix}
 	\cos(\abs{\alpha}\Delta \mathrm{T}) & -i\frac{\alpha^*}{\abs{\alpha}} \sin(\abs{\alpha}\Delta \mathrm{T}) \\
 	-i\frac{\abs{\alpha}}{\alpha^*} \sin(\abs{\alpha}\Delta \mathrm{T}) & \cos(\abs{\alpha} \Delta \mathrm{T}) \\
-	\end{pmatrix} \nonumber
+	\end{pmatrix}. \nonumber
 \end{align}
 With $\ket{\psi_0} = a \ket{0} + b \ket{1}$,  $\abs{a}^2 + \abs{b}^2 = 1$, we  have
 \begin{align}
@@ -35,12 +39,15 @@ With $\ket{\psi_0} = a \ket{0} + b \ket{1}$,  $\abs{a}^2 + \abs{b}^2 = 1$, we  h
 	\begin{pmatrix}
 	\rho_{00} & \rho_{01} \\
 	\rho_{10} & \rho_{11} \\
-	\end{pmatrix} \nonumber \\
-	\rho_{00} & = \abs{a}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) - \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha} \nonumber \\
-	\rho_{01} & = \frac{\alpha^*}{2 \abs{\alpha}} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{a}^2 - \abs{b}^2) + \frac{\alpha^*}{\alpha} a^* b \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a b^* \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) \nonumber \\
-	\rho_{10} & = 	\frac{\abs{\alpha}}{2 \alpha^*} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{b}^2 - \abs{a}^2) + \frac{\alpha}{\alpha^*} a b^* \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a^* b \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) \nonumber \\
-	\rho_{11} & = \abs{a}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha} \nonumber \\
-	\mathrm{dW} = & - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau' - \tau) \alpha^*} \nonumber \\
-	& - 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau) a b^*} 
-	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau' - \tau)a^* b \frac{\alpha^*}{\alpha}} ] \label{dwformula}
+	\end{pmatrix}, \text{with} \nonumber \\
+	\rho_{00} & = \abs{a}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) - \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha}, \nonumber \\
+	\rho_{01} & = \frac{\alpha^*}{2 \abs{\alpha}} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{a}^2 - \abs{b}^2) + \frac{\alpha^*}{\alpha} a^* b \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a b^* \ \cos^2(\abs{\alpha} \Delta \mathrm{T}), \nonumber \\
+	\rho_{10} & = 	\frac{\abs{\alpha}}{2 \alpha^*} i \ \sin(2 \abs{\alpha} \Delta \mathrm{T}) (\abs{b}^2 - \abs{a}^2) + \frac{\alpha}{\alpha^*} a b^* \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + a^* b \ \cos^2(\abs{\alpha} \Delta \mathrm{T}), \nonumber \\
+	\rho_{11} & = \abs{a}^2 \ \sin^2(\abs{\alpha} \Delta \mathrm{T}) + \abs{b}^2 \ \cos^2(\abs{\alpha} \Delta \mathrm{T}) + \frac{1}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{a b^* \alpha}. \nonumber
+\end{align}
+	This allows us to express the work output as
+\begin{align}
+	\mathrm{dW} = & - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau^{n+1} - \tau^n) \alpha^*} \nonumber \\
+	& - 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau^{n+1} - \tau^n) a b^*} 
+	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau^{n+1} - \tau^n)a^* b \frac{\alpha^*}{\alpha}} ] \label{dwformula}
 \end{align}

@@ -35,6 +35,8 @@ with torch.no_grad():
 delta = uni_pred - bi_pred
 plt.hist(delta)
 
+delta.argsort()[2 * len(delta) //3 + 1]
+
 E_uni = np.zeros((len(data_test), 5))
 E_bi = np.zeros((len(data_test), 5))
 E_opt = np.zeros((len(data_test), 5))
@@ -70,7 +72,7 @@ plt.hist(E_uni[:-1].argmin(axis=1))
 plt.scatter(E_opt.min(axis=1), -1*E_opt.cumsum(axis=1)[:, -1], alpha=0.02)
 # %%
 # Plots
-curr_arg = 5922
+curr_arg = 2952
 inp = np.copy(data_test[curr_arg, 0])
 emb_inp = torch.from_numpy(angle_embedding(inp[np.newaxis], N))
 hidden, cell = bi.HiddenCellTest(1)

@@ -20,12 +20,12 @@ This can be seen in Figure \ref{blochsdt15}, where we plot optimal and predicted
 		Bidir. LSTM  & 97.4 & 0.0238 & 1.62 & 7,700,222 \\
 		Unidir. LSTM & 70.1 & 0.0638 & 1.18 & 3,206,990 \\
 	\end{tabular}
-	\caption{Efficiencies $\eta$ and MSE loss on the test set for differing model architectures for $N=5, \Delta \mathrm{T} = 1$.}
+	\caption{Efficiencies $\eta$, MSE loss and average work output $W$ on the test set for differing model architectures for $N=5, \Delta \mathrm{T} = 1$.}
 	\label{effdt1}
 \end{table}
 
 For $\Delta \mathrm{T} = 1$, all models beat the locally optimised average $W_{lo} = 1.14$.
-It is therefore beneficial to follow the model predictions instead of the policy governed by local optimisation even if the drive sequence is unknown.
+It is therefore beneficial to follow the model predictions instead of the policy governed by local optimisation even if the whole drive sequence is not known in advance.
 
 \newpage
 
@@ -69,7 +69,7 @@ It is therefore beneficial to follow the model predictions instead of the policy
 		\includegraphics[width=\textwidth]{img/delta_phi_box_dt_12}
 		\subcaption{$|\phi^n_{\text{opt}} - \phi^n_{\text{pred}}|$}
 	\end{subfigure}
-	\caption{We plot the performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T^n = \frac{\pi}{2}$ for a majority of the central three qubits as well. Again, predicted and optimal $\phi^n_T$ are distributed equally and therefore we do not plot them here.}
+	\caption{We plot the performance of the bidirectional LSTM for $\Delta \mathrm{T} = 1$. Unlike the optimum for the longer switching time, $\theta_T^n = \frac{\pi}{2}$ for a majority of the central three qubits as well. Again, predicted and optimal $\phi^n_T$ are distributed uniformly and therefore we do not plot them here.}
 	\label{dt1box}
 \end{figure}
 

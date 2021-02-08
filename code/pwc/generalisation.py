@@ -135,17 +135,20 @@ plt.scatter(N_arr, -1 * E_uni_sum, label='Unidir. LSTM', marker='.')
 plt.scatter(N_arr, -1 * E_bi_sum, label='Bidir. LSTM', marker='.')
 plt.scatter(N_arr, -1 * E_triv_sum, label='Local opt.', marker='.')
 plt.scatter(N_arr, -1 * E_local_sum, label='Local LSTM', marker='.')
-plt.scatter(N_arr, -1 * E_better_sum, label='Work loss', marker='.')
-plt.scatter(n_dt_1, -1 * np.array(E_n), label='Global opt.', marker='1', c='k')
+# plt.scatter(N_arr, -1 * E_better_sum, label='Work loss', marker='.')
+# plt.scatter(n_dt_1, -1 * np.array(E_n), label='Global opt.', marker='1', c='k')
+plt.scatter(N_arr, -1 * E_q_cell_sum)
 
 # plt.scatter(5, -1 * np.mean(data[:, 2]), marker='1')
 plt.legend()
 plt.xlabel('$N$')
 plt.ylabel('$\overline{W}$')
-plt.savefig('/home/fsoest/ba/phystex/img/gen_dt_{0}.png'.format(dt), dpi=300)
+# plt.savefig('/home/fsoest/ba/phystex/img/gen_dt_{0}.png'.format(dt), dpi=300)
 
 # %%
 # n_dt_1 = np.array([2, 3, 5, 12])
 # E_n = np.zeros(4)
 # E_n[-1] = np.mean(data[:, 2])
 # E_n[0] *=-1
+E_q_cell_sum = np.mean(np.cumsum(E_qcell, axis=2)[:, :, -1], axis=0)
+plt.scatter(N_arr, -1 * E_q_cell_sum)

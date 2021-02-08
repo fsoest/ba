@@ -6,7 +6,7 @@ We compare the performance of the uni- and bidirectional LSTM networks trained o
 We plot the average work output of the aforementioned in Figure \ref{genplot}.
 For $\Delta \mathrm{T} = 1$, the LSTM networks trained using the MSE loss perform best for values close to $N=5$, which they were trained on, and are unable to generalise to larger $N$.
 This is expected as the training set consists of policies optimal only for $N=5$.
-$\overline{W}$ drops for $N > 6$ while no such drop can be seen in the LSTM model trained using the work as loss.
+$\overline{W}$ drops for $N > 6$, while no such drop can be seen in the LSTM model trained using the work as loss.
 The LSTM trained on the locally optimised policies is able to generalise to larger $N$ for $\Delta \mathrm{T} = 1$, although the extracted work per step decreases with $N$.
 Learning the locally optimised policy requires learning a representation of the system state $\rho_S$, the errors of which will propagate if the representation is not exact.
 For large $N$, this representation will be no better than the fully mixed state, leading to $dW = 0$ on average.
@@ -30,6 +30,6 @@ For large $N$, this representation will be no better than the fully mixed state,
 For $\Delta \mathrm{T} = 5$, all models fail to generalise to larger $N$.
 A possible reason can be found in the poor performance of the unidirectional LSTM trained on the locally optimised protocol.
 Here, it becomes evident that the model is unable to learn a precise representation of the system state which remains valid for larger $N$.
-Two possible reasons come to mind, firstly the larger evolution time leads to a faster propagation of errors in the representation.
+Two possible reasons come to mind: firstly the larger evolution time leads to a faster propagation of errors in the representation.
 Additionally, the mapping $U = e^{-i H_s \Delta \mathrm{T}}$ from initial to evolved state, which depends non-linearly on $\Delta \mathrm{T}$ and the model inputs and outputs, is more difficult to represent for the LSTM cell.
 The quality of any polynomial approximation of $U$ learned by the model will degrade more quickly for large $\Delta \mathrm{T}$.

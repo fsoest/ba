@@ -123,6 +123,10 @@ z = np.zeros(N)
 c = np.zeros(N)
 dh = np.zeros(N)
 
+herm = rand_herm()
+
+np.linalg.norm(np.matrix(herm), ord='fro')
+
 for i in range(N):
     herm = rand_herm()
     x[i] = np.trace(s_x @ herm)
