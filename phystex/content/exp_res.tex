@@ -1,8 +1,8 @@
 In the following sections we will apply neural networks to the system outlined before.
-The training data is created as in the previous section, sampling random drive sequences $\{|\psi_D^n \rangle\}$ and determining their respective optimal transducer protocols $\{|\psi_T^n \rangle\}$ using the minimiser.
+The training data is created as in the previous section, sampling random drive sequences $\{|\psi_D^n \rangle\}$ and determining their respective optimal transducer protocols $\{|\psi_T^n \rangle\}$ using the optimiser.
 The drive sequences, represented by $\{\theta_D^n, \phi_D^n\}$, are sampled randomly from the Haar measure \cite{Mezzadri}.
 
-The networks are trained to learn the mapping $\{|\psi_D^i \rangle\} \to \{|\psi_T^i \rangle\}$.
+The networks are trained to learn the mapping $\{|\psi_D^n \rangle\} \to \{|\psi_T^n \rangle\}$.
 Both the input (drive) and output (transducer) are transformed by the embedding
 \begin{align} \label{embedding}
 	\left\{

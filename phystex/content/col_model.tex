@@ -28,7 +28,7 @@ These are implemented by keeping the stream of ancillas $\ket{\psi_A} = \ket{\ps
 	\label{collmodel}
 \end{figure}
 
-The drive and transducer qubits can be set in N discrete intervals represented by ($\theta_D^n, \phi_D^n$) and ($\theta_T^n, \phi_T^n$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state $\rho_S$.
+The drive and transducer qubits can be set in N discrete intervals represented by ($\theta_D^n, \phi_D^n$) and ($\theta_T^n, \phi_T^n$) respectively (see Figure \ref{pwc}), the system qubit is initialised in a pure state $\rho_S^0$.
 
 \begin{figure}[h]
 	\centering
@@ -45,7 +45,7 @@ H_{DS} = H_{ST} = \sigma_{+} \otimes \sigma_{-} + \sigma_{-} \otimes \sigma_{+}.
 The Hamiltonians are unitless and therefore the interaction strength is given by the evolution time.
 Note that the interaction Hamiltonian itself is constant and the time dependence comes from the change in the stream of ancillas only.
 The energy scale of the Hamiltonian is therefore limited and so are the dynamics of the system state $\rho_S$.
-The time evolution and work extraction is then calculated as follows, where $\Delta \mathrm{T}$ is the time span between qubit switching:
+The time evolution and work extraction are then calculated as follows, where $\Delta \mathrm{T}$ is the time span between qubit switching:
 \begin{align}
 H_S^n &= \bra{\psi_D^n}\bra{\psi_T^n} H_{DST} \ket{\psi_D^n} \ket{\psi_T^n}, \label{relham}\\
 \rho_S &((n+1) \Delta \mathrm{T}) = U_n \ \rho_S(n \Delta \mathrm{T}) \ U^{\dagger}_n, \nonumber \\
@@ -63,7 +63,7 @@ Using the Bloch sphere representation $\ket{\psi} = \cos(\frac{\theta}{2}) \ket{
 \begin{align}
 H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. =  H_{(D)S}^n + H_{S(T)}^n, \nonumber \\
 H_{(D)S}^n &= \bra{\psi_D^n} \bra{\psi_T^{n}} H_{DS} \otimes \mathds{1}_T \ket{\psi_D^n} \ket{\psi_T^n}, \nonumber \\
-H_{S(T)}^n &= \bra{\psi_D^n} \bra{\psi_T^{n}} \mathds{1}_D \otimes H_{ST}  \ket{\psi_D^n} \ket{\psi_T^n} \nonumber
+H_{S(T)}^n &= \bra{\psi_D^n} \bra{\psi_T^{n}} \mathds{1}_D \otimes H_{ST}  \ket{\psi_D^n} \ket{\psi_T^n}. \nonumber
 \end{align}
 In the following, we will call $H_{(D)S}^n$ the drive and $H_{S(T)}^n$ the transducer Hamiltonian, but note that both Hamiltonians act on the system Hilbert space only.
 Eq. (\ref{deltaham}) can then be expressed in a simpler form

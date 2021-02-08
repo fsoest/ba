@@ -55,7 +55,7 @@ Eingereicht am 08.~Februar~2021\vspace{1.5em}
 \newpage
 \begin{center}\large\bfseries Abstract\end{center}
 An interesting question in the field of quantum thermodynamics is how to extract the maximum amount of work from a given system.
-We consider a two-state quantum system that is driven by an arbitrary piecewise constant function, from which work can be extracted.
+We consider a two-state quantum system that is driven by a piecewise constant function, from which work can be extracted.
 We show that for this system a policy exists that is able to extract a non-negative work output independent of the excitation.
 We investigate the system with respect to randomly sampled drives and find their optimal extraction policies numerically.
 Using these pairs as training data we employ recurrent neural networks to predict the optimal transducer policy given a drive sequence.
@@ -65,11 +65,11 @@ Additionally, we explore the robustness of the model predictions with respect to
 \vspace{10em}
 \begin{center}\large\bfseries Zusammenfassung\end{center}
 Eine interessante Frage im Gebiet der Quanten-Thermodynamik ist, wie man die maximale Menge an Arbeit aus einem gegebenen System extrahieren kann.
-Wir betrachten ein zwei-Niveau-Quantensystem, welches durch eine beliebige stückweise konstante Funktion angetrie-ben wird und aus dem Arbeit extrahiert werden kann.
+Wir betrachten ein zwei-Niveau-Quantensystem, welches durch eine stückweise konstante Funktion angetrieben wird und aus dem Arbeit extrahiert werden kann.
 Wir zeigen, dass für dieses System eine Strategie existiert, die in der Lage ist, eine nicht-negative Arbeit unabhängig von der Anregung zu extrahieren.
 Wir untersuchen das System in Bezug auf zufällig generierte Antriebe und finden deren optimale Extraktionssequenz numerisch.
 Unter Verwendung dieser Paare als Trainingsdaten verwenden wir rekurrente neuronale Netze, um die optimale Extraktionsstrate-gie einer gegebenen Antriebssequenz vorherzusagen.
-Dieser Ansatz funktioniert recht gut, und ist sogar in der Lage, mehr als 97 \% des Optimums für bestimmte Modellparameter zu extrahieren.
+Dieser Ansatz funktioniert recht gut, und ist in der Lage, mehr als 97 \% des Optimums für bestimmte Modellparameter zu extrahieren.
 Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Rauschen und die Fähigkeit unserer Modelle, auf längere Antriebssequenzen zu generalisieren.
  
  
@@ -100,7 +100,7 @@ Zusätzlich untersuchen wir die Robustheit der Modellvorhersagen in Bezug auf Ra
 \chapter{Simulation results}
 \section{Influence of $\Delta \mathrm{T}$ on Work Output} \label{dep_dt}
 \input{content/dep_of_dt}
-\section{Data creation, training and evaluation}
+\section{Data creation, training and evaluation} \label{data_create}
 \input{content/exp_res}
 \section{Amount of qubit switches $N=2$: Learning single extraction step optimal control sequences} \label{n_2_ml}
 \input{content/n_2_ml}

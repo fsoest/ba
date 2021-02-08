@@ -12,8 +12,7 @@ We examine the case where the drive is given and the aim is to find the extracti
 This problem is known as energy harvesting.
 In the classical case, it has been analysed in different setups, both theoretically \cite{WEI20171} and experimentally \cite{expharv}, where energy is extracted from external excitations, e.g. vibrations in human motion.
 In contrast, in the quantum case only few results exist \cite{sothmann}.
-Finding the optimal extraction policy in non-trivial in general.
-In particular, analytic solutions often do not exist.
+Finding the optimal extraction policy in non-trivial in general and analytic solutions often do not exist.
 Recently, it has been shown in Ref.~\cite{Liu2019} that machine learning techniques are capable of finding and improving energy harvesting policies.
 In this thesis, we employ a machine learning based approach to our quantum work extraction framework.
 
@@ -24,10 +23,11 @@ We use multiple neural network architectures to predict extraction protocols giv
 This thesis focuses on recurrent neural networks, as they have been shown to perform well for time-series data~\cite{8614252}.
 
 The remainder of this work is structured as follows.
-In Chapter~\ref{background} we review the collision model framework used in our approach
-Furthermore we introduce two machine learning architectures, the fully-connected feedforward artificial neural network and the Long Short-Term Memory cell.
+In Chapter~\ref{background} we review the collision model framework used in our approach.
+Furthermore, we introduce two machine learning architectures, the fully-connected feedforward artificial neural network and the Long Short-Term Memory cell.
 In Chapter~\ref{lower_bound} we show that for a given drive sequence a lower bound on the expectation value of the extractable work exists.
-We investigate the system under consideration in Sec-tion~\ref{dep_dt} and apply the aforementioned architectures in Sections~\ref{n_2_ml} and \ref{n5}.
+We investigate the system under consideration in Section~\ref{dep_dt} and explain the data creation and training routine in Section~\ref{data_create}.
+The aforementioned architectures are applied to our setting in Sections~\ref{n_2_ml} and \ref{n5}.
 The robustness of our solutions to noise as well as the ability of the models to generalise to longer drive sequences are studied thereafter.
 We summarise our findings and provide an outlook in Chapter \ref{outlook}.
 

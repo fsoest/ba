@@ -24,7 +24,6 @@ As the network is less likely to predict a solution near the optimum, the noisy 
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 	\centering
-%	Hier kommt noch ein Bild
 	\includegraphics[width=\textwidth]{img/noisy_drive_dt_1}
 	\subcaption{Noisy drive sequence, $\Delta \mathrm{T} = 1$}
 	\end{subfigure}
@@ -35,10 +34,9 @@ As the network is less likely to predict a solution near the optimum, the noisy 
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
 		\centering
-%		Hier kommt noch ein Bild
 		\includegraphics[width=\textwidth]{img/noisy_trans_dt_1}
 		\subcaption{Noisy transducer sequence, $\Delta \mathrm{T} = 1$}
 	\end{subfigure}
-	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM. $W_{pred}$ is the work output following the model prediction. \textbf{(a), (b)}: we create 100 noisy drive sequences and calculate the average $\overline{W}_{noise}$ of their work output following the predicted transducer protocol. \textbf{(c), (d)}: we create 100 noisy transducer sequences and calculate the average of their work output with a given drive sequence from the test set. In both plots, the black dots indicate the average fidelities and $\Delta W$ for a given $\tau$.}
+	\caption{We plot the difference $\Delta W = \overline{W}_{noise} - W_{pred}$ of each element of the test set for the bidirectional LSTM. $W_{pred}$ is the work output following the model prediction. \textbf{(a), (b)}: we create 100 noisy drive sequences for each sample of the test set and calculate the average $\overline{W}_{noise}$ of their work output following the predicted transducer protocol. \textbf{(c), (d)}: we create 100 noisy transducer sequences for each sample of the test set and calculate the average of their work output with a given drive sequence from the test set. In both plots, the black dots indicate the average fidelities and $\Delta W$ for a given $\tau$.}
 	\label{noisedt5}
 \end{figure}
