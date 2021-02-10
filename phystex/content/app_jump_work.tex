@@ -1,13 +1,12 @@
-We start from the Hamiltonian $H_S$ on the system and the resulting $\Delta H$
+We start from the Hamiltonian $H_S^n$ on the system and the resulting $\Delta H^n_S$
 \begin{align}
-	H_S&(\theta_D^n, \phi_D^n, \theta_T^n, \phi_T^n) = \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. \nonumber \\
-	& = \alpha \sigma_{+} + h.c., \nonumber \\
-	\Delta H & = H_S(\theta_D^n, \phi_D^n, \theta_T^{n+1}, \phi_T^{n+1}) - H_S(\theta_D^n, \phi_D^n, \theta_T^n, \phi_T^n) \nonumber \\
-	& = \frac{1}{2}(\sin(\theta_T^{n+1})e^{i\phi_T^{n+1}} - \sin(\theta_T^n)e^{i\phi_T^n}) \sigma_{+} + h.c. =: (\tau^{n+1} - \tau^n) \sigma_{+} + h.c. \nonumber
+	H_S^n &= \frac{1}{2} \left[\sin(\theta_D^n) e^{i\phi_D^n} + \sin(\theta_T^n) e^{i\phi_T^n}\right] \sigma_{+} + h.c. \nonumber \\
+	& =: \alpha \sigma_{+} + h.c., \nonumber \\
+	\Delta H_S^n & = \frac{1}{2}(\sin(\theta_T^{n+1})e^{i\phi_T^{n+1}} - \sin(\theta_T^n)e^{i\phi_T^n}) \sigma_{+} + h.c. =: (\tau_{n+1} - \tau_n) \sigma_{+} + h.c. \nonumber
 \end{align}
 The unitary evolution of the system is given by
 \begin{align}
-	U & = e^{-iH_S \Delta \mathrm{T}} = 
+	U & = e^{-iH_S^n \Delta \mathrm{T}} = 
 	\exp \begin{pmatrix}
 	0 & -i\alpha^* \Delta \mathrm{T} \\
 	-i \alpha \Delta \mathrm{T} & 0 \\
@@ -47,7 +46,7 @@ With $\ket{\psi_0} = a \ket{0} + b \ket{1}$,  $\abs{a}^2 + \abs{b}^2 = 1$, we  h
 \end{align}
 	This allows us to express the work output $dW$ as
 \begin{align}
-	\mathrm{dW} = & - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau^{n+1} - \tau^n) \alpha^*} \nonumber \\
-	& - 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau^{n+1} - \tau^n) a b^*} 
-	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau^{n+1} - \tau^n)a^* b \frac{\alpha^*}{\alpha}} ]. \label{dwformula}
+	\mathrm{dW} = & - \mathrm{Tr} \ \rho \ \mathrm{dH} = \frac{\abs{a}^2 - \abs{b}^2}{\abs{\alpha}} \sin(2 \abs{\alpha} \Delta \mathrm{T}) \Im{(\tau_{n+1} - \tau_n) \alpha^*} \nonumber \\
+	& - 2 \ [\cos^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau_{n+1} - \tau_n) a b^*} 
+	+ \sin^2(\abs{\alpha} \Delta \mathrm{T}) \Re{(\tau_{n+1} - \tau_n)a^* b \frac{\alpha^*}{\alpha}} ]. \label{dwformula}
 \end{align}

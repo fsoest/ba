@@ -12,8 +12,8 @@
 \contentsline {section}{\numberline {4.2}Data creation, training and evaluation}{12}{section.4.2}% 
 \contentsline {subsection}{\numberline {4.2.1}Choice of cost function for training}{13}{subsection.4.2.1}% 
 \contentsline {subsection}{\numberline {4.2.2}Evaluation of network performance}{13}{subsection.4.2.2}% 
-\contentsline {section}{\numberline {4.3}Amount of qubit switches $N=2$: Learning single extraction step optimal control sequences}{13}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Amount of qubit switches $N=5$}{14}{section.4.4}% 
+\contentsline {section}{\numberline {4.3}Number of PWC steps $N=2$: Learning single extraction step optimal control sequences}{13}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Number of PWC steps $N=5$}{14}{section.4.4}% 
 \contentsline {subsection}{\numberline {4.4.1}Interaction time $\Delta \mathrm {T} = 5$}{14}{subsection.4.4.1}% 
 \contentsline {subsection}{\numberline {4.4.2}Interaction time $\Delta \mathrm {T} = 1$}{18}{subsection.4.4.2}% 
 \contentsline {subsection}{\numberline {4.4.3}Noise resistance}{20}{subsection.4.4.3}% 
